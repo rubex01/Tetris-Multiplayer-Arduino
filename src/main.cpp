@@ -52,8 +52,10 @@ ISR(INT0_vect)
 }
 
 ISR(TIMER0_COMPA_vect) {
-//    if (counter == 19) { // 38 khz
-    if (counter == 18) { // 56 khz
+    // uint8_t deviderToGetRightHz = 12; // 38 khz
+    uint8_t deviderToGetRightHz = 18; // 38 khz
+
+    if (counter == deviderToGetRightHz) {
         sendData();
         counter = 0;
     }
@@ -61,8 +63,8 @@ ISR(TIMER0_COMPA_vect) {
         receiveCount++;
 
         if (
-                (numberOfCurrentReceivingBit == 0 && receiveCount == 27) ||
-                (numberOfCurrentReceivingBit > 0 && receiveCount == 18)
+                (numberOfCurrentReceivingBit == 0 && receiveCount == deviderToGetRightHz+(deviderToGetRightHz/2)) ||
+                (numberOfCurrentReceivingBit > 0 && receiveCount == deviderToGetRightHz)
             ) { // Start sampling in middle of data bit
 
             if (numberOfCurrentReceivingBit < dataLength) { // If inside the data bit, save the data to the result variable
