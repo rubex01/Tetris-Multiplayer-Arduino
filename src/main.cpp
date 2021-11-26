@@ -7,8 +7,7 @@
 #include <avr/io.h>
 #include "HardwareSerial.h"
 
-//uint8_t data = 88;
-uint16_t data = 34732;
+uint16_t data = 23421;
 uint16_t dataLength = 16;
 uint16_t bitCount = 0;
 uint16_t counter = 0;
@@ -22,22 +21,22 @@ uint16_t result = 0x0;
 void sendData()
 {
     if (bitCount == 0) { // Start bit
-        TCCR0A &= ~(1<<COM0A1); // Enable compare interrupt
+        TCCR0A &= ~(1<<COM0A0); // Enable compare interrupt
         bitCount = 1; // Set bit to one as this is the first data bit that will be sent next cycle
         return;
     }
 
     if (bitCount >= dataLength+1) { // End of Frame
-        TCCR0A |= (1<<COM0A1); // Set line to low for some time
+        TCCR0A |= (1<<COM0A0); // Set line to low for some time
         bitCount++;
         if (bitCount == dataLength*2.5) bitCount = 0; // Set bitcount to 0 for the next frame
         return;
     }
 
     if ((data & (1<<(bitCount-1))) > 0) // Check if next data bit is 0 or 1
-        TCCR0A &= ~(1<<COM0A1); // Enable compare interrupt
+        TCCR0A &= ~(1<<COM0A0); // Enable compare interrupt
     else
-        TCCR0A |= (1<<COM0A1); // Disconnect
+        TCCR0A |= (1<<COM0A0); // Disconnect
 
     bitCount++; // Increase bit count for next data bit
 }
