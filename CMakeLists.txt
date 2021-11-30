@@ -18,7 +18,8 @@ set(PRODUCT_NAME KBS)
 # Create one target
 # (Linux) `find src -name \*.c\*`
 add_executable(${PRODUCT_NAME}
-        src/main.cpp)
+        src/main.cpp
+        )
 
 
 

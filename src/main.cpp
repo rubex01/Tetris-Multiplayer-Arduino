@@ -7,7 +7,7 @@
 #include <avr/io.h>
 #include "HardwareSerial.h"
 
-uint8_t data = 1;
+uint8_t data = 173;
 uint8_t dataLength = 8;
 uint8_t bitCount = 0;
 uint8_t sendCounter = 0;
@@ -29,7 +29,7 @@ void sendData()
     if (bitCount >= dataLength+1) { // End of Frame
         TCCR0A &= ~(1<<COM0A0); // Set line to low for some time
         bitCount++;
-        if (bitCount == dataLength+20) bitCount = 0; // Set bitcount to 0 for the next frame
+        if (bitCount == dataLength+50) bitCount = 0; // Set bitcount to 0 for the next frame
         return;
     }
 
@@ -61,8 +61,8 @@ void resetReceiver()
 }
 
 ISR(TIMER0_COMPA_vect) {
-    //uint8_t deviderToGetRightHz = 42; // 56 khz
-    uint8_t deviderToGetRightHz = 29; // 38 khz
+    uint8_t deviderToGetRightHz = 42; // 56 khz
+//    uint8_t deviderToGetRightHz = 29; // 38 khz
 
     if (sendCounter == deviderToGetRightHz) {
         sendData();
@@ -95,8 +95,8 @@ void initTimer0()
     TCCR0B |= (1<<WGM02);
     TCCR0A |= (1<<COM0A0);
     TCCR0B |= (1<<CS00);
-    //OCR0A = 141; // 56 khz
-    OCR0A = 206; // 38 khz
+    OCR0A = 141; // 56 khz
+//    OCR0A = 206; // 38 khz
     TIMSK0 |= (1<<OCIE0A);
     TCNT0 = 0;
 }
@@ -110,17 +110,17 @@ void initIrInterupt()
 int main()
 {
     DDRD |= (1<<DDD6);
-    DDRB |= (1<<DDB3);
     PORTD |= (1<<PORTD2);
 
     Serial.begin(9600);
 
+    sei();
+
     initTimer0();
     initIrInterupt();
 
-    sei();
-
     while(true) {
+
     }
 
     return(0);

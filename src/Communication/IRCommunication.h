@@ -9,29 +9,29 @@
 
 class IRCommunication {
     public:
-        IRCommunication(int kiloHertz);
-        static bool isCurrentlyReceiving();
-        static void setCurrentlyReceiving(bool value);
+        static void init();
+        static void setCurrentlyReceiving(boolean value);
         static void toggleCurrentBitIsOne();
-        static void receiveBit();
-        static void sendBit();
-        static uint8_t getHzDevider();
-        static uint8_t getKhz();
-        static void handleTimer0Interupt();
+        static void runSendForInterrupt();
+        static void runReceiveForInterrupt();
+        static void sendDataBit();
 
-    private:
+        static int kiloHertz;
+        static boolean currentlyReceiving;
+        static boolean currentBitIsOne;
+        static uint8_t data;
+        static uint8_t result;
+        static int dataLength;
+        static int numberOfCurrentReceivingBit;
+        static int bitCount;
+        static int sendCounter;
+        static int receiveCount;
+        static int deviderToGetRightHz;
+
         static void initTimer0();
         static void initIrInterupt();
-        static bool currentlyReceiving;
-        static bool currentBitIsOne;
-        static uint8_t numberOfCurrentReceivingBit;
-        static uint8_t dataLength;
-        static uint16_t result;
-        static uint8_t deviderToGetRightHz;
-        static uint8_t khz;
-        static uint8_t sendCount;
-        static uint8_t receiveCount;
-        static uint8_t receivingBitPosition;
+        static void initPorts();
+        static void resetReceiver();
 };
 
 
