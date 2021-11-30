@@ -6,6 +6,9 @@
 #include <avr/interrupt.h>
 #include <avr/io.h>
 #include "HardwareSerial.h"
+#include "Controller.h"
+#include "Character.h"
+#include "Display.h"
 
 uint8_t data = 173;
 uint8_t dataLength = 8;
@@ -115,12 +118,17 @@ int main()
     Serial.begin(9600);
 
     sei();
+      Controller::Init();
+  Display::Init();
 
     initTimer0();
     initIrInterupt();
 
     while(true) {
-
+              Display::FillCircle(Character::xPos, Character::yPos, 10, ILI9341_BLACK);
+      Controller::Update();
+      Display::FillCircle(Character::xPos, Character::yPos, 10, ILI9341_MAGENTA);
+      _delay_ms(50);
     }
 
     return(0);

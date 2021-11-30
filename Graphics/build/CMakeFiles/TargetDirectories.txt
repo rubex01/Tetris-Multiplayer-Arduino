@@ -1,0 +1,7 @@
+/home/martijn/Graphics/build/CMakeFiles/install/strip.dir
+/home/martijn/Graphics/build/CMakeFiles/install/local.dir
+/home/martijn/Graphics/build/CMakeFiles/install.dir
+/home/martijn/Graphics/build/CMakeFiles/list_install_components.dir
+/home/martijn/Graphics/build/CMakeFiles/rebuild_cache.dir
+/home/martijn/Graphics/build/CMakeFiles/edit_cache.dir
+/home/martijn/Graphics/build/CMakeFiles/graphicslibs.dir
