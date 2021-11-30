@@ -1,5 +1,5 @@
 #ifndef __AVR_ATmega328P__
-    #define __AVR_ATmega328P__
+#define __AVR_ATmega328P__
 #endif
 
 #include "Arduino.h"
@@ -7,16 +7,16 @@
 #include <avr/io.h>
 #include "HardwareSerial.h"
 
-uint16_t data = 52428;
-uint16_t dataLength = 16;
-uint16_t bitCount = 0;
-uint16_t counter = 0;
+uint8_t data = 1;
+uint8_t dataLength = 8;
+uint8_t bitCount = 0;
+uint8_t sendCounter = 0;
 
 boolean currentlyReceiving = false;
-uint16_t numberOfCurrentReceivingBit = 0;
-uint16_t receiveCount = 0;
-boolean currentBitIsOne = false;
-uint16_t result = 0x0;
+uint8_t numberOfCurrentReceivingBit = 0;
+uint8_t receiveCount = 0;
+boolean currentBitIsOne = true;
+uint8_t result = 0;
 
 void sendData()
 {
@@ -29,7 +29,7 @@ void sendData()
     if (bitCount >= dataLength+1) { // End of Frame
         TCCR0A &= ~(1<<COM0A0); // Set line to low for some time
         bitCount++;
-        if (bitCount == dataLength*2.5) bitCount = 0; // Set bitcount to 0 for the next frame
+        if (bitCount == dataLength+20) bitCount = 0; // Set bitcount to 0 for the next frame
         return;
     }
 
@@ -51,42 +51,42 @@ ISR(INT0_vect)
     currentBitIsOne = !currentBitIsOne; // Toggle on interrupt because there is a change in value
 }
 
+void resetReceiver()
+{
+    numberOfCurrentReceivingBit = 0;
+    currentlyReceiving = false;
+    currentBitIsOne = true;
+    Serial.println(result);
+    result = 0;
+}
+
 ISR(TIMER0_COMPA_vect) {
-    // uint8_t deviderToGetRightHz = 12; // 38 khz
-    uint8_t deviderToGetRightHz = 18; // 38 khz
+    //uint8_t deviderToGetRightHz = 42; // 56 khz
+    uint8_t deviderToGetRightHz = 29; // 38 khz
 
-    if (counter == deviderToGetRightHz) {
+    if (sendCounter == deviderToGetRightHz) {
         sendData();
-        counter = 0;
+        sendCounter = 0;
     }
+    sendCounter++;
+
     if (currentlyReceiving) {
-        receiveCount++;
-
         if (
-                (numberOfCurrentReceivingBit == 0 && receiveCount == deviderToGetRightHz+(deviderToGetRightHz/2)) ||
-                (numberOfCurrentReceivingBit > 0 && receiveCount == deviderToGetRightHz)
-            ) { // Start sampling in middle of data bit
+            (receiveCount == deviderToGetRightHz && numberOfCurrentReceivingBit != 0) ||
+            (numberOfCurrentReceivingBit == 0 && receiveCount == deviderToGetRightHz+(deviderToGetRightHz/2/2))
+        ){ // Start sampling in middle of data bit
 
-            if (numberOfCurrentReceivingBit < dataLength) { // If inside the data bit, save the data to the result variable
-                if (currentBitIsOne) // Check if the current data bit is a 1 or 0
-                    result &= ~(1<<numberOfCurrentReceivingBit);
-                else
-                    result |= (1<<numberOfCurrentReceivingBit);
-            }
+            if (currentBitIsOne && numberOfCurrentReceivingBit < dataLength)
+                result |= (1<<numberOfCurrentReceivingBit);
 
             receiveCount = 0;
-            numberOfCurrentReceivingBit++;
 
-            if (numberOfCurrentReceivingBit == dataLength+1) { // End of data, line is low again so reset settings for next frame
-                numberOfCurrentReceivingBit = 0;
-                currentlyReceiving = false;
-                currentBitIsOne = false;
-                Serial.println(result);
-                result = 0;
-            }
+            if (numberOfCurrentReceivingBit == dataLength) resetReceiver();
+            else numberOfCurrentReceivingBit++;
         }
+        else
+            receiveCount++;
     }
-    counter++;
 }
 
 void initTimer0()
@@ -95,8 +95,8 @@ void initTimer0()
     TCCR0B |= (1<<WGM02);
     TCCR0A |= (1<<COM0A0);
     TCCR0B |= (1<<CS00);
-    OCR0A = 141; // 56 khz
-    // OCR0A = 209; // 38 khz
+    //OCR0A = 141; // 56 khz
+    OCR0A = 206; // 38 khz
     TIMSK0 |= (1<<OCIE0A);
     TCNT0 = 0;
 }
@@ -110,12 +110,14 @@ void initIrInterupt()
 int main()
 {
     DDRD |= (1<<DDD6);
+    DDRB |= (1<<DDB3);
     PORTD |= (1<<PORTD2);
 
     Serial.begin(9600);
 
     initTimer0();
     initIrInterupt();
+
     sei();
 
     while(true) {
