@@ -22,7 +22,7 @@ add_executable(${PRODUCT_NAME}
         src/Controller.cpp
         src/Character.cpp
         src/Display.cpp
-        )
+        src/Communication/IRCommunication.cpp src/Communication/IRCommunication.h)
 
 
 
