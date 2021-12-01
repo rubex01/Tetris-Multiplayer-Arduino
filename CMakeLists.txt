@@ -19,7 +19,7 @@ set(PRODUCT_NAME KBS)
 # (Linux) `find src -name \*.c\*`
 add_executable(${PRODUCT_NAME}
         src/main.cpp
-        )
+        src/Communication/IRCommunication.cpp src/Communication/IRCommunication.h)
 
 
 
