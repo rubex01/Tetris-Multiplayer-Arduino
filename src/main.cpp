@@ -118,17 +118,17 @@ int main()
     Serial.begin(9600);
 
     sei();
-      Controller::Init();
-  Display::Init();
+    Controller::Init();
+    Display::Init();
 
     initTimer0();
     initIrInterupt();
 
     while(true) {
-              Display::FillCircle(Character::xPos, Character::yPos, 10, ILI9341_BLACK);
-      Controller::Update();
-      Display::FillCircle(Character::xPos, Character::yPos, 10, ILI9341_MAGENTA);
-      _delay_ms(50);
+        Display::FillCircle(Character::xPos, Character::yPos, 10, ILI9341_BLACK);
+        Controller::Update();
+        Display::FillCircle(Character::xPos, Character::yPos, 10, ILI9341_MAGENTA);
+        _delay_ms(50);
     }
 
     return(0);
