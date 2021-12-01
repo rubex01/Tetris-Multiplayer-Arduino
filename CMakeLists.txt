@@ -10,16 +10,18 @@ endif()
 set(CMAKE_TOOLCHAIN_FILE ${ARDUINO_PATH}/etc/toolchain-avr.cmake)
 
 # Project name
-project("BlinkSerial")
+project("KBS")
 
 # Product filename
-set(PRODUCT_NAME blinkserial)
+set(PRODUCT_NAME KBS)
 
 # Create one target
 # (Linux) `find src -name \*.c\*`
 add_executable(${PRODUCT_NAME}
         src/main.cpp
-        )
+        src/Communication/IRCommunication.cpp src/Communication/IRCommunication.h)
+
+
 
 # Add arduino core library
 target_include_directories(${PRODUCT_NAME}
