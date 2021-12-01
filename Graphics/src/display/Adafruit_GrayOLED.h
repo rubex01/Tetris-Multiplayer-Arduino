@@ -26,7 +26,7 @@
 
 #if !defined(__AVR_ATtiny85__) // Not for ATtiny, at all
 
-#include "/home/martijn/Screen/src/Graphics/Adafruit_GFX.h"
+#include "Adafruit_GFX.h"
 #include <Adafruit_I2CDevice.h>
 #include <Adafruit_SPIDevice.h>
 #include <SPI.h>
