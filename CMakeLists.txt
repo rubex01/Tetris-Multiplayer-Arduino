@@ -19,6 +19,9 @@ set(PRODUCT_NAME KBS)
 # (Linux) `find src -name \*.c\*`
 add_executable(${PRODUCT_NAME}
         src/main.cpp
+        src/Controller.cpp
+        src/Character.cpp
+        src/Display.cpp
         src/Communication/IRCommunication.cpp src/Communication/IRCommunication.h)
 
 
@@ -31,8 +34,9 @@ target_link_directories(${PRODUCT_NAME}
         PRIVATE "${ARDUINO_PATH}/lib"
         )
 target_link_libraries(${PRODUCT_NAME}
-        twilib
+        graphicslibs
         arduinocore
+        nunchuk
         )
 
 # Rename the output to .elf as we will create multiple files
