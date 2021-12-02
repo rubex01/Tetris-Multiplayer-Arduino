@@ -15,3 +15,7 @@ void Display::Init(){
 void Display::FillCircle(int x, int y, int r, uint16_t c){
     Display::tft.fillCircle(x,y,r,c);
 }
+
+void Display::DrawCircle(int x, int y, int r, uint16_t c){
+    Display::tft.drawCircle(x,y,r,c);
+}

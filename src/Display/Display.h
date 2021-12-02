@@ -11,6 +11,7 @@ class Display {
 	public:
         static void Init();
         static void FillCircle(int x, int y,int r, uint16_t c);
+        static void DrawCircle(int x, int y, int r, uint16_t c);
         static Adafruit_ILI9341 tft;
 	private:
 

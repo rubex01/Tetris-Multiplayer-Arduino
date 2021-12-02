@@ -6,15 +6,14 @@
 #include <avr/interrupt.h>
 #include <avr/io.h>
 #include "HardwareSerial.h"
-#include "Controller.h"
-#include "Character.h"
-#include "Display.h"
+#include "Controller/Controller.h"
+#include "Game/Character.h"
+#include "Display/Display.h"
 #include "Communication/IRCommunication.h"
 
 int main()
 {
     Serial.begin(9600);
-
     sei();
 
     initIRCommunication(56);
@@ -23,10 +22,10 @@ int main()
     Display::Init();
 
     while(true) {
-        Display::FillCircle(Character::xPos, Character::yPos, 10, ILI9341_BLACK);
         Controller::Update();
         Display::FillCircle(Character::xPos, Character::yPos, 10, ILI9341_MAGENTA);
-        _delay_ms(50);
+        Display::DrawCircle(Character::xPos, Character::yPos, 10, ILI9341_BLACK);
+        Display::DrawCircle(Character::xPos, Character::yPos, 11, ILI9341_BLACK);
     }
 
     return(0);

@@ -61,11 +61,11 @@ void resetReceiver()
 }
 
 ISR(TIMER0_COMPA_vect) {
-    if (sendCounter == deviderToGetRightHz) {
-        sendData();
-        sendCounter = 0;
-    }
-    sendCounter++;
+//    if (sendCounter == deviderToGetRightHz) {
+//        sendData();
+//        sendCounter = 0;
+//    }
+//    sendCounter++;
 
     if (currentlyReceiving) {
         if (
@@ -109,10 +109,6 @@ void initIRCommunication(int khz)
     OCRAValue = (khz == 56) ? 141 : 206;
     DDRD |= (1<<DDD6);
     PORTD |= (1<<PORTD2);
-
-    Serial.begin(9600);
-
-    sei();
 
     initTimer0();
     initIrInterupt();
