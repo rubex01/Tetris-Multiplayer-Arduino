@@ -12,15 +12,15 @@ void Controller::Update(){
     Nunchuk.getState(NUNCHUK_ADDRESS);
 
     if(Nunchuk.state.joy_x_axis > 128+100){
-        Character::xPos+=1;
-    }
-    if(Nunchuk.state.joy_x_axis < 128-100){
-        Character::xPos-=1;
-    }
-    if(Nunchuk.state.joy_y_axis > 128+100){
         Character::yPos+=1;
     }
-    if(Nunchuk.state.joy_y_axis < 128-100){
+    if(Nunchuk.state.joy_x_axis < 128-100){
         Character::yPos-=1;
+    }
+    if(Nunchuk.state.joy_y_axis > 128+100){
+        Character::xPos+=1;
+    }
+    if(Nunchuk.state.joy_y_axis < 128-100){
+        Character::xPos-=1;
     }
 }

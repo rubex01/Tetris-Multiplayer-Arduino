@@ -16,16 +16,15 @@ int main()
     Serial.begin(9600);
     sei();
 
-    initIRCommunication(56);
+//    initIRCommunication(38);
 
     Controller::Init();
     Display::Init();
 
     while(true) {
+        Display::FillCircle(Character::xPos, Character::yPos, 10, ILI9341_BLACK);
         Controller::Update();
         Display::FillCircle(Character::xPos, Character::yPos, 10, ILI9341_MAGENTA);
-        Display::DrawCircle(Character::xPos, Character::yPos, 10, ILI9341_BLACK);
-        Display::DrawCircle(Character::xPos, Character::yPos, 11, ILI9341_BLACK);
     }
 
     return(0);
