@@ -7,9 +7,6 @@
 #include <Arduino.h>
 #include "Nunchuk.h"
 
-
-
-
 class Controller {
 	public:
         static void Init();

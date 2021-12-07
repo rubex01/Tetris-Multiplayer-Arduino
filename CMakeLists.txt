@@ -19,9 +19,9 @@ set(PRODUCT_NAME KBS)
 # (Linux) `find src -name \*.c\*`
 add_executable(${PRODUCT_NAME}
         src/main.cpp
-        src/Controller.cpp
-        src/Character.cpp
-        src/Display.cpp
+        src/Controller/Controller.cpp
+        src/Game/Character.cpp
+        src/Display/Display.cpp
         src/Communication/IRCommunication.cpp src/Communication/IRCommunication.h)
 
 

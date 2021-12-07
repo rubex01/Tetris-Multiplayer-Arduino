@@ -7,8 +7,8 @@
 uint8_t deviderToGetRightHz;
 uint8_t OCRAValue;
 
-uint8_t data = 166;
-uint8_t dataLength = 8;
+uint8_t data = 123;
+uint8_t dataLength = 12;
 uint8_t bitCount = 0;
 uint8_t sendCounter = 0;
 
@@ -29,7 +29,7 @@ void sendData()
     if (bitCount >= dataLength+1) { // End of Frame
         TCCR0A &= ~(1<<COM0A0); // Set line to low for some time
         bitCount++;
-        if (bitCount == dataLength+25) bitCount = 0; // Set bitcount to 0 for the next frame
+        if (bitCount == dataLength+25*10) bitCount = 0; // Set bitcount to 0 for the next frame
         return;
     }
 
@@ -43,12 +43,12 @@ void sendData()
 
 ISR(INT0_vect)
 {
-    if (!currentlyReceiving) {
-        currentlyReceiving = true; // Start receiving (start bit detected)
-        return;
-    }
-
-    currentBitIsOne = !currentBitIsOne; // Toggle on interrupt because there is a change in value
+//    if (!currentlyReceiving) {
+//        currentlyReceiving = true; // Start receiving (start bit detected)
+//        return;
+//    }
+//
+//    currentBitIsOne = !currentBitIsOne; // Toggle on interrupt because there is a change in value
 }
 
 void resetReceiver()
@@ -66,24 +66,24 @@ ISR(TIMER0_COMPA_vect) {
         sendCounter = 0;
     }
     sendCounter++;
-
-    if (currentlyReceiving) {
-        if (
-            (receiveCount == deviderToGetRightHz && numberOfCurrentReceivingBit != 0) ||
-            (numberOfCurrentReceivingBit == 0 && receiveCount == deviderToGetRightHz+(deviderToGetRightHz/2/2))
-            ){ // Start sampling in middle of data bit
-
-            if (currentBitIsOne && numberOfCurrentReceivingBit < dataLength)
-                result |= (1<<numberOfCurrentReceivingBit);
-
-            receiveCount = 0;
-
-            if (numberOfCurrentReceivingBit == dataLength) resetReceiver();
-            else numberOfCurrentReceivingBit++;
-        }
-        else
-            receiveCount++;
-    }
+//
+//    if (currentlyReceiving) {
+//        if (
+//            (receiveCount == deviderToGetRightHz && numberOfCurrentReceivingBit != 0) ||
+//            (numberOfCurrentReceivingBit == 0 && receiveCount == deviderToGetRightHz+(deviderToGetRightHz/2/2))
+//            ){ // Start sampling in middle of data bit
+//
+//            if (currentBitIsOne && numberOfCurrentReceivingBit < dataLength)
+//                result |= (1<<numberOfCurrentReceivingBit);
+//
+//            receiveCount = 0;
+//
+//            if (numberOfCurrentReceivingBit == dataLength) resetReceiver();
+//            else numberOfCurrentReceivingBit++;
+//        }
+//        else
+//            receiveCount++;
+//    }
 }
 
 void initTimer0()
@@ -109,10 +109,6 @@ void initIRCommunication(int khz)
     OCRAValue = (khz == 56) ? 141 : 206;
     DDRD |= (1<<DDD6);
     PORTD |= (1<<PORTD2);
-
-    Serial.begin(9600);
-
-    sei();
 
     initTimer0();
     initIrInterupt();
