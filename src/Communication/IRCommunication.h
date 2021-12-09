@@ -7,7 +7,6 @@ class IRCommunication {
         static void startReceiving();
         static void sendDataBit();
         static void resetReceive();
-        static void receiveInterrupt();
         static void initDemoButton();
 
         static int OCRAValue;
@@ -17,6 +16,7 @@ class IRCommunication {
         static bool sending;
 
         static int receiveCounter;
+        static float receiveDevider;
         static int receivingBitIndex;
         static bool bitIsOne;
         static bool currentlyReceiving;

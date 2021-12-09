@@ -17,12 +17,33 @@ ISR(INT0_vect)
         return;
     }
 
+    float calc = IRCommunication::receiveCounter / 140.0f;
+    int count = (int)(calc + 0.5f);
+
+    if (IRCommunication::receivingBitIndex == 0) {
+        count--;
+        IRCommunication::receivingBitIndex = 1;
+    }
+
+    for (int i = 0; i < count; ++i) {
+        if (IRCommunication::bitIsOne) {
+            IRCommunication::result |= (1<<IRCommunication::receivingBitIndex-1);
+        }
+        IRCommunication::receivingBitIndex++;
+    }
+
+    IRCommunication::receiveCounter = 0;
     IRCommunication::bitIsOne = !IRCommunication::bitIsOne;
 }
 
 ISR(TIMER0_COMPA_vect) {
     if (IRCommunication::currentlyReceiving && !IRCommunication::sending) {
-        IRCommunication::receiveInterrupt();
+        IRCommunication::receiveCounter++;
+        if (
+            (IRCommunication::khz == 56 && IRCommunication::receiveCounter == 1700) ||
+            (IRCommunication::khz == 38 && IRCommunication::receiveCounter == 800)
+        )
+            IRCommunication::resetReceive();
     }
     else if (IRCommunication::wantToSend) {
         if (!IRCommunication::sending) {
@@ -43,6 +64,7 @@ bool IRCommunication::sending = false;
 
 int IRCommunication::receiveCounter = 0;
 int IRCommunication::receivingBitIndex = 0;
+float IRCommunication::receiveDevider = 0.0f;
 uint8_t IRCommunication::result = 0;
 bool IRCommunication::bitIsOne = true;
 bool IRCommunication::currentlyReceiving = false;
@@ -50,7 +72,7 @@ bool IRCommunication::currentlyReceiving = false;
 int IRCommunication::sendCounter = 0;
 int IRCommunication::devider = 0;
 int IRCommunication::bitIndex = 0;
-uint8_t IRCommunication::data = 85;
+uint8_t IRCommunication::data = 44;
 uint8_t IRCommunication::dataLength = 8;
 
 void IRCommunication::init(int khz) {
@@ -58,11 +80,13 @@ void IRCommunication::init(int khz) {
 
     if (khz == 56) {
         IRCommunication::OCRAValue = 141;
-        IRCommunication::devider = 42;
+        IRCommunication::devider = 190;
+        IRCommunication::receiveDevider = 140.0f;
     }
     else if (khz == 38) {
         IRCommunication::OCRAValue = 206;
-        IRCommunication::devider = 29;
+        IRCommunication::devider = 130;
+        IRCommunication::receiveDevider = 80.0f;
     }
 
     IRCommunication::initPorts();
@@ -76,25 +100,10 @@ void IRCommunication::resetReceive()
     receivingBitIndex = 0;
     currentlyReceiving = false;
     bitIsOne = true;
+    receiveCounter = 0;
     Serial.println(result);
+    Serial.println("=====");
     result = 0;
-}
-
-void IRCommunication::receiveInterrupt() {
-    if (
-        (IRCommunication::receivingBitIndex != 0 && IRCommunication::receiveCounter == IRCommunication::devider) ||
-        (IRCommunication::receivingBitIndex == 0 && IRCommunication::receiveCounter == IRCommunication::devider+(IRCommunication::devider/2/2))
-    ) {
-        if (IRCommunication::bitIsOne && IRCommunication::receivingBitIndex < IRCommunication::dataLength)
-            IRCommunication::result |= (1<<IRCommunication::receivingBitIndex);
-
-        IRCommunication::receiveCounter = 0;
-
-        if (IRCommunication::receivingBitIndex == IRCommunication::dataLength) IRCommunication::resetReceive();
-        else IRCommunication::receivingBitIndex++;
-    }
-    else
-        IRCommunication::receiveCounter++;
 }
 
 void IRCommunication::sendDataBit()
@@ -105,7 +114,13 @@ void IRCommunication::sendDataBit()
         return;
     }
 
-    if (IRCommunication::bitIndex >= IRCommunication::dataLength+1) { // End of Frame
+    if (IRCommunication::bitIndex == IRCommunication::dataLength+1) { // Start bit
+        TCCR0A |= (1<<COM0A0); // Enable compare interrupt
+        IRCommunication::bitIndex++; // Set bit to one as this is the first data bit that will be sent next cycle
+        return;
+    }
+
+    if (IRCommunication::bitIndex > IRCommunication::dataLength+1) { // End of Frame
         TCCR0A &= ~(1<<COM0A0); // Set line to low for some time
         IRCommunication::bitIndex++;
         if (IRCommunication::bitIndex == IRCommunication::dataLength+50) {
