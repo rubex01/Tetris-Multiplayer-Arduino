@@ -15,7 +15,7 @@ int main()
 {
     sei();
     Serial.begin(9600);
-    IRCommunication::init(38);
+    IRCommunication::init(56);
 
     Controller::Init();
     Display::Init();

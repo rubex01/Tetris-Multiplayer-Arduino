@@ -17,7 +17,7 @@ ISR(INT0_vect)
         return;
     }
 
-    float calc = IRCommunication::receiveCounter / 140.0f;
+    float calc = IRCommunication::receiveCounter / IRCommunication::receiveDevider;
     int count = (int)(calc + 0.5f);
 
     if (IRCommunication::receivingBitIndex == 0) {
@@ -39,10 +39,7 @@ ISR(INT0_vect)
 ISR(TIMER0_COMPA_vect) {
     if (IRCommunication::currentlyReceiving && !IRCommunication::sending) {
         IRCommunication::receiveCounter++;
-        if (
-            (IRCommunication::khz == 56 && IRCommunication::receiveCounter == 1700) ||
-            (IRCommunication::khz == 38 && IRCommunication::receiveCounter == 800)
-        )
+        if (IRCommunication::receiveCounter == 1700)
             IRCommunication::resetReceive();
     }
     else if (IRCommunication::wantToSend) {
@@ -72,7 +69,7 @@ bool IRCommunication::currentlyReceiving = false;
 int IRCommunication::sendCounter = 0;
 int IRCommunication::devider = 0;
 int IRCommunication::bitIndex = 0;
-uint8_t IRCommunication::data = 44;
+uint8_t IRCommunication::data = 85;
 uint8_t IRCommunication::dataLength = 8;
 
 void IRCommunication::init(int khz) {
@@ -81,12 +78,12 @@ void IRCommunication::init(int khz) {
     if (khz == 56) {
         IRCommunication::OCRAValue = 141;
         IRCommunication::devider = 190;
-        IRCommunication::receiveDevider = 140.0f;
+        IRCommunication::receiveDevider = 182.0f;
     }
     else if (khz == 38) {
         IRCommunication::OCRAValue = 206;
         IRCommunication::devider = 130;
-        IRCommunication::receiveDevider = 80.0f;
+        IRCommunication::receiveDevider = 135.0f;
     }
 
     IRCommunication::initPorts();
