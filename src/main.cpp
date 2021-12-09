@@ -10,6 +10,7 @@
 #include "Game/Character.h"
 #include "Display/Display.h"
 #include "Communication/IRCommunication.h"
+#include "Game/Game.h"
 
 int main()
 {
@@ -20,11 +21,10 @@ int main()
 
     Controller::Init();
     Display::Init();
+    Game::Init();
 
     while(true) {
-        Display::FillCircle(Character::xPos, Character::yPos, 10, ILI9341_BLACK);
         Controller::Update();
-        Display::FillCircle(Character::xPos, Character::yPos, 10, ILI9341_MAGENTA);
     }
 
     return(0);
