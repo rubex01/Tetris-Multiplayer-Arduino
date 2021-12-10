@@ -3,6 +3,7 @@
 #include "IRCommunication.h"
 #include "SendQueue.h"
 #include "ReceivedData.h"
+#include <HardwareSerial.h>
 
 ISR(INT0_vect)
 {
@@ -37,7 +38,7 @@ ISR(TIMER0_COMPA_vect) {
         if (IRCommunication::receiveCounter == 1700)
             IRCommunication::resetReceive();
     }
-    else if (IRCommunication::wantToSend) {
+    else if (IRCommunication::leftToSend != 0) {
         if (!IRCommunication::sending) {
             IRCommunication::sending = true;
             IRCommunication::data = SendQueue::getItemToSend();
@@ -50,8 +51,8 @@ ISR(TIMER0_COMPA_vect) {
     }
 }
 
+int IRCommunication::leftToSend = 0;
 int IRCommunication::OCRAValue = 0;
-bool IRCommunication::wantToSend = false;
 bool IRCommunication::sending = false;
 
 int IRCommunication::receiveCounter = 0;
@@ -86,7 +87,7 @@ void IRCommunication::init(int khz) {
 
 void IRCommunication::newDataToSend()
 {
-    wantToSend = true;
+    leftToSend++;
 }
 
 void IRCommunication::resetReceive()
@@ -119,7 +120,7 @@ void IRCommunication::sendDataBit()
         if (sendBitIndex == dataLength+50) { // Ready for next frame
             sendBitIndex = 0;
             PORTD |= (1<<PORTD2);
-            wantToSend = !SendQueue::isEmpty(); // Check if we want to send more data
+            leftToSend--;
             sending = false;
         }
         return;
@@ -145,7 +146,6 @@ void IRCommunication::initPorts() {
 void IRCommunication::initTimer0() {
     TCCR0A |= (1<<WGM00)|(1<<WGM01);
     TCCR0B |= (1<<WGM02);
-    TCCR0A |= (1<<COM0A0);
     TCCR0B |= (1<<CS00);
     OCR0A = IRCommunication::OCRAValue;
     TIMSK0 |= (1<<OCIE0A);

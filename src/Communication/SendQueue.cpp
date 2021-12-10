@@ -8,7 +8,7 @@ int SendQueue::count = 0;
 void SendQueue::addToQueue(uint8_t dataToSend) {
     itemsInQueue[count] = dataToSend;
     count++;
-    if (IRCommunication::wantToSend) IRCommunication::newDataToSend();
+    IRCommunication::newDataToSend();
 }
 
 uint8_t SendQueue::getItemToSend() {
@@ -22,9 +22,4 @@ uint8_t SendQueue::getItemToSend() {
     }
     count--;
     return returnVal;
-}
-
-bool SendQueue::isEmpty()
-{
-    return (count == 0);
 }

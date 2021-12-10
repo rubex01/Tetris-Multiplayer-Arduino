@@ -9,6 +9,7 @@ class IRCommunication {
         static void resetReceive();
         static void newDataToSend();
 
+        static int leftToSend;
         static int OCRAValue;
         static int devider;
         static bool wantToSend;
