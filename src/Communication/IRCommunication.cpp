@@ -4,6 +4,8 @@
 #include "SendQueue.h"
 #include "ReceivedData.h"
 
+#define reachedEndOfFrame 1700;
+
 ISR(INT0_vect)
 {
     if (IRCommunication::sending) return;
@@ -34,7 +36,7 @@ ISR(INT0_vect)
 ISR(TIMER0_COMPA_vect) {
     if (IRCommunication::currentlyReceiving && !IRCommunication::sending) {
         IRCommunication::receiveCounter++;
-        if (IRCommunication::receiveCounter == 1700)
+        if (IRCommunication::receiveCounter == reachedEndOfFrame)
             IRCommunication::resetReceive();
     }
     else if (IRCommunication::leftToSend != 0) {
