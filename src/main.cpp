@@ -23,31 +23,10 @@ int main()
 
     IRCommunication::init(38);
 
-    // Delay for demo
-    _delay_ms(3000);
-
-    // Data for testing
-    SendQueue::addToQueue(84);
-    SendQueue::addToQueue(12);
-    SendQueue::addToQueue(93);
-    SendQueue::addToQueue(45);
-    SendQueue::addToQueue(55);
-    SendQueue::addToQueue(23);
-    SendQueue::addToQueue(65);
-
     while(true) {
         Display::FillCircle(Character::xPos, Character::yPos, 10, ILI9341_BLACK);
         Controller::Update();
         Display::FillCircle(Character::xPos, Character::yPos, 10, ILI9341_MAGENTA);
-
-        // Demo purpose
-        if (ReceivedData::newResultsAvailable()) {
-            uint8_t* data = ReceivedData::getResults();
-            for (int i = 0; i < 20; ++i) {
-                if (data[i] != 0) Serial.println(data[i]);
-            }
-            delete[] data;
-        }
     }
 
     return(0);
