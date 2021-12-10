@@ -3,7 +3,6 @@
 #include "IRCommunication.h"
 #include "SendQueue.h"
 #include "ReceivedData.h"
-#include <HardwareSerial.h>
 
 ISR(INT0_vect)
 {
