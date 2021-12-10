@@ -3,44 +3,28 @@
 #include "IRCommunication.h"
 
 uint8_t SendQueue::itemsInQueue[20] = {0};
-uint8_t * SendQueue::queuePointers[20] = {};
+int SendQueue::count = 0;
 
 void SendQueue::addToQueue(uint8_t dataToSend) {
-    int i;
-    for (i = 0; i < 20; ++i) {
-        if (itemsInQueue[i] == 0) {
-            itemsInQueue[i] = dataToSend;
-            break;
-        }
-    }
-    for (int j = 0; j < 20; ++j) {
-        if (queuePointers[j] == nullptr) {
-            queuePointers[j] = &itemsInQueue[i];
-            break;
-        }
-    }
-    IRCommunication::newDataToSend();
+    itemsInQueue[count] = dataToSend;
+    count++;
+    if (IRCommunication::wantToSend) IRCommunication::newDataToSend();
 }
 
 uint8_t SendQueue::getItemToSend() {
-    uint8_t returnVal;
-    if (queuePointers[0] != nullptr) {
-        returnVal = *queuePointers[0];
-        *queuePointers[0] = 0;
-    }
-    for (int i = 0; i < 19; ++i) {
-        if (queuePointers[i+1] != nullptr)
-            queuePointers[i] = queuePointers[i+1];
+    if (itemsInQueue[0] == 0) return 0;
+    uint8_t returnVal = itemsInQueue[0];
+    for (int i = 0; i < 20; ++i) {
+        if (i == 20 || itemsInQueue[i+1] == 0)
+            itemsInQueue[i] = 0;
         else
-            queuePointers[i] = nullptr;
+            itemsInQueue[i] = itemsInQueue[i+1];
     }
+    count--;
     return returnVal;
 }
 
 bool SendQueue::isEmpty()
 {
-    for (int i = 0; i < 20; ++i) {
-        if (queuePointers[i] != nullptr) return false;
-    }
-    return true;
+    return (count == 0);
 }

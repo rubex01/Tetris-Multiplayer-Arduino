@@ -9,7 +9,7 @@ class SendQueue {
 
     private:
         static uint8_t itemsInQueue[20];
-        static uint8_t* queuePointers[20];
+        static int count;
 };
 
 

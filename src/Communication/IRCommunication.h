@@ -7,7 +7,6 @@ class IRCommunication {
         static void startReceiving();
         static void sendDataBit();
         static void resetReceive();
-        static void initDemoButton();
         static void newDataToSend();
 
         static int OCRAValue;

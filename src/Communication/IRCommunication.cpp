@@ -1,14 +1,8 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
-#include <HardwareSerial.h>
 #include "IRCommunication.h"
 #include "SendQueue.h"
-
-ISR(INT1_vect) {
-    if(PIND & (1 << PIND3)) {
-        IRCommunication::wantToSend = true;
-    }
-}
+#include "ReceivedData.h"
 
 ISR(INT0_vect)
 {
@@ -75,20 +69,19 @@ uint8_t IRCommunication::dataLength = 8;
 
 void IRCommunication::init(int khz) {
     if (khz == 56) {
-        IRCommunication::OCRAValue = 141;
-        IRCommunication::devider = 190;
-        IRCommunication::receiveDevider = 182.0f;
+        OCRAValue = 141;
+        devider = 190;
+        receiveDevider = 182.0f;
     }
     else if (khz == 38) {
-        IRCommunication::OCRAValue = 206;
-        IRCommunication::devider = 130;
-        IRCommunication::receiveDevider = 135.0f;
+        OCRAValue = 206;
+        devider = 130;
+        receiveDevider = 135.0f;
     }
 
-    IRCommunication::initPorts();
-    IRCommunication::initTimer0();
-    IRCommunication::initIrInterrupt();
-    IRCommunication::initDemoButton();
+    initPorts();
+    initTimer0();
+    initIrInterrupt();
 }
 
 void IRCommunication::newDataToSend()
@@ -102,43 +95,42 @@ void IRCommunication::resetReceive()
     currentlyReceiving = false;
     bitIsOne = true;
     receiveCounter = 0;
-    Serial.println(result);
-    Serial.println("=====");
+    ReceivedData::addNewResult(result);
     result = 0;
 }
 
 void IRCommunication::sendDataBit()
 {
-    if (IRCommunication::sendBitIndex == 0) { // Start bit
-        TCCR0A |= (1<<COM0A0); // Enable compare interrupt
-        IRCommunication::sendBitIndex = 1; // Set bit to one as this is the first data bit that will be sent next cycle
+    if (sendBitIndex == 0) { // Start bit
+        TCCR0A |= (1<<COM0A0);
+        sendBitIndex = 1;
         return;
     }
 
-    if (IRCommunication::sendBitIndex == IRCommunication::dataLength+1) { // Start bit
-        TCCR0A |= (1<<COM0A0); // Enable compare interrupt
-        IRCommunication::sendBitIndex++; // Set bit to one as this is the first data bit that will be sent next cycle
+    if (sendBitIndex == dataLength+1) { // Stop bit
+        TCCR0A |= (1<<COM0A0);
+        sendBitIndex++;
         return;
     }
 
-    if (IRCommunication::sendBitIndex > IRCommunication::dataLength+1) { // End of Frame
-        TCCR0A &= ~(1<<COM0A0); // Set line to low for some time
-        IRCommunication::sendBitIndex++;
-        if (IRCommunication::sendBitIndex == IRCommunication::dataLength+50) {
-            IRCommunication::sendBitIndex = 0; // Set bitcount to 0 for the next frame
+    if (sendBitIndex > dataLength+1) { // End of Frame
+        TCCR0A &= ~(1<<COM0A0);
+        sendBitIndex++;
+        if (sendBitIndex == dataLength+50) { // Ready for next frame
+            sendBitIndex = 0;
             PORTD |= (1<<PORTD2);
-            wantToSend = !SendQueue::isEmpty();
+            wantToSend = !SendQueue::isEmpty(); // Check if we want to send more data
             sending = false;
         }
         return;
     }
 
-    if ((IRCommunication::data & (1<<(IRCommunication::sendBitIndex-1))) > 0) // Check if next data bit is 0 or 1
-        TCCR0A |= (1<<COM0A0); // Enable compare interrupt
+    if ((data & (1<<(sendBitIndex-1))) > 0) // Check if bit is 0 or 1
+        TCCR0A |= (1<<COM0A0);
     else
-        TCCR0A &= ~(1<<COM0A0); // Disconnect
+        TCCR0A &= ~(1<<COM0A0);
 
-    IRCommunication::sendBitIndex++; // Increase bit count for next data bit
+    IRCommunication::sendBitIndex++;
 }
 
 void IRCommunication::startReceiving() {
@@ -158,13 +150,6 @@ void IRCommunication::initTimer0() {
     OCR0A = IRCommunication::OCRAValue;
     TIMSK0 |= (1<<OCIE0A);
     TCNT0 = 0;
-}
-
-void IRCommunication::initDemoButton()
-{
-    PORTD |= (1 << PORTD3);
-    EIMSK |= (1 << INT1);
-    EICRA |= (1 << ISC10);
 }
 
 void IRCommunication::initIrInterrupt()

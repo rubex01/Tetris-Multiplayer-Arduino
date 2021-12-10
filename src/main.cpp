@@ -11,25 +11,16 @@
 #include "Display/Display.h"
 #include "Communication/IRCommunication.h"
 #include "Communication/SendQueue.h"
+#include "Communication/ReceivedData.h"
 
 int main()
 {
     sei();
     Serial.begin(9600);
-    IRCommunication::init(38);
-
-    _delay_ms(500);
-    SendQueue::addToQueue(19);
-    SendQueue::addToQueue(38);
-    SendQueue::addToQueue(43);
-    SendQueue::addToQueue(12);
-    SendQueue::addToQueue(34);
-    SendQueue::addToQueue(12);
-    SendQueue::addToQueue(85);
-    SendQueue::addToQueue(170);
-
     Controller::Init();
     Display::Init();
+
+    IRCommunication::init(38);
 
     while(true) {
         Display::FillCircle(Character::xPos, Character::yPos, 10, ILI9341_BLACK);
