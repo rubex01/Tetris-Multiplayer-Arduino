@@ -4,7 +4,7 @@
 #include "SendQueue.h"
 #include "ReceivedData.h"
 
-#define reachedEndOfFrame 1700;
+#define reachedEndOfFrame 1700
 
 ISR(INT0_vect)
 {
