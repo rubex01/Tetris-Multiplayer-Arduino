@@ -2,6 +2,7 @@
 #include <avr/interrupt.h>
 #include <HardwareSerial.h>
 #include "IRCommunication.h"
+#include "SendQueue.h"
 
 ISR(INT1_vect) {
     if(PIND & (1 << PIND3)) {
@@ -45,6 +46,7 @@ ISR(TIMER0_COMPA_vect) {
     else if (IRCommunication::wantToSend) {
         if (!IRCommunication::sending) {
             IRCommunication::sending = true;
+            IRCommunication::data = SendQueue::getItemToSend();
         }
         if (IRCommunication::sendCounter == IRCommunication::devider) {
             IRCommunication::sendDataBit();
@@ -55,7 +57,6 @@ ISR(TIMER0_COMPA_vect) {
 }
 
 int IRCommunication::OCRAValue = 0;
-int IRCommunication::khz = 0;
 bool IRCommunication::wantToSend = false;
 bool IRCommunication::sending = false;
 
@@ -68,13 +69,11 @@ bool IRCommunication::currentlyReceiving = false;
 
 int IRCommunication::sendCounter = 0;
 int IRCommunication::devider = 0;
-int IRCommunication::bitIndex = 0;
-uint8_t IRCommunication::data = 85;
+int IRCommunication::sendBitIndex = 0;
+uint8_t IRCommunication::data = 0;
 uint8_t IRCommunication::dataLength = 8;
 
 void IRCommunication::init(int khz) {
-    IRCommunication::khz = khz;
-
     if (khz == 56) {
         IRCommunication::OCRAValue = 141;
         IRCommunication::devider = 190;
@@ -92,6 +91,11 @@ void IRCommunication::init(int khz) {
     IRCommunication::initDemoButton();
 }
 
+void IRCommunication::newDataToSend()
+{
+    wantToSend = true;
+}
+
 void IRCommunication::resetReceive()
 {
     receivingBitIndex = 0;
@@ -105,36 +109,36 @@ void IRCommunication::resetReceive()
 
 void IRCommunication::sendDataBit()
 {
-    if (IRCommunication::bitIndex == 0) { // Start bit
+    if (IRCommunication::sendBitIndex == 0) { // Start bit
         TCCR0A |= (1<<COM0A0); // Enable compare interrupt
-        IRCommunication::bitIndex = 1; // Set bit to one as this is the first data bit that will be sent next cycle
+        IRCommunication::sendBitIndex = 1; // Set bit to one as this is the first data bit that will be sent next cycle
         return;
     }
 
-    if (IRCommunication::bitIndex == IRCommunication::dataLength+1) { // Start bit
+    if (IRCommunication::sendBitIndex == IRCommunication::dataLength+1) { // Start bit
         TCCR0A |= (1<<COM0A0); // Enable compare interrupt
-        IRCommunication::bitIndex++; // Set bit to one as this is the first data bit that will be sent next cycle
+        IRCommunication::sendBitIndex++; // Set bit to one as this is the first data bit that will be sent next cycle
         return;
     }
 
-    if (IRCommunication::bitIndex > IRCommunication::dataLength+1) { // End of Frame
+    if (IRCommunication::sendBitIndex > IRCommunication::dataLength+1) { // End of Frame
         TCCR0A &= ~(1<<COM0A0); // Set line to low for some time
-        IRCommunication::bitIndex++;
-        if (IRCommunication::bitIndex == IRCommunication::dataLength+50) {
-            IRCommunication::bitIndex = 0; // Set bitcount to 0 for the next frame
+        IRCommunication::sendBitIndex++;
+        if (IRCommunication::sendBitIndex == IRCommunication::dataLength+50) {
+            IRCommunication::sendBitIndex = 0; // Set bitcount to 0 for the next frame
             PORTD |= (1<<PORTD2);
-            wantToSend = false;
+            wantToSend = !SendQueue::isEmpty();
             sending = false;
         }
         return;
     }
 
-    if ((IRCommunication::data & (1<<(IRCommunication::bitIndex-1))) > 0) // Check if next data bit is 0 or 1
+    if ((IRCommunication::data & (1<<(IRCommunication::sendBitIndex-1))) > 0) // Check if next data bit is 0 or 1
         TCCR0A |= (1<<COM0A0); // Enable compare interrupt
     else
         TCCR0A &= ~(1<<COM0A0); // Disconnect
 
-    IRCommunication::bitIndex++; // Increase bit count for next data bit
+    IRCommunication::sendBitIndex++; // Increase bit count for next data bit
 }
 
 void IRCommunication::startReceiving() {
@@ -158,8 +162,8 @@ void IRCommunication::initTimer0() {
 
 void IRCommunication::initDemoButton()
 {
-    PORTD |= (1 << PORTD3);                         // Pullup D2
-    EIMSK |= (1 << INT1);                           // Enable int0
+    PORTD |= (1 << PORTD3);
+    EIMSK |= (1 << INT1);
     EICRA |= (1 << ISC10);
 }
 
