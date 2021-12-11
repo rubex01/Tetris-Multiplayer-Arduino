@@ -7,10 +7,10 @@ class IRCommunication {
         static void startReceiving();
         static void sendDataBit();
         static void resetReceive();
-        static void initDemoButton();
+        static void newDataToSend();
 
+        static int leftToSend;
         static int OCRAValue;
-        static int khz;
         static int devider;
         static bool wantToSend;
         static bool sending;
@@ -23,7 +23,7 @@ class IRCommunication {
         static uint8_t result;
 
         static int sendCounter;
-        static int bitIndex;
+        static int sendBitIndex;
         static uint8_t data;
         static uint8_t dataLength;
 
