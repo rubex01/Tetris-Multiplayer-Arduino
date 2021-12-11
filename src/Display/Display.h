@@ -1,21 +1,15 @@
-#ifndef DISPLAY_H_
-#define DISPLAY_H_
+#ifndef SRC_DISPLAY_DISPLAY_H_
+#define SRC_DISPLAY_DISPLAY_H_
 
-#include "SPI.h"
-#include "Adafruit_GFX.h"
 #include "Adafruit_ILI9341.h"
-#include "Display.h"
-
 
 class Display {
-	public:
-        static void Init();
-        static void FillCircle(int x, int y,int r, uint16_t c);
-        static void DrawCircle(int x, int y, int r, uint16_t c);
-        static Adafruit_ILI9341 tft;
-	private:
-
+ public:
+    static void init();
+    static void fillCircle(int x, int y, int r, uint16_t c);
+    static void drawCircle(int x, int y, int r, uint16_t c);
+    static Adafruit_ILI9341 tft;
 };
 
 
-#endif
+#endif  // SRC_DISPLAY_DISPLAY_H_

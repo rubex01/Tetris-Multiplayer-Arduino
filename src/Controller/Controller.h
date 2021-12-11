@@ -1,19 +1,10 @@
-#ifndef CONTROLLER_H_
-#define CONTROLLER_H_
-
-#include <avr/io.h>
-#include <HardwareSerial.h>
-#include <Wire.h>
-#include <Arduino.h>
-#include "Nunchuk.h"
+#ifndef SRC_CONTROLLER_CONTROLLER_H_
+#define SRC_CONTROLLER_CONTROLLER_H_
 
 class Controller {
-	public:
-        static void Init();
-        static void Update();
-	private:
-
+ public:
+    static void init();
+    static void update();
 };
 
-
-#endif
+#endif  // SRC_CONTROLLER_CONTROLLER_H_

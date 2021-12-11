@@ -1,10 +1,10 @@
-#ifndef CHARACTER_H_
-#define CHARACTER_H_
+#ifndef SRC_GAME_CHARACTER_H_
+#define SRC_GAME_CHARACTER_H_
 
 class Character {
-	public:
-        static int xPos;
-        static int yPos;
+ public:
+    static int xPos;
+    static int yPos;
 };
 
-#endif
+#endif  // SRC_GAME_CHARACTER_H_
