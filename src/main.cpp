@@ -11,17 +11,19 @@
 #include "Display/Display.h"
 #include "Communication/IRCommunication.h"
 #include "Game/Game.h"
+#include "Communication/SendQueue.h"
+#include "Communication/ReceivedData.h"
 
 int main()
 {
-    Serial.begin(9600);
     sei();
-
-//    initIRCommunication(38);
+    Serial.begin(9600);
 
     Controller::Init();
     Display::init();
     Game::init();
+
+    IRCommunication::init(38);
 
     while(true) {
         Controller::Update();
