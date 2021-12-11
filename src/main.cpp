@@ -20,8 +20,8 @@ int main()
 //    initIRCommunication(38);
 
     Controller::Init();
-    Display::Init();
-    Game::Init();
+    Display::init();
+    Game::init();
 
     while(true) {
         Controller::Update();
