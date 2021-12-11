@@ -1,0 +1,1 @@
+cpplint --recursive --output=emacs --filter=-legal/copyright --linelength=150 ./src
