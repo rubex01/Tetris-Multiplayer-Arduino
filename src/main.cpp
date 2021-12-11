@@ -10,6 +10,7 @@
 #include "Game/Character.h"
 #include "Display/Display.h"
 #include "Communication/IRCommunication.h"
+#include "Game/Game.h"
 #include "Communication/SendQueue.h"
 #include "Communication/ReceivedData.h"
 
@@ -19,14 +20,13 @@ int main()
     Serial.begin(9600);
 
     Controller::Init();
-    Display::Init();
+    Display::init();
+    Game::init();
 
     IRCommunication::init(38);
 
     while(true) {
-        Display::FillCircle(Character::xPos, Character::yPos, 10, ILI9341_BLACK);
         Controller::Update();
-        Display::FillCircle(Character::xPos, Character::yPos, 10, ILI9341_MAGENTA);
     }
 
     return(0);

@@ -22,6 +22,7 @@ add_executable(${PRODUCT_NAME}
         src/Controller/Controller.cpp
         src/Game/Character.cpp
         src/Display/Display.cpp
+        src/Game/Game.cpp)
         src/Communication/IRCommunication.cpp src/Communication/IRCommunication.h src/Communication/SendQueue.cpp src/Communication/SendQueue.h src/Communication/ReceivedData.cpp src/Communication/ReceivedData.h)
 
 
