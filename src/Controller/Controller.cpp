@@ -1,5 +1,4 @@
 #include "Controller.h"
-#include "../Game/Character.h"
 
 #include <Wire.h>
 #include "Nunchuk.h"
@@ -15,15 +14,15 @@ void Controller::update() {
     Nunchuk.getState(NUNCHUK_ADDRESS);
 
     if (Nunchuk.state.joy_x_axis > 128+100) {
-        Character::yPos++;
+        // up
     }
     if (Nunchuk.state.joy_x_axis < 128-100) {
-        Character::yPos--;
+        // down
     }
     if (Nunchuk.state.joy_y_axis > 128+100) {
-        Character::xPos++;
+        // right
     }
     if (Nunchuk.state.joy_y_axis < 128-100) {
-        Character::xPos--;
+        // left
     }
 }
