@@ -33,15 +33,11 @@ void Game::startGame() {
     uint8_t frame = (new Frame(gameSeed, Frame::SEED_TYPE))->getFrame();
     SendQueue::addToQueue(frame);
     srand(gameSeed);
-
-    endGame();
 }
 
 void Game::startGame(int seed) {
     gameSeed = seed;
     srand(gameSeed);
-
-    endGame();
 }
 
 
