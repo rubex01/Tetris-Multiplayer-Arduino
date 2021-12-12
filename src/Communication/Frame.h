@@ -1,6 +1,5 @@
-#ifndef KBS_FRAME_H
-#define KBS_FRAME_H
-
+#ifndef SRC_COMMUNICATION_FRAME_H_
+#define SRC_COMMUNICATION_FRAME_H_
 
 class Frame {
  public:
@@ -10,7 +9,7 @@ class Frame {
     static uint8_t CONFIRM_TYPE;
 
     Frame(uint8_t data, uint8_t type);
-    Frame(uint8_t receivedFrameData);
+    explicit Frame(uint8_t receivedFrameData);
     uint8_t getData();
     uint8_t getType();
     uint8_t getFrame();
@@ -24,4 +23,4 @@ class Frame {
 };
 
 
-#endif //KBS_FRAME_H
+#endif  // SRC_COMMUNICATION_FRAME_H_

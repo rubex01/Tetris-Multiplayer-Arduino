@@ -23,6 +23,8 @@ int main() {
 
     while (true) {
         Controller::update();
+
+        // In the future this code should be in the game tick loop
         if (ReceivedData::newResultsAvailable()) {
             uint8_t* data = ReceivedData::getResults();
             for (int i = 0; i < 20; ++i) {

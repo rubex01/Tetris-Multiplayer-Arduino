@@ -4,13 +4,6 @@
 #include "../Communication/SendQueue.h"
 #include "../Communication/Frame.h"
 
-// Interupt demo purpose
-ISR(INT1_vect) {
-    if(PIND & (1 << PIND3)) {
-        Game::startGame();
-    }
-}
-
 int Game::gameSeed = 0;
 
 void Game::init() {
@@ -19,11 +12,6 @@ void Game::init() {
     Display::drawNextSection();
     Display::drawScore();
     Display::drawDemoBlocks();
-
-    // Demo purpose
-    PORTD |= (1 << PORTD3);
-    EIMSK |= (1 << INT1);
-    EICRA |= (1 << ISC10);
 
     setRandomSeed();
 }
@@ -46,22 +34,12 @@ void Game::startGame() {
     SendQueue::addToQueue(frame);
     srand(gameSeed);
 
-    // Demo purpose
-    Serial.print("Starting game local with seed ");
-    Serial.print(gameSeed);
-    Serial.println();
-
     endGame();
 }
 
 void Game::startGame(int seed) {
     gameSeed = seed;
     srand(gameSeed);
-
-    // Demo purpose
-    Serial.print("Starting game from seed packet with seed ");
-    Serial.print(gameSeed);
-    Serial.println();
 
     endGame();
 }
