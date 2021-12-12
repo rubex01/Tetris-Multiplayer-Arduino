@@ -8,6 +8,8 @@
 #include "Display/Display.h"
 #include "Communication/IRCommunication.h"
 #include "Game/Game.h"
+#include "Communication/ReceivedData.h"
+#include "Communication/Frame.h"
 
 int main() {
     sei();
@@ -21,6 +23,19 @@ int main() {
 
     while (true) {
         Controller::update();
+
+        // In the future this code should be in the game tick loop
+        if (ReceivedData::newResultsAvailable()) {
+            uint8_t* data = ReceivedData::getResults();
+            for (int i = 0; i < 20; ++i) {
+                if (data[i] == 0) continue;
+                Frame a = Frame(data[i]);
+                if (a.getType() == Frame::SEED_TYPE) {
+                    Game::startGame(a.getData());
+                }
+            }
+            delete[] data;
+        }
     }
 
     return(0);
