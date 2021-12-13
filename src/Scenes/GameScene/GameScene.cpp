@@ -1,12 +1,11 @@
-#include <time.h>
-#include "Game.h"
-#include "../Display/Display.h"
-#include "../Communication/SendQueue.h"
-#include "../Communication/Frame.h"
+#include "GameScene.h"
+#include "../../Display/Display.h"
+#include "../../Communication/SendQueue.h"
+#include "../../Communication/Frame.h"
 
-int Game::gameSeed = 0;
+int GameScene::gameSeed = 0;
 
-void Game::init() {
+void GameScene::init() {
     Display::drawGameBorder();
     Display::drawHoldSection();
     Display::drawNextSection();
@@ -14,30 +13,33 @@ void Game::init() {
     Display::drawDemoBlocks();
 
     setRandomSeed();
+    if (gameSeed == 0)
+        startGame();
 }
 
-void Game::setRandomSeed() {
+void GameScene::drawScene() {
+}
+
+void GameScene::setRandomSeed() {
     srand(micros());
 }
 
-int Game::generateRandomSeed() {
+int GameScene::generateRandomSeed() {
     return rand() % 63;
 }
 
-void Game::endGame() {
+void GameScene::endGame() {
     setRandomSeed();
 }
 
-void Game::startGame() {
+void GameScene::startGame() {
     gameSeed = generateRandomSeed();
     uint8_t frame = (new Frame(gameSeed, Frame::SEED_TYPE))->getFrame();
     SendQueue::addToQueue(frame);
     srand(gameSeed);
 }
 
-void Game::startGame(int seed) {
+void GameScene::startGame(int seed) {
     gameSeed = seed;
     srand(gameSeed);
 }
-
-
