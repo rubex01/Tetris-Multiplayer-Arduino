@@ -1,12 +1,15 @@
-#ifndef SRC_GAME_GAME_H_
-#define SRC_GAME_GAME_H_
+#ifndef SRC_SCENES_GAMESCENE_GAMESCENE_H_
+#define SRC_SCENES_GAMESCENE_GAMESCENE_H_
 
-class Game {
+#include "../Scene.h"
+
+class GameScene: public Scene {
  public:
     static void init();
     static void startGame();
     static void startGame(int seed);
     static void endGame();
+    static void drawScene();
 
  private:
     static int gameSeed;
@@ -15,4 +18,4 @@ class Game {
     static int generateRandomSeed();
 };
 
-#endif  // SRC_GAME_GAME_H_
+#endif  // SRC_SCENES_GAMESCENE_GAMESCENE_H_

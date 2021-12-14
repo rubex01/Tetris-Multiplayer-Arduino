@@ -7,7 +7,7 @@
 #include "Controller/Controller.h"
 #include "Display/Display.h"
 #include "Communication/IRCommunication.h"
-#include "Game/Game.h"
+#include "Scenes/GameScene/GameScene.h"
 #include "Communication/ReceivedData.h"
 #include "Communication/Frame.h"
 
@@ -17,25 +17,13 @@ int main() {
 
     Controller::init();
     Display::init();
-    Game::init();
+    Scene::setScene(Scene::START_SCENE);
 
     IRCommunication::init(38);
 
     while (true) {
         Controller::update();
-
-        // In the future this code should be in the game tick loop
-        if (ReceivedData::newResultsAvailable()) {
-            uint8_t* data = ReceivedData::getResults();
-            for (int i = 0; i < 20; ++i) {
-                if (data[i] == 0) continue;
-                Frame a = Frame(data[i]);
-                if (a.getType() == Frame::SEED_TYPE) {
-                    Game::startGame(a.getData());
-                }
-            }
-            delete[] data;
-        }
+        Scene::draw();
     }
 
     return(0);
