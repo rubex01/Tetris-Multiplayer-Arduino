@@ -4,14 +4,11 @@
 
 #include <Arduino.h>
 #include <avr/interrupt.h>
-#include <avr/io.h>
 #include "HardwareSerial.h"
 #include "Controller/Controller.h"
-#include "Game/Character.h"
 #include "Display/Display.h"
 #include "Communication/IRCommunication.h"
-#include "Game/Game.h"
-#include "Communication/SendQueue.h"
+#include "Scenes/GameScene/GameScene.h"
 #include "Communication/ReceivedData.h"
 #include "Sound/NewTone.h"
 
@@ -56,12 +53,15 @@ int main()
     TCNT2 = 0;
     //TEST
 
+#include "Communication/Frame.h"
+
+int main() {
     sei();
     Serial.begin(9600);
 
-    Controller::Init();
+    Controller::init();
     Display::init();
-    Game::init();
+    Scene::setScene(Scene::START_SCENE);
 
     IRCommunication::init(38);
 
@@ -101,6 +101,9 @@ int main()
 			// // stop the waveform generation before the next note.
 			// noNewTone(NewTone::buzzer);
 		// }
+    while (true) {
+        Controller::update();
+        Scene::draw();
     }
 
     return(0);

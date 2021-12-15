@@ -20,11 +20,10 @@ set(PRODUCT_NAME KBS)
 add_executable(${PRODUCT_NAME}
         src/main.cpp
         src/Controller/Controller.cpp
-        src/Game/Character.cpp
         src/Display/Display.cpp
         src/Sound/NewTone.cpp src/Sound/NewTone.h
-        src/Game/Game.cpp
-        src/Communication/IRCommunication.cpp src/Communication/IRCommunication.h src/Communication/SendQueue.cpp src/Communication/SendQueue.h src/Communication/ReceivedData.cpp src/Communication/ReceivedData.h)
+        src/Scenes/GameScene/GameScene.cpp
+        src/Communication/IRCommunication.cpp src/Communication/IRCommunication.h src/Communication/SendQueue.cpp src/Communication/SendQueue.h src/Communication/ReceivedData.cpp src/Communication/ReceivedData.h src/Communication/Frame.cpp src/Communication/Frame.h src/Scenes/Scene.cpp src/Scenes/Scene.h src/Scenes/StartScene/StartScene.cpp src/Scenes/StartScene/StartScene.h src/Scenes/LoseScene/LoseScene.cpp src/Scenes/LoseScene/LoseScene.h src/Scenes/WinScene/WinScene.cpp src/Scenes/WinScene/WinScene.h)
 
 
 

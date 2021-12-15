@@ -6,8 +6,7 @@
 
 #define reachedEndOfFrame 1700
 
-ISR(INT0_vect)
-{
+ISR(INT0_vect) {
     if (IRCommunication::sending) return;
     if (!IRCommunication::currentlyReceiving) {
         IRCommunication::startReceiving();
@@ -15,7 +14,7 @@ ISR(INT0_vect)
     }
 
     float calc = IRCommunication::receiveCounter / IRCommunication::receiveDevider;
-    int count = (int)(calc + 0.5f);
+    int count = static_cast<int>(calc + 0.5f);
 
     if (IRCommunication::receivingBitIndex == 0) {
         count--;
@@ -24,7 +23,7 @@ ISR(INT0_vect)
 
     for (int i = 0; i < count; ++i) {
         if (IRCommunication::bitIsOne) {
-            IRCommunication::result |= (1<<IRCommunication::receivingBitIndex-1);
+            IRCommunication::result |= (1 << IRCommunication::receivingBitIndex-1);
         }
         IRCommunication::receivingBitIndex++;
     }
@@ -38,8 +37,7 @@ ISR(TIMER0_COMPA_vect) {
         IRCommunication::receiveCounter++;
         if (IRCommunication::receiveCounter == reachedEndOfFrame)
             IRCommunication::resetReceive();
-    }
-    else if (IRCommunication::leftToSend != 0) {
+    } else if (IRCommunication::leftToSend != 0) {
         if (!IRCommunication::sending) {
             IRCommunication::sending = true;
             IRCommunication::data = SendQueue::getItemToSend();
@@ -74,8 +72,7 @@ void IRCommunication::init(int khz) {
         OCRAValue = 141;
         devider = 190;
         receiveDevider = 182.0f;
-    }
-    else if (khz == 38) {
+    } else if (khz == 38) {
         OCRAValue = 206;
         devider = 130;
         receiveDevider = 135.0f;
@@ -86,13 +83,11 @@ void IRCommunication::init(int khz) {
     initIrInterrupt();
 }
 
-void IRCommunication::newDataToSend()
-{
+void IRCommunication::newDataToSend() {
     leftToSend++;
 }
 
-void IRCommunication::resetReceive()
-{
+void IRCommunication::resetReceive() {
     receivingBitIndex = 0;
     currentlyReceiving = false;
     bitIsOne = true;
@@ -101,36 +96,35 @@ void IRCommunication::resetReceive()
     result = 0;
 }
 
-void IRCommunication::sendDataBit()
-{
-    if (sendBitIndex == 0) { // Start bit
-        TCCR0A |= (1<<COM0A0);
+void IRCommunication::sendDataBit() {
+    if (sendBitIndex == 0) {  // Start bit
+        TCCR0A |= (1 << COM0A0);
         sendBitIndex = 1;
         return;
     }
 
-    if (sendBitIndex == dataLength+1) { // Stop bit
-        TCCR0A |= (1<<COM0A0);
+    if (sendBitIndex == dataLength+1) {  // Stop bit
+        TCCR0A |= (1 << COM0A0);
         sendBitIndex++;
         return;
     }
 
-    if (sendBitIndex > dataLength+1) { // End of Frame
-        TCCR0A &= ~(1<<COM0A0);
+    if (sendBitIndex > dataLength+1) {  // End of Frame
+        TCCR0A &= ~(1 << COM0A0);
         sendBitIndex++;
-        if (sendBitIndex == dataLength+50) { // Ready for next frame
+        if (sendBitIndex == dataLength+50) {  // Ready for next frame
             sendBitIndex = 0;
-            PORTD |= (1<<PORTD2);
+            PORTD |= (1 << PORTD2);
             leftToSend--;
             sending = false;
         }
         return;
     }
 
-    if ((data & (1<<(sendBitIndex-1))) > 0) // Check if bit is 0 or 1
-        TCCR0A |= (1<<COM0A0);
+    if ((data & (1 << (sendBitIndex-1))) > 0)  // Check if bit is 0 or 1
+        TCCR0A |= (1 << COM0A0);
     else
-        TCCR0A &= ~(1<<COM0A0);
+        TCCR0A &= ~(1 << COM0A0);
 
     IRCommunication::sendBitIndex++;
 }
@@ -140,21 +134,20 @@ void IRCommunication::startReceiving() {
 }
 
 void IRCommunication::initPorts() {
-    DDRD |= (1<<DDD6);
-    PORTD |= (1<<PORTD2);
+    DDRD |= (1 << DDD6);
+    PORTD |= (1 << PORTD2);
 }
 
 void IRCommunication::initTimer0() {
-    TCCR0A |= (1<<WGM00)|(1<<WGM01);
-    TCCR0B |= (1<<WGM02);
-    TCCR0B |= (1<<CS00);
+    TCCR0A |= (1 << WGM00)|(1 << WGM01);
+    TCCR0B |= (1 << WGM02);
+    TCCR0B |= (1 << CS00);
     OCR0A = IRCommunication::OCRAValue;
-    TIMSK0 |= (1<<OCIE0A);
+    TIMSK0 |= (1 << OCIE0A);
     TCNT0 = 0;
 }
 
-void IRCommunication::initIrInterrupt()
-{
-    EIMSK |= (1<<INT0);
-    EICRA |= (1<<ISC00);
+void IRCommunication::initIrInterrupt() {
+    EIMSK |= (1 << INT0);
+    EICRA |= (1 << ISC00);
 }
