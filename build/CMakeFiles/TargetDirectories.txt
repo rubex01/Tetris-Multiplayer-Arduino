@@ -1,0 +1,9 @@
+/home/trezay/KBS2/kbsmc/build/CMakeFiles/rebuild_cache.dir
+/home/trezay/KBS2/kbsmc/build/CMakeFiles/edit_cache.dir
+/home/trezay/KBS2/kbsmc/build/CMakeFiles/upload_eeprom.dir
+/home/trezay/KBS2/kbsmc/build/CMakeFiles/upload.dir
+/home/trezay/KBS2/kbsmc/build/CMakeFiles/disasm.dir
+/home/trezay/KBS2/kbsmc/build/CMakeFiles/eeprom.dir
+/home/trezay/KBS2/kbsmc/build/CMakeFiles/hex.dir
+/home/trezay/KBS2/kbsmc/build/CMakeFiles/strip.dir
+/home/trezay/KBS2/kbsmc/build/CMakeFiles/KBS.dir

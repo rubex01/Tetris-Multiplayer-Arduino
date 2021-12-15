@@ -2,7 +2,7 @@
 #define __AVR_ATmega328P__
 #endif
 
-#include "Arduino.h"
+#include <Arduino.h>
 #include <avr/interrupt.h>
 #include <avr/io.h>
 #include "HardwareSerial.h"
@@ -13,6 +13,7 @@
 #include "Game/Game.h"
 #include "Communication/SendQueue.h"
 #include "Communication/ReceivedData.h"
+#include "Sound/NewTone.h"
 
 int main()
 {
