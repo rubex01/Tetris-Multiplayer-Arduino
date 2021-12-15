@@ -16,7 +16,7 @@
 * cpplint
 
 ### Running lint
-1. Make sure you have python installed (`sudo apt install python3.8`)
+1. Make sure you have python and pip installed (`sudo apt install python3`) & (`sudo apt install pip`)
 2. Make sure you have pip installed (`pip install cpplint`)
 3. To make sure cpplint is working you can run `cpplint --help` if it's not working you might need to reboot your system
 4. Run `chmod +x ./cpplint.sh` to make the file executable

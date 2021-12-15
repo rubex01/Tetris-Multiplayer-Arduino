@@ -22,6 +22,8 @@ add_executable(${PRODUCT_NAME}
         src/Controller/Controller.cpp
         src/Display/Display.cpp
         src/Scenes/GameScene/GameScene.cpp
+        src/Tetris/Block.cpp
+        src/Tetris/Square.cpp
         src/Communication/IRCommunication.cpp src/Communication/IRCommunication.h src/Communication/SendQueue.cpp src/Communication/SendQueue.h src/Communication/ReceivedData.cpp src/Communication/ReceivedData.h src/Communication/Frame.cpp src/Communication/Frame.h src/Scenes/Scene.cpp src/Scenes/Scene.h src/Scenes/StartScene/StartScene.cpp src/Scenes/StartScene/StartScene.h src/Scenes/LoseScene/LoseScene.cpp src/Scenes/LoseScene/LoseScene.h src/Scenes/WinScene/WinScene.cpp src/Scenes/WinScene/WinScene.h)
 
 
