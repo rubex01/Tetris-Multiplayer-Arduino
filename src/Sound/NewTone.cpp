@@ -113,7 +113,7 @@ volatile uint8_t *NewTone::_pinOutput = new uint8_t{0}; // Output port register
 // int NewTone::wholenote = (60000 * 4) / tempo;
 int NewTone::tempo = 108;
 // change this to whichever pin you want to use
-int NewTone::buzzer = 11;
+int NewTone::buzzer = 5;
 
 // notes of the moledy followed by the duration.
 // a 4 means a quarter note, 8 an eighteenth , 16 sixteenth, so on

@@ -186,10 +186,6 @@ Display.h
 
 /home/trezay/KBS2/kbsmc/src/Game/Game.h
 
-/home/trezay/KBS2/kbsmc/src/Sound/NewTone.cpp
-NewTone.h
-/home/trezay/KBS2/kbsmc/src/Sound/NewTone.h
-
 /home/trezay/KBS2/kbsmc/src/Sound/NewTone.h
 Arduino.h
 -
@@ -198,7 +194,7 @@ Arduino.h
 
 /home/trezay/KBS2/kbsmc/src/main.cpp
 Arduino.h
-/home/trezay/KBS2/kbsmc/src/Arduino.h
+-
 avr/interrupt.h
 -
 avr/io.h
