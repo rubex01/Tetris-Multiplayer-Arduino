@@ -26,7 +26,8 @@
 ### Running doxygen
 1. Make sure you have installed doxygen (`sudo apt install doxygen`)
 2. Run doxygen doxygen-config in the root of the project
-3. The generated doxygen files cna be found in the html folder 
+3. If you get a dot error running doxygen you might need to install graphviz (`sudo apt install graphviz`)
+4. The generated doxygen files cna be found in the html folder 
 
 ### Setup for developers
 1. start
