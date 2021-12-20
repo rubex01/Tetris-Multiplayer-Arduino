@@ -1,5 +1,5 @@
-#ifndef SRC_SBLOCK_SBLOCK_H_
-#define SRC_SBLOCK_SBLOCK_H_
+#ifndef SRC_TETRIS_TETROMINOES_SBLOCK_H_
+#define SRC_TETRIS_TETROMINOES_SBLOCK_H_
 
 #include "../Block.h"
 
@@ -10,4 +10,4 @@ class SBlock : public Block {
     bool checkBlock();
 };
 
-#endif 
+#endif  // SRC_TETRIS_TETROMINOES_SBLOCK_H_

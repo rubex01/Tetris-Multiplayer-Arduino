@@ -1,5 +1,5 @@
-#ifndef SRC_JBLOCK_JBLOCK_H_
-#define SRC_JBLOCK_JBLOCK_H_
+#ifndef SRC_TETRIS_TETROMINOES_JBLOCK_H_
+#define SRC_TETRIS_TETROMINOES_JBLOCK_H_
 
 #include "../Block.h"
 
@@ -10,4 +10,4 @@ class JBlock : public Block {
     bool checkBlock();
 };
 
-#endif 
+#endif  // SRC_TETRIS_TETROMINOES_JBLOCK_H_

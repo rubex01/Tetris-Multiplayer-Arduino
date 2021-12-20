@@ -10,30 +10,31 @@
 #include "../../Tetris/Tetrominoes/SBlock.h"
 #include "../../Tetris/Tetrominoes/ZBlock.h"
 #include "../../Controller/Controller.h"
-#include "../../Tetris/BlockFactory.h" 
-
-volatile int counter = 0;
-volatile bool test = false;
-
-ISR(TIMER1_COMPA_vect){
-    if(counter == 6){
-        GameScene::gameTickReached = true;
-        counter = 0;
-    }
-    test = true;
-    counter++;
-}
+#include "../../Tetris/BlockFactory.h"
 
 int GameScene::gameSeed = 0;
-int GameScene::tetrisBoard[11][10] = {{0},{0},{0},{0},{0},{0},{0},{0},{0},{0},{0}};
-int lastBoard[11][10] = {{0},{0},{0},{0},{0},{0},{0},{0},{0},{0},{0}};
+int GameScene::tetrisBoard[11][10] = {{0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}};
+int lastBoard[11][10] = {{0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}};
 Block* GameScene::currentBlock = nullptr;
 bool GameScene::gameTickReached = false;
 bool GameScene::blockIsMoving = true;
 bool GameScene::gameOver = false;
-int GameScene::gameTicks = 0;
+int GameScene::gameCounter = 0;
+bool GameScene::moveTickReached = false;
+int GameScene::tickValue = 6;
+
+ISR(TIMER1_COMPA_vect) {
+    if (GameScene::gameCounter >= GameScene::tickValue) {
+        GameScene::gameTickReached = true;
+        GameScene::gameCounter = 0;
+    }
+    GameScene::moveTickReached = true;
+    GameScene::gameCounter++;
+}
 
 void GameScene::init() {
+    setRandomSeed();
+
     Display::drawGameBorder();
     Display::drawHoldSection();
     Display::drawNextSection();
@@ -43,57 +44,38 @@ void GameScene::init() {
     currentBlock->initBlock();
     GameScene::drawBoard();
 
-    setRandomSeed();
     if (gameSeed == 0)
         startGame();
     Serial.println(gameSeed);
 }
 
-void GameScene::drawBoard(){
-    // int x = 20;
-    // int y = 100;
-    // for(int i = 0; i < 11; i++){
-    //     int x = 20;
-    //     for(int j = 0; i < 10; j++){
-    //         if(lastBoard[i][j] == 1 && GameScene::tetrisBoard[i][j] == 0){
-    //             Display::fillRect(x,y,20,20,ILI9341_BLACK);
-    //         } else if (lastBoard[i][j] == 0 && GameScene::tetrisBoard[i][j] == 1) {
-    //             Display::drawTetrisBlock(x,y,1);
-    //         }
-    //         x+= 20;
-    //     }
-    //     y += 20;
-    // }
-
+void GameScene::drawBoard() {
     int x = 20;
     int y = 100;
-    for(int i = 0; i < 11; i++){
+    for (int i = 0; i < 11; i++) {
         int x = 20;
-            for (int j = 0; j < 10; j++){
-                if(lastBoard[i][j] == 1 && GameScene::tetrisBoard[i][j] == 0){
-                Display::fillRect(x,y,20,20,ILI9341_BLACK);
+            for (int j = 0; j < 10; j++) {
+                if (lastBoard[i][j] == 1 && GameScene::tetrisBoard[i][j] == 0) {
+                Display::fillRect(x, y, 20, 20, ILI9341_BLACK);
                 } else if (lastBoard[i][j] == 0 && GameScene::tetrisBoard[i][j] == 1) {
-                    Display::drawTetrisBlock(x,y,currentBlock->blockColor);
-                }             
+                    Display::drawTetrisBlock(x, y, currentBlock->blockColor);
+                }
                 x += 20;
             }
         y += 20;
     }
-    for (int i = 0; i < 11; i++)
-    {
-        for (int j = 0; j < 10; j++)
-        {
+    for (int i = 0; i < 11; i++) {
+        for (int j = 0; j < 10; j++) {
             lastBoard[i][j] = GameScene::tetrisBoard[i][j];
-        }       
+        }
     }
-
 }
 
-int GameScene::boardCount(){
+int GameScene::boardCount() {
     int count = 0;
-    for(int i = 0; i < 11; i++){
-        for(int j = 0; j < 10; j++){
-            if(GameScene::tetrisBoard[i][j] == 1){
+    for (int i = 0; i < 11; i++) {
+        for (int j = 0; j < 10; j++) {
+            if (GameScene::tetrisBoard[i][j] == 1) {
                 count++;
             }
         }
@@ -103,47 +85,50 @@ int GameScene::boardCount(){
 
 void GameScene::initTimer() {
     TCCR1A = 0;
-    TCCR1B |= (1 << CS12)|(1<<CS10)|(1<<WGM12);
+    TCCR1B |= (1 << CS12)|(1 << CS10)|(1 << WGM12);
     TCCR1C = 0;
     OCR1A = (15624/18);
     TCNT1 = 0;
-    TIMSK1 |= (1<<OCIE1A);
+    TIMSK1 |= (1 << OCIE1A);
 }
 
 void GameScene::drawScene() {
-    if(GameScene::gameOver){
+    if (GameScene::gameOver) {
         Scene::setScene(Scene::LOSE_SCENE);
         Scene::draw();
         return;
     }
-    if(!test){
+    if (!moveTickReached) {
         return;
     }
 
     bool* array = Controller::getActions();
 
 
-    if(GameScene::blockIsMoving) {
-        if(array[0]){
-            GameScene::currentBlock->moveSideways(1);
+    if (GameScene::blockIsMoving) {
+        if (array[3]) {
+            GameScene::tickValue = 2;
+        } else {
+            GameScene::tickValue = 6;
         }
-        else if(array[1]){
+        if (array[0]) {
+            GameScene::currentBlock->moveSideways(1);
+        } else if (array[1]) {
             GameScene::currentBlock->moveSideways(-1);
         }
-        if(GameScene::gameTickReached){
+
+        if (GameScene::gameTickReached) {
             GameScene::currentBlock->moveDown();
             GameScene::gameTickReached = false;
         }
-        
-    }
-    if(!GameScene::blockIsMoving) {
+    } else {
         delete GameScene::currentBlock;
         GameScene::currentBlock = BlockFactory::createBlock(rand() % 7);
         GameScene::currentBlock->initBlock();
         blockIsMoving = true;
         GameScene::gameTickReached = false;
     }
-    test = false;
+    moveTickReached = false;
     GameScene::drawBoard();
     delete[] array;
 }

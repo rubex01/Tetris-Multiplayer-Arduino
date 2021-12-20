@@ -14,14 +14,15 @@ class GameScene: public Scene {
     static int boardCount();
     static bool blockIsMoving;
     static int tetrisBoard[11][10];
-    static Block* currentBlock;
     static bool gameTickReached;
     static bool gameOver;
-    static int gameTicks;
+    static int gameCounter;
+    static bool moveTickReached;
+    static int tickValue;
 
  private:
     static int gameSeed;
-    
+    static Block* currentBlock;
     static void drawBoard();
     static void initTimer();
     static void setRandomSeed();

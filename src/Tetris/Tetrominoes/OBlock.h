@@ -1,5 +1,5 @@
-#ifndef SRC_OBLOCK_OBLOCK_H_
-#define SRC_OBLOCK_OBLOCK_H_
+#ifndef SRC_TETRIS_TETROMINOES_OBLOCK_H_
+#define SRC_TETRIS_TETROMINOES_OBLOCK_H_
 
 #include "../Block.h"
 
@@ -10,4 +10,4 @@ class OBlock : public Block {
     bool checkBlock();
 };
 
-#endif 
+#endif  // SRC_TETRIS_TETROMINOES_OBLOCK_H_
