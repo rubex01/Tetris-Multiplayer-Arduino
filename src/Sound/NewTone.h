@@ -51,7 +51,7 @@ class NewTone {
 
   static uint8_t teller;
   static int thisNote;
-  static bool noNewToneCheck; // Test
+  static bool noNewToneCheck;  // Test
   static uint8_t _pinMask;
   static uint16_t _nt_time;
   static volatile uint8_t *_pinOutput;
@@ -62,6 +62,7 @@ class NewTone {
   static int noteDuration;
   static int notes;
   static int melody[];
+  // static uint8_t *_pinMode;
 };
 
 #endif  // KBSMC_SRC_SOUND_NEWTONE_H_

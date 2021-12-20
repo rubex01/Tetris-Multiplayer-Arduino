@@ -5,7 +5,7 @@
  * Init lose scene
  */
 void LoseScene::init() {
-    NewTone::noNewTone(NewTone::buzzer); // toon uit
+    NewTone::noNewTone(NewTone::buzzer);  // Toon uit
 }
 
 /**

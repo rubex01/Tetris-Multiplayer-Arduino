@@ -5,7 +5,7 @@
  * Init win scene
  */
 void WinScene::init() {
-    NewTone::noNewTone(NewTone::buzzer); // toon uit
+    NewTone::noNewTone(NewTone::buzzer);  // Toon uit
 }
 
 /**

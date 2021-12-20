@@ -98,7 +98,7 @@
 #define NOTE_DS8 4978
 #define REST 0
 
-#define ONESECOND 125 // Timer2
+#define ONESECOND 125  // Timer2
 
 bool NewTone::noNewToneCheck = true;
 
@@ -111,7 +111,7 @@ ISR(TIMER1_COMPA_vect) {  // Timer interrupt vector.
 
 ISR(TIMER2_OVF_vect) {
     NewTone::teller++;
-    if(!NewTone::noNewToneCheck) {
+    if (!NewTone::noNewToneCheck) {
         if (NewTone::teller >= ONESECOND) {
             NewTone::teller = 0;
             if (NewTone::thisNote >= NewTone::notes * 2)
@@ -133,8 +133,8 @@ ISR(TIMER2_OVF_vect) {
     }
 }
 
-uint8_t NewTone::teller = 0; // Timer2
-int NewTone::thisNote = 0; // Timer2
+uint8_t NewTone::teller = 0;  // Timer2
+int NewTone::thisNote = 0;  // Timer2
 
 void NewTone::initTimer2() {
   DDRB |= (1 << DDB0);
