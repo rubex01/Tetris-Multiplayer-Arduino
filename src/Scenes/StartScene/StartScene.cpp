@@ -7,12 +7,20 @@
 
 int StartScene::selected = 0;
 
+/**
+ * Init start scene
+ */
 void StartScene::init() {
     Display::drawText(60, 50, 2, "Start game", ILI9341_YELLOW);
     Display::drawText(60, 80, 2, "Other button", ILI9341_YELLOW);
     Display::fillCircle(40, 55, 5, ILI9341_YELLOW);
 }
 
+/**
+ * Draws the selected item in the start menu
+ *
+ * @param dirUp
+ */
 void StartScene::drawSelected(bool dirUp) {
     if ((dirUp && selected == 0) || (!dirUp && selected == 1)) return;
     Display::fillCircle(40, 55+(selected*30), 5, ILI9341_BLACK);
@@ -21,6 +29,9 @@ void StartScene::drawSelected(bool dirUp) {
     Display::fillCircle(40, 55+(selected*30), 5, ILI9341_YELLOW);
 }
 
+/**
+ * Draws scene and checks for input from nunchuk to update states
+ */
 void StartScene::drawScene() {
     if (!checkForSeedPacket()) {
         bool* array = Controller::getActions();
@@ -34,6 +45,11 @@ void StartScene::drawScene() {
     }
 }
 
+/**
+ * Checks for a new seed packet and returns true if it found one
+ *
+ * @return bool
+ */
 bool StartScene::checkForSeedPacket() {
     bool returnValue = false;
     if (ReceivedData::newResultsAvailable()) {

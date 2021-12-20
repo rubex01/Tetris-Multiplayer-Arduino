@@ -6,6 +6,9 @@
 
 int GameScene::gameSeed = 0;
 
+/**
+ * Init game scene, draw all game borders and elements
+ */
 void GameScene::init() {
     Display::drawGameBorder();
     Display::drawHoldSection();
@@ -19,28 +22,50 @@ void GameScene::init() {
         startGame();
 }
 
+/**
+ * Draw current game state, score etc.
+ */
 void GameScene::drawScene() {
 }
 
+/**
+ * Sets a random seed for the default random function
+ */
 void GameScene::setRandomSeed() {
     srand(micros());
 }
 
+/**
+ * Generates a new random seed between 0 and 64 using the random function
+ *
+ * @return int
+ */
 int GameScene::generateRandomSeed() {
     return rand() % 63;
 }
 
+/**
+ * Ends the game and resets the random seed
+ */
 void GameScene::endGame() {
     setRandomSeed();
 }
 
+/**
+ * Starts the game with own random seed, also adds this seed to sendQueue so second player will receive the seed
+ */
 void GameScene::startGame() {
     gameSeed = generateRandomSeed();
-    uint8_t frame = (new Frame(gameSeed, Frame::SEED_TYPE))->getFrame();
+    Frame frame(gameSeed, Frame::SEED_TYPE);
     SendQueue::addToQueue(frame);
     srand(gameSeed);
 }
 
+/**
+ * Start game with received seed
+ *
+ * @param seed
+ */
 void GameScene::startGame(int seed) {
     gameSeed = seed;
     srand(gameSeed);
