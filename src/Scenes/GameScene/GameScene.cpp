@@ -2,6 +2,7 @@
 #include "../../Display/Display.h"
 #include "../../Communication/SendQueue.h"
 #include "../../Communication/Frame.h"
+#include "../../Sound/NewTone.h"
 
 int GameScene::gameSeed = 0;
 
@@ -11,6 +12,7 @@ void GameScene::init() {
     Display::drawNextSection();
     Display::drawScore();
     Display::drawDemoBlocks();
+    NewTone::aNewTone(NewTone::buzzer, NewTone::melody[NewTone::thisNote], NewTone::noteDuration*0.9);
 
     setRandomSeed();
     if (gameSeed == 0)

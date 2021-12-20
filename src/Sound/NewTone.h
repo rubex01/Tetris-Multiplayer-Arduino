@@ -44,10 +44,13 @@
 
 class NewTone {
  public:
+  static void initTimer2();
   static void aNewTone(uint8_t pin, uint16_t frequency, uint16_t length);
   static void noNewTone(uint8_t pin);
   static void noNewTone();
 
+  static uint8_t teller;
+  static int thisNote;
   static bool noNewToneCheck; // Test
   static uint8_t _pinMask;
   static uint16_t _nt_time;

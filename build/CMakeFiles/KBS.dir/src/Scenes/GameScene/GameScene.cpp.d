@@ -21,4 +21,5 @@ CMakeFiles/KBS.dir/src/Scenes/GameScene/GameScene.cpp.obj: \
  /home/trezay/Arduino/include/arduino/SPI.h \
  /home/trezay/Arduino/include/arduino/Adafruit_SPITFT_Macros.h \
  /home/trezay/KBS2/kbsmc/src/Scenes/GameScene/../../Communication/SendQueue.h \
- /home/trezay/KBS2/kbsmc/src/Scenes/GameScene/../../Communication/Frame.h
+ /home/trezay/KBS2/kbsmc/src/Scenes/GameScene/../../Communication/Frame.h \
+ /home/trezay/KBS2/kbsmc/src/Scenes/GameScene/../../Sound/NewTone.h

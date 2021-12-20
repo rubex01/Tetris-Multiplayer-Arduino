@@ -70,10 +70,24 @@ CMakeFiles/KBS.dir/src/Scenes/GameScene/GameScene.cpp.obj: ../src/Display/Displa
 CMakeFiles/KBS.dir/src/Scenes/GameScene/GameScene.cpp.obj: ../src/Scenes/GameScene/GameScene.cpp
 CMakeFiles/KBS.dir/src/Scenes/GameScene/GameScene.cpp.obj: ../src/Scenes/GameScene/GameScene.h
 CMakeFiles/KBS.dir/src/Scenes/GameScene/GameScene.cpp.obj: ../src/Scenes/Scene.h
+CMakeFiles/KBS.dir/src/Scenes/GameScene/GameScene.cpp.obj: ../src/Sound/NewTone.h
 
+CMakeFiles/KBS.dir/src/Scenes/LoseScene/LoseScene.cpp.obj: /home/trezay/Arduino/include/arduino/Arduino.h
+CMakeFiles/KBS.dir/src/Scenes/LoseScene/LoseScene.cpp.obj: /home/trezay/Arduino/include/arduino/HardwareSerial.h
+CMakeFiles/KBS.dir/src/Scenes/LoseScene/LoseScene.cpp.obj: /home/trezay/Arduino/include/arduino/Print.h
+CMakeFiles/KBS.dir/src/Scenes/LoseScene/LoseScene.cpp.obj: /home/trezay/Arduino/include/arduino/Printable.h
+CMakeFiles/KBS.dir/src/Scenes/LoseScene/LoseScene.cpp.obj: /home/trezay/Arduino/include/arduino/Stream.h
+CMakeFiles/KBS.dir/src/Scenes/LoseScene/LoseScene.cpp.obj: /home/trezay/Arduino/include/arduino/USBAPI.h
+CMakeFiles/KBS.dir/src/Scenes/LoseScene/LoseScene.cpp.obj: /home/trezay/Arduino/include/arduino/USBCore.h
+CMakeFiles/KBS.dir/src/Scenes/LoseScene/LoseScene.cpp.obj: /home/trezay/Arduino/include/arduino/USBDesc.h
+CMakeFiles/KBS.dir/src/Scenes/LoseScene/LoseScene.cpp.obj: /home/trezay/Arduino/include/arduino/WCharacter.h
+CMakeFiles/KBS.dir/src/Scenes/LoseScene/LoseScene.cpp.obj: /home/trezay/Arduino/include/arduino/WString.h
+CMakeFiles/KBS.dir/src/Scenes/LoseScene/LoseScene.cpp.obj: /home/trezay/Arduino/include/arduino/binary.h
+CMakeFiles/KBS.dir/src/Scenes/LoseScene/LoseScene.cpp.obj: /home/trezay/Arduino/include/arduino/pins_arduino.h
 CMakeFiles/KBS.dir/src/Scenes/LoseScene/LoseScene.cpp.obj: ../src/Scenes/LoseScene/LoseScene.cpp
 CMakeFiles/KBS.dir/src/Scenes/LoseScene/LoseScene.cpp.obj: ../src/Scenes/LoseScene/LoseScene.h
 CMakeFiles/KBS.dir/src/Scenes/LoseScene/LoseScene.cpp.obj: ../src/Scenes/Scene.h
+CMakeFiles/KBS.dir/src/Scenes/LoseScene/LoseScene.cpp.obj: ../src/Sound/NewTone.h
 
 CMakeFiles/KBS.dir/src/Scenes/Scene.cpp.obj: /home/trezay/Arduino/include/arduino/Adafruit_GFX.h
 CMakeFiles/KBS.dir/src/Scenes/Scene.cpp.obj: /home/trezay/Arduino/include/arduino/Adafruit_ILI9341.h
@@ -128,9 +142,22 @@ CMakeFiles/KBS.dir/src/Scenes/StartScene/StartScene.cpp.obj: ../src/Scenes/Scene
 CMakeFiles/KBS.dir/src/Scenes/StartScene/StartScene.cpp.obj: ../src/Scenes/StartScene/StartScene.cpp
 CMakeFiles/KBS.dir/src/Scenes/StartScene/StartScene.cpp.obj: ../src/Scenes/StartScene/StartScene.h
 
+CMakeFiles/KBS.dir/src/Scenes/WinScene/WinScene.cpp.obj: /home/trezay/Arduino/include/arduino/Arduino.h
+CMakeFiles/KBS.dir/src/Scenes/WinScene/WinScene.cpp.obj: /home/trezay/Arduino/include/arduino/HardwareSerial.h
+CMakeFiles/KBS.dir/src/Scenes/WinScene/WinScene.cpp.obj: /home/trezay/Arduino/include/arduino/Print.h
+CMakeFiles/KBS.dir/src/Scenes/WinScene/WinScene.cpp.obj: /home/trezay/Arduino/include/arduino/Printable.h
+CMakeFiles/KBS.dir/src/Scenes/WinScene/WinScene.cpp.obj: /home/trezay/Arduino/include/arduino/Stream.h
+CMakeFiles/KBS.dir/src/Scenes/WinScene/WinScene.cpp.obj: /home/trezay/Arduino/include/arduino/USBAPI.h
+CMakeFiles/KBS.dir/src/Scenes/WinScene/WinScene.cpp.obj: /home/trezay/Arduino/include/arduino/USBCore.h
+CMakeFiles/KBS.dir/src/Scenes/WinScene/WinScene.cpp.obj: /home/trezay/Arduino/include/arduino/USBDesc.h
+CMakeFiles/KBS.dir/src/Scenes/WinScene/WinScene.cpp.obj: /home/trezay/Arduino/include/arduino/WCharacter.h
+CMakeFiles/KBS.dir/src/Scenes/WinScene/WinScene.cpp.obj: /home/trezay/Arduino/include/arduino/WString.h
+CMakeFiles/KBS.dir/src/Scenes/WinScene/WinScene.cpp.obj: /home/trezay/Arduino/include/arduino/binary.h
+CMakeFiles/KBS.dir/src/Scenes/WinScene/WinScene.cpp.obj: /home/trezay/Arduino/include/arduino/pins_arduino.h
 CMakeFiles/KBS.dir/src/Scenes/WinScene/WinScene.cpp.obj: ../src/Scenes/Scene.h
 CMakeFiles/KBS.dir/src/Scenes/WinScene/WinScene.cpp.obj: ../src/Scenes/WinScene/WinScene.cpp
 CMakeFiles/KBS.dir/src/Scenes/WinScene/WinScene.cpp.obj: ../src/Scenes/WinScene/WinScene.h
+CMakeFiles/KBS.dir/src/Scenes/WinScene/WinScene.cpp.obj: ../src/Sound/NewTone.h
 
 CMakeFiles/KBS.dir/src/Sound/NewTone.cpp.obj: /home/trezay/Arduino/include/arduino/Arduino.h
 CMakeFiles/KBS.dir/src/Sound/NewTone.cpp.obj: /home/trezay/Arduino/include/arduino/HardwareSerial.h

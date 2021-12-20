@@ -98,6 +98,8 @@
 #define NOTE_DS8 4978
 #define REST 0
 
+#define ONESECOND 125 // Timer2
+
 bool NewTone::noNewToneCheck = true;
 
 
@@ -105,6 +107,40 @@ ISR(TIMER1_COMPA_vect) {  // Timer interrupt vector.
   if (millis() >= NewTone::_nt_time) NewTone::noNewTone();  // Check to see if it's time for the note to end.
   // NewTone::*_pinOutput ^= NewTone::_pinMask; // Toggle the pin state.
   *NewTone::_pinOutput ^= NewTone::_pinMask;  // Toggle the pin state.
+}
+
+ISR(TIMER2_OVF_vect) {
+    NewTone::teller++;
+    if(!NewTone::noNewToneCheck) {
+        if (NewTone::teller >= ONESECOND) {
+            NewTone::teller = 0;
+            if (NewTone::thisNote >= NewTone::notes * 2)
+                NewTone::thisNote = 0;
+            // calculates the duration of each note
+            NewTone::divider = NewTone::melody[NewTone::thisNote + 1];
+            if (NewTone::divider > 0) {
+                // regular note, just proceed
+                NewTone::noteDuration = (NewTone::wholenote) / NewTone::divider;
+            } else if (NewTone::divider < 0) {
+                // dotted notes are represented with negative durations!!
+                NewTone::noteDuration = (NewTone::wholenote) / abs(NewTone::divider);
+                NewTone::noteDuration *= 1.5;  // increases the duration in half for dotted notes
+            }
+            NewTone::aNewTone(NewTone::buzzer, NewTone::melody[NewTone::thisNote], NewTone::noteDuration*0.9);  // timer1 // miss in while
+
+            NewTone::thisNote = NewTone::thisNote + 2;
+        }
+    }
+}
+
+uint8_t NewTone::teller = 0; // Timer2
+int NewTone::thisNote = 0; // Timer2
+
+void NewTone::initTimer2() {
+  DDRB |= (1 << DDB0);
+  TCCR2B |= (1 << CS22)|(1 << CS20);
+  TIMSK2 |= (1 << TOIE2);
+  TCNT2 = 0;
 }
 
 uint16_t NewTone::_nt_time;       // Time note should end.

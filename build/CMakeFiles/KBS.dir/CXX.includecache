@@ -6,40 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/trezay/Arduino/include/arduino/Adafruit_GFX.h
-Arduino.h
-/home/trezay/Arduino/include/arduino/Arduino.h
-Print.h
-/home/trezay/Arduino/include/arduino/Print.h
-Arduino.h
--
-gfxfont.h
-/home/trezay/Arduino/include/arduino/gfxfont.h
-
-/home/trezay/Arduino/include/arduino/Adafruit_ILI9341.h
-Adafruit_GFX.h
-/home/trezay/Arduino/include/arduino/Adafruit_GFX.h
-Arduino.h
-/home/trezay/Arduino/include/arduino/Arduino.h
-Print.h
-/home/trezay/Arduino/include/arduino/Print.h
-Adafruit_SPITFT.h
--
-Adafruit_SPITFT_Macros.h
--
-SPI.h
--
-
-/home/trezay/Arduino/include/arduino/Adafruit_SPITFT.h
-Adafruit_GFX.h
-/home/trezay/Arduino/include/arduino/Adafruit_GFX.h
-SPI.h
--
-Adafruit_ZeroDMA.h
--
-
-/home/trezay/Arduino/include/arduino/Adafruit_SPITFT_Macros.h
-
 /home/trezay/Arduino/include/arduino/Arduino.h
 stdlib.h
 -
@@ -88,10 +54,6 @@ Printable.h
 stdlib.h
 -
 
-/home/trezay/Arduino/include/arduino/SPI.h
-Arduino.h
--
-
 /home/trezay/Arduino/include/arduino/Stream.h
 inttypes.h
 -
@@ -138,55 +100,35 @@ avr/pgmspace.h
 
 /home/trezay/Arduino/include/arduino/binary.h
 
-/home/trezay/Arduino/include/arduino/gfxfont.h
-
 /home/trezay/Arduino/include/arduino/pins_arduino.h
 avr/pgmspace.h
 -
 
-/home/trezay/KBS2/kbsmc/src/Communication/Frame.h
+/home/trezay/KBS2/kbsmc/src/Scenes/LoseScene/LoseScene.cpp
+LoseScene.h
+/home/trezay/KBS2/kbsmc/src/Scenes/LoseScene/LoseScene.h
+../../Sound/NewTone.h
+/home/trezay/KBS2/kbsmc/src/Sound/NewTone.h
 
-/home/trezay/KBS2/kbsmc/src/Communication/IRCommunication.h
-
-/home/trezay/KBS2/kbsmc/src/Communication/ReceivedData.h
-
-/home/trezay/KBS2/kbsmc/src/Controller/Controller.h
-
-/home/trezay/KBS2/kbsmc/src/Display/Display.h
-Adafruit_ILI9341.h
-/home/trezay/KBS2/kbsmc/src/Display/Adafruit_ILI9341.h
-
-/home/trezay/KBS2/kbsmc/src/Scenes/GameScene/GameScene.h
+/home/trezay/KBS2/kbsmc/src/Scenes/LoseScene/LoseScene.h
 ../Scene.h
 /home/trezay/KBS2/kbsmc/src/Scenes/Scene.h
 
 /home/trezay/KBS2/kbsmc/src/Scenes/Scene.h
 
+/home/trezay/KBS2/kbsmc/src/Scenes/WinScene/WinScene.cpp
+WinScene.h
+/home/trezay/KBS2/kbsmc/src/Scenes/WinScene/WinScene.h
+../../Sound/NewTone.h
 /home/trezay/KBS2/kbsmc/src/Sound/NewTone.h
-Arduino.h
--
-Arduino.h
--
 
-/home/trezay/KBS2/kbsmc/src/main.cpp
-Arduino.h
-/home/trezay/KBS2/kbsmc/src/Arduino.h
-avr/interrupt.h
--
-HardwareSerial.h
-/home/trezay/KBS2/kbsmc/src/HardwareSerial.h
-Controller/Controller.h
-/home/trezay/KBS2/kbsmc/src/Controller/Controller.h
-Display/Display.h
-/home/trezay/KBS2/kbsmc/src/Display/Display.h
-Communication/IRCommunication.h
-/home/trezay/KBS2/kbsmc/src/Communication/IRCommunication.h
-Scenes/GameScene/GameScene.h
-/home/trezay/KBS2/kbsmc/src/Scenes/GameScene/GameScene.h
-Communication/ReceivedData.h
-/home/trezay/KBS2/kbsmc/src/Communication/ReceivedData.h
-Sound/NewTone.h
+/home/trezay/KBS2/kbsmc/src/Scenes/WinScene/WinScene.h
+../Scene.h
+/home/trezay/KBS2/kbsmc/src/Scenes/Scene.h
+
 /home/trezay/KBS2/kbsmc/src/Sound/NewTone.h
-Communication/Frame.h
-/home/trezay/KBS2/kbsmc/src/Communication/Frame.h
+Arduino.h
+-
+Arduino.h
+-
 
