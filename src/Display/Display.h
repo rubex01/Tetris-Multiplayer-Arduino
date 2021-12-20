@@ -1,5 +1,5 @@
-#ifndef KBSMC_SRC_DISPLAY_DISPLAY_H_
-#define KBSMC_SRC_DISPLAY_DISPLAY_H_
+#ifndef SRC_DISPLAY_DISPLAY_H_
+#define SRC_DISPLAY_DISPLAY_H_
 
 #include "Adafruit_ILI9341.h"
 
@@ -26,4 +26,4 @@ class Display {
     static uint16_t colors[3][3];
 };
 
-#endif  // KBSMC_SRC_DISPLAY_DISPLAY_H_
+#endif  // SRC_DISPLAY_DISPLAY_H_

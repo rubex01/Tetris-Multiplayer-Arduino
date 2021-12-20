@@ -1,5 +1,5 @@
-#ifndef KBSMC_SRC_SCENES_SCENE_H_
-#define KBSMC_SRC_SCENES_SCENE_H_
+#ifndef SRC_SCENES_SCENE_H_
+#define SRC_SCENES_SCENE_H_
 
 class Scene {
  public:
@@ -19,4 +19,4 @@ class Scene {
     static int currentScene;
 };
 
-#endif  // KBSMC_SRC_SCENES_SCENE_H_
+#endif  // SRC_SCENES_SCENE_H_

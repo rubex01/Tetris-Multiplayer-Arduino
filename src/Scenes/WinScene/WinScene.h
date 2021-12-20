@@ -1,5 +1,5 @@
-#ifndef KBSMC_SRC_SCENES_WINSCENE_WINSCENE_H_
-#define KBSMC_SRC_SCENES_WINSCENE_WINSCENE_H_
+#ifndef SRC_SCENES_WINSCENE_WINSCENE_H_
+#define SRC_SCENES_WINSCENE_WINSCENE_H_
 
 #include "../Scene.h"
 
@@ -9,4 +9,4 @@ class WinScene: public Scene {
     static void drawScene();
 };
 
-#endif  // KBSMC_SRC_SCENES_WINSCENE_WINSCENE_H_
+#endif  // SRC_SCENES_WINSCENE_WINSCENE_H_

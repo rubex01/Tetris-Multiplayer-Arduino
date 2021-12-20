@@ -1,5 +1,5 @@
-#ifndef KBSMC_SRC_SCENES_STARTSCENE_STARTSCENE_H_
-#define KBSMC_SRC_SCENES_STARTSCENE_STARTSCENE_H_
+#ifndef SRC_SCENES_STARTSCENE_STARTSCENE_H_
+#define SRC_SCENES_STARTSCENE_STARTSCENE_H_
 
 #include "../Scene.h"
 
@@ -15,4 +15,4 @@ class StartScene: public Scene {
     static bool checkForSeedPacket();
 };
 
-#endif  // KBSMC_SRC_SCENES_STARTSCENE_STARTSCENE_H_
+#endif  // SRC_SCENES_STARTSCENE_STARTSCENE_H_

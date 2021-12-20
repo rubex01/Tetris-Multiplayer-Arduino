@@ -32,15 +32,10 @@
 //
 // ---------------------------------------------------------------------------
 
-#ifndef KBSMC_SRC_SOUND_NEWTONE_H_
-#define KBSMC_SRC_SOUND_NEWTONE_H_
+#include <Arduino.h>
 
-
-#if defined(ARDUINO) && ARDUINO >= 100
-  #include <Arduino.h>
-#else
-  #include <Arduino.h>
-#endif
+#ifndef SRC_SOUND_NEWTONE_H_
+#define SRC_SOUND_NEWTONE_H_
 
 class NewTone {
  public:
@@ -65,4 +60,4 @@ class NewTone {
   // static uint8_t *_pinMode;
 };
 
-#endif  // KBSMC_SRC_SOUND_NEWTONE_H_
+#endif  // SRC_SOUND_NEWTONE_H_

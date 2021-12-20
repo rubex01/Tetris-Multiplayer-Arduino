@@ -1,5 +1,5 @@
-#ifndef KBSMC_SRC_COMMUNICATION_SENDQUEUE_H_
-#define KBSMC_SRC_COMMUNICATION_SENDQUEUE_H_
+#ifndef SRC_COMMUNICATION_SENDQUEUE_H_
+#define SRC_COMMUNICATION_SENDQUEUE_H_
 
 #include "Frame.h"
 
@@ -13,4 +13,4 @@ class SendQueue {
     static uint8_t itemsInQueue[20];
 };
 
-#endif  // KBSMC_SRC_COMMUNICATION_SENDQUEUE_H_
+#endif  // SRC_COMMUNICATION_SENDQUEUE_H_

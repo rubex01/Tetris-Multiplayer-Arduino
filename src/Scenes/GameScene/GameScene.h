@@ -1,5 +1,5 @@
-#ifndef KBSMC_SRC_SCENES_GAMESCENE_GAMESCENE_H_
-#define KBSMC_SRC_SCENES_GAMESCENE_GAMESCENE_H_
+#ifndef SRC_SCENES_GAMESCENE_GAMESCENE_H_
+#define SRC_SCENES_GAMESCENE_GAMESCENE_H_
 
 #include "../Scene.h"
 
@@ -18,4 +18,4 @@ class GameScene: public Scene {
     static int generateRandomSeed();
 };
 
-#endif  // KBSMC_SRC_SCENES_GAMESCENE_GAMESCENE_H_
+#endif  // SRC_SCENES_GAMESCENE_GAMESCENE_H_
