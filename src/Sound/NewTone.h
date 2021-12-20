@@ -32,29 +32,6 @@
 //
 // ---------------------------------------------------------------------------
 
-// #ifndef NewTone_h
-//   #define NewTone_h
-
-//   #if defined(ARDUINO) && ARDUINO >= 100
-//     #include <Arduino.h>
-//   #else
-//     #include <Arduino.h>
-//   #endif
-
-//   #if defined(__AVR_ATmega8__) || defined(__AVR_ATmega128__)
-//     #define TIMSK1 TIMSK
-//   #endif
-
-//   // void NewTone(uint8_t pin, unsigned long frequency, unsigned long length = 0);
-//   void noNewTone(uint8_t pin = 0);
-
-//   class NewTone {
-//     public:
-//       // static void InitNewTone(uint8_t pin, unsigned long frequency, unsigned long length);
-//     private:
-//   };
-// #endif
-
 #ifndef KBSMC_SRC_SOUND_NEWTONE_H_
 #define KBSMC_SRC_SOUND_NEWTONE_H_
 
@@ -64,12 +41,6 @@
 #else
   #include <Arduino.h>
 #endif
-
-
-
-// #define TIMSK1 TIMSK
-// void NewTone(uint8_t pin, unsigned long frequency, unsigned long length = 0);
-// void noNewTone(uint8_t pin = 0);
 
 class NewTone {
  public:

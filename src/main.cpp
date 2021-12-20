@@ -23,9 +23,7 @@ ISR(TIMER2_OVF_vect) {
     teller++;
     if(!NewTone::noNewToneCheck) {
         if (teller >= ONESECOND) {
-            // PORTB ^= (1<<PORTB0);
             teller = 0;
-            // code
             if (thisNote >= NewTone::notes * 2)
                 thisNote = 0;
             // calculates the duration of each note
@@ -41,7 +39,6 @@ ISR(TIMER2_OVF_vect) {
             NewTone::aNewTone(NewTone::buzzer, NewTone::melody[thisNote], NewTone::noteDuration*0.9);  // timer1 // miss in while
 
             thisNote = thisNote + 2;
-            // code
         }
     }
 }
