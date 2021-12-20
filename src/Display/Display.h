@@ -6,6 +6,11 @@
 #define GRAY 0
 #define YELLOW 1
 #define GREEN 2
+#define CYAN 3
+#define RED 4
+#define PURPLE 5
+#define ORANGE 6
+#define BLUE 7
 
 class Display {
  public:
@@ -23,7 +28,7 @@ class Display {
     static void drawScore();
     static void drawDemoBlocks();
     static Adafruit_ILI9341 tft;
-    static uint16_t colors[3][3];
+    static uint16_t colors[8][3];
 };
 
 #endif  // SRC_DISPLAY_DISPLAY_H_

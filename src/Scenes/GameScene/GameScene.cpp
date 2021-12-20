@@ -2,13 +2,21 @@
 #include "../../Display/Display.h"
 #include "../../Communication/SendQueue.h"
 #include "../../Communication/Frame.h"
-#include "../../Tetris/Square.h"
+#include "../../Tetris/Tetrominoes/OBlock.h"
+#include "../../Tetris/Tetrominoes/TBlock.h"
+#include "../../Tetris/Tetrominoes/IBlock.h"
+#include "../../Tetris/Tetrominoes/JBlock.h"
+#include "../../Tetris/Tetrominoes/LBlock.h"
+#include "../../Tetris/Tetrominoes/SBlock.h"
+#include "../../Tetris/Tetrominoes/ZBlock.h"
 #include "../../Controller/Controller.h"
+#include "../../Tetris/BlockFactory.h" 
+
 volatile int counter = 0;
 volatile bool test = false;
 
 ISR(TIMER1_COMPA_vect){
-    if(counter == 12){
+    if(counter == 6){
         GameScene::gameTickReached = true;
         counter = 0;
     }
@@ -31,7 +39,7 @@ void GameScene::init() {
     Display::drawNextSection();
     Display::drawScore();
     GameScene::initTimer();
-    GameScene::currentBlock = new Square(4,0);
+    GameScene::currentBlock = BlockFactory::createBlock(rand() % 7);
     currentBlock->initBlock();
     GameScene::drawBoard();
 
@@ -65,7 +73,7 @@ void GameScene::drawBoard(){
                 if(lastBoard[i][j] == 1 && GameScene::tetrisBoard[i][j] == 0){
                 Display::fillRect(x,y,20,20,ILI9341_BLACK);
                 } else if (lastBoard[i][j] == 0 && GameScene::tetrisBoard[i][j] == 1) {
-                    Display::drawTetrisBlock(x,y,1);
+                    Display::drawTetrisBlock(x,y,currentBlock->blockColor);
                 }             
                 x += 20;
             }
@@ -97,7 +105,7 @@ void GameScene::initTimer() {
     TCCR1A = 0;
     TCCR1B |= (1 << CS12)|(1<<CS10)|(1<<WGM12);
     TCCR1C = 0;
-    OCR1A = (15624/24);
+    OCR1A = (15624/18);
     TCNT1 = 0;
     TIMSK1 |= (1<<OCIE1A);
 }
@@ -130,7 +138,7 @@ void GameScene::drawScene() {
     }
     if(!GameScene::blockIsMoving) {
         delete GameScene::currentBlock;
-        GameScene::currentBlock = new Square(4,0);
+        GameScene::currentBlock = BlockFactory::createBlock(rand() % 7);
         GameScene::currentBlock->initBlock();
         blockIsMoving = true;
         GameScene::gameTickReached = false;

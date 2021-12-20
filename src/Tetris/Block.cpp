@@ -1,4 +1,5 @@
 #include "../Scenes/GameScene/GameScene.h"
+#include "../Display/Display.h"
 #include "Block.h"
 #include "HardwareSerial.h"
 
@@ -11,6 +12,7 @@ Block::Block(int xPos, int yPos){
         blockArray[i][0] = 0;
         blockArray[i][1] = 0;
     }
+    this->blockColor = YELLOW;
 }
 
 void Block::initBlock(){
@@ -93,6 +95,9 @@ void Block::moveSideways(int direction){
 }
 
 Block::~Block(){
+    for(int i = 0; i < 4; i++){
+        delete[] Block::blockArray[i];
+    }
     delete[] Block::blockArray;
 }
 

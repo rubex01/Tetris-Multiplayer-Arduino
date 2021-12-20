@@ -106,7 +106,7 @@ CMakeFiles/upload_eeprom.dir/all: CMakeFiles/eeprom.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/upload_eeprom.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles 22
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/upload_eeprom.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles 0
 .PHONY : CMakeFiles/upload_eeprom.dir/rule
@@ -133,7 +133,7 @@ CMakeFiles/upload.dir/all: CMakeFiles/hex.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/upload.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles 22
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/upload.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles 0
 .PHONY : CMakeFiles/upload.dir/rule
@@ -160,7 +160,7 @@ CMakeFiles/disasm.dir/all: CMakeFiles/KBS.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/disasm.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles 22
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/disasm.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles 0
 .PHONY : CMakeFiles/disasm.dir/rule
@@ -187,7 +187,7 @@ CMakeFiles/eeprom.dir/all: CMakeFiles/strip.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/eeprom.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles 22
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/eeprom.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles 0
 .PHONY : CMakeFiles/eeprom.dir/rule
@@ -214,7 +214,7 @@ CMakeFiles/hex.dir/all: CMakeFiles/strip.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/hex.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles 22
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/hex.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles 0
 .PHONY : CMakeFiles/hex.dir/rule
@@ -241,7 +241,7 @@ CMakeFiles/strip.dir/all: CMakeFiles/KBS.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/strip.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles 22
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/strip.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles 0
 .PHONY : CMakeFiles/strip.dir/rule
@@ -263,12 +263,12 @@ CMakeFiles/strip.dir/clean:
 CMakeFiles/KBS.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15 "Built target KBS"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22 "Built target KBS"
 .PHONY : CMakeFiles/KBS.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/KBS.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles 22
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/KBS.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles 0
 .PHONY : CMakeFiles/KBS.dir/rule

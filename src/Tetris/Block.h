@@ -12,6 +12,7 @@ class Block {
    void reset(int direction);
    bool checkBlock();
    int** blockArray;
+   int blockColor;
 
  protected:
    int xPos;

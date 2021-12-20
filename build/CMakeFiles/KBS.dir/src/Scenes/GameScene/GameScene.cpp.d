@@ -23,6 +23,14 @@ CMakeFiles/KBS.dir/src/Scenes/GameScene/GameScene.cpp.obj: \
  /home/martijn/Arduino/include/arduino/Adafruit_SPITFT_Macros.h \
  /home/martijn/Documents/GitHub/kbsmc/src/Scenes/GameScene/../../Communication/SendQueue.h \
  /home/martijn/Documents/GitHub/kbsmc/src/Scenes/GameScene/../../Communication/Frame.h \
- /home/martijn/Documents/GitHub/kbsmc/src/Scenes/GameScene/../../Tetris/Square.h \
- /home/martijn/Documents/GitHub/kbsmc/src/Scenes/GameScene/../../Tetris/Block.h \
- /home/martijn/Documents/GitHub/kbsmc/src/Scenes/GameScene/../../Controller/Controller.h
+ /home/martijn/Documents/GitHub/kbsmc/src/Scenes/GameScene/../../Tetris/Tetrominoes/OBlock.h \
+ /home/martijn/Documents/GitHub/kbsmc/src/Scenes/GameScene/../../Tetris/Tetrominoes/../Block.h \
+ /home/martijn/Documents/GitHub/kbsmc/src/Scenes/GameScene/../../Tetris/Tetrominoes/TBlock.h \
+ /home/martijn/Documents/GitHub/kbsmc/src/Scenes/GameScene/../../Tetris/Tetrominoes/IBlock.h \
+ /home/martijn/Documents/GitHub/kbsmc/src/Scenes/GameScene/../../Tetris/Tetrominoes/JBlock.h \
+ /home/martijn/Documents/GitHub/kbsmc/src/Scenes/GameScene/../../Tetris/Tetrominoes/LBlock.h \
+ /home/martijn/Documents/GitHub/kbsmc/src/Scenes/GameScene/../../Tetris/Tetrominoes/SBlock.h \
+ /home/martijn/Documents/GitHub/kbsmc/src/Scenes/GameScene/../../Tetris/Tetrominoes/ZBlock.h \
+ /home/martijn/Documents/GitHub/kbsmc/src/Scenes/GameScene/../../Controller/Controller.h \
+ /home/martijn/Documents/GitHub/kbsmc/src/Scenes/GameScene/../../Tetris/BlockFactory.h \
+ /home/martijn/Documents/GitHub/kbsmc/src/Scenes/GameScene/../../Tetris/Block.h

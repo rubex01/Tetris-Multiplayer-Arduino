@@ -141,22 +141,113 @@ CMakeFiles/KBS.dir/src/Tetris/Block.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/KBS.dir/src/Tetris/Block.cpp.s"
 	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/martijn/Documents/GitHub/kbsmc/src/Tetris/Block.cpp -o CMakeFiles/KBS.dir/src/Tetris/Block.cpp.s
 
-CMakeFiles/KBS.dir/src/Tetris/Square.cpp.obj: CMakeFiles/KBS.dir/flags.make
-CMakeFiles/KBS.dir/src/Tetris/Square.cpp.obj: ../src/Tetris/Square.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/KBS.dir/src/Tetris/Square.cpp.obj"
-	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KBS.dir/src/Tetris/Square.cpp.obj -c /home/martijn/Documents/GitHub/kbsmc/src/Tetris/Square.cpp
+CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/OBlock.cpp.obj: CMakeFiles/KBS.dir/flags.make
+CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/OBlock.cpp.obj: ../src/Tetris/Tetrominoes/OBlock.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/OBlock.cpp.obj"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/OBlock.cpp.obj -c /home/martijn/Documents/GitHub/kbsmc/src/Tetris/Tetrominoes/OBlock.cpp
 
-CMakeFiles/KBS.dir/src/Tetris/Square.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/KBS.dir/src/Tetris/Square.cpp.i"
-	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/martijn/Documents/GitHub/kbsmc/src/Tetris/Square.cpp > CMakeFiles/KBS.dir/src/Tetris/Square.cpp.i
+CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/OBlock.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/OBlock.cpp.i"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/martijn/Documents/GitHub/kbsmc/src/Tetris/Tetrominoes/OBlock.cpp > CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/OBlock.cpp.i
 
-CMakeFiles/KBS.dir/src/Tetris/Square.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/KBS.dir/src/Tetris/Square.cpp.s"
-	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/martijn/Documents/GitHub/kbsmc/src/Tetris/Square.cpp -o CMakeFiles/KBS.dir/src/Tetris/Square.cpp.s
+CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/OBlock.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/OBlock.cpp.s"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/martijn/Documents/GitHub/kbsmc/src/Tetris/Tetrominoes/OBlock.cpp -o CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/OBlock.cpp.s
+
+CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/TBlock.cpp.obj: CMakeFiles/KBS.dir/flags.make
+CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/TBlock.cpp.obj: ../src/Tetris/Tetrominoes/TBlock.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/TBlock.cpp.obj"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/TBlock.cpp.obj -c /home/martijn/Documents/GitHub/kbsmc/src/Tetris/Tetrominoes/TBlock.cpp
+
+CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/TBlock.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/TBlock.cpp.i"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/martijn/Documents/GitHub/kbsmc/src/Tetris/Tetrominoes/TBlock.cpp > CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/TBlock.cpp.i
+
+CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/TBlock.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/TBlock.cpp.s"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/martijn/Documents/GitHub/kbsmc/src/Tetris/Tetrominoes/TBlock.cpp -o CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/TBlock.cpp.s
+
+CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/IBlock.cpp.obj: CMakeFiles/KBS.dir/flags.make
+CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/IBlock.cpp.obj: ../src/Tetris/Tetrominoes/IBlock.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/IBlock.cpp.obj"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/IBlock.cpp.obj -c /home/martijn/Documents/GitHub/kbsmc/src/Tetris/Tetrominoes/IBlock.cpp
+
+CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/IBlock.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/IBlock.cpp.i"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/martijn/Documents/GitHub/kbsmc/src/Tetris/Tetrominoes/IBlock.cpp > CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/IBlock.cpp.i
+
+CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/IBlock.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/IBlock.cpp.s"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/martijn/Documents/GitHub/kbsmc/src/Tetris/Tetrominoes/IBlock.cpp -o CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/IBlock.cpp.s
+
+CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/JBlock.cpp.obj: CMakeFiles/KBS.dir/flags.make
+CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/JBlock.cpp.obj: ../src/Tetris/Tetrominoes/JBlock.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/JBlock.cpp.obj"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/JBlock.cpp.obj -c /home/martijn/Documents/GitHub/kbsmc/src/Tetris/Tetrominoes/JBlock.cpp
+
+CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/JBlock.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/JBlock.cpp.i"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/martijn/Documents/GitHub/kbsmc/src/Tetris/Tetrominoes/JBlock.cpp > CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/JBlock.cpp.i
+
+CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/JBlock.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/JBlock.cpp.s"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/martijn/Documents/GitHub/kbsmc/src/Tetris/Tetrominoes/JBlock.cpp -o CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/JBlock.cpp.s
+
+CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/LBlock.cpp.obj: CMakeFiles/KBS.dir/flags.make
+CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/LBlock.cpp.obj: ../src/Tetris/Tetrominoes/LBlock.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/LBlock.cpp.obj"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/LBlock.cpp.obj -c /home/martijn/Documents/GitHub/kbsmc/src/Tetris/Tetrominoes/LBlock.cpp
+
+CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/LBlock.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/LBlock.cpp.i"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/martijn/Documents/GitHub/kbsmc/src/Tetris/Tetrominoes/LBlock.cpp > CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/LBlock.cpp.i
+
+CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/LBlock.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/LBlock.cpp.s"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/martijn/Documents/GitHub/kbsmc/src/Tetris/Tetrominoes/LBlock.cpp -o CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/LBlock.cpp.s
+
+CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/SBlock.cpp.obj: CMakeFiles/KBS.dir/flags.make
+CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/SBlock.cpp.obj: ../src/Tetris/Tetrominoes/SBlock.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/SBlock.cpp.obj"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/SBlock.cpp.obj -c /home/martijn/Documents/GitHub/kbsmc/src/Tetris/Tetrominoes/SBlock.cpp
+
+CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/SBlock.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/SBlock.cpp.i"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/martijn/Documents/GitHub/kbsmc/src/Tetris/Tetrominoes/SBlock.cpp > CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/SBlock.cpp.i
+
+CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/SBlock.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/SBlock.cpp.s"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/martijn/Documents/GitHub/kbsmc/src/Tetris/Tetrominoes/SBlock.cpp -o CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/SBlock.cpp.s
+
+CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/ZBlock.cpp.obj: CMakeFiles/KBS.dir/flags.make
+CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/ZBlock.cpp.obj: ../src/Tetris/Tetrominoes/ZBlock.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/ZBlock.cpp.obj"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/ZBlock.cpp.obj -c /home/martijn/Documents/GitHub/kbsmc/src/Tetris/Tetrominoes/ZBlock.cpp
+
+CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/ZBlock.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/ZBlock.cpp.i"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/martijn/Documents/GitHub/kbsmc/src/Tetris/Tetrominoes/ZBlock.cpp > CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/ZBlock.cpp.i
+
+CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/ZBlock.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/ZBlock.cpp.s"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/martijn/Documents/GitHub/kbsmc/src/Tetris/Tetrominoes/ZBlock.cpp -o CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/ZBlock.cpp.s
+
+CMakeFiles/KBS.dir/src/Tetris/BlockFactory.cpp.obj: CMakeFiles/KBS.dir/flags.make
+CMakeFiles/KBS.dir/src/Tetris/BlockFactory.cpp.obj: ../src/Tetris/BlockFactory.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/KBS.dir/src/Tetris/BlockFactory.cpp.obj"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KBS.dir/src/Tetris/BlockFactory.cpp.obj -c /home/martijn/Documents/GitHub/kbsmc/src/Tetris/BlockFactory.cpp
+
+CMakeFiles/KBS.dir/src/Tetris/BlockFactory.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/KBS.dir/src/Tetris/BlockFactory.cpp.i"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/martijn/Documents/GitHub/kbsmc/src/Tetris/BlockFactory.cpp > CMakeFiles/KBS.dir/src/Tetris/BlockFactory.cpp.i
+
+CMakeFiles/KBS.dir/src/Tetris/BlockFactory.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/KBS.dir/src/Tetris/BlockFactory.cpp.s"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/martijn/Documents/GitHub/kbsmc/src/Tetris/BlockFactory.cpp -o CMakeFiles/KBS.dir/src/Tetris/BlockFactory.cpp.s
 
 CMakeFiles/KBS.dir/src/Communication/IRCommunication.cpp.obj: CMakeFiles/KBS.dir/flags.make
 CMakeFiles/KBS.dir/src/Communication/IRCommunication.cpp.obj: ../src/Communication/IRCommunication.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/KBS.dir/src/Communication/IRCommunication.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/KBS.dir/src/Communication/IRCommunication.cpp.obj"
 	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KBS.dir/src/Communication/IRCommunication.cpp.obj -c /home/martijn/Documents/GitHub/kbsmc/src/Communication/IRCommunication.cpp
 
 CMakeFiles/KBS.dir/src/Communication/IRCommunication.cpp.i: cmake_force
@@ -169,7 +260,7 @@ CMakeFiles/KBS.dir/src/Communication/IRCommunication.cpp.s: cmake_force
 
 CMakeFiles/KBS.dir/src/Communication/SendQueue.cpp.obj: CMakeFiles/KBS.dir/flags.make
 CMakeFiles/KBS.dir/src/Communication/SendQueue.cpp.obj: ../src/Communication/SendQueue.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/KBS.dir/src/Communication/SendQueue.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/KBS.dir/src/Communication/SendQueue.cpp.obj"
 	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KBS.dir/src/Communication/SendQueue.cpp.obj -c /home/martijn/Documents/GitHub/kbsmc/src/Communication/SendQueue.cpp
 
 CMakeFiles/KBS.dir/src/Communication/SendQueue.cpp.i: cmake_force
@@ -182,7 +273,7 @@ CMakeFiles/KBS.dir/src/Communication/SendQueue.cpp.s: cmake_force
 
 CMakeFiles/KBS.dir/src/Communication/ReceivedData.cpp.obj: CMakeFiles/KBS.dir/flags.make
 CMakeFiles/KBS.dir/src/Communication/ReceivedData.cpp.obj: ../src/Communication/ReceivedData.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/KBS.dir/src/Communication/ReceivedData.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/KBS.dir/src/Communication/ReceivedData.cpp.obj"
 	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KBS.dir/src/Communication/ReceivedData.cpp.obj -c /home/martijn/Documents/GitHub/kbsmc/src/Communication/ReceivedData.cpp
 
 CMakeFiles/KBS.dir/src/Communication/ReceivedData.cpp.i: cmake_force
@@ -195,7 +286,7 @@ CMakeFiles/KBS.dir/src/Communication/ReceivedData.cpp.s: cmake_force
 
 CMakeFiles/KBS.dir/src/Communication/Frame.cpp.obj: CMakeFiles/KBS.dir/flags.make
 CMakeFiles/KBS.dir/src/Communication/Frame.cpp.obj: ../src/Communication/Frame.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/KBS.dir/src/Communication/Frame.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/KBS.dir/src/Communication/Frame.cpp.obj"
 	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KBS.dir/src/Communication/Frame.cpp.obj -c /home/martijn/Documents/GitHub/kbsmc/src/Communication/Frame.cpp
 
 CMakeFiles/KBS.dir/src/Communication/Frame.cpp.i: cmake_force
@@ -208,7 +299,7 @@ CMakeFiles/KBS.dir/src/Communication/Frame.cpp.s: cmake_force
 
 CMakeFiles/KBS.dir/src/Scenes/Scene.cpp.obj: CMakeFiles/KBS.dir/flags.make
 CMakeFiles/KBS.dir/src/Scenes/Scene.cpp.obj: ../src/Scenes/Scene.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/KBS.dir/src/Scenes/Scene.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/KBS.dir/src/Scenes/Scene.cpp.obj"
 	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KBS.dir/src/Scenes/Scene.cpp.obj -c /home/martijn/Documents/GitHub/kbsmc/src/Scenes/Scene.cpp
 
 CMakeFiles/KBS.dir/src/Scenes/Scene.cpp.i: cmake_force
@@ -221,7 +312,7 @@ CMakeFiles/KBS.dir/src/Scenes/Scene.cpp.s: cmake_force
 
 CMakeFiles/KBS.dir/src/Scenes/StartScene/StartScene.cpp.obj: CMakeFiles/KBS.dir/flags.make
 CMakeFiles/KBS.dir/src/Scenes/StartScene/StartScene.cpp.obj: ../src/Scenes/StartScene/StartScene.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/KBS.dir/src/Scenes/StartScene/StartScene.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/KBS.dir/src/Scenes/StartScene/StartScene.cpp.obj"
 	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KBS.dir/src/Scenes/StartScene/StartScene.cpp.obj -c /home/martijn/Documents/GitHub/kbsmc/src/Scenes/StartScene/StartScene.cpp
 
 CMakeFiles/KBS.dir/src/Scenes/StartScene/StartScene.cpp.i: cmake_force
@@ -234,7 +325,7 @@ CMakeFiles/KBS.dir/src/Scenes/StartScene/StartScene.cpp.s: cmake_force
 
 CMakeFiles/KBS.dir/src/Scenes/LoseScene/LoseScene.cpp.obj: CMakeFiles/KBS.dir/flags.make
 CMakeFiles/KBS.dir/src/Scenes/LoseScene/LoseScene.cpp.obj: ../src/Scenes/LoseScene/LoseScene.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/KBS.dir/src/Scenes/LoseScene/LoseScene.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/KBS.dir/src/Scenes/LoseScene/LoseScene.cpp.obj"
 	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KBS.dir/src/Scenes/LoseScene/LoseScene.cpp.obj -c /home/martijn/Documents/GitHub/kbsmc/src/Scenes/LoseScene/LoseScene.cpp
 
 CMakeFiles/KBS.dir/src/Scenes/LoseScene/LoseScene.cpp.i: cmake_force
@@ -247,7 +338,7 @@ CMakeFiles/KBS.dir/src/Scenes/LoseScene/LoseScene.cpp.s: cmake_force
 
 CMakeFiles/KBS.dir/src/Scenes/WinScene/WinScene.cpp.obj: CMakeFiles/KBS.dir/flags.make
 CMakeFiles/KBS.dir/src/Scenes/WinScene/WinScene.cpp.obj: ../src/Scenes/WinScene/WinScene.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/KBS.dir/src/Scenes/WinScene/WinScene.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/KBS.dir/src/Scenes/WinScene/WinScene.cpp.obj"
 	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KBS.dir/src/Scenes/WinScene/WinScene.cpp.obj -c /home/martijn/Documents/GitHub/kbsmc/src/Scenes/WinScene/WinScene.cpp
 
 CMakeFiles/KBS.dir/src/Scenes/WinScene/WinScene.cpp.i: cmake_force
@@ -265,7 +356,14 @@ KBS_OBJECTS = \
 "CMakeFiles/KBS.dir/src/Display/Display.cpp.obj" \
 "CMakeFiles/KBS.dir/src/Scenes/GameScene/GameScene.cpp.obj" \
 "CMakeFiles/KBS.dir/src/Tetris/Block.cpp.obj" \
-"CMakeFiles/KBS.dir/src/Tetris/Square.cpp.obj" \
+"CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/OBlock.cpp.obj" \
+"CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/TBlock.cpp.obj" \
+"CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/IBlock.cpp.obj" \
+"CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/JBlock.cpp.obj" \
+"CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/LBlock.cpp.obj" \
+"CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/SBlock.cpp.obj" \
+"CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/ZBlock.cpp.obj" \
+"CMakeFiles/KBS.dir/src/Tetris/BlockFactory.cpp.obj" \
 "CMakeFiles/KBS.dir/src/Communication/IRCommunication.cpp.obj" \
 "CMakeFiles/KBS.dir/src/Communication/SendQueue.cpp.obj" \
 "CMakeFiles/KBS.dir/src/Communication/ReceivedData.cpp.obj" \
@@ -283,7 +381,14 @@ KBS.elf: CMakeFiles/KBS.dir/src/Controller/Controller.cpp.obj
 KBS.elf: CMakeFiles/KBS.dir/src/Display/Display.cpp.obj
 KBS.elf: CMakeFiles/KBS.dir/src/Scenes/GameScene/GameScene.cpp.obj
 KBS.elf: CMakeFiles/KBS.dir/src/Tetris/Block.cpp.obj
-KBS.elf: CMakeFiles/KBS.dir/src/Tetris/Square.cpp.obj
+KBS.elf: CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/OBlock.cpp.obj
+KBS.elf: CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/TBlock.cpp.obj
+KBS.elf: CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/IBlock.cpp.obj
+KBS.elf: CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/JBlock.cpp.obj
+KBS.elf: CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/LBlock.cpp.obj
+KBS.elf: CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/SBlock.cpp.obj
+KBS.elf: CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/ZBlock.cpp.obj
+KBS.elf: CMakeFiles/KBS.dir/src/Tetris/BlockFactory.cpp.obj
 KBS.elf: CMakeFiles/KBS.dir/src/Communication/IRCommunication.cpp.obj
 KBS.elf: CMakeFiles/KBS.dir/src/Communication/SendQueue.cpp.obj
 KBS.elf: CMakeFiles/KBS.dir/src/Communication/ReceivedData.cpp.obj
@@ -294,7 +399,7 @@ KBS.elf: CMakeFiles/KBS.dir/src/Scenes/LoseScene/LoseScene.cpp.obj
 KBS.elf: CMakeFiles/KBS.dir/src/Scenes/WinScene/WinScene.cpp.obj
 KBS.elf: CMakeFiles/KBS.dir/build.make
 KBS.elf: CMakeFiles/KBS.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking CXX executable KBS.elf"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Linking CXX executable KBS.elf"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/KBS.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

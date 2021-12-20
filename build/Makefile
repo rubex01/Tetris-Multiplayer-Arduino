@@ -544,32 +544,221 @@ src/Tetris/Block.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Tetris/Block.cpp.s
 .PHONY : src/Tetris/Block.cpp.s
 
-src/Tetris/Square.obj: src/Tetris/Square.cpp.obj
+src/Tetris/BlockFactory.obj: src/Tetris/BlockFactory.cpp.obj
 
-.PHONY : src/Tetris/Square.obj
+.PHONY : src/Tetris/BlockFactory.obj
 
 # target to build an object file
-src/Tetris/Square.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Tetris/Square.cpp.obj
-.PHONY : src/Tetris/Square.cpp.obj
+src/Tetris/BlockFactory.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Tetris/BlockFactory.cpp.obj
+.PHONY : src/Tetris/BlockFactory.cpp.obj
 
-src/Tetris/Square.i: src/Tetris/Square.cpp.i
+src/Tetris/BlockFactory.i: src/Tetris/BlockFactory.cpp.i
 
-.PHONY : src/Tetris/Square.i
+.PHONY : src/Tetris/BlockFactory.i
 
 # target to preprocess a source file
-src/Tetris/Square.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Tetris/Square.cpp.i
-.PHONY : src/Tetris/Square.cpp.i
+src/Tetris/BlockFactory.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Tetris/BlockFactory.cpp.i
+.PHONY : src/Tetris/BlockFactory.cpp.i
 
-src/Tetris/Square.s: src/Tetris/Square.cpp.s
+src/Tetris/BlockFactory.s: src/Tetris/BlockFactory.cpp.s
 
-.PHONY : src/Tetris/Square.s
+.PHONY : src/Tetris/BlockFactory.s
 
 # target to generate assembly for a file
-src/Tetris/Square.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Tetris/Square.cpp.s
-.PHONY : src/Tetris/Square.cpp.s
+src/Tetris/BlockFactory.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Tetris/BlockFactory.cpp.s
+.PHONY : src/Tetris/BlockFactory.cpp.s
+
+src/Tetris/Tetrominoes/IBlock.obj: src/Tetris/Tetrominoes/IBlock.cpp.obj
+
+.PHONY : src/Tetris/Tetrominoes/IBlock.obj
+
+# target to build an object file
+src/Tetris/Tetrominoes/IBlock.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/IBlock.cpp.obj
+.PHONY : src/Tetris/Tetrominoes/IBlock.cpp.obj
+
+src/Tetris/Tetrominoes/IBlock.i: src/Tetris/Tetrominoes/IBlock.cpp.i
+
+.PHONY : src/Tetris/Tetrominoes/IBlock.i
+
+# target to preprocess a source file
+src/Tetris/Tetrominoes/IBlock.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/IBlock.cpp.i
+.PHONY : src/Tetris/Tetrominoes/IBlock.cpp.i
+
+src/Tetris/Tetrominoes/IBlock.s: src/Tetris/Tetrominoes/IBlock.cpp.s
+
+.PHONY : src/Tetris/Tetrominoes/IBlock.s
+
+# target to generate assembly for a file
+src/Tetris/Tetrominoes/IBlock.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/IBlock.cpp.s
+.PHONY : src/Tetris/Tetrominoes/IBlock.cpp.s
+
+src/Tetris/Tetrominoes/JBlock.obj: src/Tetris/Tetrominoes/JBlock.cpp.obj
+
+.PHONY : src/Tetris/Tetrominoes/JBlock.obj
+
+# target to build an object file
+src/Tetris/Tetrominoes/JBlock.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/JBlock.cpp.obj
+.PHONY : src/Tetris/Tetrominoes/JBlock.cpp.obj
+
+src/Tetris/Tetrominoes/JBlock.i: src/Tetris/Tetrominoes/JBlock.cpp.i
+
+.PHONY : src/Tetris/Tetrominoes/JBlock.i
+
+# target to preprocess a source file
+src/Tetris/Tetrominoes/JBlock.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/JBlock.cpp.i
+.PHONY : src/Tetris/Tetrominoes/JBlock.cpp.i
+
+src/Tetris/Tetrominoes/JBlock.s: src/Tetris/Tetrominoes/JBlock.cpp.s
+
+.PHONY : src/Tetris/Tetrominoes/JBlock.s
+
+# target to generate assembly for a file
+src/Tetris/Tetrominoes/JBlock.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/JBlock.cpp.s
+.PHONY : src/Tetris/Tetrominoes/JBlock.cpp.s
+
+src/Tetris/Tetrominoes/LBlock.obj: src/Tetris/Tetrominoes/LBlock.cpp.obj
+
+.PHONY : src/Tetris/Tetrominoes/LBlock.obj
+
+# target to build an object file
+src/Tetris/Tetrominoes/LBlock.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/LBlock.cpp.obj
+.PHONY : src/Tetris/Tetrominoes/LBlock.cpp.obj
+
+src/Tetris/Tetrominoes/LBlock.i: src/Tetris/Tetrominoes/LBlock.cpp.i
+
+.PHONY : src/Tetris/Tetrominoes/LBlock.i
+
+# target to preprocess a source file
+src/Tetris/Tetrominoes/LBlock.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/LBlock.cpp.i
+.PHONY : src/Tetris/Tetrominoes/LBlock.cpp.i
+
+src/Tetris/Tetrominoes/LBlock.s: src/Tetris/Tetrominoes/LBlock.cpp.s
+
+.PHONY : src/Tetris/Tetrominoes/LBlock.s
+
+# target to generate assembly for a file
+src/Tetris/Tetrominoes/LBlock.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/LBlock.cpp.s
+.PHONY : src/Tetris/Tetrominoes/LBlock.cpp.s
+
+src/Tetris/Tetrominoes/OBlock.obj: src/Tetris/Tetrominoes/OBlock.cpp.obj
+
+.PHONY : src/Tetris/Tetrominoes/OBlock.obj
+
+# target to build an object file
+src/Tetris/Tetrominoes/OBlock.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/OBlock.cpp.obj
+.PHONY : src/Tetris/Tetrominoes/OBlock.cpp.obj
+
+src/Tetris/Tetrominoes/OBlock.i: src/Tetris/Tetrominoes/OBlock.cpp.i
+
+.PHONY : src/Tetris/Tetrominoes/OBlock.i
+
+# target to preprocess a source file
+src/Tetris/Tetrominoes/OBlock.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/OBlock.cpp.i
+.PHONY : src/Tetris/Tetrominoes/OBlock.cpp.i
+
+src/Tetris/Tetrominoes/OBlock.s: src/Tetris/Tetrominoes/OBlock.cpp.s
+
+.PHONY : src/Tetris/Tetrominoes/OBlock.s
+
+# target to generate assembly for a file
+src/Tetris/Tetrominoes/OBlock.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/OBlock.cpp.s
+.PHONY : src/Tetris/Tetrominoes/OBlock.cpp.s
+
+src/Tetris/Tetrominoes/SBlock.obj: src/Tetris/Tetrominoes/SBlock.cpp.obj
+
+.PHONY : src/Tetris/Tetrominoes/SBlock.obj
+
+# target to build an object file
+src/Tetris/Tetrominoes/SBlock.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/SBlock.cpp.obj
+.PHONY : src/Tetris/Tetrominoes/SBlock.cpp.obj
+
+src/Tetris/Tetrominoes/SBlock.i: src/Tetris/Tetrominoes/SBlock.cpp.i
+
+.PHONY : src/Tetris/Tetrominoes/SBlock.i
+
+# target to preprocess a source file
+src/Tetris/Tetrominoes/SBlock.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/SBlock.cpp.i
+.PHONY : src/Tetris/Tetrominoes/SBlock.cpp.i
+
+src/Tetris/Tetrominoes/SBlock.s: src/Tetris/Tetrominoes/SBlock.cpp.s
+
+.PHONY : src/Tetris/Tetrominoes/SBlock.s
+
+# target to generate assembly for a file
+src/Tetris/Tetrominoes/SBlock.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/SBlock.cpp.s
+.PHONY : src/Tetris/Tetrominoes/SBlock.cpp.s
+
+src/Tetris/Tetrominoes/TBlock.obj: src/Tetris/Tetrominoes/TBlock.cpp.obj
+
+.PHONY : src/Tetris/Tetrominoes/TBlock.obj
+
+# target to build an object file
+src/Tetris/Tetrominoes/TBlock.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/TBlock.cpp.obj
+.PHONY : src/Tetris/Tetrominoes/TBlock.cpp.obj
+
+src/Tetris/Tetrominoes/TBlock.i: src/Tetris/Tetrominoes/TBlock.cpp.i
+
+.PHONY : src/Tetris/Tetrominoes/TBlock.i
+
+# target to preprocess a source file
+src/Tetris/Tetrominoes/TBlock.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/TBlock.cpp.i
+.PHONY : src/Tetris/Tetrominoes/TBlock.cpp.i
+
+src/Tetris/Tetrominoes/TBlock.s: src/Tetris/Tetrominoes/TBlock.cpp.s
+
+.PHONY : src/Tetris/Tetrominoes/TBlock.s
+
+# target to generate assembly for a file
+src/Tetris/Tetrominoes/TBlock.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/TBlock.cpp.s
+.PHONY : src/Tetris/Tetrominoes/TBlock.cpp.s
+
+src/Tetris/Tetrominoes/ZBlock.obj: src/Tetris/Tetrominoes/ZBlock.cpp.obj
+
+.PHONY : src/Tetris/Tetrominoes/ZBlock.obj
+
+# target to build an object file
+src/Tetris/Tetrominoes/ZBlock.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/ZBlock.cpp.obj
+.PHONY : src/Tetris/Tetrominoes/ZBlock.cpp.obj
+
+src/Tetris/Tetrominoes/ZBlock.i: src/Tetris/Tetrominoes/ZBlock.cpp.i
+
+.PHONY : src/Tetris/Tetrominoes/ZBlock.i
+
+# target to preprocess a source file
+src/Tetris/Tetrominoes/ZBlock.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/ZBlock.cpp.i
+.PHONY : src/Tetris/Tetrominoes/ZBlock.cpp.i
+
+src/Tetris/Tetrominoes/ZBlock.s: src/Tetris/Tetrominoes/ZBlock.cpp.s
+
+.PHONY : src/Tetris/Tetrominoes/ZBlock.s
+
+# target to generate assembly for a file
+src/Tetris/Tetrominoes/ZBlock.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/ZBlock.cpp.s
+.PHONY : src/Tetris/Tetrominoes/ZBlock.cpp.s
 
 src/main.obj: src/main.cpp.obj
 
@@ -649,9 +838,30 @@ help:
 	@echo "... src/Tetris/Block.obj"
 	@echo "... src/Tetris/Block.i"
 	@echo "... src/Tetris/Block.s"
-	@echo "... src/Tetris/Square.obj"
-	@echo "... src/Tetris/Square.i"
-	@echo "... src/Tetris/Square.s"
+	@echo "... src/Tetris/BlockFactory.obj"
+	@echo "... src/Tetris/BlockFactory.i"
+	@echo "... src/Tetris/BlockFactory.s"
+	@echo "... src/Tetris/Tetrominoes/IBlock.obj"
+	@echo "... src/Tetris/Tetrominoes/IBlock.i"
+	@echo "... src/Tetris/Tetrominoes/IBlock.s"
+	@echo "... src/Tetris/Tetrominoes/JBlock.obj"
+	@echo "... src/Tetris/Tetrominoes/JBlock.i"
+	@echo "... src/Tetris/Tetrominoes/JBlock.s"
+	@echo "... src/Tetris/Tetrominoes/LBlock.obj"
+	@echo "... src/Tetris/Tetrominoes/LBlock.i"
+	@echo "... src/Tetris/Tetrominoes/LBlock.s"
+	@echo "... src/Tetris/Tetrominoes/OBlock.obj"
+	@echo "... src/Tetris/Tetrominoes/OBlock.i"
+	@echo "... src/Tetris/Tetrominoes/OBlock.s"
+	@echo "... src/Tetris/Tetrominoes/SBlock.obj"
+	@echo "... src/Tetris/Tetrominoes/SBlock.i"
+	@echo "... src/Tetris/Tetrominoes/SBlock.s"
+	@echo "... src/Tetris/Tetrominoes/TBlock.obj"
+	@echo "... src/Tetris/Tetrominoes/TBlock.i"
+	@echo "... src/Tetris/Tetrominoes/TBlock.s"
+	@echo "... src/Tetris/Tetrominoes/ZBlock.obj"
+	@echo "... src/Tetris/Tetrominoes/ZBlock.i"
+	@echo "... src/Tetris/Tetrominoes/ZBlock.s"
 	@echo "... src/main.obj"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

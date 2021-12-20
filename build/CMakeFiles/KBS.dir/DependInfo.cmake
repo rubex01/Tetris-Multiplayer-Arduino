@@ -16,7 +16,14 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/martijn/Documents/GitHub/kbsmc/src/Scenes/StartScene/StartScene.cpp" "/home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles/KBS.dir/src/Scenes/StartScene/StartScene.cpp.obj"
   "/home/martijn/Documents/GitHub/kbsmc/src/Scenes/WinScene/WinScene.cpp" "/home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles/KBS.dir/src/Scenes/WinScene/WinScene.cpp.obj"
   "/home/martijn/Documents/GitHub/kbsmc/src/Tetris/Block.cpp" "/home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles/KBS.dir/src/Tetris/Block.cpp.obj"
-  "/home/martijn/Documents/GitHub/kbsmc/src/Tetris/Square.cpp" "/home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles/KBS.dir/src/Tetris/Square.cpp.obj"
+  "/home/martijn/Documents/GitHub/kbsmc/src/Tetris/BlockFactory.cpp" "/home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles/KBS.dir/src/Tetris/BlockFactory.cpp.obj"
+  "/home/martijn/Documents/GitHub/kbsmc/src/Tetris/Tetrominoes/IBlock.cpp" "/home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/IBlock.cpp.obj"
+  "/home/martijn/Documents/GitHub/kbsmc/src/Tetris/Tetrominoes/JBlock.cpp" "/home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/JBlock.cpp.obj"
+  "/home/martijn/Documents/GitHub/kbsmc/src/Tetris/Tetrominoes/LBlock.cpp" "/home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/LBlock.cpp.obj"
+  "/home/martijn/Documents/GitHub/kbsmc/src/Tetris/Tetrominoes/OBlock.cpp" "/home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/OBlock.cpp.obj"
+  "/home/martijn/Documents/GitHub/kbsmc/src/Tetris/Tetrominoes/SBlock.cpp" "/home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/SBlock.cpp.obj"
+  "/home/martijn/Documents/GitHub/kbsmc/src/Tetris/Tetrominoes/TBlock.cpp" "/home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/TBlock.cpp.obj"
+  "/home/martijn/Documents/GitHub/kbsmc/src/Tetris/Tetrominoes/ZBlock.cpp" "/home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles/KBS.dir/src/Tetris/Tetrominoes/ZBlock.cpp.obj"
   "/home/martijn/Documents/GitHub/kbsmc/src/main.cpp" "/home/martijn/Documents/GitHub/kbsmc/build/CMakeFiles/KBS.dir/src/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
