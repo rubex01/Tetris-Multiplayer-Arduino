@@ -10,7 +10,7 @@
 // Blog: http://arduino.cc/forum/index.php/XXX
 //
 // DISCLAIMER:
-// This software is furnished "as is", without technical support, and with no 
+// This software is furnished "as is", without technical support, and with no
 // warranty, express or implied, as to its usefulness for any purpose.
 //
 // PURPOSE:
@@ -55,8 +55,8 @@
 //   };
 // #endif
 
-#ifndef NEWTONE_H
-#define NEWTONE_H
+#ifndef KBSMC_SRC_SOUND_NEWTONE_H_
+#define KBSMC_SRC_SOUND_NEWTONE_H_
 
 
 #if defined(ARDUINO) && ARDUINO >= 100
@@ -72,22 +72,22 @@
 // void noNewTone(uint8_t pin = 0);
 
 class NewTone {
-  public:
-    static void aNewTone(uint8_t pin, unsigned long frequency, unsigned long length);
-    static void noNewTone(uint8_t pin);
-    static void noNewTone();
+ public:
+  static void aNewTone(uint8_t pin, uint16_t frequency, uint16_t length);
+  static void noNewTone(uint8_t pin);
+  static void noNewTone();
 
-    static uint8_t _pinMask;
-    static unsigned long _nt_time;
-    static volatile uint8_t *_pinOutput;
-    static int tempo;
-    static int buzzer;
-    static int wholenote;
-    static int divider;
-    static int noteDuration;
-    static int notes;
-    static int melody[];
-  private:
+  static bool noNewToneCheck; // Test
+  static uint8_t _pinMask;
+  static uint16_t _nt_time;
+  static volatile uint8_t *_pinOutput;
+  static int tempo;
+  static int buzzer;
+  static int wholenote;
+  static int divider;
+  static int noteDuration;
+  static int notes;
+  static int melody[];
 };
 
-#endif //NEWTONE_H
+#endif  // KBSMC_SRC_SOUND_NEWTONE_H_

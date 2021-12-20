@@ -1,5 +1,5 @@
-#ifndef SRC_COMMUNICATION_FRAME_H_
-#define SRC_COMMUNICATION_FRAME_H_
+#ifndef KBSMC_SRC_COMMUNICATION_FRAME_H_
+#define KBSMC_SRC_COMMUNICATION_FRAME_H_
 
 class Frame {
  public:
@@ -23,4 +23,4 @@ class Frame {
 };
 
 
-#endif  // SRC_COMMUNICATION_FRAME_H_
+#endif  // KBSMC_SRC_COMMUNICATION_FRAME_H_

@@ -1,5 +1,5 @@
-#ifndef SRC_COMMUNICATION_SENDQUEUE_H_
-#define SRC_COMMUNICATION_SENDQUEUE_H_
+#ifndef KBSMC_SRC_COMMUNICATION_SENDQUEUE_H_
+#define KBSMC_SRC_COMMUNICATION_SENDQUEUE_H_
 
 class SendQueue {
  public:
@@ -11,4 +11,4 @@ class SendQueue {
     static uint8_t itemsInQueue[20];
 };
 
-#endif  // SRC_COMMUNICATION_SENDQUEUE_H_
+#endif  // KBSMC_SRC_COMMUNICATION_SENDQUEUE_H_

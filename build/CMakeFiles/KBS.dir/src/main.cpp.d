@@ -12,20 +12,16 @@ CMakeFiles/KBS.dir/src/main.cpp.obj: /home/trezay/KBS2/kbsmc/src/main.cpp \
  /home/trezay/Arduino/include/arduino/pins_arduino.h \
  /home/trezay/Arduino/include/arduino/HardwareSerial.h \
  /home/trezay/KBS2/kbsmc/src/Controller/Controller.h \
- /home/trezay/Arduino/include/arduino/Wire.h \
- /home/trezay/Arduino/include/arduino/Nunchuk.h \
- /home/trezay/KBS2/kbsmc/src/Game/Character.h \
  /home/trezay/KBS2/kbsmc/src/Display/Display.h \
- /home/trezay/Arduino/include/arduino/SPI.h \
- /home/trezay/Arduino/include/arduino/Adafruit_GFX.h \
- /home/trezay/Arduino/include/arduino/gfxfont.h \
  /home/trezay/Arduino/include/arduino/Adafruit_ILI9341.h \
  /home/trezay/Arduino/include/arduino/Adafruit_GFX.h \
+ /home/trezay/Arduino/include/arduino/gfxfont.h \
  /home/trezay/Arduino/include/arduino/Adafruit_SPITFT.h \
+ /home/trezay/Arduino/include/arduino/SPI.h \
  /home/trezay/Arduino/include/arduino/Adafruit_SPITFT_Macros.h \
- /home/trezay/KBS2/kbsmc/src/Display/Display.h \
  /home/trezay/KBS2/kbsmc/src/Communication/IRCommunication.h \
- /home/trezay/KBS2/kbsmc/src/Game/Game.h \
- /home/trezay/KBS2/kbsmc/src/Communication/SendQueue.h \
+ /home/trezay/KBS2/kbsmc/src/Scenes/GameScene/GameScene.h \
+ /home/trezay/KBS2/kbsmc/src/Scenes/GameScene/../Scene.h \
  /home/trezay/KBS2/kbsmc/src/Communication/ReceivedData.h \
- /home/trezay/KBS2/kbsmc/src/Sound/NewTone.h
+ /home/trezay/KBS2/kbsmc/src/Sound/NewTone.h \
+ /home/trezay/KBS2/kbsmc/src/Communication/Frame.h

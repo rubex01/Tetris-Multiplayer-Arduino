@@ -220,6 +220,33 @@ KBS/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/build
 .PHONY : KBS/fast
 
+src/Communication/Frame.obj: src/Communication/Frame.cpp.obj
+
+.PHONY : src/Communication/Frame.obj
+
+# target to build an object file
+src/Communication/Frame.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Communication/Frame.cpp.obj
+.PHONY : src/Communication/Frame.cpp.obj
+
+src/Communication/Frame.i: src/Communication/Frame.cpp.i
+
+.PHONY : src/Communication/Frame.i
+
+# target to preprocess a source file
+src/Communication/Frame.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Communication/Frame.cpp.i
+.PHONY : src/Communication/Frame.cpp.i
+
+src/Communication/Frame.s: src/Communication/Frame.cpp.s
+
+.PHONY : src/Communication/Frame.s
+
+# target to generate assembly for a file
+src/Communication/Frame.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Communication/Frame.cpp.s
+.PHONY : src/Communication/Frame.cpp.s
+
 src/Communication/IRCommunication.obj: src/Communication/IRCommunication.cpp.obj
 
 .PHONY : src/Communication/IRCommunication.obj
@@ -355,59 +382,140 @@ src/Display/Display.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Display/Display.cpp.s
 .PHONY : src/Display/Display.cpp.s
 
-src/Game/Character.obj: src/Game/Character.cpp.obj
+src/Scenes/GameScene/GameScene.obj: src/Scenes/GameScene/GameScene.cpp.obj
 
-.PHONY : src/Game/Character.obj
-
-# target to build an object file
-src/Game/Character.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Game/Character.cpp.obj
-.PHONY : src/Game/Character.cpp.obj
-
-src/Game/Character.i: src/Game/Character.cpp.i
-
-.PHONY : src/Game/Character.i
-
-# target to preprocess a source file
-src/Game/Character.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Game/Character.cpp.i
-.PHONY : src/Game/Character.cpp.i
-
-src/Game/Character.s: src/Game/Character.cpp.s
-
-.PHONY : src/Game/Character.s
-
-# target to generate assembly for a file
-src/Game/Character.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Game/Character.cpp.s
-.PHONY : src/Game/Character.cpp.s
-
-src/Game/Game.obj: src/Game/Game.cpp.obj
-
-.PHONY : src/Game/Game.obj
+.PHONY : src/Scenes/GameScene/GameScene.obj
 
 # target to build an object file
-src/Game/Game.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Game/Game.cpp.obj
-.PHONY : src/Game/Game.cpp.obj
+src/Scenes/GameScene/GameScene.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Scenes/GameScene/GameScene.cpp.obj
+.PHONY : src/Scenes/GameScene/GameScene.cpp.obj
 
-src/Game/Game.i: src/Game/Game.cpp.i
+src/Scenes/GameScene/GameScene.i: src/Scenes/GameScene/GameScene.cpp.i
 
-.PHONY : src/Game/Game.i
+.PHONY : src/Scenes/GameScene/GameScene.i
 
 # target to preprocess a source file
-src/Game/Game.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Game/Game.cpp.i
-.PHONY : src/Game/Game.cpp.i
+src/Scenes/GameScene/GameScene.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Scenes/GameScene/GameScene.cpp.i
+.PHONY : src/Scenes/GameScene/GameScene.cpp.i
 
-src/Game/Game.s: src/Game/Game.cpp.s
+src/Scenes/GameScene/GameScene.s: src/Scenes/GameScene/GameScene.cpp.s
 
-.PHONY : src/Game/Game.s
+.PHONY : src/Scenes/GameScene/GameScene.s
 
 # target to generate assembly for a file
-src/Game/Game.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Game/Game.cpp.s
-.PHONY : src/Game/Game.cpp.s
+src/Scenes/GameScene/GameScene.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Scenes/GameScene/GameScene.cpp.s
+.PHONY : src/Scenes/GameScene/GameScene.cpp.s
+
+src/Scenes/LoseScene/LoseScene.obj: src/Scenes/LoseScene/LoseScene.cpp.obj
+
+.PHONY : src/Scenes/LoseScene/LoseScene.obj
+
+# target to build an object file
+src/Scenes/LoseScene/LoseScene.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Scenes/LoseScene/LoseScene.cpp.obj
+.PHONY : src/Scenes/LoseScene/LoseScene.cpp.obj
+
+src/Scenes/LoseScene/LoseScene.i: src/Scenes/LoseScene/LoseScene.cpp.i
+
+.PHONY : src/Scenes/LoseScene/LoseScene.i
+
+# target to preprocess a source file
+src/Scenes/LoseScene/LoseScene.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Scenes/LoseScene/LoseScene.cpp.i
+.PHONY : src/Scenes/LoseScene/LoseScene.cpp.i
+
+src/Scenes/LoseScene/LoseScene.s: src/Scenes/LoseScene/LoseScene.cpp.s
+
+.PHONY : src/Scenes/LoseScene/LoseScene.s
+
+# target to generate assembly for a file
+src/Scenes/LoseScene/LoseScene.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Scenes/LoseScene/LoseScene.cpp.s
+.PHONY : src/Scenes/LoseScene/LoseScene.cpp.s
+
+src/Scenes/Scene.obj: src/Scenes/Scene.cpp.obj
+
+.PHONY : src/Scenes/Scene.obj
+
+# target to build an object file
+src/Scenes/Scene.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Scenes/Scene.cpp.obj
+.PHONY : src/Scenes/Scene.cpp.obj
+
+src/Scenes/Scene.i: src/Scenes/Scene.cpp.i
+
+.PHONY : src/Scenes/Scene.i
+
+# target to preprocess a source file
+src/Scenes/Scene.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Scenes/Scene.cpp.i
+.PHONY : src/Scenes/Scene.cpp.i
+
+src/Scenes/Scene.s: src/Scenes/Scene.cpp.s
+
+.PHONY : src/Scenes/Scene.s
+
+# target to generate assembly for a file
+src/Scenes/Scene.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Scenes/Scene.cpp.s
+.PHONY : src/Scenes/Scene.cpp.s
+
+src/Scenes/StartScene/StartScene.obj: src/Scenes/StartScene/StartScene.cpp.obj
+
+.PHONY : src/Scenes/StartScene/StartScene.obj
+
+# target to build an object file
+src/Scenes/StartScene/StartScene.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Scenes/StartScene/StartScene.cpp.obj
+.PHONY : src/Scenes/StartScene/StartScene.cpp.obj
+
+src/Scenes/StartScene/StartScene.i: src/Scenes/StartScene/StartScene.cpp.i
+
+.PHONY : src/Scenes/StartScene/StartScene.i
+
+# target to preprocess a source file
+src/Scenes/StartScene/StartScene.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Scenes/StartScene/StartScene.cpp.i
+.PHONY : src/Scenes/StartScene/StartScene.cpp.i
+
+src/Scenes/StartScene/StartScene.s: src/Scenes/StartScene/StartScene.cpp.s
+
+.PHONY : src/Scenes/StartScene/StartScene.s
+
+# target to generate assembly for a file
+src/Scenes/StartScene/StartScene.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Scenes/StartScene/StartScene.cpp.s
+.PHONY : src/Scenes/StartScene/StartScene.cpp.s
+
+src/Scenes/WinScene/WinScene.obj: src/Scenes/WinScene/WinScene.cpp.obj
+
+.PHONY : src/Scenes/WinScene/WinScene.obj
+
+# target to build an object file
+src/Scenes/WinScene/WinScene.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Scenes/WinScene/WinScene.cpp.obj
+.PHONY : src/Scenes/WinScene/WinScene.cpp.obj
+
+src/Scenes/WinScene/WinScene.i: src/Scenes/WinScene/WinScene.cpp.i
+
+.PHONY : src/Scenes/WinScene/WinScene.i
+
+# target to preprocess a source file
+src/Scenes/WinScene/WinScene.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Scenes/WinScene/WinScene.cpp.i
+.PHONY : src/Scenes/WinScene/WinScene.cpp.i
+
+src/Scenes/WinScene/WinScene.s: src/Scenes/WinScene/WinScene.cpp.s
+
+.PHONY : src/Scenes/WinScene/WinScene.s
+
+# target to generate assembly for a file
+src/Scenes/WinScene/WinScene.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KBS.dir/build.make CMakeFiles/KBS.dir/src/Scenes/WinScene/WinScene.cpp.s
+.PHONY : src/Scenes/WinScene/WinScene.cpp.s
 
 src/Sound/NewTone.obj: src/Sound/NewTone.cpp.obj
 
@@ -478,6 +586,9 @@ help:
 	@echo "... upload"
 	@echo "... upload_eeprom"
 	@echo "... KBS"
+	@echo "... src/Communication/Frame.obj"
+	@echo "... src/Communication/Frame.i"
+	@echo "... src/Communication/Frame.s"
 	@echo "... src/Communication/IRCommunication.obj"
 	@echo "... src/Communication/IRCommunication.i"
 	@echo "... src/Communication/IRCommunication.s"
@@ -493,12 +604,21 @@ help:
 	@echo "... src/Display/Display.obj"
 	@echo "... src/Display/Display.i"
 	@echo "... src/Display/Display.s"
-	@echo "... src/Game/Character.obj"
-	@echo "... src/Game/Character.i"
-	@echo "... src/Game/Character.s"
-	@echo "... src/Game/Game.obj"
-	@echo "... src/Game/Game.i"
-	@echo "... src/Game/Game.s"
+	@echo "... src/Scenes/GameScene/GameScene.obj"
+	@echo "... src/Scenes/GameScene/GameScene.i"
+	@echo "... src/Scenes/GameScene/GameScene.s"
+	@echo "... src/Scenes/LoseScene/LoseScene.obj"
+	@echo "... src/Scenes/LoseScene/LoseScene.i"
+	@echo "... src/Scenes/LoseScene/LoseScene.s"
+	@echo "... src/Scenes/Scene.obj"
+	@echo "... src/Scenes/Scene.i"
+	@echo "... src/Scenes/Scene.s"
+	@echo "... src/Scenes/StartScene/StartScene.obj"
+	@echo "... src/Scenes/StartScene/StartScene.i"
+	@echo "... src/Scenes/StartScene/StartScene.s"
+	@echo "... src/Scenes/WinScene/WinScene.obj"
+	@echo "... src/Scenes/WinScene/WinScene.i"
+	@echo "... src/Scenes/WinScene/WinScene.s"
 	@echo "... src/Sound/NewTone.obj"
 	@echo "... src/Sound/NewTone.i"
 	@echo "... src/Sound/NewTone.s"

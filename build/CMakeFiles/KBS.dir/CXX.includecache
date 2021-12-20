@@ -74,10 +74,6 @@ inttypes.h
 Stream.h
 /home/trezay/Arduino/include/arduino/Stream.h
 
-/home/trezay/Arduino/include/arduino/Nunchuk.h
-inttypes.h
--
-
 /home/trezay/Arduino/include/arduino/Print.h
 inttypes.h
 -
@@ -140,12 +136,6 @@ ctype.h
 avr/pgmspace.h
 -
 
-/home/trezay/Arduino/include/arduino/Wire.h
-inttypes.h
--
-Stream.h
-/home/trezay/Arduino/include/arduino/Stream.h
-
 /home/trezay/Arduino/include/arduino/binary.h
 
 /home/trezay/Arduino/include/arduino/gfxfont.h
@@ -154,37 +144,23 @@ Stream.h
 avr/pgmspace.h
 -
 
+/home/trezay/KBS2/kbsmc/src/Communication/Frame.h
+
 /home/trezay/KBS2/kbsmc/src/Communication/IRCommunication.h
 
 /home/trezay/KBS2/kbsmc/src/Communication/ReceivedData.h
 
-/home/trezay/KBS2/kbsmc/src/Communication/SendQueue.h
-
 /home/trezay/KBS2/kbsmc/src/Controller/Controller.h
-avr/io.h
--
-HardwareSerial.h
--
-Wire.h
--
-Arduino.h
--
-Nunchuk.h
-/home/trezay/KBS2/kbsmc/src/Controller/Nunchuk.h
 
 /home/trezay/KBS2/kbsmc/src/Display/Display.h
-SPI.h
-/home/trezay/KBS2/kbsmc/src/Display/SPI.h
-Adafruit_GFX.h
-/home/trezay/KBS2/kbsmc/src/Display/Adafruit_GFX.h
 Adafruit_ILI9341.h
 /home/trezay/KBS2/kbsmc/src/Display/Adafruit_ILI9341.h
-Display.h
-/home/trezay/KBS2/kbsmc/src/Display/Display.h
 
-/home/trezay/KBS2/kbsmc/src/Game/Character.h
+/home/trezay/KBS2/kbsmc/src/Scenes/GameScene/GameScene.h
+../Scene.h
+/home/trezay/KBS2/kbsmc/src/Scenes/Scene.h
 
-/home/trezay/KBS2/kbsmc/src/Game/Game.h
+/home/trezay/KBS2/kbsmc/src/Scenes/Scene.h
 
 /home/trezay/KBS2/kbsmc/src/Sound/NewTone.h
 Arduino.h
@@ -194,27 +170,23 @@ Arduino.h
 
 /home/trezay/KBS2/kbsmc/src/main.cpp
 Arduino.h
--
+/home/trezay/KBS2/kbsmc/src/Arduino.h
 avr/interrupt.h
--
-avr/io.h
 -
 HardwareSerial.h
 /home/trezay/KBS2/kbsmc/src/HardwareSerial.h
 Controller/Controller.h
 /home/trezay/KBS2/kbsmc/src/Controller/Controller.h
-Game/Character.h
-/home/trezay/KBS2/kbsmc/src/Game/Character.h
 Display/Display.h
 /home/trezay/KBS2/kbsmc/src/Display/Display.h
 Communication/IRCommunication.h
 /home/trezay/KBS2/kbsmc/src/Communication/IRCommunication.h
-Game/Game.h
-/home/trezay/KBS2/kbsmc/src/Game/Game.h
-Communication/SendQueue.h
-/home/trezay/KBS2/kbsmc/src/Communication/SendQueue.h
+Scenes/GameScene/GameScene.h
+/home/trezay/KBS2/kbsmc/src/Scenes/GameScene/GameScene.h
 Communication/ReceivedData.h
 /home/trezay/KBS2/kbsmc/src/Communication/ReceivedData.h
 Sound/NewTone.h
 /home/trezay/KBS2/kbsmc/src/Sound/NewTone.h
+Communication/Frame.h
+/home/trezay/KBS2/kbsmc/src/Communication/Frame.h
 

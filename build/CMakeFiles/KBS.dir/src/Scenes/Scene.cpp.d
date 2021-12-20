@@ -1,6 +1,7 @@
-CMakeFiles/KBS.dir/src/Display/Display.cpp.obj: \
- /home/trezay/KBS2/kbsmc/src/Display/Display.cpp \
- /home/trezay/KBS2/kbsmc/src/Display/Display.h \
+CMakeFiles/KBS.dir/src/Scenes/Scene.cpp.obj: \
+ /home/trezay/KBS2/kbsmc/src/Scenes/Scene.cpp \
+ /home/trezay/KBS2/kbsmc/src/Scenes/Scene.h \
+ /home/trezay/KBS2/kbsmc/src/Scenes/../Display/Display.h \
  /home/trezay/Arduino/include/arduino/Adafruit_ILI9341.h \
  /home/trezay/Arduino/include/arduino/Adafruit_GFX.h \
  /home/trezay/Arduino/include/arduino/Arduino.h \
@@ -17,4 +18,12 @@ CMakeFiles/KBS.dir/src/Display/Display.cpp.obj: \
  /home/trezay/Arduino/include/arduino/gfxfont.h \
  /home/trezay/Arduino/include/arduino/Adafruit_SPITFT.h \
  /home/trezay/Arduino/include/arduino/SPI.h \
- /home/trezay/Arduino/include/arduino/Adafruit_SPITFT_Macros.h
+ /home/trezay/Arduino/include/arduino/Adafruit_SPITFT_Macros.h \
+ /home/trezay/KBS2/kbsmc/src/Scenes/StartScene/StartScene.h \
+ /home/trezay/KBS2/kbsmc/src/Scenes/StartScene/../Scene.h \
+ /home/trezay/KBS2/kbsmc/src/Scenes/GameScene/GameScene.h \
+ /home/trezay/KBS2/kbsmc/src/Scenes/GameScene/../Scene.h \
+ /home/trezay/KBS2/kbsmc/src/Scenes/WinScene/WinScene.h \
+ /home/trezay/KBS2/kbsmc/src/Scenes/WinScene/../Scene.h \
+ /home/trezay/KBS2/kbsmc/src/Scenes/LoseScene/LoseScene.h \
+ /home/trezay/KBS2/kbsmc/src/Scenes/LoseScene/../Scene.h

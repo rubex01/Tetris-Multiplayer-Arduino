@@ -1,8 +1,10 @@
-CMakeFiles/KBS.dir/src/Game/Game.cpp.obj: \
- /home/trezay/KBS2/kbsmc/src/Game/Game.cpp \
- /home/trezay/KBS2/kbsmc/src/Game/Game.h \
- /home/trezay/KBS2/kbsmc/src/Game/../Display/Display.h \
- /home/trezay/Arduino/include/arduino/SPI.h \
+CMakeFiles/KBS.dir/src/Scenes/GameScene/GameScene.cpp.obj: \
+ /home/trezay/KBS2/kbsmc/src/Scenes/GameScene/GameScene.cpp \
+ /home/trezay/KBS2/kbsmc/src/Scenes/GameScene/GameScene.h \
+ /home/trezay/KBS2/kbsmc/src/Scenes/GameScene/../Scene.h \
+ /home/trezay/KBS2/kbsmc/src/Scenes/GameScene/../../Display/Display.h \
+ /home/trezay/Arduino/include/arduino/Adafruit_ILI9341.h \
+ /home/trezay/Arduino/include/arduino/Adafruit_GFX.h \
  /home/trezay/Arduino/include/arduino/Arduino.h \
  /home/trezay/Arduino/include/arduino/binary.h \
  /home/trezay/Arduino/include/arduino/WCharacter.h \
@@ -14,10 +16,9 @@ CMakeFiles/KBS.dir/src/Game/Game.cpp.obj: \
  /home/trezay/Arduino/include/arduino/USBAPI.h \
  /home/trezay/Arduino/include/arduino/Arduino.h \
  /home/trezay/Arduino/include/arduino/pins_arduino.h \
- /home/trezay/Arduino/include/arduino/Adafruit_GFX.h \
  /home/trezay/Arduino/include/arduino/gfxfont.h \
- /home/trezay/Arduino/include/arduino/Adafruit_ILI9341.h \
- /home/trezay/Arduino/include/arduino/Adafruit_GFX.h \
  /home/trezay/Arduino/include/arduino/Adafruit_SPITFT.h \
+ /home/trezay/Arduino/include/arduino/SPI.h \
  /home/trezay/Arduino/include/arduino/Adafruit_SPITFT_Macros.h \
- /home/trezay/KBS2/kbsmc/src/Game/../Display/Display.h
+ /home/trezay/KBS2/kbsmc/src/Scenes/GameScene/../../Communication/SendQueue.h \
+ /home/trezay/KBS2/kbsmc/src/Scenes/GameScene/../../Communication/Frame.h

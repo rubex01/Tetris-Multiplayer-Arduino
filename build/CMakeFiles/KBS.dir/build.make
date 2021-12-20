@@ -102,22 +102,9 @@ CMakeFiles/KBS.dir/src/Controller/Controller.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/KBS.dir/src/Controller/Controller.cpp.s"
 	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/trezay/KBS2/kbsmc/src/Controller/Controller.cpp -o CMakeFiles/KBS.dir/src/Controller/Controller.cpp.s
 
-CMakeFiles/KBS.dir/src/Game/Character.cpp.obj: CMakeFiles/KBS.dir/flags.make
-CMakeFiles/KBS.dir/src/Game/Character.cpp.obj: ../src/Game/Character.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/trezay/KBS2/kbsmc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/KBS.dir/src/Game/Character.cpp.obj"
-	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KBS.dir/src/Game/Character.cpp.obj -c /home/trezay/KBS2/kbsmc/src/Game/Character.cpp
-
-CMakeFiles/KBS.dir/src/Game/Character.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/KBS.dir/src/Game/Character.cpp.i"
-	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/trezay/KBS2/kbsmc/src/Game/Character.cpp > CMakeFiles/KBS.dir/src/Game/Character.cpp.i
-
-CMakeFiles/KBS.dir/src/Game/Character.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/KBS.dir/src/Game/Character.cpp.s"
-	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/trezay/KBS2/kbsmc/src/Game/Character.cpp -o CMakeFiles/KBS.dir/src/Game/Character.cpp.s
-
 CMakeFiles/KBS.dir/src/Display/Display.cpp.obj: CMakeFiles/KBS.dir/flags.make
 CMakeFiles/KBS.dir/src/Display/Display.cpp.obj: ../src/Display/Display.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/trezay/KBS2/kbsmc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/KBS.dir/src/Display/Display.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/trezay/KBS2/kbsmc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/KBS.dir/src/Display/Display.cpp.obj"
 	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KBS.dir/src/Display/Display.cpp.obj -c /home/trezay/KBS2/kbsmc/src/Display/Display.cpp
 
 CMakeFiles/KBS.dir/src/Display/Display.cpp.i: cmake_force
@@ -130,7 +117,7 @@ CMakeFiles/KBS.dir/src/Display/Display.cpp.s: cmake_force
 
 CMakeFiles/KBS.dir/src/Sound/NewTone.cpp.obj: CMakeFiles/KBS.dir/flags.make
 CMakeFiles/KBS.dir/src/Sound/NewTone.cpp.obj: ../src/Sound/NewTone.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/trezay/KBS2/kbsmc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/KBS.dir/src/Sound/NewTone.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/trezay/KBS2/kbsmc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/KBS.dir/src/Sound/NewTone.cpp.obj"
 	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KBS.dir/src/Sound/NewTone.cpp.obj -c /home/trezay/KBS2/kbsmc/src/Sound/NewTone.cpp
 
 CMakeFiles/KBS.dir/src/Sound/NewTone.cpp.i: cmake_force
@@ -141,22 +128,22 @@ CMakeFiles/KBS.dir/src/Sound/NewTone.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/KBS.dir/src/Sound/NewTone.cpp.s"
 	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/trezay/KBS2/kbsmc/src/Sound/NewTone.cpp -o CMakeFiles/KBS.dir/src/Sound/NewTone.cpp.s
 
-CMakeFiles/KBS.dir/src/Game/Game.cpp.obj: CMakeFiles/KBS.dir/flags.make
-CMakeFiles/KBS.dir/src/Game/Game.cpp.obj: ../src/Game/Game.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/trezay/KBS2/kbsmc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/KBS.dir/src/Game/Game.cpp.obj"
-	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KBS.dir/src/Game/Game.cpp.obj -c /home/trezay/KBS2/kbsmc/src/Game/Game.cpp
+CMakeFiles/KBS.dir/src/Scenes/GameScene/GameScene.cpp.obj: CMakeFiles/KBS.dir/flags.make
+CMakeFiles/KBS.dir/src/Scenes/GameScene/GameScene.cpp.obj: ../src/Scenes/GameScene/GameScene.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/trezay/KBS2/kbsmc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/KBS.dir/src/Scenes/GameScene/GameScene.cpp.obj"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KBS.dir/src/Scenes/GameScene/GameScene.cpp.obj -c /home/trezay/KBS2/kbsmc/src/Scenes/GameScene/GameScene.cpp
 
-CMakeFiles/KBS.dir/src/Game/Game.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/KBS.dir/src/Game/Game.cpp.i"
-	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/trezay/KBS2/kbsmc/src/Game/Game.cpp > CMakeFiles/KBS.dir/src/Game/Game.cpp.i
+CMakeFiles/KBS.dir/src/Scenes/GameScene/GameScene.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/KBS.dir/src/Scenes/GameScene/GameScene.cpp.i"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/trezay/KBS2/kbsmc/src/Scenes/GameScene/GameScene.cpp > CMakeFiles/KBS.dir/src/Scenes/GameScene/GameScene.cpp.i
 
-CMakeFiles/KBS.dir/src/Game/Game.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/KBS.dir/src/Game/Game.cpp.s"
-	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/trezay/KBS2/kbsmc/src/Game/Game.cpp -o CMakeFiles/KBS.dir/src/Game/Game.cpp.s
+CMakeFiles/KBS.dir/src/Scenes/GameScene/GameScene.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/KBS.dir/src/Scenes/GameScene/GameScene.cpp.s"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/trezay/KBS2/kbsmc/src/Scenes/GameScene/GameScene.cpp -o CMakeFiles/KBS.dir/src/Scenes/GameScene/GameScene.cpp.s
 
 CMakeFiles/KBS.dir/src/Communication/IRCommunication.cpp.obj: CMakeFiles/KBS.dir/flags.make
 CMakeFiles/KBS.dir/src/Communication/IRCommunication.cpp.obj: ../src/Communication/IRCommunication.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/trezay/KBS2/kbsmc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/KBS.dir/src/Communication/IRCommunication.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/trezay/KBS2/kbsmc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/KBS.dir/src/Communication/IRCommunication.cpp.obj"
 	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KBS.dir/src/Communication/IRCommunication.cpp.obj -c /home/trezay/KBS2/kbsmc/src/Communication/IRCommunication.cpp
 
 CMakeFiles/KBS.dir/src/Communication/IRCommunication.cpp.i: cmake_force
@@ -169,7 +156,7 @@ CMakeFiles/KBS.dir/src/Communication/IRCommunication.cpp.s: cmake_force
 
 CMakeFiles/KBS.dir/src/Communication/SendQueue.cpp.obj: CMakeFiles/KBS.dir/flags.make
 CMakeFiles/KBS.dir/src/Communication/SendQueue.cpp.obj: ../src/Communication/SendQueue.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/trezay/KBS2/kbsmc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/KBS.dir/src/Communication/SendQueue.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/trezay/KBS2/kbsmc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/KBS.dir/src/Communication/SendQueue.cpp.obj"
 	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KBS.dir/src/Communication/SendQueue.cpp.obj -c /home/trezay/KBS2/kbsmc/src/Communication/SendQueue.cpp
 
 CMakeFiles/KBS.dir/src/Communication/SendQueue.cpp.i: cmake_force
@@ -182,7 +169,7 @@ CMakeFiles/KBS.dir/src/Communication/SendQueue.cpp.s: cmake_force
 
 CMakeFiles/KBS.dir/src/Communication/ReceivedData.cpp.obj: CMakeFiles/KBS.dir/flags.make
 CMakeFiles/KBS.dir/src/Communication/ReceivedData.cpp.obj: ../src/Communication/ReceivedData.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/trezay/KBS2/kbsmc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/KBS.dir/src/Communication/ReceivedData.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/trezay/KBS2/kbsmc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/KBS.dir/src/Communication/ReceivedData.cpp.obj"
 	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KBS.dir/src/Communication/ReceivedData.cpp.obj -c /home/trezay/KBS2/kbsmc/src/Communication/ReceivedData.cpp
 
 CMakeFiles/KBS.dir/src/Communication/ReceivedData.cpp.i: cmake_force
@@ -193,33 +180,106 @@ CMakeFiles/KBS.dir/src/Communication/ReceivedData.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/KBS.dir/src/Communication/ReceivedData.cpp.s"
 	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/trezay/KBS2/kbsmc/src/Communication/ReceivedData.cpp -o CMakeFiles/KBS.dir/src/Communication/ReceivedData.cpp.s
 
+CMakeFiles/KBS.dir/src/Communication/Frame.cpp.obj: CMakeFiles/KBS.dir/flags.make
+CMakeFiles/KBS.dir/src/Communication/Frame.cpp.obj: ../src/Communication/Frame.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/trezay/KBS2/kbsmc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/KBS.dir/src/Communication/Frame.cpp.obj"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KBS.dir/src/Communication/Frame.cpp.obj -c /home/trezay/KBS2/kbsmc/src/Communication/Frame.cpp
+
+CMakeFiles/KBS.dir/src/Communication/Frame.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/KBS.dir/src/Communication/Frame.cpp.i"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/trezay/KBS2/kbsmc/src/Communication/Frame.cpp > CMakeFiles/KBS.dir/src/Communication/Frame.cpp.i
+
+CMakeFiles/KBS.dir/src/Communication/Frame.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/KBS.dir/src/Communication/Frame.cpp.s"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/trezay/KBS2/kbsmc/src/Communication/Frame.cpp -o CMakeFiles/KBS.dir/src/Communication/Frame.cpp.s
+
+CMakeFiles/KBS.dir/src/Scenes/Scene.cpp.obj: CMakeFiles/KBS.dir/flags.make
+CMakeFiles/KBS.dir/src/Scenes/Scene.cpp.obj: ../src/Scenes/Scene.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/trezay/KBS2/kbsmc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/KBS.dir/src/Scenes/Scene.cpp.obj"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KBS.dir/src/Scenes/Scene.cpp.obj -c /home/trezay/KBS2/kbsmc/src/Scenes/Scene.cpp
+
+CMakeFiles/KBS.dir/src/Scenes/Scene.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/KBS.dir/src/Scenes/Scene.cpp.i"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/trezay/KBS2/kbsmc/src/Scenes/Scene.cpp > CMakeFiles/KBS.dir/src/Scenes/Scene.cpp.i
+
+CMakeFiles/KBS.dir/src/Scenes/Scene.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/KBS.dir/src/Scenes/Scene.cpp.s"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/trezay/KBS2/kbsmc/src/Scenes/Scene.cpp -o CMakeFiles/KBS.dir/src/Scenes/Scene.cpp.s
+
+CMakeFiles/KBS.dir/src/Scenes/StartScene/StartScene.cpp.obj: CMakeFiles/KBS.dir/flags.make
+CMakeFiles/KBS.dir/src/Scenes/StartScene/StartScene.cpp.obj: ../src/Scenes/StartScene/StartScene.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/trezay/KBS2/kbsmc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/KBS.dir/src/Scenes/StartScene/StartScene.cpp.obj"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KBS.dir/src/Scenes/StartScene/StartScene.cpp.obj -c /home/trezay/KBS2/kbsmc/src/Scenes/StartScene/StartScene.cpp
+
+CMakeFiles/KBS.dir/src/Scenes/StartScene/StartScene.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/KBS.dir/src/Scenes/StartScene/StartScene.cpp.i"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/trezay/KBS2/kbsmc/src/Scenes/StartScene/StartScene.cpp > CMakeFiles/KBS.dir/src/Scenes/StartScene/StartScene.cpp.i
+
+CMakeFiles/KBS.dir/src/Scenes/StartScene/StartScene.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/KBS.dir/src/Scenes/StartScene/StartScene.cpp.s"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/trezay/KBS2/kbsmc/src/Scenes/StartScene/StartScene.cpp -o CMakeFiles/KBS.dir/src/Scenes/StartScene/StartScene.cpp.s
+
+CMakeFiles/KBS.dir/src/Scenes/LoseScene/LoseScene.cpp.obj: CMakeFiles/KBS.dir/flags.make
+CMakeFiles/KBS.dir/src/Scenes/LoseScene/LoseScene.cpp.obj: ../src/Scenes/LoseScene/LoseScene.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/trezay/KBS2/kbsmc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/KBS.dir/src/Scenes/LoseScene/LoseScene.cpp.obj"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KBS.dir/src/Scenes/LoseScene/LoseScene.cpp.obj -c /home/trezay/KBS2/kbsmc/src/Scenes/LoseScene/LoseScene.cpp
+
+CMakeFiles/KBS.dir/src/Scenes/LoseScene/LoseScene.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/KBS.dir/src/Scenes/LoseScene/LoseScene.cpp.i"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/trezay/KBS2/kbsmc/src/Scenes/LoseScene/LoseScene.cpp > CMakeFiles/KBS.dir/src/Scenes/LoseScene/LoseScene.cpp.i
+
+CMakeFiles/KBS.dir/src/Scenes/LoseScene/LoseScene.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/KBS.dir/src/Scenes/LoseScene/LoseScene.cpp.s"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/trezay/KBS2/kbsmc/src/Scenes/LoseScene/LoseScene.cpp -o CMakeFiles/KBS.dir/src/Scenes/LoseScene/LoseScene.cpp.s
+
+CMakeFiles/KBS.dir/src/Scenes/WinScene/WinScene.cpp.obj: CMakeFiles/KBS.dir/flags.make
+CMakeFiles/KBS.dir/src/Scenes/WinScene/WinScene.cpp.obj: ../src/Scenes/WinScene/WinScene.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/trezay/KBS2/kbsmc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/KBS.dir/src/Scenes/WinScene/WinScene.cpp.obj"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KBS.dir/src/Scenes/WinScene/WinScene.cpp.obj -c /home/trezay/KBS2/kbsmc/src/Scenes/WinScene/WinScene.cpp
+
+CMakeFiles/KBS.dir/src/Scenes/WinScene/WinScene.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/KBS.dir/src/Scenes/WinScene/WinScene.cpp.i"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/trezay/KBS2/kbsmc/src/Scenes/WinScene/WinScene.cpp > CMakeFiles/KBS.dir/src/Scenes/WinScene/WinScene.cpp.i
+
+CMakeFiles/KBS.dir/src/Scenes/WinScene/WinScene.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/KBS.dir/src/Scenes/WinScene/WinScene.cpp.s"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/trezay/KBS2/kbsmc/src/Scenes/WinScene/WinScene.cpp -o CMakeFiles/KBS.dir/src/Scenes/WinScene/WinScene.cpp.s
+
 # Object files for target KBS
 KBS_OBJECTS = \
 "CMakeFiles/KBS.dir/src/main.cpp.obj" \
 "CMakeFiles/KBS.dir/src/Controller/Controller.cpp.obj" \
-"CMakeFiles/KBS.dir/src/Game/Character.cpp.obj" \
 "CMakeFiles/KBS.dir/src/Display/Display.cpp.obj" \
 "CMakeFiles/KBS.dir/src/Sound/NewTone.cpp.obj" \
-"CMakeFiles/KBS.dir/src/Game/Game.cpp.obj" \
+"CMakeFiles/KBS.dir/src/Scenes/GameScene/GameScene.cpp.obj" \
 "CMakeFiles/KBS.dir/src/Communication/IRCommunication.cpp.obj" \
 "CMakeFiles/KBS.dir/src/Communication/SendQueue.cpp.obj" \
-"CMakeFiles/KBS.dir/src/Communication/ReceivedData.cpp.obj"
+"CMakeFiles/KBS.dir/src/Communication/ReceivedData.cpp.obj" \
+"CMakeFiles/KBS.dir/src/Communication/Frame.cpp.obj" \
+"CMakeFiles/KBS.dir/src/Scenes/Scene.cpp.obj" \
+"CMakeFiles/KBS.dir/src/Scenes/StartScene/StartScene.cpp.obj" \
+"CMakeFiles/KBS.dir/src/Scenes/LoseScene/LoseScene.cpp.obj" \
+"CMakeFiles/KBS.dir/src/Scenes/WinScene/WinScene.cpp.obj"
 
 # External object files for target KBS
 KBS_EXTERNAL_OBJECTS =
 
 KBS.elf: CMakeFiles/KBS.dir/src/main.cpp.obj
 KBS.elf: CMakeFiles/KBS.dir/src/Controller/Controller.cpp.obj
-KBS.elf: CMakeFiles/KBS.dir/src/Game/Character.cpp.obj
 KBS.elf: CMakeFiles/KBS.dir/src/Display/Display.cpp.obj
 KBS.elf: CMakeFiles/KBS.dir/src/Sound/NewTone.cpp.obj
-KBS.elf: CMakeFiles/KBS.dir/src/Game/Game.cpp.obj
+KBS.elf: CMakeFiles/KBS.dir/src/Scenes/GameScene/GameScene.cpp.obj
 KBS.elf: CMakeFiles/KBS.dir/src/Communication/IRCommunication.cpp.obj
 KBS.elf: CMakeFiles/KBS.dir/src/Communication/SendQueue.cpp.obj
 KBS.elf: CMakeFiles/KBS.dir/src/Communication/ReceivedData.cpp.obj
+KBS.elf: CMakeFiles/KBS.dir/src/Communication/Frame.cpp.obj
+KBS.elf: CMakeFiles/KBS.dir/src/Scenes/Scene.cpp.obj
+KBS.elf: CMakeFiles/KBS.dir/src/Scenes/StartScene/StartScene.cpp.obj
+KBS.elf: CMakeFiles/KBS.dir/src/Scenes/LoseScene/LoseScene.cpp.obj
+KBS.elf: CMakeFiles/KBS.dir/src/Scenes/WinScene/WinScene.cpp.obj
 KBS.elf: CMakeFiles/KBS.dir/build.make
 KBS.elf: CMakeFiles/KBS.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/trezay/KBS2/kbsmc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable KBS.elf"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/trezay/KBS2/kbsmc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable KBS.elf"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/KBS.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

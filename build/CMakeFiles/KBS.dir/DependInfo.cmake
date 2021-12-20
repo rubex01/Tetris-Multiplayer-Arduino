@@ -4,13 +4,17 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/trezay/KBS2/kbsmc/src/Communication/Frame.cpp" "/home/trezay/KBS2/kbsmc/build/CMakeFiles/KBS.dir/src/Communication/Frame.cpp.obj"
   "/home/trezay/KBS2/kbsmc/src/Communication/IRCommunication.cpp" "/home/trezay/KBS2/kbsmc/build/CMakeFiles/KBS.dir/src/Communication/IRCommunication.cpp.obj"
   "/home/trezay/KBS2/kbsmc/src/Communication/ReceivedData.cpp" "/home/trezay/KBS2/kbsmc/build/CMakeFiles/KBS.dir/src/Communication/ReceivedData.cpp.obj"
   "/home/trezay/KBS2/kbsmc/src/Communication/SendQueue.cpp" "/home/trezay/KBS2/kbsmc/build/CMakeFiles/KBS.dir/src/Communication/SendQueue.cpp.obj"
   "/home/trezay/KBS2/kbsmc/src/Controller/Controller.cpp" "/home/trezay/KBS2/kbsmc/build/CMakeFiles/KBS.dir/src/Controller/Controller.cpp.obj"
   "/home/trezay/KBS2/kbsmc/src/Display/Display.cpp" "/home/trezay/KBS2/kbsmc/build/CMakeFiles/KBS.dir/src/Display/Display.cpp.obj"
-  "/home/trezay/KBS2/kbsmc/src/Game/Character.cpp" "/home/trezay/KBS2/kbsmc/build/CMakeFiles/KBS.dir/src/Game/Character.cpp.obj"
-  "/home/trezay/KBS2/kbsmc/src/Game/Game.cpp" "/home/trezay/KBS2/kbsmc/build/CMakeFiles/KBS.dir/src/Game/Game.cpp.obj"
+  "/home/trezay/KBS2/kbsmc/src/Scenes/GameScene/GameScene.cpp" "/home/trezay/KBS2/kbsmc/build/CMakeFiles/KBS.dir/src/Scenes/GameScene/GameScene.cpp.obj"
+  "/home/trezay/KBS2/kbsmc/src/Scenes/LoseScene/LoseScene.cpp" "/home/trezay/KBS2/kbsmc/build/CMakeFiles/KBS.dir/src/Scenes/LoseScene/LoseScene.cpp.obj"
+  "/home/trezay/KBS2/kbsmc/src/Scenes/Scene.cpp" "/home/trezay/KBS2/kbsmc/build/CMakeFiles/KBS.dir/src/Scenes/Scene.cpp.obj"
+  "/home/trezay/KBS2/kbsmc/src/Scenes/StartScene/StartScene.cpp" "/home/trezay/KBS2/kbsmc/build/CMakeFiles/KBS.dir/src/Scenes/StartScene/StartScene.cpp.obj"
+  "/home/trezay/KBS2/kbsmc/src/Scenes/WinScene/WinScene.cpp" "/home/trezay/KBS2/kbsmc/build/CMakeFiles/KBS.dir/src/Scenes/WinScene/WinScene.cpp.obj"
   "/home/trezay/KBS2/kbsmc/src/Sound/NewTone.cpp" "/home/trezay/KBS2/kbsmc/build/CMakeFiles/KBS.dir/src/Sound/NewTone.cpp.obj"
   "/home/trezay/KBS2/kbsmc/src/main.cpp" "/home/trezay/KBS2/kbsmc/build/CMakeFiles/KBS.dir/src/main.cpp.obj"
   )
