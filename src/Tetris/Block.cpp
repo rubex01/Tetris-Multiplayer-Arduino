@@ -1,7 +1,5 @@
 #include "../Scenes/GameScene/GameScene.h"
-#include "../Display/Display.h"
 #include "Block.h"
-#include "HardwareSerial.h"
 
 Block::Block(int xPos, int yPos) {
     this->xPos = xPos;
@@ -43,7 +41,10 @@ void Block::resetDirection(int direction) {
 }
 
 void Block::rotate() {
-    if (rotationLevel == 3) rotationLevel = 0; else rotationLevel++;
+    if (rotationLevel == 3)
+        rotationLevel = 0;
+    else
+        rotationLevel++;
 
     int tempArray[11][10] = {{0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}};
 

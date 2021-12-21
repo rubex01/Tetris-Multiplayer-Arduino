@@ -18,46 +18,39 @@ void Controller::update() {
 
     if (Nunchuk.state.joy_y_axis > 128+100) {
         actionArray[UP] = true;
-    }
-    else if (actionArray[UP]) {
+    } else if (actionArray[UP]) {
         nonContinuingTrigger[UP] = true;
     }
 
     if (Nunchuk.state.joy_y_axis < 128-100) {
         actionArray[DOWN] = true;
-    }
-    else if (actionArray[DOWN]) {
+    } else if (actionArray[DOWN]) {
         nonContinuingTrigger[DOWN] = true;
     }
 
     if (Nunchuk.state.joy_x_axis < 128-100) {
         actionArray[LEFT] = true;
-    }
-    else if (actionArray[LEFT]) {
+    } else if (actionArray[LEFT]) {
         nonContinuingTrigger[LEFT] = true;
     }
 
     if (Nunchuk.state.joy_x_axis > 128+100) {
         actionArray[RIGHT] = true;
-    }
-    else if (actionArray[RIGHT]) {
+    } else if (actionArray[RIGHT]) {
         nonContinuingTrigger[RIGHT] = true;
     }
 
     if (Nunchuk.state.z_button) {
         actionArray[Z_BUTTON] = true;
-    }
-    else if (actionArray[Z_BUTTON]) {
+    } else if (actionArray[Z_BUTTON]) {
         nonContinuingTrigger[Z_BUTTON] = true;
     }
 
     if (Nunchuk.state.c_button) {
         actionArray[C_BUTTON] = true;
-    }
-    else if (actionArray[C_BUTTON]) {
+    } else if (actionArray[C_BUTTON]) {
         nonContinuingTrigger[C_BUTTON] = true;
     }
-
 }
 
 bool* Controller::getActions() {

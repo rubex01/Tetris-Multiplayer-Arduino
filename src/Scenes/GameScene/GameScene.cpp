@@ -2,13 +2,6 @@
 #include "../../Display/Display.h"
 #include "../../Communication/SendQueue.h"
 #include "../../Communication/Frame.h"
-#include "../../Tetris/Tetrominoes/OBlock.h"
-#include "../../Tetris/Tetrominoes/TBlock.h"
-#include "../../Tetris/Tetrominoes/IBlock.h"
-#include "../../Tetris/Tetrominoes/JBlock.h"
-#include "../../Tetris/Tetrominoes/LBlock.h"
-#include "../../Tetris/Tetrominoes/SBlock.h"
-#include "../../Tetris/Tetrominoes/ZBlock.h"
 #include "../../Controller/Controller.h"
 #include "../../Tetris/BlockFactory.h"
 
@@ -52,14 +45,14 @@ void GameScene::drawBoard() {
     int y = 100;
     for (int i = 0; i < 11; i++) {
         int x = 20;
-            for (int j = 0; j < 10; j++) {
-                if (lastBoard[i][j] != 0 && GameScene::tetrisBoard[i][j] == 0) {
+        for (int j = 0; j < 10; j++) {
+            if (lastBoard[i][j] != 0 && GameScene::tetrisBoard[i][j] == 0) {
                 Display::fillRect(x, y, 20, 20, GameScene::tetrisBoard[i][j]);
-                } else if (lastBoard[i][j] == 0 && GameScene::tetrisBoard[i][j] != 0) {
-                    Display::drawTetrisBlock(x, y, currentBlock->blockColor);
-                }
-                x += 20;
+            } else if (lastBoard[i][j] == 0 && GameScene::tetrisBoard[i][j] != 0) {
+                Display::drawTetrisBlock(x, y, currentBlock->blockColor);
             }
+            x += 20;
+        }
         y += 20;
     }
     for (int i = 0; i < 11; i++) {
@@ -69,11 +62,33 @@ void GameScene::drawBoard() {
     }
 }
 
+void GameScene::checkForFullRows() {
+    for (int i = 0; i < 11; ++i) {
+        boolean fullRow = true;
+        for (int j = 0; j < 10; ++j) {
+            if (GameScene::tetrisBoard[i][j] == 0) {
+                fullRow = false;
+                break;
+            }
+        }
+        if (fullRow) {
+            for (int j = i; j >= 0; --j) {
+                for (int k = 0; k < 10; ++k) {
+                    if (j == 0)
+                        GameScene::tetrisBoard[j][k] = 0;
+                    else
+                        GameScene::tetrisBoard[j][k] = GameScene::tetrisBoard[j-1][k];
+                }
+            }
+        }
+    }
+}
+
 int GameScene::boardCount() {
     int count = 0;
     for (int i = 0; i < 11; i++) {
         for (int j = 0; j < 10; j++) {
-            if (GameScene::tetrisBoard[i][j] == 1) {
+            if (GameScene::tetrisBoard[i][j] != 0) {
                 count++;
             }
         }
@@ -100,18 +115,23 @@ void GameScene::drawScene() {
         return;
     }
 
-    bool* array = Controller::getActions();
-
+    bool* actions = Controller::getActions();
+    bool* array2 = Controller::getNonContinuingTriggerActions();
 
     if (GameScene::blockIsMoving) {
-        if (array[3]) {
+        if (actions[Controller::DOWN]) {
             GameScene::tickValue = 2;
         } else {
-            GameScene::tickValue = 6;
+            GameScene::tickValue = 20;
         }
-        if (array[0]) {
+
+        if (array2[Controller::Z_BUTTON]) {
+            GameScene::currentBlock->rotate();
+        }
+
+        if (actions[Controller::RIGHT]) {
             GameScene::currentBlock->moveSideways(1);
-        } else if (array[1]) {
+        } else if (actions[Controller::LEFT]) {
             GameScene::currentBlock->moveSideways(-1);
         }
 
@@ -128,7 +148,8 @@ void GameScene::drawScene() {
     }
     moveTickReached = false;
     GameScene::drawBoard();
-    delete[] array;
+    delete[] actions;
+    delete[] array2;
 }
 
 void GameScene::setRandomSeed() {
