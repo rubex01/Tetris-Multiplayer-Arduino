@@ -14,15 +14,21 @@ bool GameScene::blockIsMoving = true;
 bool GameScene::gameOver = false;
 int GameScene::gameCounter = 0;
 bool GameScene::moveTickReached = false;
-int GameScene::tickValue = 20;
+int GameScene::tickValue = 8;
 
-ISR(TIMER1_COMPA_vect) {
-    if (GameScene::gameCounter >= GameScene::tickValue) {
-        GameScene::gameTickReached = true;
-        GameScene::gameCounter = 0;
+int volatile counter = 0;
+
+// ISR(TIMER1_COMPA_vect) {
+ISR(TIMER2_COMPA_vect) {
+    if(counter++ > 4) {
+        counter = 0;
+        if (GameScene::gameCounter >= GameScene::tickValue) {
+            GameScene::gameTickReached = true;
+            GameScene::gameCounter = 0;
+        }
+        GameScene::moveTickReached = true;
+        GameScene::gameCounter++;
     }
-    GameScene::moveTickReached = true;
-    GameScene::gameCounter++;
 }
 
 void GameScene::init() {
@@ -96,13 +102,22 @@ int GameScene::boardCount() {
     return count;
 }
 
+// void GameScene::initTimer() {
+//     TCCR1A = 0;
+//     TCCR1B |= (1 << CS12)|(1 << CS10)|(1 << WGM12);
+//     TCCR1C = 0;
+//     OCR1A = (15624/18);
+//     TCNT1 = 0;
+//     TIMSK1 |= (1 << OCIE1A);
+// }
+
 void GameScene::initTimer() {
-    TCCR1A = 0;
-    TCCR1B |= (1 << CS12)|(1 << CS10)|(1 << WGM12);
-    TCCR1C = 0;
-    OCR1A = (15624/18);
-    TCNT1 = 0;
-    TIMSK1 |= (1 << OCIE1A);
+    // TCCR2A |= (1 << WGM21);
+    TCCR2B |= (1 << CS22)|(1 << CS21)|(1 << CS20);
+    OCR2A = 215;  // 255 / 18 ~= 14
+    // OCR2B = 100;
+    TCNT2 = 0;
+    TIMSK2 |= (1 << OCIE2A);
 }
 
 void GameScene::drawScene() {
@@ -120,9 +135,9 @@ void GameScene::drawScene() {
 
     if (GameScene::blockIsMoving) {
         if (actions[Controller::DOWN]) {
-            GameScene::tickValue = 2;
+            GameScene::tickValue = 1;
         } else {
-            GameScene::tickValue = 20;
+            GameScene::tickValue = 8;
         }
 
         if (array2[Controller::Z_BUTTON]) {
