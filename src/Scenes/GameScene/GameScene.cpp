@@ -69,31 +69,11 @@ void GameScene::drawBoard() {
     }
 }
 
-void GameScene::checkForFullRows() {
-    for (int i = 0; i < 11; ++i) {
-        boolean fullRow = true;
-        for (int j = 0; j < 10; ++j) {
-            if (GameScene::tetrisBoard[i][j] == 0) {
-                fullRow = false;
-                break;
-            }
-        }
-        if (fullRow) {
-            for (int j = i; j >= 0; --j) {
-                for (int k = 0; k < 10; ++k) {
-                    if (j == 0) GameScene::tetrisBoard[j][k] = 0;
-                    else GameScene::tetrisBoard[j][k] = GameScene::tetrisBoard[j-1][k];
-                }
-            }
-        }
-    }
-}
-
 int GameScene::boardCount() {
     int count = 0;
     for (int i = 0; i < 11; i++) {
         for (int j = 0; j < 10; j++) {
-            if (GameScene::tetrisBoard[i][j] != 0) {
+            if (GameScene::tetrisBoard[i][j] == 1) {
                 count++;
             }
         }
@@ -120,23 +100,18 @@ void GameScene::drawScene() {
         return;
     }
 
-    bool* actions = Controller::getActions();
-    bool* array2 = Controller::getNonContinuingTriggerActions();
+    bool* array = Controller::getActions();
+
 
     if (GameScene::blockIsMoving) {
-        if (actions[Controller::DOWN]) {
+        if (array[3]) {
             GameScene::tickValue = 2;
         } else {
-            GameScene::tickValue = 20;
+            GameScene::tickValue = 6;
         }
-
-        if (array2[Controller::C_BUTTON]) {
-            GameScene::currentBlock->rotate();
-        }
-
-        if (actions[Controller::RIGHT]) {
+        if (array[0]) {
             GameScene::currentBlock->moveSideways(1);
-        } else if (actions[Controller::LEFT]) {
+        } else if (array[1]) {
             GameScene::currentBlock->moveSideways(-1);
         }
 
@@ -153,8 +128,7 @@ void GameScene::drawScene() {
     }
     moveTickReached = false;
     GameScene::drawBoard();
-    delete[] actions;
-    delete[] array2;
+    delete[] array;
 }
 
 void GameScene::setRandomSeed() {
