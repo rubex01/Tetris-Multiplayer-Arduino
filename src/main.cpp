@@ -13,22 +13,7 @@
 #include "Sound/NewTone.h"
 #include "Communication/Frame.h"
 
-// TEST
-
-
-// volatile uint8_t teller = 0;
-// volatile int thisNote = 0;
-
-
-// TEST
-
 int main() {
-    // TEST timer 2
-    // DDRB |= (1 << DDB0);
-    // TCCR2B |= (1 << CS22)|(1 << CS20);
-    // TIMSK2 |= (1 << TOIE2);
-    // TCNT2 = 0;
-    // TEST
     NewTone::initTimer2();
 
     sei();
