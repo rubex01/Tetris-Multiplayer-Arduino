@@ -32,8 +32,11 @@ ISR(TIMER1_COMPA_vect) {
     GameScene::gameCounter++;
 }
 
-void GameScene::init() {
-    setRandomSeed();
+void GameScene::init() {    
+    if (gameSeed == 0) {
+        setRandomSeed();
+        startGame();
+    }
 
     Display::drawGameBorder();
     Display::drawHoldSection();
@@ -43,10 +46,6 @@ void GameScene::init() {
     GameScene::currentBlock = BlockFactory::createBlock(rand() % 7);
     currentBlock->initBlock();
     GameScene::drawBoard();
-
-    if (gameSeed == 0)
-        startGame();
-    Serial.println(gameSeed);
 }
 
 void GameScene::drawBoard() {
@@ -134,7 +133,14 @@ void GameScene::drawScene() {
 }
 
 void GameScene::setRandomSeed() {
-    srand(micros());
+    ADMUX |= (1<<MUX0);
+    ADMUX |= (1<<REFS0);
+    ADCSRA = (1<<ADPS2)|(1<<ADPS1)|(1<<ADPS0);
+    ADCSRA |= (1<<ADEN);
+    ADCSRA |= (1<<ADSC);
+    while (ADCSRA & (1<<ADSC)) {}
+    
+    srand(ADC);
 }
 
 int GameScene::generateRandomSeed() {
