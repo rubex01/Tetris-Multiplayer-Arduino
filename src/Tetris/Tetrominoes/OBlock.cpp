@@ -13,3 +13,5 @@ OBlock::OBlock(int xPos, int yPos) : Block(xPos, yPos) {
     blockArray[3][1] = yPos + 1;
     blockColor = YELLOW;
 }
+
+void OBlock::rotateBlock() {}

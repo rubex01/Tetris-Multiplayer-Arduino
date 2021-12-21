@@ -8,6 +8,7 @@ class TBlock : public Block {
  public:
     TBlock(int xPos, int yPos);
     bool checkBlock();
+    void rotateBlock();
 };
 
 #endif  // SRC_TETRIS_TETROMINOES_TBLOCK_H_

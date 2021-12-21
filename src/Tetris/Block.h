@@ -12,12 +12,15 @@ class Block {
   bool checkBlock();
   int** blockArray;
   int blockColor;
+  void rotate();
+  virtual void rotateBlock();
 
  protected:
   void copyArray(int array[11][10]);
   void resetDirection(int direction);
   void setValue(int value);
   int xPos;
+  int rotationLevel;
   int yPos;
 };
 
