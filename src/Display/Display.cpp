@@ -8,7 +8,7 @@
 
 Adafruit_ILI9341 Display::tft = Adafruit_ILI9341(TFT_CS, TFT_DC);
 
-uint16_t Display::colors[8][3] = {
+uint16_t Display::colors[9][3] = {
     {0x7BEF, 0xA534, 0x4A69},
     {0xFF80, 0xFFD0, 0xEEE0},  // O Block Yellow
     {0xB723, 0xCF6D, 0x9602},  // S Block Groen
@@ -16,7 +16,8 @@ uint16_t Display::colors[8][3] = {
     {0xEA07, 0xF3AE, 0x78E3},  // Z Block Red
     {0xA3DE, 0xE41F, 0x7294},  // T Block Purple
     {0xED07, 0xFEAE, 0x7AA3},  // L Block Orange
-    {0x2B9E, 0x949F, 0x0292}  // J Block Blue
+    {0x2B9E, 0x949F, 0x0292},  // J Block Blue
+    {0x7BEF, 0xA534, 0x4A69},
 };
 
 /**
