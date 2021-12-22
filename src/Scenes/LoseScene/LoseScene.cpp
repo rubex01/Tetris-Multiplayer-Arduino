@@ -1,4 +1,5 @@
 #include "LoseScene.h"
+#include "../../Display/Display.h"
 
 /**
  * Init lose scene

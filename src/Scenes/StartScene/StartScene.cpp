@@ -34,14 +34,14 @@ void StartScene::drawSelected(bool dirUp) {
  */
 void StartScene::drawScene() {
     if (!checkForSeedPacket()) {
-        bool* array = Controller::getActions();
-        if (array[4]) {
+        bool* actionArray = Controller::getActions();
+        if (actionArray[Controller::Z_BUTTON]) {
             Scene::setScene(Scene::GAME_SCENE);
         }
-        if (array[2] || array[3]) {
-            drawSelected(array[2]);
+        if (actionArray[Controller::UP] || actionArray[Controller::DOWN]) {
+            drawSelected(actionArray[Controller::UP]);
         }
-        delete[] array;
+        delete[] actionArray;
     }
 }
 

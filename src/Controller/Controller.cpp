@@ -6,6 +6,7 @@
 #define NUNCHUK_ADDRESS 0x52
 
 bool Controller::actionArray[] = {false};
+bool Controller::nonContinuingTrigger[] = {false};
 
 /**
  * Init controller
@@ -21,27 +22,40 @@ void Controller::init() {
 void Controller::update() {
     Nunchuk.getState(NUNCHUK_ADDRESS);
 
-    if (Nunchuk.state.joy_x_axis > 128+100) {
-        actionArray[0] = true;
-        // right
-    }
-    if (Nunchuk.state.joy_x_axis < 128-100) {
-        actionArray[1] = true;
-        // left
-    }
     if (Nunchuk.state.joy_y_axis > 128+100) {
-        actionArray[2] = true;
-        // up
+        actionArray[UP] = true;
+    } else if (actionArray[UP]) {
+        nonContinuingTrigger[UP] = true;
     }
+
     if (Nunchuk.state.joy_y_axis < 128-100) {
-        actionArray[3] = true;
-        // down
+        actionArray[DOWN] = true;
+    } else if (actionArray[DOWN]) {
+        nonContinuingTrigger[DOWN] = true;
     }
+
+    if (Nunchuk.state.joy_x_axis < 128-100) {
+        actionArray[LEFT] = true;
+    } else if (actionArray[LEFT]) {
+        nonContinuingTrigger[LEFT] = true;
+    }
+
+    if (Nunchuk.state.joy_x_axis > 128+100) {
+        actionArray[RIGHT] = true;
+    } else if (actionArray[RIGHT]) {
+        nonContinuingTrigger[RIGHT] = true;
+    }
+
     if (Nunchuk.state.z_button) {
-        actionArray[4] = true;
+        actionArray[Z_BUTTON] = true;
+    } else if (actionArray[Z_BUTTON]) {
+        nonContinuingTrigger[Z_BUTTON] = true;
     }
+
     if (Nunchuk.state.c_button) {
-        actionArray[5] = true;
+        actionArray[C_BUTTON] = true;
+    } else if (actionArray[C_BUTTON]) {
+        nonContinuingTrigger[C_BUTTON] = true;
     }
 }
 
@@ -55,6 +69,15 @@ bool* Controller::getActions() {
     for (int i = 0; i < 6; ++i) {
         returnArray[i] = actionArray[i];
         actionArray[i] = false;
+    }
+    return returnArray;
+}
+
+bool* Controller::getNonContinuingTriggerActions() {
+    bool* returnArray = new bool[6];
+    for (int i = 0; i < 6; ++i) {
+        returnArray[i] = nonContinuingTrigger[i];
+        nonContinuingTrigger[i] = false;
     }
     return returnArray;
 }
