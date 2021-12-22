@@ -45,7 +45,7 @@ void GameScene::init() {
     Display::drawNextSection();
     Display::drawScore();
     GameScene::initTimer();
-    GameScene::nextBlock = BlockFactory::createBlock(rand() % 7);
+    GameScene::nextBlock = BlockFactory::createBlock(6);
     GameScene::currentBlock = BlockFactory::createBlock(rand() % 7);
     GameScene::nextBlock->drawSectionBlock();
     currentBlock->initBlock();
@@ -167,8 +167,8 @@ void GameScene::drawScene() {
         GameScene::currentBlock = GameScene::nextBlock;
         GameScene::currentBlock->initBlock();
         GameScene::nextBlock = BlockFactory::createBlock(rand() % 7);
+        Display::clearNextSection();
         GameScene::nextBlock->drawSectionBlock();
-    
         blockIsMoving = true;
         GameScene::gameTickReached = false;
     }

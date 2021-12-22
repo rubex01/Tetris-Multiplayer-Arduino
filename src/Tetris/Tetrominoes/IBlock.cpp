@@ -13,13 +13,13 @@ IBlock::IBlock(int xPos, int yPos) : Block(xPos, yPos) {
     blockColor = CYAN;
 }
 
-void IBlock::drawSectionBlock(){
-    int x = 0;
-    int y= 0;
-    Display::drawSmallTetrisBlok(x,y,this->blockColor);
-    Display::drawSmallTetrisBlok(x+10,y,this->blockColor);
-    Display::drawSmallTetrisBlok(x+20,y,this->blockColor);
-    Display::drawSmallTetrisBlok(x+30,y,this->blockColor);
+void IBlock::drawSectionBlock() {
+    int x = 179;
+    int y = 37;
+    Display::drawSmallTetrisBlok(x, y, this->blockColor);
+    Display::drawSmallTetrisBlok(x+10, y, this->blockColor);
+    Display::drawSmallTetrisBlok(x+20, y, this->blockColor);
+    Display::drawSmallTetrisBlok(x+30, y, this->blockColor);
 }
 
 void IBlock::rotateBlock() {

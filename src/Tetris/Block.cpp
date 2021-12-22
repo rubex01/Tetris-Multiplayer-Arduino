@@ -186,9 +186,10 @@ Block::~Block() {
  */
 void Block::rotateBlock() {}
 
-void Block::drawSectionBlock() {
-    //Display::drawSmallTetrisBlok(0, 0, this->blockColor);
-}
+/**
+ * Draws tetris block in the section block
+ */
+void Block::drawSectionBlock() {}
 
 /**
  * Moves the tetromino block one unit down
