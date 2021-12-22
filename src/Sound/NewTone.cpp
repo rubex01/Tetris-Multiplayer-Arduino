@@ -109,29 +109,29 @@ ISR(TIMER1_COMPA_vect) {  // Timer interrupt vector.
   *NewTone::_pinOutput ^= NewTone::_pinMask;  // Toggle the pin state.
 }
 
-ISR(TIMER2_OVF_vect) {
-    NewTone::teller++;
-    if (!NewTone::noNewToneCheck) {
-        if (NewTone::teller >= ONESECOND) {
-            NewTone::teller = 0;
-            if (NewTone::thisNote >= NewTone::notes * 2)
-                NewTone::thisNote = 0;
-            // calculates the duration of each note
-            NewTone::divider = NewTone::melody[NewTone::thisNote + 1];
-            if (NewTone::divider > 0) {
-                // regular note, just proceed
-                NewTone::noteDuration = (NewTone::wholenote) / NewTone::divider;
-            } else if (NewTone::divider < 0) {
-                // dotted notes are represented with negative durations!!
-                NewTone::noteDuration = (NewTone::wholenote) / abs(NewTone::divider);
-                NewTone::noteDuration *= 1.5;  // increases the duration in half for dotted notes
-            }
-            NewTone::aNewTone(NewTone::buzzer, NewTone::melody[NewTone::thisNote], NewTone::noteDuration*0.9);  // timer1 // miss in while
+// ISR(TIMER2_OVF_vect) {
+//     NewTone::teller++;
+//     if (!NewTone::noNewToneCheck) {
+//         if (NewTone::teller >= ONESECOND) {
+//             NewTone::teller = 0;
+//             if (NewTone::thisNote >= NewTone::notes * 2)
+//                 NewTone::thisNote = 0;
+//             // calculates the duration of each note
+//             NewTone::divider = NewTone::melody[NewTone::thisNote + 1];
+//             if (NewTone::divider > 0) {
+//                 // regular note, just proceed
+//                 NewTone::noteDuration = (NewTone::wholenote) / NewTone::divider;
+//             } else if (NewTone::divider < 0) {
+//                 // dotted notes are represented with negative durations!!
+//                 NewTone::noteDuration = (NewTone::wholenote) / abs(NewTone::divider);
+//                 NewTone::noteDuration *= 1.5;  // increases the duration in half for dotted notes
+//             }
+//             NewTone::aNewTone(NewTone::buzzer, NewTone::melody[NewTone::thisNote], NewTone::noteDuration*0.9);  // timer1 // miss in while
 
-            NewTone::thisNote = NewTone::thisNote + 2;
-        }
-    }
-}
+//             NewTone::thisNote = NewTone::thisNote + 2;
+//         }
+//     }
+// }
 
 uint8_t NewTone::teller = 0;  // Timer2
 int NewTone::thisNote = 0;  // Timer2

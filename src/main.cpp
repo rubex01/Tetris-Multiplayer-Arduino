@@ -14,7 +14,7 @@
 #include "Communication/Frame.h"
 
 int main() {
-    NewTone::initTimer2();
+    // NewTone::initTimer2();
 
     sei();
     Serial.begin(9600);
