@@ -95,6 +95,11 @@ void GameScene::checkForFullRows() {
     if (totalFullRows != 0) generateRowFrame(totalFullRows);
 }
 
+/**
+ * Generates frames for sending rows with gaps for the opponent
+ *
+ * @param height
+ */
 void GameScene::generateRowFrame(int height) {
     uint8_t location = currentBlock->blockArray[0][0];
     uint8_t data = (location << 2);
