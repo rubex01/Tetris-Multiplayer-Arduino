@@ -1,10 +1,11 @@
 #include "Display.h"
-
 #include "SPI.h"
 #include "Adafruit_ILI9341.h"
+#include <string.h>
 
 #define TFT_DC 9
 #define TFT_CS 10
+
 
 Adafruit_ILI9341 Display::tft = Adafruit_ILI9341(TFT_CS, TFT_DC);
 
@@ -198,9 +199,13 @@ void Display::drawDemoBlocks() {
 }
 
 /**
- * Draw score
+ * Draw current score of the game
+ * 
+ * @param score
  */
-void Display::drawScore() {
+void Display::drawScore(int score) {
+    Display::fillRect(105, 25, 50, 50, ILI9341_BLACK);
+    String string = String(score);
     Display::drawText(105, 25, 1, "Score:", ILI9341_WHITE);
-    Display::drawText(105, 35, 2, "560", ILI9341_WHITE);
+    Display::drawText(95, 35, 2, (string), ILI9341_WHITE);
 }

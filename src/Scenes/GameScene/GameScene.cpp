@@ -4,6 +4,7 @@
 #include "../../Communication/Frame.h"
 #include "../../Controller/Controller.h"
 #include "../../Tetris/BlockFactory.h"
+#include "../../Tetris/Score.h"
 
 int GameScene::gameSeed = 0;
 int GameScene::tetrisBoard[11][10] = {{0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}};
@@ -42,7 +43,7 @@ void GameScene::init() {
     Display::drawGameBorder();
     Display::drawHoldSection();
     Display::drawNextSection();
-    Display::drawScore();
+    Score::updateScore(0);
     GameScene::initTimer();
     GameScene::currentBlock = BlockFactory::createBlock(rand() % 7);
     currentBlock->initBlock();
@@ -98,7 +99,10 @@ void GameScene::checkForFullRows() {
             }
         }
     }
-    if (totalFullRows != 0) generateRowFrame(totalFullRows);
+    if (totalFullRows != 0) {
+        Score::updateScore(totalFullRows);
+        generateRowFrame(totalFullRows);
+    }
 }
 
 /**
