@@ -71,6 +71,7 @@ void GameScene::drawBoard() {
 }
 
 void GameScene::checkForFullRows() {
+    int totalFullRows = 0;
     for (int i = 0; i < 11; ++i) {
         boolean fullRow = true;
         for (int j = 0; j < 10; ++j) {
@@ -80,6 +81,7 @@ void GameScene::checkForFullRows() {
             }
         }
         if (fullRow) {
+            totalFullRows++;
             for (int j = i; j >= 0; --j) {
                 for (int k = 0; k < 10; ++k) {
                     if (j == 0)
@@ -90,6 +92,19 @@ void GameScene::checkForFullRows() {
             }
         }
     }
+    if (totalFullRows != 0) generateRowFrame(totalFullRows);
+}
+
+void GameScene::generateRowFrame(int height) {
+    uint8_t location = currentBlock->blockArray[0][0];
+    uint8_t data = (location << 2);
+
+    for (int i = 0; i < 2; ++i)
+        if ((height-1) & (1 << i))
+            data |= (1 << i);
+
+    Frame rowFrame(data, Frame::ROW_TYPE);
+    SendQueue::addToQueue(rowFrame);
 }
 
 int GameScene::boardCount() {
