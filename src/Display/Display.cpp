@@ -19,27 +19,71 @@ uint16_t Display::colors[8][3] = {
     {0x2B9E, 0x949F, 0x0292}  // J Block Blue
 };
 
+/**
+ * Init the display
+ */
 void Display::init() {
     Display::tft.begin();
     Display::tft.fillScreen(ILI9341_BLACK);
 }
 
+/**
+ * Fills a circle
+ *
+ * @param x x coordinates
+ * @param y y coordinates
+ * @param r radius
+ * @param c color
+ */
 void Display::fillCircle(int x, int y, int r, uint16_t c) {
     Display::tft.fillCircle(x, y, r, c);
 }
 
+/**
+ * Draws a circle
+ *
+ * @param x x coordinates
+ * @param y y coordinates
+ * @param r radius
+ * @param c color
+ */
 void Display::drawCircle(int x, int y, int r, uint16_t c) {
     Display::tft.drawCircle(x, y, r, c);
 }
 
+/**
+ * Draws a rectangle
+ *
+ * @param x x coordinates
+ * @param y y coordinates
+ * @param w width
+ * @param h height
+ * @param c color
+ */
 void Display::drawRect(int x, int y, int w, int h, uint16_t c) {
     Display::tft.drawRect(x, y, w, h, c);
 }
 
+/**
+ * Fills a rectangle
+ *
+ * @param x x coordinates
+ * @param y y coordinates
+ * @param w width
+ * @param h height
+ * @param c color
+ */
 void Display::fillRect(int x, int y, int w, int h, uint16_t c) {
     Display::tft.fillRect(x, y, w, h, c);
 }
 
+/**
+ * Draws a tetris block
+ *
+ * @param x x coordinates
+ * @param y y coordinates
+ * @param color
+ */
 void Display::drawTetrisBlock(int x, int y, int color) {
     // Draw main color block
     Display::fillRect(x, 0+y, 20, 20, Display::colors[color][0]);
@@ -59,6 +103,13 @@ void Display::drawTetrisBlock(int x, int y, int color) {
     Display::fillRect(3+x, 3+y, 2, 14, colors[color][2]);
 }
 
+/**
+ * Draws a small tetris block
+ *
+ * @param x x coordinates
+ * @param y y coordinates
+ * @param c color
+ */
 void Display::drawSmallTetrisBlok(int x, int y, int c) {
     // Draw main color
     Display::tft.fillRect(x, y, 10, 10, ILI9341_YELLOW);
@@ -70,6 +121,15 @@ void Display::drawSmallTetrisBlok(int x, int y, int c) {
     Display::tft.fillRect(9+x, y, 1, 10, 0x2965);
 }
 
+/**
+ * Draws a string
+ *
+ * @param x x coordinates
+ * @param y y coordinates
+ * @param s size
+ * @param t string
+ * @param c color
+ */
 void Display::drawText(int x, int y, int s, String t, uint16_t c) {
     Display::tft.setCursor(x, y);
     Display::tft.setTextColor(c);
@@ -78,6 +138,9 @@ void Display::drawText(int x, int y, int s, String t, uint16_t c) {
     Display::tft.print(t);
 }
 
+/**
+ * Draws the game border
+ */
 void Display::drawGameBorder() {
     for (int i = 300; i >= 80;) {
         Display::drawTetrisBlock(0, i, GRAY);
@@ -91,6 +154,9 @@ void Display::drawGameBorder() {
     }
 }
 
+/**
+ * Draws hold section from game
+ */
 void Display::drawHoldSection() {
     Display::drawSmallTetrisBlok(30, 35, GRAY);
     Display::drawSmallTetrisBlok(40, 35, GRAY);
@@ -102,6 +168,9 @@ void Display::drawHoldSection() {
     Display::drawText(29, 13, 1, "HOLD", ILI9341_WHITE);
 }
 
+/**
+ * Draws next section
+ */
 void Display::drawNextSection() {
     Display::drawSmallTetrisBlok(190, 35, GRAY);
     Display::drawSmallTetrisBlok(190+10, 35, GRAY);
@@ -113,6 +182,9 @@ void Display::drawNextSection() {
     Display::drawText(188, 13, 1, "NEXT", ILI9341_WHITE);
 }
 
+/**
+ * Draw demo blocks
+ */
 void Display::drawDemoBlocks() {
     Display::drawTetrisBlock(20, 240, YELLOW);
     Display::drawTetrisBlock(20, 260, YELLOW);
@@ -125,6 +197,9 @@ void Display::drawDemoBlocks() {
     Display::drawTetrisBlock(120, 160, GREEN);
 }
 
+/**
+ * Draw score
+ */
 void Display::drawScore() {
     Display::drawText(105, 25, 1, "Score:", ILI9341_WHITE);
     Display::drawText(105, 35, 2, "560", ILI9341_WHITE);

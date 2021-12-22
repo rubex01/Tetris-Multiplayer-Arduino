@@ -8,11 +8,17 @@
 bool Controller::actionArray[] = {false};
 bool Controller::nonContinuingTrigger[] = {false};
 
+/**
+ * Init controller
+ */
 void Controller::init() {
     Wire.begin();
     Nunchuk.begin(NUNCHUK_ADDRESS);
 }
 
+/**
+ * Updates state of the nunchuk
+ */
 void Controller::update() {
     Nunchuk.getState(NUNCHUK_ADDRESS);
 
@@ -53,6 +59,11 @@ void Controller::update() {
     }
 }
 
+/**
+ * Returns a bool array that contains the state of every possible action on the nunchuk
+ *
+ * @return bool *
+ */
 bool* Controller::getActions() {
     bool* returnArray = new bool[6];
     for (int i = 0; i < 6; ++i) {

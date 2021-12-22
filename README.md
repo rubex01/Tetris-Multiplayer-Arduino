@@ -14,6 +14,7 @@
 * python
 * pip
 * cpplint
+* doxygen
 
 ### Running lint
 1. Make sure you have python and pip installed (`sudo apt install python3`) & (`sudo apt install pip`)
@@ -21,6 +22,12 @@
 3. To make sure cpplint is working you can run `cpplint --help` if it's not working you might need to reboot your system
 4. Run `chmod +x ./cpplint.sh` to make the file executable
 5. Run `cpplint.sh`
+
+### Running doxygen
+1. Make sure you have installed doxygen (`sudo apt install doxygen`)
+2. Run doxygen doxygen-config in the root of the project
+3. If you get a dot error running doxygen you might need to install graphviz (`sudo apt install graphviz`)
+4. The generated doxygen files cna be found in the html folder 
 
 ### Setup for developers
 1. start
