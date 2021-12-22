@@ -218,6 +218,8 @@ int GameScene::generateRandomSeed() {
  * Ends the game and resets the random seed
  */
 void GameScene::endGame() {
+    delete currentBlock;
+    delete nextBlock;
     setRandomSeed();
 }
 
