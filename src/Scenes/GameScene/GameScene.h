@@ -33,7 +33,7 @@ class GameScene: public Scene {
     static void setRandomSeed();
     static int generateRandomSeed();
     static void generateRowFrame(int height);
-    static bool checkForReceivedRows();
+    static bool checkForReceivedFrames();
     static void addOpponentReceivedRow(uint8_t data);
 };
 
