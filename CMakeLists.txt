@@ -21,6 +21,7 @@ add_executable(${PRODUCT_NAME}
         src/main.cpp
         src/Controller/Controller.cpp
         src/Display/Display.cpp
+        src/Sound/NewTone.cpp src/Sound/NewTone.h
         src/Scenes/GameScene/GameScene.cpp
         src/Tetris/Block.cpp
         src/Tetris/Tetrominoes/OBlock.cpp
