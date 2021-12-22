@@ -1,6 +1,7 @@
 #ifndef SRC_SCENES_GAMESCENE_GAMESCENE_H_
 #define SRC_SCENES_GAMESCENE_GAMESCENE_H_
 
+#include <stdint.h>
 #include "../Scene.h"
 #include "../../Tetris/Block.h"
 
@@ -31,6 +32,8 @@ class GameScene: public Scene {
     static void setRandomSeed();
     static int generateRandomSeed();
     static void generateRowFrame(int height);
+    static bool checkForReceivedRows();
+    static void addOpponentReceivedRow(uint8_t data);
 };
 
 #endif  // SRC_SCENES_GAMESCENE_GAMESCENE_H_

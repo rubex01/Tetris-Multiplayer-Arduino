@@ -208,7 +208,7 @@ void Block::moveDown() {
 
     for (int i = 0; i < 4; i++) {
         if (blockArray[i][1] < 11) {
-            GameScene::tetrisBoard[blockArray[i][1]][blockArray[i][0]] = 1;
+            GameScene::tetrisBoard[blockArray[i][1]][blockArray[i][0]] = blockColor;
         } else {
             copyArray(tempArray);
             GameScene::blockIsMoving = false;
