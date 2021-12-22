@@ -30,6 +30,7 @@ class GameScene: public Scene {
     static void initTimer();
     static void setRandomSeed();
     static int generateRandomSeed();
+    static void generateRowFrame(int height);
 };
 
 #endif  // SRC_SCENES_GAMESCENE_GAMESCENE_H_
