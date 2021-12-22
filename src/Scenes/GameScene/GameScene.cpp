@@ -44,7 +44,7 @@ void GameScene::init() {
     Display::drawHoldSection();
     Display::drawNextSection();
     Display::drawScore();
-    //NewTone::aNewTone(NewTone::buzzer, NewTone::melody[NewTone::thisNote], NewTone::noteDuration*0.9);
+    NewTone::aNewTone(NewTone::buzzer, NewTone::melody[NewTone::thisNote], NewTone::noteDuration*0.9);
     GameScene::initTimer();
     GameScene::currentBlock = BlockFactory::createBlock(rand() % 7);
     currentBlock->initBlock();
