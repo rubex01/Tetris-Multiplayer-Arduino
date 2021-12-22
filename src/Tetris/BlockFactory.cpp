@@ -7,7 +7,11 @@
 #include "Tetrominoes/LBlock.h"
 #include "Tetrominoes/JBlock.h"
 
-
+/**
+ * Creates a new Tetromino block depending on value given by param choice
+ *
+ * @param choice
+ */
 Block* BlockFactory::createBlock(int choice) {
     if (choice == 0) {
         return new OBlock(4, 0);

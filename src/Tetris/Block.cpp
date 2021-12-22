@@ -13,6 +13,9 @@ Block::Block(int xPos, int yPos) {
     }
 }
 
+/**
+ * Inits block, places it at starting location
+ */
 void Block::initBlock() {
     int valueCount = 0;
     for (int i = 0; i < 4; i++) {
@@ -27,12 +30,22 @@ void Block::initBlock() {
     setValue(blockColor);
 }
 
+/**
+ * Sets values of blocks on all coordinates. 0 means invisisble, 1 means visisble
+ *
+ * @param value
+ */
 void Block::setValue(int value) {
     for (int i = 0; i < 4; i++) {
         GameScene::tetrisBoard[blockArray[i][1]][blockArray[i][0]] = value;
     }
 }
 
+/**
+ * Resets direction of block by certain value
+ *
+ * @param direction
+ */
 void Block::resetDirection(int direction) {
     blockArray[0][0] -= direction;
     blockArray[1][0] -= direction;
@@ -40,6 +53,9 @@ void Block::resetDirection(int direction) {
     blockArray[3][0] -= direction;
 }
 
+/**
+ * Rotates tetromino block on the board
+ */
 void Block::rotate() {
     if (rotationLevel == 3)
         rotationLevel = 0;
@@ -102,6 +118,11 @@ void Block::rotate() {
     delete[] backup;
 }
 
+/**
+ * Moves a tetrisblock sideways. The direction param decides if it is left or right
+ *
+ * @param direction
+ */
 void Block::moveSideways(int direction) {
     int tempArray[11][10] = {{0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}};
 
@@ -139,6 +160,11 @@ void Block::moveSideways(int direction) {
     }
 }
 
+/**
+ * Copies the current boardArray in a temporarily one
+ *
+ * @param array
+ */
 void Block::copyArray(int array[11][10]) {
     for (int i = 0; i < 11; i++) {
         for (int j = 0; j < 10; j++) {
@@ -154,8 +180,14 @@ Block::~Block() {
     delete[] Block::blockArray;
 }
 
+/**
+ * Rotates specific Tetromino block 1 time
+ */
 void Block::rotateBlock() {}
 
+/**
+ * Moves the tetromino block one unit down
+ */
 void Block::moveDown() {
     int tempArray[11][10] = {{0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}};
 
