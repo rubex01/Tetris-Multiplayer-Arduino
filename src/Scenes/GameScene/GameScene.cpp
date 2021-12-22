@@ -49,6 +49,9 @@ void GameScene::init() {
     GameScene::drawBoard();
 }
 
+/**
+ * Draw all new blocks on the tetrisBoard with the correct color
+ */
 void GameScene::drawBoard() {
     int y = 100;
     for (int i = 0; i < 11; i++) {
@@ -70,6 +73,9 @@ void GameScene::drawBoard() {
     }
 }
 
+/**
+ * Check the board for any full rows, remove them if found
+ */
 void GameScene::checkForFullRows() {
     for (int i = 0; i < 11; ++i) {
         boolean fullRow = true;
@@ -92,6 +98,9 @@ void GameScene::checkForFullRows() {
     }
 }
 
+/**
+ * Get the count of all single tetris blocks on the board
+ */
 int GameScene::boardCount() {
     int count = 0;
     for (int i = 0; i < 11; i++) {
@@ -104,6 +113,9 @@ int GameScene::boardCount() {
     return count;
 }
 
+/**
+ * Init timer 2 to be later used for the game loop
+ */
 void GameScene::initTimer() {
     TCCR2A |= (1 << WGM21);
     TCCR2B |= (1 << CS22)|(1 << CS21)|(1 << CS20);
