@@ -98,7 +98,7 @@
 #define NOTE_DS8 4978
 #define REST 0
 
-#define ONESECOND 125  // Timer2
+// #define ONESECOND 125  // Timer2
 
 bool NewTone::noNewToneCheck = true;
 
@@ -136,12 +136,12 @@ ISR(TIMER1_COMPA_vect) {  // Timer interrupt vector.
 uint8_t NewTone::teller = 0;  // Timer2
 int NewTone::thisNote = 0;  // Timer2
 
-void NewTone::initTimer2() {
-  DDRB |= (1 << DDB0);
-  TCCR2B |= (1 << CS22)|(1 << CS20);
-  TIMSK2 |= (1 << TOIE2);
-  TCNT2 = 0;
-}
+// void NewTone::initTimer2() {
+//   DDRB |= (1 << DDB0);
+//   TCCR2B |= (1 << CS22)|(1 << CS20);
+//   TIMSK2 |= (1 << TOIE2);
+//   TCNT2 = 0;
+// }
 
 uint16_t NewTone::_nt_time;       // Time note should end.
 uint8_t NewTone::_pinMask = 0;         // Pin bitmask.

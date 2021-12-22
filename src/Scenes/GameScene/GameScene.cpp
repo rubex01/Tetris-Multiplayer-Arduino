@@ -18,18 +18,18 @@ bool GameScene::moveTickReached = false;
 int GameScene::tickValue = 68;
 int GameScene::moveTickCounter = 0;
 
-ISR(TIMER2_COMPA_vect) {
-    if (GameScene::gameCounter >= GameScene::tickValue) {
-        GameScene::gameTickReached = true;
-        GameScene::gameCounter = 0;
-    }
-    if (GameScene::moveTickCounter == 4) {
-        GameScene::moveTickReached = true;
-        GameScene::moveTickCounter = 0;
-    }
-    GameScene::moveTickCounter++;
-    GameScene::gameCounter++;
-}
+// ISR(TIMER2_COMPA_vect) {
+//     if (GameScene::gameCounter >= GameScene::tickValue) {
+//         GameScene::gameTickReached = true;
+//         GameScene::gameCounter = 0;
+//     }
+//     if (GameScene::moveTickCounter == 4) {
+//         GameScene::moveTickReached = true;
+//         GameScene::moveTickCounter = 0;
+//     }
+//     GameScene::moveTickCounter++;
+//     GameScene::gameCounter++;
+// }
 
 /**
  * Init game scene, draw all game borders and elements
@@ -44,8 +44,8 @@ void GameScene::init() {
     Display::drawHoldSection();
     Display::drawNextSection();
     Display::drawScore();
-    NewTone::aNewTone(NewTone::buzzer, NewTone::melody[NewTone::thisNote], NewTone::noteDuration*0.9);
     GameScene::initTimer();
+    NewTone::aNewTone(NewTone::buzzer, NewTone::melody[NewTone::thisNote], NewTone::noteDuration*0.9);
     GameScene::currentBlock = BlockFactory::createBlock(rand() % 7);
     currentBlock->initBlock();
     GameScene::drawBoard();
@@ -139,10 +139,11 @@ int GameScene::boardCount() {
  * Init timer 2 to be later used for the game loop
  */
 void GameScene::initTimer() {
-    TCCR2A |= (1 << WGM21);
-    TCCR2B |= (1 << CS22)|(1 << CS21)|(1 << CS20);
-    OCR2A = 255;
-    TIMSK2 |= (1 << OCIE2A);
+    // DDRB |= (1 << DDB0);
+    // TCCR2A |= (1 << WGM21);
+    // TCCR2B |= (1 << CS22)|(1 << CS21)|(1 << CS20);
+    // OCR2A = 255;
+    // TIMSK2 |= (1 << OCIE2A);
 }
 
 /**
