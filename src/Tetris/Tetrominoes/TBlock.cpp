@@ -14,6 +14,15 @@ TBlock::TBlock(int xPos, int yPos) : Block(xPos, yPos) {
     blockColor = PURPLE;
 }
 
+void TBlock::drawSectionBlock() {
+    int x = 194;
+    int y = 35;
+    Display::drawSmallTetrisBlok(x, y, this->blockColor);
+    Display::drawSmallTetrisBlok(x+10, y, this->blockColor);
+    Display::drawSmallTetrisBlok(x-10, y, this->blockColor);
+    Display::drawSmallTetrisBlok(x, y+10, this->blockColor);
+}
+
 void TBlock::rotateBlock() {
     switch (rotationLevel) {
         case 1:

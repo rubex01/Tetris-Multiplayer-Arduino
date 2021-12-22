@@ -26,6 +26,7 @@ class Display {
     static void drawGameBorder();
     static void drawHoldSection();
     static void drawNextSection();
+    static void clearNextSection();
     static void drawScore();
     static void drawDemoBlocks();
     static Adafruit_ILI9341 tft;

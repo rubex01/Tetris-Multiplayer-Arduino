@@ -15,3 +15,12 @@ OBlock::OBlock(int xPos, int yPos) : Block(xPos, yPos) {
 }
 
 void OBlock::rotateBlock() {}
+
+void OBlock::drawSectionBlock() {
+    int x = 190;
+    int y = 35;
+    Display::drawSmallTetrisBlok(x, y, this->blockColor);
+    Display::drawSmallTetrisBlok(x+10, y, this->blockColor);
+    Display::drawSmallTetrisBlok(x, y+10, this->blockColor);
+    Display::drawSmallTetrisBlok(x+10, y+10, this->blockColor);
+}

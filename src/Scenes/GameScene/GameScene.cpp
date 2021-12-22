@@ -17,6 +17,7 @@ int GameScene::gameCounter = 0;
 bool GameScene::moveTickReached = false;
 int GameScene::tickValue = 68;
 int GameScene::moveTickCounter = 0;
+Block* GameScene::nextBlock = nullptr;
 
 ISR(TIMER2_COMPA_vect) {
     if (GameScene::gameCounter >= GameScene::tickValue) {
@@ -45,7 +46,9 @@ void GameScene::init() {
     Display::drawNextSection();
     Display::drawScore();
     GameScene::initTimer();
+    GameScene::nextBlock = BlockFactory::createBlock(6);
     GameScene::currentBlock = BlockFactory::createBlock(rand() % 7);
+    GameScene::nextBlock->drawSectionBlock();
     currentBlock->initBlock();
     GameScene::drawBoard();
 }
@@ -185,8 +188,11 @@ void GameScene::drawScene() {
         }
     } else {
         delete GameScene::currentBlock;
-        GameScene::currentBlock = BlockFactory::createBlock(rand() % 7);
+        GameScene::currentBlock = GameScene::nextBlock;
         GameScene::currentBlock->initBlock();
+        GameScene::nextBlock = BlockFactory::createBlock(rand() % 7);
+        Display::clearNextSection();
+        GameScene::nextBlock->drawSectionBlock();
         blockIsMoving = true;
         GameScene::gameTickReached = false;
     }
@@ -281,6 +287,8 @@ int GameScene::generateRandomSeed() {
  * Ends the game and resets the random seed
  */
 void GameScene::endGame() {
+    delete currentBlock;
+    delete nextBlock;
     setRandomSeed();
 }
 

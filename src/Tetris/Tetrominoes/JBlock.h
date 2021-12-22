@@ -9,6 +9,7 @@ class JBlock : public Block {
     JBlock(int xPos, int yPos);
     bool checkBlock();
     void rotateBlock();
+    void drawSectionBlock();
 };
 
 #endif  // SRC_TETRIS_TETROMINOES_JBLOCK_H_

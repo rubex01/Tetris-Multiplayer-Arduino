@@ -10,6 +10,7 @@ class Block {
   void moveDown();
   void moveSideways(int direction);
   bool checkBlock();
+  virtual void drawSectionBlock();
   int** blockArray;
   int blockColor;
   void rotate();
