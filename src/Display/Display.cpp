@@ -112,7 +112,7 @@ void Display::drawTetrisBlock(int x, int y, int color) {
  */
 void Display::drawSmallTetrisBlok(int x, int y, int c) {
     // Draw main color
-    Display::tft.fillRect(x, y, 10, 10, ILI9341_YELLOW);
+    Display::tft.fillRect(x, y, 10, 10, Display::colors[c][0]);
 
     // Draw outline
     Display::tft.fillRect(x, y, 10, 1, 0x2965);
@@ -173,9 +173,6 @@ void Display::drawHoldSection() {
  */
 void Display::drawNextSection() {
     Display::drawSmallTetrisBlok(190, 35, GRAY);
-    Display::drawSmallTetrisBlok(190+10, 35, GRAY);
-    Display::drawSmallTetrisBlok(190, 45, GRAY);
-    Display::drawSmallTetrisBlok(190+10, 45, GRAY);
     Display::drawRect(170-1, 10-1, 62, 62, 0x2965);
     Display::drawRect(170, 10, 60, 60, 0x2965);
     Display::fillRect(170, 10, 60, 12, 0x2965);

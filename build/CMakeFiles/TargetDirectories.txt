@@ -1,0 +1,9 @@
+/home/martijn/Documents/GitHub/kbsmc2/build/CMakeFiles/rebuild_cache.dir
+/home/martijn/Documents/GitHub/kbsmc2/build/CMakeFiles/edit_cache.dir
+/home/martijn/Documents/GitHub/kbsmc2/build/CMakeFiles/upload_eeprom.dir
+/home/martijn/Documents/GitHub/kbsmc2/build/CMakeFiles/upload.dir
+/home/martijn/Documents/GitHub/kbsmc2/build/CMakeFiles/disasm.dir
+/home/martijn/Documents/GitHub/kbsmc2/build/CMakeFiles/eeprom.dir
+/home/martijn/Documents/GitHub/kbsmc2/build/CMakeFiles/hex.dir
+/home/martijn/Documents/GitHub/kbsmc2/build/CMakeFiles/strip.dir
+/home/martijn/Documents/GitHub/kbsmc2/build/CMakeFiles/KBS.dir

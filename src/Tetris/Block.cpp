@@ -1,5 +1,6 @@
 #include "../Scenes/GameScene/GameScene.h"
 #include "Block.h"
+#include "../Display/Display.h"
 
 Block::Block(int xPos, int yPos) {
     this->xPos = xPos;
@@ -184,6 +185,10 @@ Block::~Block() {
  * Rotates specific Tetromino block 1 time
  */
 void Block::rotateBlock() {}
+
+void Block::drawSectionBlock() {
+    //Display::drawSmallTetrisBlok(0, 0, this->blockColor);
+}
 
 /**
  * Moves the tetromino block one unit down
