@@ -1,5 +1,6 @@
 #include "LoseScene.h"
 #include "../../Sound/NewTone.h"
+#include "../../Display/Display.h"
 
 /**
  * Init lose scene

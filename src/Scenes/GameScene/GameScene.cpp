@@ -3,29 +3,175 @@
 #include "../../Communication/SendQueue.h"
 #include "../../Communication/Frame.h"
 #include "../../Sound/NewTone.h"
+#include "../../Controller/Controller.h"
+#include "../../Tetris/BlockFactory.h"
 
 int GameScene::gameSeed = 0;
+int GameScene::tetrisBoard[11][10] = {{0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}};
+int GameScene::lastBoard[11][10] = {{0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}};
+Block* GameScene::currentBlock = nullptr;
+bool GameScene::gameTickReached = false;
+bool GameScene::blockIsMoving = true;
+bool GameScene::gameOver = false;
+int GameScene::gameCounter = 0;
+bool GameScene::moveTickReached = false;
+int GameScene::tickValue = 68;
+int GameScene::moveTickCounter = 0;
+
+ISR(TIMER2_COMPA_vect) {
+    if (GameScene::gameCounter >= GameScene::tickValue) {
+        GameScene::gameTickReached = true;
+        GameScene::gameCounter = 0;
+    }
+    if (GameScene::moveTickCounter == 4) {
+        GameScene::moveTickReached = true;
+        GameScene::moveTickCounter = 0;
+    }
+    GameScene::moveTickCounter++;
+    GameScene::gameCounter++;
+}
 
 /**
  * Init game scene, draw all game borders and elements
  */
 void GameScene::init() {
+    if (gameSeed == 0) {
+        setRandomSeed();
+        startGame();
+    }
+
     Display::drawGameBorder();
     Display::drawHoldSection();
     Display::drawNextSection();
     Display::drawScore();
-    Display::drawDemoBlocks();
-    NewTone::aNewTone(NewTone::buzzer, NewTone::melody[NewTone::thisNote], NewTone::noteDuration*0.9);
+    //NewTone::aNewTone(NewTone::buzzer, NewTone::melody[NewTone::thisNote], NewTone::noteDuration*0.9);
+    GameScene::initTimer();
+    GameScene::currentBlock = BlockFactory::createBlock(rand() % 7);
+    currentBlock->initBlock();
+    GameScene::drawBoard();
+}
 
-    setRandomSeed();
-    if (gameSeed == 0)
-        startGame();
+/**
+ * Draw all new blocks on the tetrisBoard with the correct color
+ */
+void GameScene::drawBoard() {
+    int y = 100;
+    for (int i = 0; i < 11; i++) {
+        int x = 20;
+        for (int j = 0; j < 10; j++) {
+            if (lastBoard[i][j] != 0 && GameScene::tetrisBoard[i][j] == 0) {
+                Display::fillRect(x, y, 20, 20, GameScene::tetrisBoard[i][j]);
+            } else if (lastBoard[i][j] == 0 && GameScene::tetrisBoard[i][j] != 0) {
+                Display::drawTetrisBlock(x, y, currentBlock->blockColor);
+            }
+            x += 20;
+        }
+        y += 20;
+    }
+    for (int i = 0; i < 11; i++) {
+        for (int j = 0; j < 10; j++) {
+            lastBoard[i][j] = GameScene::tetrisBoard[i][j];
+        }
+    }
+}
+
+/**
+ * Check the board for any full rows, remove them if found
+ */
+void GameScene::checkForFullRows() {
+    for (int i = 0; i < 11; ++i) {
+        boolean fullRow = true;
+        for (int j = 0; j < 10; ++j) {
+            if (GameScene::tetrisBoard[i][j] == 0) {
+                fullRow = false;
+                break;
+            }
+        }
+        if (fullRow) {
+            for (int j = i; j >= 0; --j) {
+                for (int k = 0; k < 10; ++k) {
+                    if (j == 0)
+                        GameScene::tetrisBoard[j][k] = 0;
+                    else
+                        GameScene::tetrisBoard[j][k] = GameScene::tetrisBoard[j-1][k];
+                }
+            }
+        }
+    }
+}
+
+/**
+ * Get the count of all single tetris blocks on the board
+ */
+int GameScene::boardCount() {
+    int count = 0;
+    for (int i = 0; i < 11; i++) {
+        for (int j = 0; j < 10; j++) {
+            if (GameScene::tetrisBoard[i][j] != 0) {
+                count++;
+            }
+        }
+    }
+    return count;
+}
+
+/**
+ * Init timer 2 to be later used for the game loop
+ */
+void GameScene::initTimer() {
+    TCCR2A |= (1 << WGM21);
+    TCCR2B |= (1 << CS22)|(1 << CS21)|(1 << CS20);
+    OCR2A = 255;
+    TIMSK2 |= (1 << OCIE2A);
 }
 
 /**
  * Draw current game state, score etc.
  */
 void GameScene::drawScene() {
+    if (GameScene::gameOver) {
+        Scene::setScene(Scene::LOSE_SCENE);
+        return;
+    }
+    if (!moveTickReached) {
+        return;
+    }
+
+    bool* actions = Controller::getActions();
+    bool* array2 = Controller::getNonContinuingTriggerActions();
+
+    if (GameScene::blockIsMoving) {
+        if (actions[Controller::DOWN]) {
+            GameScene::tickValue = 2;
+        } else {
+            GameScene::tickValue = 68;
+        }
+
+        if (array2[Controller::Z_BUTTON]) {
+            GameScene::currentBlock->rotate();
+        }
+
+        if (actions[Controller::RIGHT]) {
+            GameScene::currentBlock->moveSideways(1);
+        } else if (actions[Controller::LEFT]) {
+            GameScene::currentBlock->moveSideways(-1);
+        }
+
+        if (GameScene::gameTickReached) {
+            GameScene::currentBlock->moveDown();
+            GameScene::gameTickReached = false;
+        }
+    } else {
+        delete GameScene::currentBlock;
+        GameScene::currentBlock = BlockFactory::createBlock(rand() % 7);
+        GameScene::currentBlock->initBlock();
+        blockIsMoving = true;
+        GameScene::gameTickReached = false;
+    }
+    moveTickReached = false;
+    GameScene::drawBoard();
+    delete[] actions;
+    delete[] array2;
 }
 
 /**

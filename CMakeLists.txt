@@ -23,6 +23,15 @@ add_executable(${PRODUCT_NAME}
         src/Display/Display.cpp
         src/Sound/NewTone.cpp src/Sound/NewTone.h
         src/Scenes/GameScene/GameScene.cpp
+        src/Tetris/Block.cpp
+        src/Tetris/Tetrominoes/OBlock.cpp
+        src/Tetris/Tetrominoes/TBlock.cpp
+        src/Tetris/Tetrominoes/IBlock.cpp
+        src/Tetris/Tetrominoes/JBlock.cpp
+        src/Tetris/Tetrominoes/LBlock.cpp
+        src/Tetris/Tetrominoes/SBlock.cpp
+        src/Tetris/Tetrominoes/ZBlock.cpp
+        src/Tetris/BlockFactory.cpp
         src/Communication/IRCommunication.cpp src/Communication/IRCommunication.h src/Communication/SendQueue.cpp src/Communication/SendQueue.h src/Communication/ReceivedData.cpp src/Communication/ReceivedData.h src/Communication/Frame.cpp src/Communication/Frame.h src/Scenes/Scene.cpp src/Scenes/Scene.h src/Scenes/StartScene/StartScene.cpp src/Scenes/StartScene/StartScene.h src/Scenes/LoseScene/LoseScene.cpp src/Scenes/LoseScene/LoseScene.h src/Scenes/WinScene/WinScene.cpp src/Scenes/WinScene/WinScene.h)
 
 
