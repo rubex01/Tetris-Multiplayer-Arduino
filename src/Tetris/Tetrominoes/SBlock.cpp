@@ -14,6 +14,15 @@ SBlock::SBlock(int xPos, int yPos) : Block(xPos, yPos) {
     blockColor = GREEN;
 }
 
+void SBlock::drawSectionBlock() {
+    int x = 194;
+    int y = 35;
+    Display::drawSmallTetrisBlok(x, y, this->blockColor);
+    Display::drawSmallTetrisBlok(x+10, y, this->blockColor);
+    Display::drawSmallTetrisBlok(x, y+10, this->blockColor);
+    Display::drawSmallTetrisBlok(x-10, y+10, this->blockColor);
+}
+
 void SBlock::rotateBlock() {
     switch (rotationLevel) {
         case 1:

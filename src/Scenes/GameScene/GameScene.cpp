@@ -5,6 +5,7 @@
 #include "../../Controller/Controller.h"
 #include "../../Tetris/BlockFactory.h"
 #include "../../Tetris/Score.h"
+#include "../../Communication/ReceivedData.h"
 
 int GameScene::gameSeed = 0;
 int GameScene::tetrisBoard[11][10] = {{0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}};
@@ -17,6 +18,7 @@ int GameScene::gameCounter = 0;
 bool GameScene::moveTickReached = false;
 int GameScene::tickValue = 68;
 int GameScene::moveTickCounter = 0;
+Block* GameScene::nextBlock = nullptr;
 
 ISR(TIMER2_COMPA_vect) {
     if (GameScene::gameCounter >= GameScene::tickValue) {
@@ -45,7 +47,9 @@ void GameScene::init() {
     Display::drawNextSection();
     Score::updateScore(0);
     GameScene::initTimer();
+    GameScene::nextBlock = BlockFactory::createBlock(6);
     GameScene::currentBlock = BlockFactory::createBlock(rand() % 7);
+    GameScene::nextBlock->drawSectionBlock();
     currentBlock->initBlock();
     GameScene::drawBoard();
 }
@@ -60,8 +64,8 @@ void GameScene::drawBoard() {
         for (int j = 0; j < 10; j++) {
             if (lastBoard[i][j] != 0 && GameScene::tetrisBoard[i][j] == 0) {
                 Display::fillRect(x, y, 20, 20, GameScene::tetrisBoard[i][j]);
-            } else if (lastBoard[i][j] == 0 && GameScene::tetrisBoard[i][j] != 0) {
-                Display::drawTetrisBlock(x, y, currentBlock->blockColor);
+            } else if (lastBoard[i][j] != GameScene::tetrisBoard[i][j]) {
+                Display::drawTetrisBlock(x, y, tetrisBoard[i][j]);
             }
             x += 20;
         }
@@ -155,6 +159,9 @@ void GameScene::drawScene() {
         Scene::setScene(Scene::LOSE_SCENE);
         return;
     }
+
+    if (checkForReceivedRows()) return;
+
     if (!moveTickReached) {
         return;
     }
@@ -185,8 +192,11 @@ void GameScene::drawScene() {
         }
     } else {
         delete GameScene::currentBlock;
-        GameScene::currentBlock = BlockFactory::createBlock(rand() % 7);
+        GameScene::currentBlock = GameScene::nextBlock;
         GameScene::currentBlock->initBlock();
+        GameScene::nextBlock = BlockFactory::createBlock(rand() % 7);
+        Display::clearNextSection();
+        GameScene::nextBlock->drawSectionBlock();
         blockIsMoving = true;
         GameScene::gameTickReached = false;
     }
@@ -194,6 +204,71 @@ void GameScene::drawScene() {
     GameScene::drawBoard();
     delete[] actions;
     delete[] array2;
+}
+
+/**
+ * Adds one row to the bottom of the playing field with a gap
+ *
+ * @param data
+ */
+void GameScene::addOpponentReceivedRow(uint8_t data) {
+    GameScene::currentBlock->setValue(0);
+
+    int height = 0;
+    for (int i=0; i < 2; i++)
+        if (data & (1 << i))
+            height |= (1 << i);
+    height++;
+
+    int gapLocation = 0;
+    for (int i=2; i < 6; i++)
+        if (data & (1 << i))
+            gapLocation |= (1 << (i-2));
+
+    for (int i = 0; i < 11; i++) {
+        if (i == 10 || i + height > 10) break;
+        for (int j = 0; j < 10; j++) {
+            GameScene::tetrisBoard[i][j] = GameScene::tetrisBoard[i+height][j];
+        }
+    }
+
+    for (int i = 11-height; i < 11; ++i) {
+        for (int j = 0; j < 10; ++j) {
+            if (j != gapLocation)
+                GameScene::tetrisBoard[i][j] = ENEMYBLOCK;
+            else
+                GameScene::tetrisBoard[i][j] = 0;
+        }
+    }
+
+    int count = boardCount();
+    GameScene::currentBlock->setValue(currentBlock->blockColor);
+    int count2 = boardCount();
+
+    if ((count2 - count) != 4) gameOver = true;
+}
+
+/**
+ * Check if there are any new rows that have been received
+ *
+ * @return bool if received new row
+ */
+bool GameScene::checkForReceivedRows() {
+    if (!ReceivedData::newResultsAvailable()) return false;
+
+    bool returnVal = false;
+
+    uint8_t * frames = ReceivedData::getResults();
+    for (int i = 0; i < 20; ++i) {
+        if (frames[i] == 0) continue;
+        Frame a = Frame(frames[i]);
+        if (a.getType() == Frame::ROW_TYPE) {
+            addOpponentReceivedRow(a.getData());
+            returnVal = true;
+        }
+    }
+
+    return returnVal;
 }
 
 /**
@@ -216,6 +291,8 @@ int GameScene::generateRandomSeed() {
  * Ends the game and resets the random seed
  */
 void GameScene::endGame() {
+    delete currentBlock;
+    delete nextBlock;
     setRandomSeed();
 }
 

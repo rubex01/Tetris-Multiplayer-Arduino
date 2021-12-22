@@ -1,5 +1,6 @@
 #include "../Scenes/GameScene/GameScene.h"
 #include "Block.h"
+#include "../Display/Display.h"
 
 Block::Block(int xPos, int yPos) {
     this->xPos = xPos;
@@ -186,6 +187,11 @@ Block::~Block() {
 void Block::rotateBlock() {}
 
 /**
+ * Draws tetris block in the section block
+ */
+void Block::drawSectionBlock() {}
+
+/**
  * Moves the tetromino block one unit down
  */
 void Block::moveDown() {
@@ -208,7 +214,7 @@ void Block::moveDown() {
 
     for (int i = 0; i < 4; i++) {
         if (blockArray[i][1] < 11) {
-            GameScene::tetrisBoard[blockArray[i][1]][blockArray[i][0]] = 1;
+            GameScene::tetrisBoard[blockArray[i][1]][blockArray[i][0]] = blockColor;
         } else {
             copyArray(tempArray);
             GameScene::blockIsMoving = false;

@@ -9,7 +9,7 @@
 
 Adafruit_ILI9341 Display::tft = Adafruit_ILI9341(TFT_CS, TFT_DC);
 
-uint16_t Display::colors[8][3] = {
+uint16_t Display::colors[9][3] = {
     {0x7BEF, 0xA534, 0x4A69},
     {0xFF80, 0xFFD0, 0xEEE0},  // O Block Yellow
     {0xB723, 0xCF6D, 0x9602},  // S Block Groen
@@ -17,7 +17,8 @@ uint16_t Display::colors[8][3] = {
     {0xEA07, 0xF3AE, 0x78E3},  // Z Block Red
     {0xA3DE, 0xE41F, 0x7294},  // T Block Purple
     {0xED07, 0xFEAE, 0x7AA3},  // L Block Orange
-    {0x2B9E, 0x949F, 0x0292}  // J Block Blue
+    {0x2B9E, 0x949F, 0x0292},  // J Block Blue
+    {0x7BEF, 0xA534, 0x4A69},
 };
 
 /**
@@ -113,7 +114,7 @@ void Display::drawTetrisBlock(int x, int y, int color) {
  */
 void Display::drawSmallTetrisBlok(int x, int y, int c) {
     // Draw main color
-    Display::tft.fillRect(x, y, 10, 10, ILI9341_YELLOW);
+    Display::tft.fillRect(x, y, 10, 10, Display::colors[c][0]);
 
     // Draw outline
     Display::tft.fillRect(x, y, 10, 1, 0x2965);
@@ -163,7 +164,7 @@ void Display::drawHoldSection() {
     Display::drawSmallTetrisBlok(40, 35, GRAY);
     Display::drawSmallTetrisBlok(30, 45, GRAY);
 
-    Display::drawRect(10-1, 10-1, 62, 62, 0x2965);
+    Display::drawRect(9, 9, 62, 62, 0x2965);
     Display::drawRect(10, 10, 60, 60, 0x2965);
     Display::fillRect(10, 10, 60, 12, 0x2965);
     Display::drawText(29, 13, 1, "HOLD", ILI9341_WHITE);
@@ -173,14 +174,18 @@ void Display::drawHoldSection() {
  * Draws next section
  */
 void Display::drawNextSection() {
-    Display::drawSmallTetrisBlok(190, 35, GRAY);
-    Display::drawSmallTetrisBlok(190+10, 35, GRAY);
-    Display::drawSmallTetrisBlok(190, 45, GRAY);
-    Display::drawSmallTetrisBlok(190+10, 45, GRAY);
-    Display::drawRect(170-1, 10-1, 62, 62, 0x2965);
+    Display::drawRect(169, 9, 62, 62, 0x2965);
     Display::drawRect(170, 10, 60, 60, 0x2965);
     Display::fillRect(170, 10, 60, 12, 0x2965);
     Display::drawText(188, 13, 1, "NEXT", ILI9341_WHITE);
+}
+
+/**
+ * Clear the next section
+ */
+void Display::clearNextSection() {
+    Display::fillRect(169, 21, 62, 62, ILI9341_BLACK);
+    Display::drawRect(169, 9, 62, 62, 0x2965);
 }
 
 /**

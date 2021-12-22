@@ -13,6 +13,15 @@ JBlock::JBlock(int xPos, int yPos) : Block(xPos, yPos) {
     blockColor = BLUE;
 }
 
+void JBlock::drawSectionBlock() {
+    int x = 194;
+    int y = 35;
+    Display::drawSmallTetrisBlok(x, y, this->blockColor);
+    Display::drawSmallTetrisBlok(x+10, y, this->blockColor);
+    Display::drawSmallTetrisBlok(x-10, y, this->blockColor);
+    Display::drawSmallTetrisBlok(x+10, y+10, this->blockColor);
+}
+
 void JBlock::rotateBlock() {
     switch (rotationLevel) {
         case 1:

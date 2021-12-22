@@ -10,15 +10,16 @@ class Block {
   void moveDown();
   void moveSideways(int direction);
   bool checkBlock();
+  virtual void drawSectionBlock();
   int** blockArray;
   int blockColor;
   void rotate();
   virtual void rotateBlock();
+  void setValue(int value);
 
  protected:
   void copyArray(int array[11][10]);
   void resetDirection(int direction);
-  void setValue(int value);
   int xPos;
   int rotationLevel;
   int yPos;

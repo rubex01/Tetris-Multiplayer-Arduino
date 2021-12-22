@@ -11,6 +11,7 @@
 #define PURPLE 5
 #define ORANGE 6
 #define BLUE 7
+#define ENEMYBLOCK 8
 
 class Display {
  public:
@@ -26,9 +27,10 @@ class Display {
     static void drawHoldSection();
     static void drawNextSection();
     static void drawScore(int score);
+    static void clearNextSection();
     static void drawDemoBlocks();
     static Adafruit_ILI9341 tft;
-    static uint16_t colors[8][3];
+    static uint16_t colors[9][3];
 };
 
 #endif  // SRC_DISPLAY_DISPLAY_H_
