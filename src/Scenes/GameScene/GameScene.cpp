@@ -292,7 +292,7 @@ int GameScene::generateRandomSeed() {
 }
 
 /**
- * Ends the game and resets the random seed
+ * Ends the game and resets all variables + random seed
  */
 void GameScene::endGame(bool lostGame) {
     delete currentBlock;

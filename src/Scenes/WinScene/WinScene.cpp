@@ -33,8 +33,7 @@ void WinScene::drawScene() {
     if (titleAnimationCounter != 40) {
         titleAnimationCounter++;
         titleTextAnimation();
-    }
-    else {
+    } else {
         titleColorAnimationCounter++;
         titleColorAnimation();
     }
@@ -81,8 +80,7 @@ void WinScene::titleColorAnimation() {
     } else if (titleColorAnimationCounter == 3600) {
         Display::drawText(80, 100, 5, "YOU", Display::colors[RED][0]);
         Display::drawText(80, 150, 5, "WON", Display::colors[RED][0]);
-    }
-    else if (titleColorAnimationCounter == 4200) {
+    } else if (titleColorAnimationCounter == 4200) {
         titleColorAnimationCounter = 0;
     }
 }

@@ -26,6 +26,9 @@ void Controller::update() {
     }
 }
 
+/**
+ * Update the state of every button
+ */
 void Controller::updateStates() {
     if (Nunchuk.state.joy_y_axis > 128+100) {
         actionArray[UP] = true;
