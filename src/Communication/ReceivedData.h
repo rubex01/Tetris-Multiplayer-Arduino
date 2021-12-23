@@ -3,13 +3,14 @@
 
 class ReceivedData {
  public:
-    static void addNewResult(uint8_t result);
     static uint8_t * getResults();
+
+    static void addNewResult(uint8_t result);
     static bool newResultsAvailable();
 
  private:
     static uint8_t results[20];
-    static int count;
+    static uint8_t count;
 };
 
 #endif  // SRC_COMMUNICATION_RECEIVEDDATA_H_
