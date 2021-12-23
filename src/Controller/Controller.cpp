@@ -20,8 +20,13 @@ void Controller::init() {
  * Updates state of the nunchuk
  */
 void Controller::update() {
-    Nunchuk.getState(NUNCHUK_ADDRESS);
+    for (int i = 0; i < 2; ++i) {
+        Nunchuk.getState(NUNCHUK_ADDRESS);
+        updateStates();
+    }
+}
 
+void Controller::updateStates() {
     if (Nunchuk.state.joy_y_axis > 128+100) {
         actionArray[UP] = true;
     } else if (actionArray[UP]) {
@@ -77,6 +82,7 @@ bool* Controller::getNonContinuingTriggerActions() {
     bool* returnArray = new bool[6];
     for (int i = 0; i < 6; ++i) {
         returnArray[i] = nonContinuingTrigger[i];
+        actionArray[i] = false;
         nonContinuingTrigger[i] = false;
     }
     return returnArray;

@@ -34,7 +34,7 @@ void StartScene::drawSelected(bool dirUp) {
  */
 void StartScene::drawScene() {
     if (!checkForSeedPacket()) {
-        bool* actionArray = Controller::getActions();
+        bool* actionArray = Controller::getNonContinuingTriggerActions();
         if (actionArray[Controller::Z_BUTTON]) {
             Scene::setScene(Scene::GAME_SCENE);
         }

@@ -17,9 +17,9 @@ int main() {
 
     Controller::init();
     Display::init();
-    Scene::setScene(Scene::WIN_SCENE);
+    Scene::setScene(Scene::START_SCENE);
 
-    IRCommunication::init(38);
+    IRCommunication::init(56);
 
     while (true) {
         Controller::update();

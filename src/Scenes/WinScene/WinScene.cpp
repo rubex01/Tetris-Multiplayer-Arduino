@@ -19,7 +19,7 @@ void WinScene::init() {
  * Draw win scene
  */
 void WinScene::drawScene() {
-    bool* actions = Controller::getActions();
+    bool* actions = Controller::getNonContinuingTriggerActions();
     if (actions[Controller::Z_BUTTON] || actions[Controller::C_BUTTON]) {
         Scene::setScene(Scene::START_SCENE);
         delete[] actions;

@@ -156,7 +156,7 @@ void GameScene::initTimer() {
  */
 void GameScene::drawScene() {
     if (GameScene::gameOver) {
-        endGame();
+        endGame(true);
         return;
     }
 
@@ -267,7 +267,8 @@ bool GameScene::checkForReceivedFrames() {
             addOpponentReceivedRow(a.getData());
             returnVal = true;
         } else if (type == Frame::LOST_TYPE) {
-            Scene::setScene(Scene::WIN_SCENE);
+            returnVal = true;
+            endGame(false);
         }
     }
 
@@ -293,7 +294,7 @@ int GameScene::generateRandomSeed() {
 /**
  * Ends the game and resets the random seed
  */
-void GameScene::endGame() {
+void GameScene::endGame(bool lostGame) {
     delete currentBlock;
     delete nextBlock;
     setRandomSeed();
@@ -313,7 +314,10 @@ void GameScene::endGame() {
     moveTickReached = false;
     moveTickCounter = 0;
 
-    Scene::setScene(Scene::LOSE_SCENE);
+    if (lostGame)
+        Scene::setScene(Scene::LOSE_SCENE);
+    else
+        Scene::setScene(Scene::WIN_SCENE);
 }
 
 /**

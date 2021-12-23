@@ -20,6 +20,8 @@ class Controller {
  private:
     static bool actionArray[6];
     static bool nonContinuingTrigger[6];
+
+    static void updateStates();
 };
 
 #endif  // SRC_CONTROLLER_CONTROLLER_H_
