@@ -266,8 +266,7 @@ bool GameScene::checkForReceivedFrames() {
         if (type == Frame::ROW_TYPE) {
             addOpponentReceivedRow(a.getData());
             returnVal = true;
-        }
-        else if (type == Frame::LOST_TYPE) {
+        } else if (type == Frame::LOST_TYPE) {
             Scene::setScene(Scene::WIN_SCENE);
         }
     }
