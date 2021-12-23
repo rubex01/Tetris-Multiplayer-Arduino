@@ -1,5 +1,6 @@
 #include "WinScene.h"
 #include "../../Display/Display.h"
+#include "../../Controller/Controller.h"
 
 int WinScene::titleAnimationCounter = 0;
 int WinScene::titleColorAnimationCounter = 0;
@@ -9,13 +10,23 @@ int WinScene::continueAnimationCounter = 0;
  * Init win scene
  */
 void WinScene::init() {
-
+    titleAnimationCounter = 0;
+    titleColorAnimationCounter = 0;
+    continueAnimationCounter = 0;
 }
 
 /**
  * Draw win scene
  */
 void WinScene::drawScene() {
+    bool* actions = Controller::getActions();
+    if (actions[Controller::Z_BUTTON] || actions[Controller::C_BUTTON]) {
+        Scene::setScene(Scene::START_SCENE);
+        delete[] actions;
+        return;
+    }
+    delete[] actions;
+
     continueTextAnimation();
     continueAnimationCounter++;
 
