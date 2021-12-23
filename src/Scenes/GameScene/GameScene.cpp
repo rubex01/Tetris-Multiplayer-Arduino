@@ -156,11 +156,11 @@ void GameScene::initTimer() {
  */
 void GameScene::drawScene() {
     if (GameScene::gameOver) {
-        Scene::setScene(Scene::LOSE_SCENE);
+        endGame();
         return;
     }
 
-    if (checkForReceivedRows()) return;
+    if (checkForReceivedFrames()) return;
 
     if (!moveTickReached) {
         return;
@@ -249,11 +249,11 @@ void GameScene::addOpponentReceivedRow(uint8_t data) {
 }
 
 /**
- * Check if there are any new rows that have been received
+ * Check if there are any new frames that have been received
  *
  * @return bool if received new row
  */
-bool GameScene::checkForReceivedRows() {
+bool GameScene::checkForReceivedFrames() {
     if (!ReceivedData::newResultsAvailable()) return false;
 
     bool returnVal = false;
@@ -262,9 +262,12 @@ bool GameScene::checkForReceivedRows() {
     for (int i = 0; i < 20; ++i) {
         if (frames[i] == 0) continue;
         Frame a = Frame(frames[i]);
-        if (a.getType() == Frame::ROW_TYPE) {
+        uint8_t type = a.getType();
+        if (type == Frame::ROW_TYPE) {
             addOpponentReceivedRow(a.getData());
             returnVal = true;
+        } else if (type == Frame::LOST_TYPE) {
+            Scene::setScene(Scene::WIN_SCENE);
         }
     }
 
@@ -294,6 +297,23 @@ void GameScene::endGame() {
     delete currentBlock;
     delete nextBlock;
     setRandomSeed();
+
+    gameSeed = 0;
+    for (int i = 0; i < 11; ++i) {
+        for (int j = 0; j < 10; ++j) {
+            tetrisBoard[i][j] = 0;
+            lastBoard[i][j] = 0;
+        }
+    }
+
+    gameTickReached = false;
+    blockIsMoving = true;
+    gameOver = false;
+    gameCounter = 0;
+    moveTickReached = false;
+    moveTickCounter = 0;
+
+    Scene::setScene(Scene::LOSE_SCENE);
 }
 
 /**
