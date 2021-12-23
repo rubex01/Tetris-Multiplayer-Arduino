@@ -7,13 +7,13 @@
  */
 void drawHighScoreMessage() {
     if (HighScore::latestScoreIsOnLeaderBoard) {
-        int leaderBoardPlace = HighScore::getPlaceOnLeaderBoard();
+        uint8_t leaderBoardPlace = HighScore::getPlaceOnLeaderBoard();
 
         String firstSentence = "";
         firstSentence += "You're number ";
         firstSentence += (leaderBoardPlace+1);
 
-        for (int i = 0; i < 6; ++i) {
+        for (uint8_t i = 0; i < 6; ++i) {
             Display::drawText(37+i, 47+i, 2, firstSentence, ILI9341_YELLOW);
         }
         Display::drawText(40, 50, 2, firstSentence, ILI9341_BLUE);

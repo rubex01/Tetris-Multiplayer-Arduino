@@ -17,7 +17,7 @@ void Leaderboard::drawLeaderboard() {
 
     uint16_t* leaderboard = HighScore::getLeaderBoard();
 
-    for (int i = 0; i < 5; ++i) {
+    for (uint8_t i = 0; i < 5; ++i) {
         String leaderboardLine = "";
         leaderboardLine += (i+1);
         leaderboardLine += ".  ";

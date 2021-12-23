@@ -6,7 +6,7 @@
 
 uint16_t HighScore::highScores[5] = {0};
 bool HighScore::latestScoreIsOnLeaderBoard = false;
-int HighScore::latestPlaceOnLeaderBoard = 0;
+uint8_t HighScore::latestPlaceOnLeaderBoard = 0;
 
 void HighScore::init() {
     readHighScoresFromMemory();
@@ -42,7 +42,7 @@ bool HighScore::isLatestScoreOnLeaderBoard() {
     return latestScoreIsOnLeaderBoard;
 }
 
-int HighScore::getPlaceOnLeaderBoard() {
+uint8_t HighScore::getPlaceOnLeaderBoard() {
     latestScoreIsOnLeaderBoard = false;
     return latestPlaceOnLeaderBoard;
 }
@@ -60,7 +60,7 @@ void HighScore::addHighScore(uint16_t score, uint8_t index) {
 
 uint16_t* HighScore::getLeaderBoard() {
     uint16_t* leaderboard = new uint16_t[5];
-    for (int i = 0; i < 5; ++i) {
+    for (uint8_t i = 0; i < 5; ++i) {
         leaderboard[i] = highScores[i];
     }
     return leaderboard;
