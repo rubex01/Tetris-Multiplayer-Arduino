@@ -10,7 +10,7 @@ class GameScene: public Scene {
     static void init();
     static void startGame();
     static void startGame(int seed);
-    static void endGame();
+    static void endGame(bool lostGame);
     static void drawScene();
     static int boardCount();
     static bool blockIsMoving;
