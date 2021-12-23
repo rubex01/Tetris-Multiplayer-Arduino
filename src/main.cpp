@@ -10,6 +10,7 @@
 #include "Scenes/GameScene/GameScene.h"
 #include "Communication/ReceivedData.h"
 #include "Communication/Frame.h"
+#include <avr/eeprom.h>
 
 int main() {
     sei();
@@ -20,6 +21,10 @@ int main() {
     Scene::setScene(Scene::START_SCENE);
 
     IRCommunication::init(38);
+
+    eeprom_write_word((uint16_t*) 0x00, (uint16_t) 0);
+    uint16_t a = eeprom_read_word((uint16_t*)0x01);
+    Serial.println(a);
 
     while (true) {
         Controller::update();
