@@ -20,7 +20,7 @@ int main() {
     Display::init();
     Scene::setScene(Scene::START_SCENE);
 
-    IRCommunication::init(38);
+    IRCommunication::init(56);
 
     eeprom_write_word((uint16_t*) 0x00, (uint16_t) 0);
     uint16_t a = eeprom_read_word((uint16_t*)0x01);
