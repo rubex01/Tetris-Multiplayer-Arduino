@@ -7,11 +7,11 @@
 
 class GameScene: public Scene {
  public:
-    static void init();
+    GameScene();
+    void drawScene();
     static void startGame();
     static void startGame(int seed);
     static void endGame(bool lostGame);
-    static void drawScene();
     static int boardCount();
     static bool blockIsMoving;
     static int tetrisBoard[11][10];

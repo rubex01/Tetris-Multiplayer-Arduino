@@ -4,14 +4,11 @@
 #include "../../Controller/Controller.h"
 #include "../Helpers/drawHighScoreMessage.h"
 
-int LoseScene::titleAnimationCounter = 0;
-int LoseScene::continueAnimationCounter = 0;
-
 /**
  * Init lose scene
  */
-void LoseScene::init() {
-    titleAnimationCounter = 0;
+LoseScene::LoseScene() {
+    continueAnimationCounter = 0;
     titleAnimationCounter = 0;
 
     Frame loseFrame(21, Frame::LOST_TYPE);

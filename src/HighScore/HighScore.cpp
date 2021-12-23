@@ -48,12 +48,12 @@ uint8_t HighScore::getPlaceOnLeaderBoard() {
 }
 
 void HighScore::addHighScore(uint16_t score, uint8_t index) {
-    for (uint16_t i = 5; i >= index; --i) {
+    for (uint16_t i = 4; i > index; --i) {
         highScores[i] = highScores[i-1];
     }
     highScores[index] = score;
 
-    for (uint8_t i = index; i < 5; ++i) {
+    for (uint16_t i = index; i < 5; ++i) {
         eeprom_write_word((uint16_t*)i, (uint16_t)highScores[i]);
     }
 }

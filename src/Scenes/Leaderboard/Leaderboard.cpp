@@ -4,7 +4,7 @@
 #include "../../Display/Display.h"
 #include "../../Controller/Controller.h"
 
-void Leaderboard::init() {
+Leaderboard::Leaderboard() {
     Display::drawText(50, 30, 2, "Nr. Score", ILI9341_YELLOW);
 
     drawLeaderboard();

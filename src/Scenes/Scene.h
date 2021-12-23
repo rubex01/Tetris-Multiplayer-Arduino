@@ -11,13 +11,14 @@ class Scene {
         LEADERBOARD_SCENE = 4
     };
 
-    static void drawScene();
     static void setScene(const Constants& scene);
-    static int getCurrentScene();
     static void draw();
+    static Scene* getCurrentScene();
+
+    virtual void drawScene() = 0;
 
  private:
-    static int currentScene;
+    static Scene* currentScene;
 };
 
 #endif  // SRC_SCENES_SCENE_H_

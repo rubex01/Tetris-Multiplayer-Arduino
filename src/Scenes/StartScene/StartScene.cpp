@@ -6,12 +6,7 @@
 #include "../GameScene/GameScene.h"
 #include "../../HighScore/HighScore.h"
 
-int StartScene::selected = 0;
-
-/**
- * Init start scene
- */
-void StartScene::init() {
+StartScene::StartScene() {
     selected = 0;
     Display::drawText(60, 50, 2, "Start game", ILI9341_YELLOW);
     Display::drawText(60, 80, 2, "Leaderboard", ILI9341_YELLOW);

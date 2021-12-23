@@ -5,15 +5,16 @@
 
 class StartScene: public Scene {
  public:
-    static int selected;
+    int selected;
 
-    static void init();
-    static void drawScene();
-    static void drawSelected(bool dirUp);
+    StartScene();
+    void drawScene();
+    void drawSelected(bool dirUp);
 
  private:
-    static bool checkForSeedPacket();
-    static void runSelectedAction();
+    bool checkForSeedPacket();
+
+    void runSelectedAction();
 };
 
 #endif  // SRC_SCENES_STARTSCENE_STARTSCENE_H_

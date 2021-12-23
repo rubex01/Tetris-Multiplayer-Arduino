@@ -6,29 +6,13 @@
 #include "LoseScene/LoseScene.h"
 #include "Leaderboard/Leaderboard.h"
 
-int Scene::currentScene = Scene::START_SCENE;
+Scene* Scene::currentScene = nullptr;
 
 /**
  * Called continuously, the method calls the drawScene method in the current selected scene
  */
 void Scene::draw() {
-    switch (currentScene) {
-        case START_SCENE:
-            StartScene::drawScene();
-            break;
-        case GAME_SCENE:
-            GameScene::drawScene();
-            break;
-        case WIN_SCENE:
-            WinScene::drawScene();
-            break;
-        case LOSE_SCENE:
-            LoseScene::drawScene();
-            break;
-        case LEADERBOARD_SCENE:
-            Leaderboard::drawScene();
-            break;
-    }
+    currentScene->drawScene();
 }
 
 /**
@@ -38,22 +22,25 @@ void Scene::draw() {
  */
 void Scene::setScene(const Constants& scene) {
     Display::fillRect(0, 0, 240, 320, ILI9341_BLACK);
-    currentScene = scene;
-    switch (currentScene) {
+    switch (scene) {
         case START_SCENE:
-            StartScene::init();
+            currentScene = new StartScene();
             break;
         case GAME_SCENE:
-            GameScene::init();
+            currentScene = new GameScene();
             break;
         case WIN_SCENE:
-            WinScene::init();
+            currentScene = new WinScene();
             break;
         case LOSE_SCENE:
-            LoseScene::init();
+            currentScene = new LoseScene();
             break;
         case LEADERBOARD_SCENE:
-            Leaderboard::init();
+            currentScene = new Leaderboard();
             break;
     }
+}
+
+Scene* Scene::getCurrentScene() {
+    return currentScene;
 }

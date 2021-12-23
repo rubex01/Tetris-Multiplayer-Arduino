@@ -4,14 +4,10 @@
 #include "../../HighScore/HighScore.h"
 #include "../Helpers/drawHighScoreMessage.h"
 
-int WinScene::titleAnimationCounter = 0;
-int WinScene::titleColorAnimationCounter = 0;
-int WinScene::continueAnimationCounter = 0;
-
 /**
  * Init win scene
  */
-void WinScene::init() {
+WinScene::WinScene() {
     titleAnimationCounter = 0;
     titleColorAnimationCounter = 0;
     continueAnimationCounter = 0;

@@ -37,7 +37,7 @@ ISR(TIMER2_COMPA_vect) {
 /**
  * Init game scene, draw all game borders and elements
  */
-void GameScene::init() {
+GameScene::GameScene() {
     if (gameSeed == 0) {
         setRandomSeed();
         startGame();
