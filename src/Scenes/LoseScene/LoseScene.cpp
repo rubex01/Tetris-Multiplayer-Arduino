@@ -1,6 +1,7 @@
 #include "LoseScene.h"
 #include "../../Display/Display.h"
 #include "../../Communication/SendQueue.h"
+#include "../../Controller/Controller.h"
 
 int LoseScene::titleAnimationCounter = 0;
 int LoseScene::continueAnimationCounter = 0;
@@ -9,6 +10,9 @@ int LoseScene::continueAnimationCounter = 0;
  * Init lose scene
  */
 void LoseScene::init() {
+    titleAnimationCounter = 0;
+    titleAnimationCounter = 0;
+
     Frame loseFrame(21, Frame::LOST_TYPE);
     SendQueue::addToQueue(loseFrame);
 }
@@ -17,6 +21,14 @@ void LoseScene::init() {
  * Draw lose scene
  */
 void LoseScene::drawScene() {
+    bool* actions = Controller::getActions();
+    if (actions[Controller::Z_BUTTON] || actions[Controller::C_BUTTON]) {
+        Scene::setScene(Scene::START_SCENE);
+        delete[] actions;
+        return;
+    }
+    delete[] actions;
+
     continueTextAnimation();
     continueAnimationCounter++;
 

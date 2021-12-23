@@ -297,6 +297,22 @@ void GameScene::endGame() {
     delete currentBlock;
     delete nextBlock;
     setRandomSeed();
+
+    gameSeed = 0;
+    for (int i = 0; i < 11; ++i) {
+        for (int j = 0; j < 10; ++j) {
+            tetrisBoard[i][j] = 0;
+            lastBoard[i][j] = 0;
+        }
+    }
+
+    gameTickReached = false;
+    blockIsMoving = true;
+    gameOver = false;
+    gameCounter = 0;
+    moveTickReached = false;
+    moveTickCounter = 0;
+
     Scene::setScene(Scene::LOSE_SCENE);
 }
 
