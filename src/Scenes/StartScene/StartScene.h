@@ -13,6 +13,7 @@ class StartScene: public Scene {
 
  private:
     static bool checkForSeedPacket();
+    static void runSelectedAction();
 };
 
 #endif  // SRC_SCENES_STARTSCENE_STARTSCENE_H_

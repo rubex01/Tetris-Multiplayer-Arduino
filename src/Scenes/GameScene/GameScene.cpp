@@ -6,6 +6,7 @@
 #include "../../Tetris/BlockFactory.h"
 #include "../../Tetris/Score.h"
 #include "../../Communication/ReceivedData.h"
+#include "../../HighScore/HighScore.h"
 
 int GameScene::gameSeed = 0;
 int GameScene::tetrisBoard[11][10] = {{0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}};
@@ -295,9 +296,12 @@ int GameScene::generateRandomSeed() {
  * Ends the game and resets all variables + random seed
  */
 void GameScene::endGame(bool lostGame) {
+    HighScore::newScore((uint16_t) Score::getCurrentScore());
+
     delete currentBlock;
     delete nextBlock;
     setRandomSeed();
+    Score::clearScore();
 
     gameSeed = 0;
     for (int i = 0; i < 11; ++i) {

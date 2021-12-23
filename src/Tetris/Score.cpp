@@ -27,3 +27,19 @@ void Score::updateScore(int linesCleared) {
     }
     Display::drawScore(currentScore);
 }
+
+/**
+ * Clears the score
+ */
+void Score::clearScore() {
+    currentScore = 0;
+}
+
+/**
+ * Getter for the current score
+ *
+ * @return int current score
+ */
+int Score::getCurrentScore() {
+    return currentScore;
+}

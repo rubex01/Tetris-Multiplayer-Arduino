@@ -1,6 +1,8 @@
 #include "WinScene.h"
 #include "../../Display/Display.h"
 #include "../../Controller/Controller.h"
+#include "../../HighScore/HighScore.h"
+#include "../Helpers/drawHighScoreMessage.h"
 
 int WinScene::titleAnimationCounter = 0;
 int WinScene::titleColorAnimationCounter = 0;
@@ -13,6 +15,8 @@ void WinScene::init() {
     titleAnimationCounter = 0;
     titleColorAnimationCounter = 0;
     continueAnimationCounter = 0;
+
+    drawHighScoreMessage();
 }
 
 /**

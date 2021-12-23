@@ -1,0 +1,6 @@
+#ifndef KBS_DRAWHIGHSCOREMESSAGE_H
+#define KBS_DRAWHIGHSCOREMESSAGE_H
+
+void drawHighScoreMessage();
+
+#endif //KBS_DRAWHIGHSCOREMESSAGE_H

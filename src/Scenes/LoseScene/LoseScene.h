@@ -12,6 +12,7 @@ class LoseScene: public Scene {
     static void drawScene();
     static void continueTextAnimation();
     static void titleTextAnimation();
+    static void resetHighScores();
 };
 
 #endif  // SRC_SCENES_LOSESCENE_LOSESCENE_H_

@@ -4,6 +4,7 @@
 #include "../../Communication/ReceivedData.h"
 #include "../../Communication/Frame.h"
 #include "../GameScene/GameScene.h"
+#include "../../HighScore/HighScore.h"
 
 int StartScene::selected = 0;
 
@@ -11,8 +12,9 @@ int StartScene::selected = 0;
  * Init start scene
  */
 void StartScene::init() {
+    selected = 0;
     Display::drawText(60, 50, 2, "Start game", ILI9341_YELLOW);
-    Display::drawText(60, 80, 2, "Other button", ILI9341_YELLOW);
+    Display::drawText(60, 80, 2, "Leaderboard", ILI9341_YELLOW);
     Display::fillCircle(40, 55, 5, ILI9341_YELLOW);
 }
 
@@ -30,13 +32,30 @@ void StartScene::drawSelected(bool dirUp) {
 }
 
 /**
+ * Runs action that is currently selected
+ */
+void StartScene::runSelectedAction() {
+    switch (selected) {
+        case 0:
+            Scene::setScene(Scene::GAME_SCENE);
+            break;
+        case 1:
+            Scene::setScene(Scene::LEADERBOARD_SCENE);
+            break;
+    }
+}
+
+/**
  * Draws scene and checks for input from nunchuk to update states
  */
 void StartScene::drawScene() {
     if (!checkForSeedPacket()) {
         bool* actionArray = Controller::getActions();
         if (actionArray[Controller::Z_BUTTON]) {
-            Scene::setScene(Scene::GAME_SCENE);
+            runSelectedAction();
+        }
+        if (actionArray[Controller::C_BUTTON]) {
+            HighScore::resetHighScores();
         }
         if (actionArray[Controller::UP] || actionArray[Controller::DOWN]) {
             drawSelected(actionArray[Controller::UP]);

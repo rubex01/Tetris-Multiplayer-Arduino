@@ -4,6 +4,7 @@
 #include "GameScene/GameScene.h"
 #include "WinScene/WinScene.h"
 #include "LoseScene/LoseScene.h"
+#include "Leaderboard/Leaderboard.h"
 
 int Scene::currentScene = Scene::START_SCENE;
 
@@ -23,6 +24,9 @@ void Scene::draw() {
             break;
         case LOSE_SCENE:
             LoseScene::drawScene();
+            break;
+        case LEADERBOARD_SCENE:
+            Leaderboard::drawScene();
             break;
     }
 }
@@ -47,6 +51,9 @@ void Scene::setScene(const Constants& scene) {
             break;
         case LOSE_SCENE:
             LoseScene::init();
+            break;
+        case LEADERBOARD_SCENE:
+            Leaderboard::init();
             break;
     }
 }

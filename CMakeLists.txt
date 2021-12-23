@@ -32,7 +32,7 @@ add_executable(${PRODUCT_NAME}
         src/Tetris/Tetrominoes/ZBlock.cpp
         src/Tetris/BlockFactory.cpp
         src/Tetris/Score.cpp
-        src/Communication/IRCommunication.cpp src/Communication/IRCommunication.h src/Communication/SendQueue.cpp src/Communication/SendQueue.h src/Communication/ReceivedData.cpp src/Communication/ReceivedData.h src/Communication/Frame.cpp src/Communication/Frame.h src/Scenes/Scene.cpp src/Scenes/Scene.h src/Scenes/StartScene/StartScene.cpp src/Scenes/StartScene/StartScene.h src/Scenes/LoseScene/LoseScene.cpp src/Scenes/LoseScene/LoseScene.h src/Scenes/WinScene/WinScene.cpp src/Scenes/WinScene/WinScene.h src/HighScore/HighScore.cpp src/HighScore/HighScore.h)
+        src/Communication/IRCommunication.cpp src/Communication/IRCommunication.h src/Communication/SendQueue.cpp src/Communication/SendQueue.h src/Communication/ReceivedData.cpp src/Communication/ReceivedData.h src/Communication/Frame.cpp src/Communication/Frame.h src/Scenes/Scene.cpp src/Scenes/Scene.h src/Scenes/StartScene/StartScene.cpp src/Scenes/StartScene/StartScene.h src/Scenes/LoseScene/LoseScene.cpp src/Scenes/LoseScene/LoseScene.h src/Scenes/WinScene/WinScene.cpp src/Scenes/WinScene/WinScene.h src/HighScore/HighScore.cpp src/HighScore/HighScore.h src/Scenes/Helpers/drawHighScoreMessage.cpp src/Scenes/Helpers/drawHighScoreMessage.h src/Scenes/Leaderboard/Leaderboard.cpp src/Scenes/Leaderboard/Leaderboard.h)
 
 
 
