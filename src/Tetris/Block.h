@@ -19,6 +19,7 @@ class Block {
     void moveSideways(int direction);
     void rotate();
     void setValue(int value);
+    void moveUp();
     virtual void resetBlock() = 0;
     virtual void drawSectionBlock(int section) = 0;
     virtual void rotateBlock() = 0;

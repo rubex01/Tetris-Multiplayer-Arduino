@@ -208,6 +208,30 @@ void Block::moveDown() {
     }
 }
 
+void Block::moveUp() {
+    for (int i = 0; i < 11; i++) {
+        for (int j = 0; j < 10; j++) {
+            tempArray[i][j] = GameScene::tetrisBoard[i][j];
+        }
+    }
+
+    setValue(0);
+
+    blockArray[0][1]--;
+    blockArray[1][1]--;
+    blockArray[2][1]--;
+    blockArray[3][1]--;
+
+    for (int i = 0; i < 4; i++) {
+        if (blockArray[i][1] >= 0) {
+            GameScene::tetrisBoard[blockArray[i][1]][blockArray[i][0]] = blockColor;
+        } else {
+            GameScene::gameOver = true;
+            return;
+        }
+    }
+}
+
 void Block::triggerDrawSection(uint8_t section) {
     int blockType = 0;
     if (section == NEXTSECTION)
