@@ -12,6 +12,8 @@ class GameScene: public Scene {
     static uint8_t moveTickCounter;
     static uint8_t gameCounter;
     static uint8_t tickValue;
+    static uint8_t nextBlock;
+    static uint8_t holdBlock;
     static bool blockIsMoving;
     static bool gameTickReached;
     static bool gameOver;
@@ -29,9 +31,6 @@ class GameScene: public Scene {
     static bool holdSwitchAvailable;
     static uint8_t gameSeed;
     static Block* currentBlock;
-    static Block* nextBlock;
-    static Block* holdBlock;
-    static Block* tempBlock;
     static void spawnTetrisBlock();
     static void drawSections();
     static void drawBoard();

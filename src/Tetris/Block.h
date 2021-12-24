@@ -22,6 +22,7 @@ class Block {
     virtual void resetBlock() = 0;
     virtual void drawSectionBlock(int section) = 0;
     virtual void rotateBlock() = 0;
+    static void triggerDrawSection(uint8_t section);
 
  protected:
     uint8_t xPos;
