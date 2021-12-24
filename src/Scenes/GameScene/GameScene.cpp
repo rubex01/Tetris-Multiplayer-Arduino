@@ -12,7 +12,7 @@ uint8_t GameScene::gameSeed = 0;
 uint8_t GameScene::tetrisBoard[11][10] = {{0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}};
 uint8_t GameScene::lastBoard[11][10] = {{0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}};
 uint8_t  GameScene::gameCounter = 0;
-uint8_t GameScene::tickValue = 68;
+uint8_t GameScene::tickValue = 60;
 uint8_t GameScene::moveTickCounter = 0;
 Block* GameScene::currentBlock = nullptr;
 Block* GameScene::nextBlock = nullptr;
@@ -172,7 +172,7 @@ void GameScene::drawScene() {
             if (actions[Controller::DOWN]) {
                 GameScene::tickValue = 4;
             } else {
-                GameScene::tickValue = 68;
+                GameScene::tickValue = 60;
             }
 
             if (nonContinuingActions[Controller::Z_BUTTON]) {
