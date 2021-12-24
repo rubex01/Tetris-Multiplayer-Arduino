@@ -6,7 +6,7 @@
 #include "../../Tetris/Block.h"
 
 class GameScene: public Scene {
-public:
+ public:
     static uint8_t tetrisBoard[11][10];
     static uint8_t lastBoard[11][10];
     static uint8_t moveTickCounter;
