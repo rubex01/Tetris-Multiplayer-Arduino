@@ -150,7 +150,9 @@ int GameScene::boardCount() {
 }
 
 /**
- * Draw current game state, look if game tick or movement tick is reached and perform corresponding action
+ * Called continuously, draws current game state,
+ * looks if game tick or movement tick is reached
+ * and performs corresponding action
  */
 void GameScene::drawScene() {
     if (GameScene::gameOver) {

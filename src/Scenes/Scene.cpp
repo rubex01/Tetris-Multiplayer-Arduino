@@ -16,7 +16,7 @@ void Scene::draw() {
 }
 
 /**
- * Update scene, this method calls init on the new scene
+ * Update scene, this method calls the constructor on the new scene
  *
  * @param scene
  */
@@ -42,6 +42,11 @@ void Scene::setScene(const Constants& scene) {
     }
 }
 
+/**
+ * Returns the current selected scene
+ *
+ * @return Scene*
+ */
 Scene* Scene::getCurrentScene() {
     return currentScene;
 }

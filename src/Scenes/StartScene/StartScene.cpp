@@ -44,7 +44,7 @@ void StartScene::runSelectedAction() {
 }
 
 /**
- * Is called by main while loop. Checks for input from nunchuk to update selected states
+ * Called continuously, checks for input from nunchuk to update selected states
  */
 void StartScene::drawScene() {
     if (!checkForSeedPacket()) {

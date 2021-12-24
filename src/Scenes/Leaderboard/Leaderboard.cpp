@@ -35,7 +35,7 @@ void Leaderboard::drawLeaderboard() {
 }
 
 /**
- * Is called by main while loop. Checks for input to exit this scene or reset high scores.
+ * Called continuously, checks for input to exit this scene or reset high scores.
  */
 void Leaderboard::drawScene() {
     bool* actions = Controller::getNonContinuingTriggerActions();

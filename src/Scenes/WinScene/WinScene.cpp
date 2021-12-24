@@ -20,7 +20,7 @@ WinScene::WinScene() {
 }
 
 /**
- * Is called by the main while loop. Draws animations and checks for input to continue to start scene.
+ * Called continuously, draws animations and checks for input to continue to start scene.
  */
 void WinScene::drawScene() {
     bool* actions = Controller::getNonContinuingTriggerActions();

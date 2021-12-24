@@ -22,7 +22,7 @@ LoseScene::LoseScene() {
 }
 
 /**
- * Is called by main while loop. Draws animations and checks for input to continue to the start scene.
+ * Called continuously, draws animations and checks for input to continue to the start scene.
  */
 void LoseScene::drawScene() {
     bool* actions = Controller::getNonContinuingTriggerActions();
