@@ -9,6 +9,7 @@ class IBlock : public Block {
     IBlock(int xPos, int yPos);
     bool checkBlock();
     void rotateBlock();
+    void drawSectionBlock();
 };
 
 #endif  // SRC_TETRIS_TETROMINOES_IBLOCK_H_
