@@ -70,7 +70,7 @@ void Controller::updateStates() {
 /**
  * Returns a bool array that contains the state of every possible action on the nunchuk
  *
- * @return bool *
+ * @return bool*
  */
 bool* Controller::getActions() {
     bool* returnArray = new bool[6];
@@ -81,6 +81,11 @@ bool* Controller::getActions() {
     return returnArray;
 }
 
+/**
+ * Returns a bool array that contains the state of every button that has been pressed then released
+ *
+ * @return bool*
+ */
 bool* Controller::getNonContinuingTriggerActions() {
     bool* returnArray = new bool[6];
     for (int i = 0; i < 6; ++i) {
