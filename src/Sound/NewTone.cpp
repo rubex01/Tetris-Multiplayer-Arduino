@@ -99,15 +99,13 @@
 #define REST 0
 #define ONESECOND 20  // Timer2
 
-bool NewTone::noNewToneCheck = true;
-
 bool NewTone::startTone = false;
 bool NewTone::toggleTone = false;
 
 uint8_t NewTone::teller = 0;  // Timer2
 int NewTone::thisNote = 2;
 
-int maat = 0; 
+int toonHoogteIndex = 0; 
 
 void NewTone::testFunction() {
   // int yes = maat;
@@ -118,28 +116,14 @@ void NewTone::testFunction() {
     // if (!NewTone::noNewToneCheck) {
         if (NewTone::teller >= ONESECOND) {
             NewTone::teller = 0;
-            // if (maat >= NewTone::notes * 2 + 1)
-            //     // maat = 0;
-            if(maat >= 99) {
-              maat = 0;
+
+            if(toonHoogteIndex >= 99) {
+              toonHoogteIndex = 0;
             }
             
-            // // calculates the duration of each note
-            // NewTone::divider = NewTone::melody[NewTone::thisNote + 1];
-            // // NewTone::noteDurationTest = 2;
-            // NewTone::setNoteDurationTest();
-            // if (NewTone::divider > 0) {
-            //     // regular note, just proceed
-            //     NewTone::noteDuration = (NewTone::wholenote) / NewTone::divider;
-            // } else if (NewTone::divider < 0) {
-            //     // dotted notes are represented with negative durations!!
-            //     NewTone::noteDuration = (NewTone::wholenote) / abs(NewTone::divider);
-            //     NewTone::noteDuration *= 1.5;  // increases the duration in half for dotted notes
-            // }
-            // NewTone::aNewTone(NewTone::buzzer, NewTone::melody[NewTone::thisNote], NewTone::noteDuration*0.9);  // timer1 // miss in while
-            NewTone::a2NewTone(NewTone::buzzer, NewTone::testmelody[maat], 4);
+            NewTone::aNewTone(NewTone::buzzer, NewTone::melody[toonHoogteIndex], 4);
             // yes += 2;
-            maat = maat + 1;
+            toonHoogteIndex++;
         }
     // }
   // }
@@ -164,7 +148,7 @@ int NewTone::buzzer = 5;
 // a 4 means a quarter note, 8 an eighteenth , 16 sixteenth, so on
 // !!negative numbers are used to represent dotted notes,
 // so -4 means a dotted quarter note, that is, a quarter plus an eighteenth!!
-int NewTone::testmelody[] {
+int NewTone::melody[] {
   NOTE_E5, NOTE_B4,   NOTE_C5, NOTE_D5, NOTE_C5, NOTE_B4,
   NOTE_A4,  NOTE_A4,  NOTE_C5,  NOTE_E5, NOTE_D5, NOTE_C5,
   NOTE_B4,  NOTE_C5,  NOTE_D5,  NOTE_E5,
@@ -195,39 +179,6 @@ int NewTone::testmelody[] {
   NOTE_C5,   NOTE_E5, NOTE_A5, 
   NOTE_GS5
 };
-int NewTone::melody[] = {
-// Based on the arrangement at https://www.flutetunes.com/tunes.php?id=192
-
-  NOTE_E5, 4,  NOTE_B4, 8,  NOTE_C5, 8,  NOTE_D5, 4,  NOTE_C5, 8,  NOTE_B4, 8,
-  NOTE_A4, 4,  NOTE_A4, 8,  NOTE_C5, 8,  NOTE_E5, 4,  NOTE_D5, 8,  NOTE_C5, 8,
-  NOTE_B4, -4,  NOTE_C5, 8,  NOTE_D5, 4,  NOTE_E5, 4,
-  NOTE_C5, 4,  NOTE_A4, 4,  NOTE_A4, 8,  NOTE_A4, 4,  NOTE_B4, 8,  NOTE_C5, 8,
-
-  NOTE_D5, -4,  NOTE_F5, 8,  NOTE_A5, 4,  NOTE_G5, 8,  NOTE_F5, 8,
-  NOTE_E5, -4,  NOTE_C5, 8,  NOTE_E5, 4,  NOTE_D5, 8,  NOTE_C5, 8,
-  NOTE_B4, 4,  NOTE_B4, 8,  NOTE_C5, 8,  NOTE_D5, 4,  NOTE_E5, 4,
-  NOTE_C5, 4,  NOTE_A4, 4,  NOTE_A4, 4, REST, 4,
-
-  NOTE_E5, 4,  NOTE_B4, 8,  NOTE_C5, 8,  NOTE_D5, 4,  NOTE_C5, 8,  NOTE_B4, 8,
-  NOTE_A4, 4,  NOTE_A4, 8,  NOTE_C5, 8,  NOTE_E5, 4,  NOTE_D5, 8,  NOTE_C5, 8,
-  NOTE_B4, -4,  NOTE_C5, 8,  NOTE_D5, 4,  NOTE_E5, 4,
-  NOTE_C5, 4,  NOTE_A4, 4,  NOTE_A4, 8,  NOTE_A4, 4,  NOTE_B4, 8,  NOTE_C5, 8,
-
-  NOTE_D5, -4,  NOTE_F5, 8,  NOTE_A5, 4,  NOTE_G5, 8,  NOTE_F5, 8,
-  NOTE_E5, -4,  NOTE_C5, 8,  NOTE_E5, 4,  NOTE_D5, 8,  NOTE_C5, 8,
-  NOTE_B4, 4,  NOTE_B4, 8,  NOTE_C5, 8,  NOTE_D5, 4,  NOTE_E5, 4,
-  NOTE_C5, 4,  NOTE_A4, 4,  NOTE_A4, 4, REST, 4,
-
-
-  NOTE_E5, 2,  NOTE_C5, 2,
-  NOTE_D5, 2,   NOTE_B4, 2,
-  NOTE_C5, 2,   NOTE_A4, 2,
-  NOTE_GS4, 2,  NOTE_B4, 4,  REST, 8,
-  NOTE_E5, 2,   NOTE_C5, 2,
-  NOTE_D5, 2,   NOTE_B4, 2,
-  NOTE_C5, 4,   NOTE_E5, 4,  NOTE_A5, 2,
-  NOTE_GS5, 2,
-};
 
 // sizeof gives the number of bytes, each int value is composed of two bytes (16 bits)
 // there are two values per note (pitch and duration), so for each note there are four bytes
@@ -241,12 +192,9 @@ int NewTone::divider = 0;
 uint8_t NewTone::prescaler = 0;
 uint16_t NewTone::top = 0;
 
-void NewTone::a2NewTone(uint8_t pin, uint16_t frequency, uint16_t length) {
-  NewTone::noNewToneCheck = false;
-  // uint8_t prescaler = _BV(CS10);                  // Try using prescaler 1 first.
+void NewTone::aNewTone(uint8_t pin, uint16_t frequency, uint16_t length) {
   NewTone::prescaler = _BV(CS10);
   NewTone::top = F_CPU / frequency / 4 - 1;  // Calculate the top.
-  // uint16_t top = F_CPU / frequency / 4 - 1;  // Calculate the top.
   if (NewTone::top > 65535) {                              // If not in the range for prescaler 1, use prescaler 256 (61 Hz and lower @ 16 MHz).
     NewTone::prescaler = _BV(CS12);                        // Set the 256 prescaler bit.
     NewTone::top = NewTone::top / 256 - 1;                          // Calculate the top using prescaler 256.
@@ -280,7 +228,6 @@ void NewTone::noNewTone(uint8_t pin) {
   TCCR1A  = _BV(WGM10);     // Set to defaults so PWM can work like normal (PWM, phase corrected, 8bit).
   *NewTone::_pinOutput &= ~NewTone::_pinMask;  // Set pin to LOW.
   NewTone::_pinMask = 0;  // Flag so we know note is no longer playing.
-  NewTone::noNewToneCheck = true;
 }
 
 void NewTone::noNewTone() {
@@ -289,5 +236,4 @@ void NewTone::noNewTone() {
   TCCR1A  = _BV(WGM10);     // Set to defaults so PWM can work like normal (PWM, phase corrected, 8bit).
   *NewTone::_pinOutput &= ~NewTone::_pinMask;  // Set pin to LOW.
   NewTone::_pinMask = 0;  // Flag so we know note is no longer playing.
-  NewTone::noNewToneCheck = true;
 }

@@ -28,7 +28,6 @@ class GameScene: public Scene {
     static int gameSeed;
     static Block* currentBlock;
     static void drawBoard();
-    static void initTimer();
     static void setRandomSeed();
     static int generateRandomSeed();
     static void generateRowFrame(int height);

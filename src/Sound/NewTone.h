@@ -40,15 +40,13 @@
 class NewTone {
  public:
  // Make sure timer 2 is running on 1024 pre, ovf or 255 compa!
-  // static void aNewTone(uint8_t pin, uint16_t frequency, uint16_t length);
-  static void a2NewTone(uint8_t pin, uint16_t frequency, uint16_t length);
+  static void aNewTone(uint8_t pin, uint16_t frequency, uint16_t length);
   static void noNewTone(uint8_t pin);
   static void noNewTone();
   static void testFunction();
 
   static uint8_t teller;
   static int thisNote;
-  static bool noNewToneCheck;  // Test
   static uint8_t _pinMask;
   static uint16_t _nt_time;
   static volatile uint8_t *_pinOutput;
@@ -58,7 +56,7 @@ class NewTone {
   static int divider;
   static int notes;
   static int melody[];
-  static int testmelody[];
+  // static int testmelody[];
   static bool startTone;
   static bool toggleTone;
 
