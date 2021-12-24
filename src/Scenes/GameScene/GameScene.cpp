@@ -164,7 +164,6 @@ void GameScene::drawScene() {
     if (checkForReceivedFrames()) return;
 
     if (GameScene::blockIsMoving) {
-
         if (moveTickReached) {
             bool* actions = Controller::getActions();
             bool* nonContinuingActions = Controller::getNonContinuingTriggerActions();

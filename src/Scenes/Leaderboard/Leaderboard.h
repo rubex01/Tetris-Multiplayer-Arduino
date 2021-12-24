@@ -1,5 +1,5 @@
-#ifndef SRC_SCENES_LOSESCENE_LEADERBOARD_H_
-#define SRC_SCENES_LOSESCENE_LEADERBOARD_H_
+#ifndef SRC_SCENES_LEADERBOARD_LEADERBOARD_H_
+#define SRC_SCENES_LEADERBOARD_LEADERBOARD_H_
 
 #include "../Scene.h"
 
@@ -12,4 +12,4 @@ class Leaderboard : public Scene {
     void drawLeaderboard();
 };
 
-#endif  // SRC_SCENES_LOSESCENE_LEADERBOARD_H_
+#endif  // SRC_SCENES_LEADERBOARD_LEADERBOARD_H_
