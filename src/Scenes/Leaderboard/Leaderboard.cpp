@@ -4,6 +4,9 @@
 #include "../../Display/Display.h"
 #include "../../Controller/Controller.h"
 
+/**
+ * Leaderboard scene constructor
+ */
 Leaderboard::Leaderboard() {
     Display::drawText(50, 30, 2, "Nr. Score", ILI9341_YELLOW);
 
@@ -12,6 +15,9 @@ Leaderboard::Leaderboard() {
     Display::drawText(10, 300, 1, "(z) to go back   (c) to reset scores", ILI9341_WHITE);
 }
 
+/**
+ * Draws the leaderboard
+ */
 void Leaderboard::drawLeaderboard() {
     Display::fillRect(50, 60, 190, 200, ILI9341_BLACK);
 
@@ -28,6 +34,9 @@ void Leaderboard::drawLeaderboard() {
     delete[] leaderboard;
 }
 
+/**
+ * Is called by main while loop. Checks for input to exit this scene or reset high scores.
+ */
 void Leaderboard::drawScene() {
     bool* actions = Controller::getNonContinuingTriggerActions();
     if (actions[Controller::Z_BUTTON]) {
