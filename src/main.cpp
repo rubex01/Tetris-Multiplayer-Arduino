@@ -28,9 +28,6 @@ int main() {
 
     IRCommunication::init(56);
 
-    // NewTone::aNewTone(NewTone::buzzer, NewTone::melody[NewTone::thisNote], NewTone::noteDuration*0.9); // toon aan
-    // NewTone::noNewTone(NewTone::buzzer); // toon uit
-
     while (true) {
         Controller::update();
         Scene::draw();
