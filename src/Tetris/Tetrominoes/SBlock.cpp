@@ -1,5 +1,4 @@
 #include "SBlock.h"
-#include "HardwareSerial.h"
 #include "../../Display/Display.h"
 
 SBlock::SBlock(int xPos, int yPos) : Block(xPos, yPos) {

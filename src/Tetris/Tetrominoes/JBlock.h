@@ -3,11 +3,9 @@
 
 #include "../Block.h"
 
-
 class JBlock : public Block {
  public:
     JBlock(int xPos, int yPos);
-    bool checkBlock();
     void rotateBlock();
     void resetBlock();
     void drawSectionBlock(int section);

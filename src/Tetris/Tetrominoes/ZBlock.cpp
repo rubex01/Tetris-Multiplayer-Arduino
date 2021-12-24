@@ -1,7 +1,6 @@
 #include "ZBlock.h"
 #include "../../Display/Display.h"
 
-
 ZBlock::ZBlock(int xPos, int yPos) : Block(xPos, yPos) {
     resetBlock();
     blockColor = RED;

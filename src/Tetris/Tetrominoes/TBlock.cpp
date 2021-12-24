@@ -1,5 +1,4 @@
 #include "TBlock.h"
-#include "HardwareSerial.h"
 #include "../../Display/Display.h"
 
 TBlock::TBlock(int xPos, int yPos) : Block(xPos, yPos) {
