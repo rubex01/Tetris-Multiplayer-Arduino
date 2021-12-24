@@ -1,8 +1,5 @@
 #include <avr/eeprom.h>
 #include "HighScore.h"
-#include "HardwareSerial.h"
-
-#define UINT16_T_MAX 65535
 
 uint16_t HighScore::highScores[5] = {0};
 bool HighScore::latestScoreIsOnLeaderBoard = false;
@@ -14,15 +11,14 @@ void HighScore::init() {
 
 void HighScore::readHighScoresFromMemory() {
     for (uint16_t i = 0; i < 5; ++i) {
-        uint16_t currentRead = eeprom_read_word(reinterpret_cast<uint16_t*>(i));
-        if (currentRead != UINT16_T_MAX)
-            highScores[i] = currentRead;
+        uint16_t currentRead = eeprom_read_word(reinterpret_cast<const uint16_t *>(i*2));
+        highScores[i] = currentRead;
     }
 }
 
 void HighScore::resetHighScores() {
     for (uint16_t i = 0; i < 5; ++i) {
-        eeprom_write_word(reinterpret_cast<uint16_t*>(i), 0);
+        eeprom_write_word(reinterpret_cast<uint16_t*>(i*2), 0);
     }
     readHighScoresFromMemory();
 }
@@ -54,7 +50,7 @@ void HighScore::addHighScore(uint16_t score, uint8_t index) {
     highScores[index] = score;
 
     for (uint16_t i = index; i < 5; ++i) {
-        eeprom_write_word(reinterpret_cast<uint16_t*>(i), (uint16_t)highScores[i]);
+        eeprom_write_word(reinterpret_cast<uint16_t*>(i*2), highScores[i]);
     }
 }
 
