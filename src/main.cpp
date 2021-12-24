@@ -18,6 +18,7 @@
 
 
 int main() {
+    NewTone::initTimer2();
     sei();
     Serial.begin(9600);
 
@@ -26,8 +27,6 @@ int main() {
     Scene::setScene(Scene::START_SCENE);
 
     IRCommunication::init(56);
-
-    NewTone::initTimer2();
 
     // NewTone::aNewTone(NewTone::buzzer, NewTone::melody[NewTone::thisNote], NewTone::noteDuration*0.9); // toon aan
     // NewTone::noNewTone(NewTone::buzzer); // toon uit

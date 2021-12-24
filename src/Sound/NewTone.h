@@ -44,10 +44,10 @@ class NewTone {
   static void noNewTone(uint8_t pin);
   static void noNewTone();
   static void playTone();
+  static void setTimer1();
   static void initTimer2();
 
   static uint8_t teller;
-  static int thisNote;
   static uint8_t _pinMask;
   static uint16_t _nt_time;
   static volatile uint8_t *_pinOutput;

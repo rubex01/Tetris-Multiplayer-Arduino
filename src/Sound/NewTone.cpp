@@ -101,11 +101,13 @@
 
 bool NewTone::startTone = false;
 bool NewTone::toggleTone = false;
-
-uint8_t NewTone::teller = 0;  // Timer2
-int NewTone::thisNote = 2;
-
+uint8_t NewTone::teller = 0;
 int NewTone::toonHoogteIndex = 0;
+
+ISR(TIMER1_COMPA_vect) {  // Timer interrupt vector.
+  if (millis() >= NewTone::_nt_time) NewTone::noNewTone();  // Check to see if it's time for the note to end.
+  *NewTone::_pinOutput ^= NewTone::_pinMask;  // Toggle the pin state.
+}
 
 void NewTone::playTone() {
   NewTone::teller++;
@@ -119,11 +121,6 @@ void NewTone::playTone() {
         NewTone::aNewTone(NewTone::buzzer, NewTone::melody[NewTone::toonHoogteIndex], 4);
         NewTone::toonHoogteIndex++;
     }
-}
-
-ISR(TIMER1_COMPA_vect) {  // Timer interrupt vector.
-  if (millis() >= NewTone::_nt_time) NewTone::noNewTone();  // Check to see if it's time for the note to end.
-  *NewTone::_pinOutput ^= NewTone::_pinMask;  // Toggle the pin state.
 }
 
 uint16_t NewTone::_nt_time;       // Time note should end.
@@ -205,13 +202,16 @@ void NewTone::aNewTone(uint8_t pin, uint16_t frequency, uint16_t length) {
     *_pinMode |= NewTone::_pinMask;  // Set the pin to OutputW mode.
   }
 
+  NewTone::setTimer1();
+}
+
+void NewTone::setTimer1() {
   ICR1    = NewTone::top;                      // Set the top.
   if (TCNT1 > NewTone::top) {
     TCNT1 = NewTone::top;           }           // Counter over the top, put within range.
   TCCR1B  = _BV(WGM13)  | NewTone::prescaler;  // Set PWM, phase and frequency corrected (ICR1) and prescaler.
   TCCR1A  = _BV(COM1B0);
   TIMSK1 |= _BV(OCIE1A); 
-
 }
 
 void NewTone::initTimer2() {
