@@ -5,15 +5,15 @@
 
 class WinScene: public Scene {
  public:
-    static int titleAnimationCounter;
-    static int titleColorAnimationCounter;
-    static int continueAnimationCounter;
+    int titleAnimationCounter;
+    int titleColorAnimationCounter;
+    int continueAnimationCounter;
 
-    static void init();
-    static void drawScene();
-    static void titleTextAnimation();
-    static void titleColorAnimation();
-    static void continueTextAnimation();
+    WinScene();
+    void drawScene();
+    void titleTextAnimation();
+    void titleColorAnimation();
+    void continueTextAnimation();
 };
 
 #endif  // SRC_SCENES_WINSCENE_WINSCENE_H_

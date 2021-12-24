@@ -2,19 +2,19 @@
 #include "../../Display/Display.h"
 #include "../../Communication/SendQueue.h"
 #include "../../Controller/Controller.h"
-
-int LoseScene::titleAnimationCounter = 0;
-int LoseScene::continueAnimationCounter = 0;
+#include "../Helpers/drawHighScoreMessage.h"
 
 /**
  * Init lose scene
  */
-void LoseScene::init() {
-    titleAnimationCounter = 0;
+LoseScene::LoseScene() {
+    continueAnimationCounter = 0;
     titleAnimationCounter = 0;
 
     Frame loseFrame(21, Frame::LOST_TYPE);
     SendQueue::addToQueue(loseFrame);
+
+    drawHighScoreMessage();
 }
 
 /**

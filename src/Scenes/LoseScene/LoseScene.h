@@ -5,13 +5,15 @@
 
 class LoseScene: public Scene {
  public:
-    static int continueAnimationCounter;
-    static int titleAnimationCounter;
+    int continueAnimationCounter;
+    int titleAnimationCounter;
 
-    static void init();
-    static void drawScene();
-    static void continueTextAnimation();
-    static void titleTextAnimation();
+    LoseScene();
+    void drawScene();
+
+ private:
+    void continueTextAnimation();
+    void titleTextAnimation();
 };
 
 #endif  // SRC_SCENES_LOSESCENE_LOSESCENE_H_

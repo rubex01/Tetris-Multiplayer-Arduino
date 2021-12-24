@@ -7,16 +7,18 @@ class Scene {
         START_SCENE = 0,
         GAME_SCENE = 1,
         WIN_SCENE = 2,
-        LOSE_SCENE = 3
+        LOSE_SCENE = 3,
+        LEADERBOARD_SCENE = 4
     };
 
-    static void drawScene();
     static void setScene(const Constants& scene);
-    static int getCurrentScene();
     static void draw();
+    static Scene* getCurrentScene();
+
+    virtual void drawScene() = 0;
 
  private:
-    static int currentScene;
+    static Scene* currentScene;
 };
 
 #endif  // SRC_SCENES_SCENE_H_

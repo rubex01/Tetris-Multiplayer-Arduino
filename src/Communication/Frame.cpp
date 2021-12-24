@@ -54,11 +54,11 @@ uint8_t Frame::getData() {
  * Helper function that decodes a frame into a data and type
  */
 void Frame::decodeFrame() {
-    for (int i=0; i < 2; i++)
+    for (uint8_t i=0; i < 2; i++)
         if (frame & (1 << i))
             type |= (1 << i);
 
-    for (int i=0; i < 6; i++)
+    for (uint8_t i=0; i < 6; i++)
         if (frame & (1 << (i+2)))
             data |= (1 << i);
 }
@@ -76,11 +76,11 @@ uint8_t Frame::getFrame() {
  * Helper function that encodes data and a type into a frame
  */
 void Frame::createFrame() {
-    for (int i=0; i < 6; i++)
+    for (uint8_t i=0; i < 6; i++)
         if (data & (1 << i))
             frame |= (1 << (i+2));
 
-    for (int i=0; i < 2; i++)
+    for (uint8_t i=0; i < 2; i++)
         if (type & (1 << i))
             frame |= (1 << i);
 }
