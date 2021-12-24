@@ -51,10 +51,10 @@ GameScene::GameScene() {
     Display::drawGameBorder();
     Display::drawHoldSection();
     Display::drawNextSection();
-    Display::drawScore();
+    // Display::drawScore();
     NewTone::startTone = true;
     Score::updateScore(0);
-    GameScene::initTimer();
+    // GameScene::initTimer();
     GameScene::nextBlock = BlockFactory::createBlock(6);
     GameScene::currentBlock = BlockFactory::createBlock(rand() % 7);
     GameScene::nextBlock->drawSectionBlock();
