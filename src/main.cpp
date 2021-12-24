@@ -16,30 +16,31 @@
 // #define ONESECOND 15  // Timer2 15 goeie, 1024 pre met ovf
 #define ONESECOND 20  // Timer2 15 goeie, 1024 pre met COMPA zonder pauze
 
-ISR(TIMER2_COMPA_vect) {
-    NewTone::teller++;
-    if (!NewTone::noNewToneCheck) {
-        if (NewTone::teller >= ONESECOND) {
-            NewTone::teller = 0;
-            if (NewTone::thisNote >= NewTone::notes * 2)
-                NewTone::thisNote = 0;
-            // calculates the duration of each note
-            NewTone::divider = NewTone::melody[NewTone::thisNote + 1];
-            if (NewTone::divider > 0) {
-                // regular note, just proceed
-                NewTone::noteDuration = (NewTone::wholenote) / NewTone::divider;
-            } else if (NewTone::divider < 0) {
-                // dotted notes are represented with negative durations!!
-                NewTone::noteDuration = (NewTone::wholenote) / abs(NewTone::divider);
-                NewTone::noteDuration *= 1.5;  // increases the duration in half for dotted notes
-            }
-            NewTone::aNewTone(NewTone::buzzer, NewTone::melody[NewTone::thisNote], NewTone::noteDuration*0.9);  // timer1 // miss in while
+// ISR(TIMER2_COMPA_vect) {
 
-            NewTone::thisNote = NewTone::thisNote + 2;
-        }
-    }
-}
+//     NewTone::teller++;
+//     if (!NewTone::noNewToneCheck) {
+//         if (NewTone::teller >= ONESECOND) {
+//             NewTone::teller = 0;
+//             if (NewTone::thisNote >= NewTone::notes * 2)
+//                 NewTone::thisNote = 0;
+//             // calculates the duration of each note
+//             NewTone::divider = NewTone::melody[NewTone::thisNote + 1];
+//             if (NewTone::divider > 0) {
+//                 // regular note, just proceed
+//                 NewTone::noteDuration = (NewTone::wholenote) / NewTone::divider;
+//             } else if (NewTone::divider < 0) {
+//                 // dotted notes are represented with negative durations!!
+//                 NewTone::noteDuration = (NewTone::wholenote) / abs(NewTone::divider);
+//                 NewTone::noteDuration *= 1.5;  // increases the duration in half for dotted notes
+//             }
+//             NewTone::aNewTone(NewTone::buzzer, NewTone::melody[NewTone::thisNote], NewTone::noteDuration*0.9);  // timer1 // miss in while
 
+//             NewTone::thisNote = NewTone::thisNote + 2;
+//         }
+//     }
+// }
+#define ONESECOND 20 
 int main() {
     sei();
     Serial.begin(9600);
@@ -66,16 +67,23 @@ int main() {
     OCR2A = 255;
     TIMSK2 |= (1 << OCIE2A);
     // code
-
+    
     // TCNT2 = 0;
 
 
-    NewTone::aNewTone(NewTone::buzzer, NewTone::melody[NewTone::thisNote], NewTone::noteDuration*0.9); // toon aan
+    // NewTone::aNewTone(NewTone::buzzer, NewTone::melody[NewTone::thisNote], NewTone::noteDuration*0.9); // toon aan
     // NewTone::noNewTone(NewTone::buzzer); // toon uit
 
     while (true) {
-        // Controller::update();
-        // Scene::draw();
+        Controller::update();
+        Scene::draw();
+        if (NewTone::startTone) {
+            if (NewTone::toggleTone) {
+                // NewTone::testbool = false;
+                NewTone::toggleTone = false;
+                NewTone::testFunction();
+            }   
+        }
     }
 
     return(0);

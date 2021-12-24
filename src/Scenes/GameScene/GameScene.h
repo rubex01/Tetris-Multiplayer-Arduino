@@ -22,6 +22,7 @@ class GameScene: public Scene {
     static int tickValue;
     static void checkForFullRows();
     static int moveTickCounter;
+   //  static bool startTone;
 
  private:
     static int gameSeed;

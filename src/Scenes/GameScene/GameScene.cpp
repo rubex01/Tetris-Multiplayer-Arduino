@@ -6,6 +6,8 @@
 #include "../../Controller/Controller.h"
 #include "../../Tetris/BlockFactory.h"
 
+#define ONESECOND 20  // Timer2 15 goeie, 1024 pre met COMPA zonder pauze
+
 int GameScene::gameSeed = 0;
 int GameScene::tetrisBoard[11][10] = {{0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}};
 int GameScene::lastBoard[11][10] = {{0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}};
@@ -18,23 +20,60 @@ bool GameScene::moveTickReached = false;
 int GameScene::tickValue = 68;
 int GameScene::moveTickCounter = 0;
 
-// ISR(TIMER2_COMPA_vect) {
-//     if (GameScene::gameCounter >= GameScene::tickValue) {
-//         GameScene::gameTickReached = true;
-//         GameScene::gameCounter = 0;
-//     }
-//     if (GameScene::moveTickCounter == 4) {
-//         GameScene::moveTickReached = true;
-//         GameScene::moveTickCounter = 0;
-//     }
-//     GameScene::moveTickCounter++;
-//     GameScene::gameCounter++;
-// }
+// bool GameScene::startTone = false;
+// NewTone::startTone = true;
+
+// bool GameScene::pietcheck = false;
+
+ISR(TIMER2_COMPA_vect) {
+    if (GameScene::gameCounter >= GameScene::tickValue) {
+        GameScene::gameTickReached = true;
+        GameScene::gameCounter = 0;
+    }
+    if (GameScene::moveTickCounter == 4) {
+        GameScene::moveTickReached = true;
+        GameScene::moveTickCounter = 0;
+    }
+    GameScene::moveTickCounter++;
+    GameScene::gameCounter++;
+
+    // NewTone::testbool = true;
+    NewTone::toggleTone = true;
+
+    // NewTone::testFunction();
+    // NewTone::teller++;
+    // if (!NewTone::noNewToneCheck) {
+    //     if (NewTone::teller >= ONESECOND) {
+    //         NewTone::teller = 0;
+    //         if (NewTone::thisNote >= NewTone::notes * 2)
+    //             NewTone::thisNote = 0;
+    //         // calculates the duration of each note
+    //         NewTone::divider = NewTone::melody[NewTone::thisNote + 1];
+    //         // NewTone::noteDurationTest = 2;
+    //         // NewTone::setNoteDurationTest();
+    //         if (NewTone::divider > 0) {
+    //             // regular note, just proceed
+    //             NewTone::noteDuration = (NewTone::wholenote) / NewTone::divider;
+    //         } else if (NewTone::divider < 0) {
+    //             // dotted notes are represented with negative durations!!
+    //             NewTone::noteDuration = (NewTone::wholenote) / abs(NewTone::divider);
+    //             NewTone::noteDuration *= 1.5;  // increases the duration in half for dotted notes
+    //         }
+    //         // NewTone::aNewTone(NewTone::buzzer, NewTone::melody[NewTone::thisNote], NewTone::noteDuration*0.9);  // timer1 // miss in while
+    //         // NewTone::a2NewTone(NewTone::noteDurationTest);
+
+    //         NewTone::thisNote = NewTone::thisNote + 2;
+    //     }
+    // }
+}
 
 /**
  * Init game scene, draw all game borders and elements
  */
+
+
 void GameScene::init() {
+
     if (gameSeed == 0) {
         setRandomSeed();
         startGame();
@@ -45,7 +84,9 @@ void GameScene::init() {
     Display::drawNextSection();
     Display::drawScore();
     GameScene::initTimer();
-    NewTone::aNewTone(NewTone::buzzer, NewTone::melody[NewTone::thisNote], NewTone::noteDuration*0.9);
+    NewTone::startTone = true;
+    // GameScene::startTone = true
+    // NewTone::aNewTone(NewTone::buzzer, NewTone::melody[NewTone::thisNote], NewTone::noteDuration*0.9);
     GameScene::currentBlock = BlockFactory::createBlock(rand() % 7);
     currentBlock->initBlock();
     GameScene::drawBoard();
@@ -144,6 +185,7 @@ void GameScene::initTimer() {
     // TCCR2B |= (1 << CS22)|(1 << CS21)|(1 << CS20);
     // OCR2A = 255;
     // TIMSK2 |= (1 << OCIE2A);
+    
 }
 
 /**
@@ -170,6 +212,7 @@ void GameScene::drawScene() {
 
         if (array2[Controller::Z_BUTTON]) {
             GameScene::currentBlock->rotate();
+            Serial.println(NewTone::topp);
         }
 
         if (actions[Controller::RIGHT]) {

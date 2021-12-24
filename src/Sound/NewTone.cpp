@@ -4,7 +4,7 @@
 //
 // See "NewTone.h" for purpose, syntax, version history, links, and more.
 // ---------------------------------------------------------------------------
-
+#include "HardwareSerial.h"
 #include "NewTone.h"
 
 #define NOTE_B0  31
@@ -97,11 +97,63 @@
 #define NOTE_D8  4699
 #define NOTE_DS8 4978
 #define REST 0
-
+#define ONESECOND 20  
 // #define ONESECOND 125  // Timer2
 
 bool NewTone::noNewToneCheck = true;
 
+int NewTone::noteDurationTest = 8;
+bool NewTone::startTone = false;
+bool NewTone::toggleTone = false;
+
+void NewTone::setNoteDurationTest() {
+  NewTone::noteDurationTest = 2;
+}
+
+void NewTone::dab(){
+  Serial.println(NewTone::thisNote);
+}
+
+uint8_t NewTone::teller = 0;  // Timer2
+int NewTone::thisNote = 2;
+
+int maat = 0; 
+
+void NewTone::testFunction(){
+  // int yes = maat;
+  //Serial.println(yes);  
+  
+  // if(NewTone::testbool){
+    NewTone::teller++;
+    // if (!NewTone::noNewToneCheck) {
+        if (NewTone::teller >= ONESECOND) {
+            NewTone::teller = 0;
+            // if (maat >= NewTone::notes * 2 + 1)
+            //     // maat = 0;
+            if(maat >= 99) {
+              maat = 0;
+            }
+            
+            // // calculates the duration of each note
+            // NewTone::divider = NewTone::melody[NewTone::thisNote + 1];
+            // // NewTone::noteDurationTest = 2;
+            // NewTone::setNoteDurationTest();
+            // if (NewTone::divider > 0) {
+            //     // regular note, just proceed
+            //     NewTone::noteDuration = (NewTone::wholenote) / NewTone::divider;
+            // } else if (NewTone::divider < 0) {
+            //     // dotted notes are represented with negative durations!!
+            //     NewTone::noteDuration = (NewTone::wholenote) / abs(NewTone::divider);
+            //     NewTone::noteDuration *= 1.5;  // increases the duration in half for dotted notes
+            // }
+            // NewTone::aNewTone(NewTone::buzzer, NewTone::melody[NewTone::thisNote], NewTone::noteDuration*0.9);  // timer1 // miss in while
+            NewTone::a2NewTone(NewTone::buzzer, NewTone::testmelody[maat], 4);
+            // yes += 2;
+            maat = maat + 1;
+        }
+    // }
+  // }
+}
 
 ISR(TIMER1_COMPA_vect) {  // Timer interrupt vector.
   if (millis() >= NewTone::_nt_time) NewTone::noNewTone();  // Check to see if it's time for the note to end.
@@ -133,8 +185,7 @@ ISR(TIMER1_COMPA_vect) {  // Timer interrupt vector.
 //     }
 // }
 
-uint8_t NewTone::teller = 0;  // Timer2
-int NewTone::thisNote = 0;  // Timer2
+  // Timer2
 
 // void NewTone::initTimer2() {
 //   DDRB |= (1 << DDB0);
@@ -157,6 +208,37 @@ int NewTone::buzzer = 5;
 // a 4 means a quarter note, 8 an eighteenth , 16 sixteenth, so on
 // !!negative numbers are used to represent dotted notes,
 // so -4 means a dotted quarter note, that is, a quarter plus an eighteenth!!
+int NewTone::testmelody[] {
+  NOTE_E5, NOTE_B4,   NOTE_C5, NOTE_D5, NOTE_C5, NOTE_B4,
+  NOTE_A4,  NOTE_A4,  NOTE_C5,  NOTE_E5, NOTE_D5, NOTE_C5,
+  NOTE_B4,  NOTE_C5,  NOTE_D5,  NOTE_E5,
+  NOTE_C5,   NOTE_A4,  NOTE_A4,  NOTE_A4,  NOTE_B4, NOTE_C5,
+
+  NOTE_D5,  NOTE_F5,   NOTE_A5, NOTE_G5,   NOTE_F5, 
+  NOTE_E5,   NOTE_C5,  NOTE_E5,  NOTE_D5,  NOTE_C5, 
+  NOTE_B4,   NOTE_B4,  NOTE_C5,  NOTE_D5,  NOTE_E5, 
+  NOTE_C5,   NOTE_A4,  NOTE_A4, REST, 
+
+  NOTE_E5,   NOTE_B4,  NOTE_C5,  NOTE_D5,  NOTE_C5, NOTE_B4,
+  NOTE_A4,  NOTE_A4,  NOTE_C5,  NOTE_E5,   NOTE_D5,  NOTE_C5, 
+  NOTE_B4,   NOTE_C5,   NOTE_D5,  NOTE_E5,
+  NOTE_C5,   NOTE_A4,   NOTE_A4, NOTE_A4, NOTE_B4, NOTE_C5,
+
+  NOTE_D5,   NOTE_F5, NOTE_A5,  NOTE_G5,   NOTE_F5,
+  NOTE_E5,   NOTE_C5,   NOTE_E5,   NOTE_D5,  NOTE_C5, 
+  NOTE_B4,   NOTE_B4,  NOTE_C5, NOTE_D5, NOTE_E5, 
+  NOTE_C5,   NOTE_A4,  NOTE_A4,  REST, 
+
+
+  NOTE_E5,   NOTE_C5, 
+  NOTE_D5,   NOTE_B4,
+  NOTE_C5,   NOTE_A4,
+  NOTE_GS4,   NOTE_B4,   REST,
+  NOTE_E5,    NOTE_C5,
+  NOTE_D5,    NOTE_B4,
+  NOTE_C5,   NOTE_E5, NOTE_A5, 
+  NOTE_GS5
+};
 int NewTone::melody[] = {
 // Based on the arrangement at https://www.flutetunes.com/tunes.php?id=192
 
@@ -190,7 +272,7 @@ int NewTone::melody[] = {
   NOTE_C5, 4,   NOTE_E5, 4,  NOTE_A5, 2,
   NOTE_GS5, 2,
 };
-
+uint16_t NewTone::topp = 0;
 // sizeof gives the number of bytes, each int value is composed of two bytes (16 bits)
 // there are two values per note (pitch and duration), so for each note there are four bytes
 int NewTone::notes = sizeof(NewTone::melody) / sizeof(NewTone::melody[0])/2;
@@ -199,36 +281,75 @@ int NewTone::notes = sizeof(NewTone::melody) / sizeof(NewTone::melody[0])/2;
 int NewTone::wholenote = (60000 * 4) / NewTone::tempo;
 
 int NewTone::divider = 0;
-int NewTone::noteDuration = 0;
+int NewTone::noteDuration = 2;
 
-void NewTone::aNewTone(uint8_t pin, uint16_t frequency, uint16_t length) {
+uint8_t NewTone::prescaler = 0;
+uint16_t NewTone::top = 0;
+
+// void NewTone::aNewTone(uint8_t pin, uint16_t frequency, uint16_t length) {
+//   NewTone::noNewToneCheck = false;
+//   uint8_t prescaler = _BV(CS10);                  // Try using prescaler 1 first.
+//   uint16_t top = F_CPU / frequency / 4 - 1;  // Calculate the top.
+//   if (top > 65535) {                              // If not in the range for prescaler 1, use prescaler 256 (61 Hz and lower @ 16 MHz).
+//     prescaler = _BV(CS12);                        // Set the 256 prescaler bit.
+//     top = top / 256 - 1;                          // Calculate the top using prescaler 256.
+//   }
+
+//   if (length > 0)
+//     NewTone::_nt_time = millis() + length;
+//   else
+//     NewTone::_nt_time = 0xFFFF;  // Set when the note should end, or play "forever".
+//     // NewTone::_nt_time = 0xFFFF;  // Set when the note should end, or play "forever".
+
+//   if (NewTone::_pinMask == 0) {
+//     NewTone::_pinMask = digitalPinToBitMask(pin);                     // Get the port register bitmask for the pin.
+//     NewTone::_pinOutput = portOutputRegister(digitalPinToPort(pin));  // Get the output port register for the pin.
+//     uint8_t *_pinMode = (uint8_t *) portModeRegister(digitalPinToPort(pin));  // Get the port mode register for the pin.
+//     *_pinMode |= NewTone::_pinMask;  // Set the pin to Output mode.
+//   }
+
+//   ICR1    = top;                      // Set the top.
+//   if (TCNT1 > top)
+//     TCNT1 = top;                      // Counter over the top, put within range.
+//   TCCR1B  = _BV(WGM13)  | prescaler;  // Set PWM, phase and frequency corrected (ICR1) and prescaler.
+//   TCCR1A  = _BV(COM1B0);
+//   TIMSK1 |= _BV(OCIE1A);              // Activate the timer interrupt.
+// }
+
+void NewTone::a2NewTone(uint8_t pin, uint16_t frequency, uint16_t length) {
   NewTone::noNewToneCheck = false;
-  uint8_t prescaler = _BV(CS10);                  // Try using prescaler 1 first.
-  uint16_t top = F_CPU / frequency / 4 - 1;  // Calculate the top.
-  if (top > 65535) {                              // If not in the range for prescaler 1, use prescaler 256 (61 Hz and lower @ 16 MHz).
-    prescaler = _BV(CS12);                        // Set the 256 prescaler bit.
-    top = top / 256 - 1;                          // Calculate the top using prescaler 256.
+  // uint8_t prescaler = _BV(CS10);                  // Try using prescaler 1 first.
+  NewTone::prescaler = _BV(CS10);
+  NewTone::top = F_CPU / frequency / 4 - 1;  // Calculate the top.
+  // uint16_t top = F_CPU / frequency / 4 - 1;  // Calculate the top.
+  if (NewTone::top > 65535) {                              // If not in the range for prescaler 1, use prescaler 256 (61 Hz and lower @ 16 MHz).
+    NewTone::prescaler = _BV(CS12);                        // Set the 256 prescaler bit.
+    NewTone::top = NewTone::top / 256 - 1;                          // Calculate the top using prescaler 256.
   }
 
-  if (length > 0)
+  if (length > 0) {
     NewTone::_nt_time = millis() + length;
-  else
+  } else {
     NewTone::_nt_time = 0xFFFF;  // Set when the note should end, or play "forever".
     // NewTone::_nt_time = 0xFFFF;  // Set when the note should end, or play "forever".
+  }
 
   if (NewTone::_pinMask == 0) {
     NewTone::_pinMask = digitalPinToBitMask(pin);                     // Get the port register bitmask for the pin.
     NewTone::_pinOutput = portOutputRegister(digitalPinToPort(pin));  // Get the output port register for the pin.
     uint8_t *_pinMode = (uint8_t *) portModeRegister(digitalPinToPort(pin));  // Get the port mode register for the pin.
-    *_pinMode |= NewTone::_pinMask;  // Set the pin to Output mode.
+    *_pinMode |= NewTone::_pinMask;  // Set the pin to OutputW mode.
   }
 
-  ICR1    = top;                      // Set the top.
-  if (TCNT1 > top)
-    TCNT1 = top;                      // Counter over the top, put within range.
-  TCCR1B  = _BV(WGM13)  | prescaler;  // Set PWM, phase and frequency corrected (ICR1) and prescaler.
+  // topp = top;
+
+  ICR1    = NewTone::top;                      // Set the top.
+  if (TCNT1 > NewTone::top) {
+    TCNT1 = NewTone::top;           }           // Counter over the top, put within range.
+  TCCR1B  = _BV(WGM13)  | NewTone::prescaler;  // Set PWM, phase and frequency corrected (ICR1) and prescaler.
   TCCR1A  = _BV(COM1B0);
-  TIMSK1 |= _BV(OCIE1A);              // Activate the timer interrupt.
+  TIMSK1 |= _BV(OCIE1A); 
+
 }
 
 void NewTone::noNewTone(uint8_t pin) {
