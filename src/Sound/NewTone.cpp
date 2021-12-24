@@ -100,7 +100,7 @@
 #define ONESECOND 20  // Timer2
 
 ISR(TIMER1_COMPA_vect) {  // Timer interrupt vector.
-  if (millis() >= NewTone::_nt_time) NewTone::noNewTone();  // Check to see if it's time for the note to end.
+  if (millis() >= NewTone::_nt_time) NewTone::noNewTone(NewTone::buzzer);  // Check to see if it's time for the note to end.
   *NewTone::_pinOutput ^= NewTone::_pinMask;  // Toggle the pin state.
 }
 
@@ -202,14 +202,6 @@ void NewTone::initTimer2() {
 }
 
 void NewTone::noNewTone(uint8_t pin) {
-  TIMSK1 &= ~_BV(OCIE1A);   // Remove the timer interrupt.
-  TCCR1B  = _BV(CS11);      // Default clock prescaler of 8.
-  TCCR1A  = _BV(WGM10);     // Set to defaults so PWM can work like normal (PWM, phase corrected, 8bit).
-  *NewTone::_pinOutput &= ~NewTone::_pinMask;  // Set pin to LOW.
-  NewTone::_pinMask = 0;  // Flag so we know note is no longer playing.
-}
-
-void NewTone::noNewTone() {
   TIMSK1 &= ~_BV(OCIE1A);   // Remove the timer interrupt.
   TCCR1B  = _BV(CS11);      // Default clock prescaler of 8.
   TCCR1A  = _BV(WGM10);     // Set to defaults so PWM can work like normal (PWM, phase corrected, 8bit).
