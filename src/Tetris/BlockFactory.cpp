@@ -13,25 +13,27 @@
  * @param choice
  */
 Block* BlockFactory::createBlock(int choice) {
-    if (choice == 1) {
-        return new OBlock(4, 0);
-    }
-    if (choice == 2) {
-        return new SBlock(4, 0);
-    }
-    if (choice == 3) {
-        return new IBlock(4, 0);
-    }
-    if (choice == 4) {
-        return new ZBlock(4, 0);
-    }
-    if (choice == 5) {
-        return new TBlock(4, 0);
-    }
-    if (choice == 6) {
-        return new LBlock(4, 0);
-    }
-    if (choice == 7) {
-        return new JBlock(4, 0);
+    switch (choice) {
+        case 1:
+            return new OBlock(4, 0);
+            break;
+        case 2:
+            return new SBlock(4, 0);
+            break;
+        case 3:
+            return new IBlock(4, 0);
+            break;
+        case 4:
+            return new ZBlock(4, 0);
+            break;
+        case 5:
+            return new TBlock(4, 0);
+            break;
+        case 6:
+            return new LBlock(4, 0);
+            break;
+        case 7:
+            return new JBlock(4, 0);
+            break;
     }
 }
