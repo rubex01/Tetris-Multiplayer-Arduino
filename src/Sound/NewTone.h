@@ -51,13 +51,13 @@ class NewTone {
   static uint8_t _pinMask;
   static uint16_t _nt_time;
   static volatile uint8_t *_pinOutput;
-  static int buzzer;
+  static uint8_t buzzer;
   static int melody[];
   static bool startTone;
   static bool toggleTone;
   static uint16_t top;
   static uint8_t prescaler;
-  static int toonHoogteIndex;
+  static uint8_t toonHoogteIndex;
 };
 
 #endif  // SRC_SOUND_NEWTONE_H_

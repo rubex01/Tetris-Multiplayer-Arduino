@@ -107,43 +107,42 @@ ISR(TIMER1_COMPA_vect) {  // Timer interrupt vector.
 bool NewTone::startTone = false;
 bool NewTone::toggleTone = false;
 uint8_t NewTone::teller = 0;
-int NewTone::toonHoogteIndex = 0;
+uint8_t NewTone::toonHoogteIndex = 0;
 uint16_t NewTone::_nt_time;               // Time note should end.
 uint8_t NewTone::_pinMask = 0;            // Pin bitmask.
 volatile uint8_t *NewTone::_pinOutput = new uint8_t{0};  // Output port register
-int NewTone::buzzer = 5;                  // Change this to whichever pin you want to use
+uint8_t NewTone::buzzer = 5;                  // Change this to whichever pin you want to use
 uint8_t NewTone::prescaler = 0;
 uint16_t NewTone::top = 0;
 
 int NewTone::melody[] {  // Notes of the moledy
-  NOTE_E5, NOTE_B4,   NOTE_C5, NOTE_D5, NOTE_C5, NOTE_B4,
-  NOTE_A4,  NOTE_A4,  NOTE_C5,  NOTE_E5, NOTE_D5, NOTE_C5,
+  NOTE_E5,  NOTE_B4,  NOTE_C5,  NOTE_D5,  NOTE_C5,  NOTE_B4,
+  NOTE_A4,  NOTE_A4,  NOTE_C5,  NOTE_E5,  NOTE_D5,  NOTE_C5,
   NOTE_B4,  NOTE_C5,  NOTE_D5,  NOTE_E5,
-  NOTE_C5,   NOTE_A4,  NOTE_A4,  NOTE_A4,  NOTE_B4, NOTE_C5,
+  NOTE_C5,  NOTE_A4,  NOTE_A4,  NOTE_A4,  NOTE_B4,  NOTE_C5,
 
-  NOTE_D5,  NOTE_F5,   NOTE_A5, NOTE_G5,   NOTE_F5, 
-  NOTE_E5,   NOTE_C5,  NOTE_E5,  NOTE_D5,  NOTE_C5, 
-  NOTE_B4,   NOTE_B4,  NOTE_C5,  NOTE_D5,  NOTE_E5, 
-  NOTE_C5,   NOTE_A4,  NOTE_A4, REST, 
+  NOTE_D5,  NOTE_F5,  NOTE_A5,  NOTE_G5,  NOTE_F5, 
+  NOTE_E5,  NOTE_C5,  NOTE_E5,  NOTE_D5,  NOTE_C5, 
+  NOTE_B4,  NOTE_B4,  NOTE_C5,  NOTE_D5,  NOTE_E5, 
+  NOTE_C5,  NOTE_A4,  NOTE_A4,  REST, 
 
-  NOTE_E5,   NOTE_B4,  NOTE_C5,  NOTE_D5,  NOTE_C5, NOTE_B4,
-  NOTE_A4,  NOTE_A4,  NOTE_C5,  NOTE_E5,   NOTE_D5,  NOTE_C5, 
-  NOTE_B4,   NOTE_C5,   NOTE_D5,  NOTE_E5,
-  NOTE_C5,   NOTE_A4,   NOTE_A4, NOTE_A4, NOTE_B4, NOTE_C5,
+  NOTE_E5,  NOTE_B4,  NOTE_C5,  NOTE_D5,  NOTE_C5,  NOTE_B4,
+  NOTE_A4,  NOTE_A4,  NOTE_C5,  NOTE_E5,  NOTE_D5,  NOTE_C5, 
+  NOTE_B4,  NOTE_C5,  NOTE_D5,  NOTE_E5,
+  NOTE_C5,  NOTE_A4,  NOTE_A4,  NOTE_A4,  NOTE_B4,  NOTE_C5,
 
-  NOTE_D5,   NOTE_F5, NOTE_A5,  NOTE_G5,   NOTE_F5,
-  NOTE_E5,   NOTE_C5,   NOTE_E5,   NOTE_D5,  NOTE_C5, 
-  NOTE_B4,   NOTE_B4,  NOTE_C5, NOTE_D5, NOTE_E5, 
-  NOTE_C5,   NOTE_A4,  NOTE_A4,  REST, 
+  NOTE_D5,  NOTE_F5,  NOTE_A5,  NOTE_G5,  NOTE_F5,
+  NOTE_E5,  NOTE_C5,  NOTE_E5,  NOTE_D5,  NOTE_C5, 
+  NOTE_B4,  NOTE_B4,  NOTE_C5,  NOTE_D5,  NOTE_E5, 
+  NOTE_C5,  NOTE_A4,  NOTE_A4,  REST, 
 
-
-  NOTE_E5,   NOTE_C5, 
-  NOTE_D5,   NOTE_B4,
-  NOTE_C5,   NOTE_A4,
-  NOTE_GS4,   NOTE_B4,   REST,
-  NOTE_E5,    NOTE_C5,
-  NOTE_D5,    NOTE_B4,
-  NOTE_C5,   NOTE_E5, NOTE_A5, 
+  NOTE_E5,  NOTE_C5, 
+  NOTE_D5,  NOTE_B4,
+  NOTE_C5,  NOTE_A4,
+  NOTE_GS4, NOTE_B4,  REST,
+  NOTE_E5,  NOTE_C5,
+  NOTE_D5,  NOTE_B4,
+  NOTE_C5,  NOTE_E5,  NOTE_A5, 
   NOTE_GS5
 };
 
