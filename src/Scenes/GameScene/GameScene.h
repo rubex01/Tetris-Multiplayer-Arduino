@@ -2,6 +2,7 @@
 #define SRC_SCENES_GAMESCENE_GAMESCENE_H_
 
 #include <stdint.h>
+#include <stdio.h>
 #include "../Scene.h"
 #include "../../Tetris/Block.h"
 
@@ -30,7 +31,6 @@ class GameScene: public Scene {
     static Block* currentBlock;
     static Block* nextBlock;
     static void drawBoard();
-    static void initTimer();
     static void setRandomSeed();
     static int generateRandomSeed();
     static void generateRowFrame(int height);

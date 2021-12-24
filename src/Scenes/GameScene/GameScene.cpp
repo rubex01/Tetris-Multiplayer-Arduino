@@ -2,11 +2,14 @@
 #include "../../Display/Display.h"
 #include "../../Communication/SendQueue.h"
 #include "../../Communication/Frame.h"
+#include "../../Sound/NewTone.h"
 #include "../../Controller/Controller.h"
 #include "../../Tetris/BlockFactory.h"
 #include "../../Tetris/Score.h"
 #include "../../Communication/ReceivedData.h"
 #include "../../HighScore/HighScore.h"
+
+#define ONESECOND 20  // Timer2 15 goeie, 1024 pre met COMPA zonder pauze
 
 uint8_t GameScene::gameSeed = 0;
 uint8_t GameScene::tetrisBoard[11][10] = {{0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}};
@@ -32,6 +35,8 @@ ISR(TIMER2_COMPA_vect) {
     }
     GameScene::moveTickCounter++;
     GameScene::gameCounter++;
+
+    NewTone::toggleTone = true;
 }
 
 /**
@@ -46,8 +51,8 @@ GameScene::GameScene() {
     Display::drawGameBorder();
     Display::drawHoldSection();
     Display::drawNextSection();
+    NewTone::startTone = true;
     Score::updateScore(0);
-    GameScene::initTimer();
     GameScene::nextBlock = BlockFactory::createBlock(6);
     GameScene::currentBlock = BlockFactory::createBlock(rand() % 7);
     GameScene::nextBlock->drawSectionBlock();
@@ -140,16 +145,6 @@ int GameScene::boardCount() {
         }
     }
     return count;
-}
-
-/**
- * Init timer 2 to be later used for the game loop
- */
-void GameScene::initTimer() {
-    TCCR2A |= (1 << WGM21);
-    TCCR2B |= (1 << CS22)|(1 << CS21)|(1 << CS20);
-    OCR2A = 255;
-    TIMSK2 |= (1 << OCIE2A);
 }
 
 /**
