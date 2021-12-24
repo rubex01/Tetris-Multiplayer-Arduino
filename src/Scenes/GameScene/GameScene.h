@@ -25,9 +25,14 @@ class GameScene: public Scene {
     static int moveTickCounter;
 
  private:
+    static bool holdSwitchAvailable;
     static int gameSeed;
     static Block* currentBlock;
     static Block* nextBlock;
+    static Block* holdBlock;
+    static Block* tempBlock;
+    static void spawnTetrisBlock();
+    static void drawSections();
     static void drawBoard();
     static void initTimer();
     static void setRandomSeed();

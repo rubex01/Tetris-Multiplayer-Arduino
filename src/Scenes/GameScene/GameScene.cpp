@@ -11,6 +11,8 @@ int GameScene::gameSeed = 0;
 int GameScene::tetrisBoard[11][10] = {{0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}};
 int GameScene::lastBoard[11][10] = {{0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}};
 Block* GameScene::currentBlock = nullptr;
+Block* GameScene::holdBlock = nullptr;
+bool GameScene::holdSwitchAvailable = true;
 bool GameScene::gameTickReached = false;
 bool GameScene::blockIsMoving = true;
 bool GameScene::gameOver = false;
@@ -19,6 +21,7 @@ bool GameScene::moveTickReached = false;
 int GameScene::tickValue = 68;
 int GameScene::moveTickCounter = 0;
 Block* GameScene::nextBlock = nullptr;
+Block* GameScene::tempBlock = nullptr;
 
 ISR(TIMER2_COMPA_vect) {
     if (GameScene::gameCounter >= GameScene::tickValue) {
@@ -49,7 +52,7 @@ void GameScene::init() {
     GameScene::initTimer();
     GameScene::nextBlock = BlockFactory::createBlock(6);
     GameScene::currentBlock = BlockFactory::createBlock(rand() % 7);
-    GameScene::nextBlock->drawSectionBlock();
+    GameScene::nextBlock->drawSectionBlock(NEXTSECTION);
     currentBlock->initBlock();
     GameScene::drawBoard();
 }
@@ -176,6 +179,29 @@ void GameScene::drawScene() {
             GameScene::tickValue = 68;
         }
 
+        if (array2[Controller::C_BUTTON]) {
+            if (holdSwitchAvailable) {
+                if (holdBlock == nullptr) {
+                    holdBlock = currentBlock;
+                    currentBlock->setValue(0);
+                    currentBlock = nextBlock;
+                    nextBlock = BlockFactory::createBlock(rand() % 7);
+                    currentBlock->resetBlock();
+                    GameScene::currentBlock->initBlock();
+                    drawSections();
+                } else {
+                    tempBlock = holdBlock;
+                    holdBlock = currentBlock;
+                    currentBlock->setValue(0);
+                    currentBlock = tempBlock;
+                    currentBlock->resetBlock();
+                    currentBlock->initBlock();
+                    drawSections();
+                }
+                holdSwitchAvailable = false;
+            }
+        }
+
         if (array2[Controller::Z_BUTTON]) {
             GameScene::currentBlock->rotate();
         }
@@ -191,19 +217,37 @@ void GameScene::drawScene() {
             GameScene::gameTickReached = false;
         }
     } else {
-        delete GameScene::currentBlock;
-        GameScene::currentBlock = GameScene::nextBlock;
-        GameScene::currentBlock->initBlock();
-        GameScene::nextBlock = BlockFactory::createBlock(rand() % 7);
-        Display::clearNextSection();
-        GameScene::nextBlock->drawSectionBlock();
+        spawnTetrisBlock();
         blockIsMoving = true;
         GameScene::gameTickReached = false;
+        holdSwitchAvailable = true;
     }
     moveTickReached = false;
     GameScene::drawBoard();
     delete[] actions;
     delete[] array2;
+}
+
+/**
+ * Draw the next and hold sections with corresponding blocks
+ */
+void GameScene::drawSections() {
+    Display::clearNextSection();
+    GameScene::nextBlock->drawSectionBlock(NEXTSECTION);
+    Display::clearHoldSection();
+    GameScene::holdBlock->drawSectionBlock(HOLDSECTION);
+}
+
+/**
+ * Spawns a new tetris block in the game, also update nextblock
+ */
+void GameScene::spawnTetrisBlock() {
+        delete GameScene::currentBlock;
+        GameScene::currentBlock = GameScene::nextBlock;
+        GameScene::currentBlock->initBlock();
+        GameScene::nextBlock = BlockFactory::createBlock(rand() % 7);
+        Display::clearNextSection();
+        GameScene::nextBlock->drawSectionBlock(NEXTSECTION);
 }
 
 /**
@@ -293,6 +337,7 @@ int GameScene::generateRandomSeed() {
 void GameScene::endGame() {
     delete currentBlock;
     delete nextBlock;
+    delete holdBlock;
     setRandomSeed();
 }
 

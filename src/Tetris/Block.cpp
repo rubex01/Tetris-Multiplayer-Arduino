@@ -15,6 +15,11 @@ Block::Block(int xPos, int yPos) {
 }
 
 /**
+ * resets block rotation and position
+ */
+void Block::resetBlock() { }
+
+/**
  * Inits block, places it at starting location
  */
 void Block::initBlock() {
@@ -187,9 +192,9 @@ Block::~Block() {
 void Block::rotateBlock() {}
 
 /**
- * Draws tetris block in the section block
+ * Draws tetris block in the hold or next section
  */
-void Block::drawSectionBlock() {}
+void Block::drawSectionBlock(int section) {}
 
 /**
  * Moves the tetromino block one unit down
