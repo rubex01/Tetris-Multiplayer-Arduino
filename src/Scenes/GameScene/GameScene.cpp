@@ -284,7 +284,15 @@ void GameScene::addOpponentReceivedRow(uint8_t data) {
     GameScene::currentBlock->setValue(currentBlock->blockColor);
     int count2 = boardCount();
 
-    if ((count2 - count) != 4) gameOver = true;
+    if ((count2 - count) != 4) {
+        bool shouldMoveOneUp = true;
+        while (shouldMoveOneUp) {
+            GameScene::currentBlock->moveUp();
+            if (boardCount()-count != 4) {
+                shouldMoveOneUp = false;
+            }
+        }
+    }
 }
 
 /**
