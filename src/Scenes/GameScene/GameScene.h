@@ -3,6 +3,7 @@
 
 #include "../Scene.h"
 #include "../../Tetris/Block.h"
+#include <stdio.h>
 
 class GameScene: public Scene {
  public:
@@ -13,8 +14,8 @@ class GameScene: public Scene {
     static void drawScene();
     static int boardCount();
     static bool blockIsMoving;
-    static int tetrisBoard[11][10];
-    static int lastBoard[11][10];
+    static uint8_t tetrisBoard[11][10];
+    static uint8_t lastBoard[11][10];
     static bool gameTickReached;
     static bool gameOver;
     static int gameCounter;

@@ -9,8 +9,8 @@
 #define ONESECOND 20  // Timer2 15 goeie, 1024 pre met COMPA zonder pauze
 
 int GameScene::gameSeed = 0;
-int GameScene::tetrisBoard[11][10] = {{0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}};
-int GameScene::lastBoard[11][10] = {{0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}};
+uint8_t GameScene::tetrisBoard[11][10] = {{0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}};
+uint8_t GameScene::lastBoard[11][10] = {{0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}};
 Block* GameScene::currentBlock = nullptr;
 bool GameScene::gameTickReached = false;
 bool GameScene::blockIsMoving = true;
