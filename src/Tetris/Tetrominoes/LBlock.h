@@ -9,7 +9,8 @@ class LBlock : public Block {
     LBlock(int xPos, int yPos);
     bool checkBlock();
     void rotateBlock();
-    void drawSectionBlock();
+    void resetBlock();
+    void drawSectionBlock(int section);
 };
 
 #endif  // SRC_TETRIS_TETROMINOES_LBLOCK_H_

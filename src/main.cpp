@@ -26,7 +26,7 @@ int main() {
     HighScore::init();
     Scene::setScene(Scene::START_SCENE);
 
-    IRCommunication::init(56);
+    IRCommunication::init(38);
 
     while (true) {
         Controller::update();

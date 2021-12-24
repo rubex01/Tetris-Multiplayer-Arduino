@@ -21,6 +21,7 @@ void Scene::draw() {
  * @param scene
  */
 void Scene::setScene(const Constants& scene) {
+    delete currentScene;
     Display::fillRect(0, 0, 240, 320, ILI9341_BLACK);
     switch (scene) {
         case START_SCENE:

@@ -18,7 +18,9 @@ uint8_t  GameScene::gameCounter = 0;
 uint8_t GameScene::tickValue = 60;
 uint8_t GameScene::moveTickCounter = 0;
 Block* GameScene::currentBlock = nullptr;
-Block* GameScene::nextBlock = nullptr;
+uint8_t GameScene::nextBlock = 0;
+uint8_t GameScene::holdBlock = 0;
+bool GameScene::holdSwitchAvailable = true;
 bool GameScene::gameTickReached = false;
 bool GameScene::blockIsMoving = true;
 bool GameScene::gameOver = false;
@@ -53,9 +55,9 @@ GameScene::GameScene() {
     Display::drawNextSection();
     NewTone::startTone = true;
     Score::updateScore(0);
-    GameScene::nextBlock = BlockFactory::createBlock(6);
-    GameScene::currentBlock = BlockFactory::createBlock(rand() % 7);
-    GameScene::nextBlock->drawSectionBlock();
+    GameScene::nextBlock = (rand() % 7)+1;
+    GameScene::currentBlock = BlockFactory::createBlock((rand() % 7)+1);
+    Block::triggerDrawSection(NEXTSECTION);
     currentBlock->initBlock();
     GameScene::drawBoard();
 }
@@ -173,6 +175,30 @@ void GameScene::drawScene() {
                 GameScene::currentBlock->rotate();
             }
 
+            if (nonContinuingActions[Controller::C_BUTTON]) {
+                if (holdSwitchAvailable) {
+                    if (holdBlock == 0) {
+                        holdBlock = currentBlock->blockColor;
+                        currentBlock->setValue(0);
+                        delete currentBlock;
+                        currentBlock = BlockFactory::createBlock(nextBlock);
+                        nextBlock = (rand() % 7)+1;
+                        GameScene::currentBlock->initBlock();
+                        drawSections();
+                    } else {
+                        currentBlock->setValue(0);
+                        uint8_t holdBlockType = holdBlock;
+                        holdBlock = currentBlock->blockColor;
+                        delete currentBlock;
+                        currentBlock = BlockFactory::createBlock(holdBlockType);
+                        currentBlock->resetBlock();
+                        currentBlock->initBlock();
+                        drawSections();
+                    }
+                    holdSwitchAvailable = false;
+                }
+            }
+
             if (actions[Controller::RIGHT]) {
                 GameScene::currentBlock->moveSideways(1);
             } else if (actions[Controller::LEFT]) {
@@ -187,19 +213,36 @@ void GameScene::drawScene() {
             GameScene::currentBlock->moveDown();
             GameScene::gameTickReached = false;
         }
-
     } else {
-        delete GameScene::currentBlock;
-        GameScene::currentBlock = GameScene::nextBlock;
-        GameScene::currentBlock->initBlock();
-        GameScene::nextBlock = BlockFactory::createBlock(rand() % 7);
-        Display::clearNextSection();
-        GameScene::nextBlock->drawSectionBlock();
+        spawnTetrisBlock();
         blockIsMoving = true;
         GameScene::gameTickReached = false;
+        holdSwitchAvailable = true;
     }
 
     GameScene::drawBoard();
+}
+
+/**
+ * Draw the next and hold sections with corresponding blocks
+ */
+void GameScene::drawSections() {
+    Display::clearNextSection();
+    Block::triggerDrawSection(NEXTSECTION);
+    Display::clearHoldSection();
+    Block::triggerDrawSection(HOLDSECTION);
+}
+
+/**
+ * Spawns a new tetris block in the game, also update nextblock
+ */
+void GameScene::spawnTetrisBlock() {
+    delete GameScene::currentBlock;
+    GameScene::currentBlock = BlockFactory::createBlock(nextBlock);
+    GameScene::currentBlock->initBlock();
+    GameScene::nextBlock = (rand() % 7)+1;
+    Display::clearNextSection();
+    Block::triggerDrawSection(NEXTSECTION);
 }
 
 /**
@@ -294,7 +337,9 @@ void GameScene::endGame(bool lostGame) {
     HighScore::newScore((uint16_t) Score::getCurrentScore());
 
     delete currentBlock;
-    delete nextBlock;
+    nextBlock = 0;
+    holdBlock = 0;
+
     setRandomSeed();
     Score::clearScore();
 

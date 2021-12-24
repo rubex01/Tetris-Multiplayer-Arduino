@@ -28,6 +28,7 @@ class Display {
     static void drawNextSection();
     static void drawScore(int score);
     static void clearNextSection();
+    static void clearHoldSection();
     static void drawDemoBlocks();
     static Adafruit_ILI9341 tft;
     static uint16_t colors[9][3];

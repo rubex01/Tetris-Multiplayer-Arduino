@@ -1,5 +1,6 @@
 #include "../Scenes/GameScene/GameScene.h"
 #include "Block.h"
+#include "BlockFactory.h"
 
 Block::Block(int xPos, int yPos) {
     this->xPos = xPos;
@@ -207,3 +208,14 @@ void Block::moveDown() {
     }
 }
 
+void Block::triggerDrawSection(uint8_t section) {
+    int blockType = 0;
+    if (section == NEXTSECTION)
+        blockType = GameScene::nextBlock;
+    else
+        blockType = GameScene::holdBlock;
+
+    Block* block = BlockFactory::createBlock(blockType);
+    block->drawSectionBlock(section);
+    delete block;
+}

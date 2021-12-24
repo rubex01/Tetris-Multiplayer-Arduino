@@ -3,6 +3,11 @@
 #include "../../Display/Display.h"
 
 SBlock::SBlock(int xPos, int yPos) : Block(xPos, yPos) {
+    resetBlock();
+    blockColor = GREEN;
+}
+
+void SBlock::resetBlock() {
     blockArray[0][0] = xPos;
     blockArray[0][1] = yPos;
     blockArray[1][0] = xPos + 1;
@@ -11,12 +16,20 @@ SBlock::SBlock(int xPos, int yPos) : Block(xPos, yPos) {
     blockArray[2][1] = yPos + 1;
     blockArray[3][0] = xPos;
     blockArray[3][1] = yPos + 1;
-    blockColor = GREEN;
+    rotationLevel = 0;
 }
 
-void SBlock::drawSectionBlock() {
-    int x = 194;
-    int y = 35;
+void SBlock::drawSectionBlock(int section) {
+    int x = 0;
+    int y = 0;
+    if (section == NEXTSECTION) {
+        x = 194;
+        y = 35;
+    }
+    if (section == HOLDSECTION) {
+        x = 33;
+        y = 35;
+    }
     Display::drawSmallTetrisBlok(x, y, this->blockColor);
     Display::drawSmallTetrisBlok(x+10, y, this->blockColor);
     Display::drawSmallTetrisBlok(x, y+10, this->blockColor);

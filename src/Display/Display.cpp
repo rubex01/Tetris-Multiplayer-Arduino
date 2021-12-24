@@ -160,10 +160,6 @@ void Display::drawGameBorder() {
  * Draws hold section from game
  */
 void Display::drawHoldSection() {
-    Display::drawSmallTetrisBlok(30, 35, GRAY);
-    Display::drawSmallTetrisBlok(40, 35, GRAY);
-    Display::drawSmallTetrisBlok(30, 45, GRAY);
-
     Display::drawRect(9, 9, 62, 62, 0x2965);
     Display::drawRect(10, 10, 60, 60, 0x2965);
     Display::fillRect(10, 10, 60, 12, 0x2965);
@@ -184,8 +180,12 @@ void Display::drawNextSection() {
  * Clear the next section
  */
 void Display::clearNextSection() {
-    Display::fillRect(169, 21, 62, 62, ILI9341_BLACK);
+    Display::fillRect(169, 21, 62, 55, ILI9341_BLACK);
     Display::drawRect(169, 9, 62, 62, 0x2965);
+}
+
+void Display::clearHoldSection() {
+    Display::fillRect(20, 23, 40, 40, ILI9341_BLACK);
 }
 
 /**

@@ -13,6 +13,8 @@ class GameScene: public Scene {
     static uint8_t moveTickCounter;
     static uint8_t gameCounter;
     static uint8_t tickValue;
+    static uint8_t nextBlock;
+    static uint8_t holdBlock;
     static bool blockIsMoving;
     static bool gameTickReached;
     static bool gameOver;
@@ -27,9 +29,11 @@ class GameScene: public Scene {
     static void checkForFullRows();
 
  private:
+    static bool holdSwitchAvailable;
     static uint8_t gameSeed;
     static Block* currentBlock;
-    static Block* nextBlock;
+    static void spawnTetrisBlock();
+    static void drawSections();
     static void drawBoard();
     static void setRandomSeed();
     static int generateRandomSeed();

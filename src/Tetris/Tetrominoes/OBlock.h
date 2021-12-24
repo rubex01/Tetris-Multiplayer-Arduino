@@ -9,7 +9,8 @@ class OBlock : public Block {
     OBlock(int xPos, int yPos);
     bool checkBlock();
     void rotateBlock();
-    void drawSectionBlock();
+    void resetBlock();
+    void drawSectionBlock(int section);
 };
 
 #endif  // SRC_TETRIS_TETROMINOES_OBLOCK_H_
