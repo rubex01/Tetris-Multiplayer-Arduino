@@ -129,5 +129,5 @@ void NewTone::noNewTone(uint8_t pin) {
     TCCR1A  = _BV(WGM10);     // Set to defaults so PWM can work like normal (PWM, phase corrected, 8bit).
     *NewTone::_pinOutput &= ~NewTone::_pinMask;  // Set pin to LOW.
     NewTone::_pinMask = 0;  // Flag so we know note is no longer playing.
-    NewTone::toonHoogteIndex
+    NewTone::toonHoogteIndex =0;
 }
