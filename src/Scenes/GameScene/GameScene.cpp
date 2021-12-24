@@ -9,7 +9,7 @@
 #include "../../Communication/ReceivedData.h"
 #include "../../HighScore/HighScore.h"
 
-#define ONESECOND 20  // Timer2 15 goeie, 1024 pre met COMPA zonder pauze
+#define ONESECOND 20
 
 uint8_t GameScene::gameSeed = 0;
 uint8_t GameScene::tetrisBoard[11][10] = {{0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}};
@@ -17,9 +17,9 @@ uint8_t GameScene::lastBoard[11][10] = {{0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, 
 uint8_t  GameScene::gameCounter = 0;
 uint8_t GameScene::tickValue = 60;
 uint8_t GameScene::moveTickCounter = 0;
-Block* GameScene::currentBlock = nullptr;
 uint8_t GameScene::nextBlock = 0;
 uint8_t GameScene::holdBlock = 0;
+Block* GameScene::currentBlock = nullptr;
 bool GameScene::holdSwitchAvailable = true;
 bool GameScene::gameTickReached = false;
 bool GameScene::blockIsMoving = true;
@@ -53,12 +53,16 @@ GameScene::GameScene() {
     Display::drawGameBorder();
     Display::drawHoldSection();
     Display::drawNextSection();
+
     NewTone::startTone = true;
+
     Score::updateScore(0);
+
     GameScene::nextBlock = (rand() % 7)+1;
     GameScene::currentBlock = BlockFactory::createBlock((rand() % 7)+1);
     Block::triggerDrawSection(NEXTSECTION);
     currentBlock->initBlock();
+
     GameScene::drawBoard();
 }
 
@@ -75,14 +79,10 @@ void GameScene::drawBoard() {
             } else if (lastBoard[i][j] != GameScene::tetrisBoard[i][j]) {
                 Display::drawTetrisBlock(x, y, tetrisBoard[i][j]);
             }
+            lastBoard[i][j] = GameScene::tetrisBoard[i][j];
             x += 20;
         }
         y += 20;
-    }
-    for (int i = 0; i < 11; i++) {
-        for (int j = 0; j < 10; j++) {
-            lastBoard[i][j] = GameScene::tetrisBoard[i][j];
-        }
     }
 }
 
@@ -150,7 +150,7 @@ int GameScene::boardCount() {
 }
 
 /**
- * Draw current game state, score etc.
+ * Draw current game state, look if game tick or movement tick is reached and perform corresponding action
  */
 void GameScene::drawScene() {
     if (GameScene::gameOver) {
@@ -234,7 +234,7 @@ void GameScene::drawSections() {
 }
 
 /**
- * Spawns a new tetris block in the game, also update nextblock
+ * Spawns a new tetris block in the game, also update nextBlock
  */
 void GameScene::spawnTetrisBlock() {
     delete GameScene::currentBlock;
@@ -298,7 +298,7 @@ void GameScene::addOpponentReceivedRow(uint8_t data) {
 /**
  * Check if there are any new frames that have been received
  *
- * @return bool if received new row
+ * @return bool if received new frame
  */
 bool GameScene::checkForReceivedFrames() {
     if (!ReceivedData::newResultsAvailable()) return false;
