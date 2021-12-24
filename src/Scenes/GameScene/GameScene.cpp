@@ -290,7 +290,7 @@ void GameScene::addOpponentReceivedRow(uint8_t data) {
         bool shouldMoveOneUp = true;
         while (shouldMoveOneUp) {
             GameScene::currentBlock->moveUp();
-            if (boardCount()-count != 4) {
+            if (boardCount()-count == 4) {
                 shouldMoveOneUp = false;
             }
         }
