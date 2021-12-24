@@ -105,28 +105,20 @@ bool NewTone::toggleTone = false;
 uint8_t NewTone::teller = 0;  // Timer2
 int NewTone::thisNote = 2;
 
-int toonHoogteIndex = 0; 
+int NewTone::toonHoogteIndex = 0;
 
-void NewTone::testFunction() {
-  // int yes = maat;
-  //Serial.println(yes);  
-  
-  // if(NewTone::testbool){
-    NewTone::teller++;
-    // if (!NewTone::noNewToneCheck) {
-        if (NewTone::teller >= ONESECOND) {
-            NewTone::teller = 0;
+void NewTone::playTone() {
+  NewTone::teller++;
+    if (NewTone::teller >= ONESECOND) {
+        NewTone::teller = 0;
 
-            if(toonHoogteIndex >= 99) {
-              toonHoogteIndex = 0;
-            }
-            
-            NewTone::aNewTone(NewTone::buzzer, NewTone::melody[toonHoogteIndex], 4);
-            // yes += 2;
-            toonHoogteIndex++;
+        if(NewTone::toonHoogteIndex >= 99) {
+          NewTone::toonHoogteIndex = 0;
         }
-    // }
-  // }
+        
+        NewTone::aNewTone(NewTone::buzzer, NewTone::melody[NewTone::toonHoogteIndex], 4);
+        NewTone::toonHoogteIndex++;
+    }
 }
 
 ISR(TIMER1_COMPA_vect) {  // Timer interrupt vector.
@@ -220,6 +212,14 @@ void NewTone::aNewTone(uint8_t pin, uint16_t frequency, uint16_t length) {
   TCCR1A  = _BV(COM1B0);
   TIMSK1 |= _BV(OCIE1A); 
 
+}
+
+void NewTone::initTimer2() {
+  DDRB |= (1 << DDB0);
+  TCCR2A |= (1 << WGM21);
+  TCCR2B |= (1 << CS22)|(1 << CS21)|(1 << CS20);
+  OCR2A = 255;
+  TIMSK2 |= (1 << OCIE2A);
 }
 
 void NewTone::noNewTone(uint8_t pin) {

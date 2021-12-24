@@ -43,7 +43,8 @@ class NewTone {
   static void aNewTone(uint8_t pin, uint16_t frequency, uint16_t length);
   static void noNewTone(uint8_t pin);
   static void noNewTone();
-  static void testFunction();
+  static void playTone();
+  static void initTimer2();
 
   static uint8_t teller;
   static int thisNote;
@@ -56,12 +57,11 @@ class NewTone {
   static int divider;
   static int notes;
   static int melody[];
-  // static int testmelody[];
   static bool startTone;
   static bool toggleTone;
-
   static uint16_t top;
   static uint8_t prescaler;
+  static int toonHoogteIndex;
 };
 
 #endif  // SRC_SOUND_NEWTONE_H_

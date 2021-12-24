@@ -27,16 +27,7 @@ int main() {
 
     IRCommunication::init(56);
 
-    // code!!
-    DDRB |= (1 << DDB0);
-    TCCR2A |= (1 << WGM21);
-    TCCR2B |= (1 << CS22)|(1 << CS21)|(1 << CS20);
-    OCR2A = 255;
-    TIMSK2 |= (1 << OCIE2A);
-    // code
-    
-    // TCNT2 = 0;
-
+    NewTone::initTimer2();
 
     // NewTone::aNewTone(NewTone::buzzer, NewTone::melody[NewTone::thisNote], NewTone::noteDuration*0.9); // toon aan
     // NewTone::noNewTone(NewTone::buzzer); // toon uit
@@ -47,7 +38,7 @@ int main() {
         if (NewTone::startTone) {
             if (NewTone::toggleTone) {
                 NewTone::toggleTone = false;
-                NewTone::testFunction();
+                NewTone::playTone();
             }   
         }
     }
