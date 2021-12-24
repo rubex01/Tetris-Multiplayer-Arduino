@@ -274,7 +274,7 @@ void GameScene::addOpponentReceivedRow(uint8_t data) {
     for (int i = 11-height; i < 11; ++i) {
         for (int j = 0; j < 10; ++j) {
             if (j != gapLocation)
-                GameScene::tetrisBoard[i][j] = ENEMYBLOCK;
+                GameScene::tetrisBoard[i][j] = ENEMY_BLOCK;
             else
                 GameScene::tetrisBoard[i][j] = 0;
         }
