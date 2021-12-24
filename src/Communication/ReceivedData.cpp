@@ -2,7 +2,7 @@
 #include "ReceivedData.h"
 
 uint8_t ReceivedData::results[20] = {0};
-int ReceivedData::count = 0;
+uint8_t ReceivedData::count = 0;
 
 /**
  * Add a new result to the received values
@@ -30,9 +30,9 @@ bool ReceivedData::newResultsAvailable() {
  */
 uint8_t * ReceivedData::getResults() {
     uint8_t* returnResults = new uint8_t[20];
-    for (int i = 0; i < 20; ++i)
+    for (uint8_t i = 0; i < 20; ++i)
         returnResults[i] = results[i];
-    for (int i = 0; i < count; ++i)
+    for (uint8_t i = 0; i < count; ++i)
         results[i] = 0;
     count = 0;
     return returnResults;

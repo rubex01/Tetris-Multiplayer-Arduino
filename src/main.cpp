@@ -3,23 +3,21 @@
 #endif
 
 #include <avr/interrupt.h>
-#include "HardwareSerial.h"
 #include "Controller/Controller.h"
 #include "Display/Display.h"
 #include "Communication/IRCommunication.h"
 #include "Scenes/GameScene/GameScene.h"
-#include "Communication/ReceivedData.h"
-#include "Communication/Frame.h"
+#include "HighScore/HighScore.h"
 
 int main() {
     sei();
-    Serial.begin(9600);
 
     Controller::init();
     Display::init();
+    HighScore::init();
     Scene::setScene(Scene::START_SCENE);
 
-    IRCommunication::init(38);
+    IRCommunication::init(56);
 
     while (true) {
         Controller::update();

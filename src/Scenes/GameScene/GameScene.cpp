@@ -6,29 +6,30 @@
 #include "../../Tetris/BlockFactory.h"
 #include "../../Tetris/Score.h"
 #include "../../Communication/ReceivedData.h"
+#include "../../HighScore/HighScore.h"
 
-int GameScene::gameSeed = 0;
-int GameScene::tetrisBoard[11][10] = {{0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}};
-int GameScene::lastBoard[11][10] = {{0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}};
+uint8_t GameScene::gameSeed = 0;
+uint8_t GameScene::tetrisBoard[11][10] = {{0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}};
+uint8_t GameScene::lastBoard[11][10] = {{0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}};
+uint8_t  GameScene::gameCounter = 0;
+uint8_t GameScene::tickValue = 60;
+uint8_t GameScene::moveTickCounter = 0;
 Block* GameScene::currentBlock = nullptr;
+Block* GameScene::nextBlock = nullptr;
 Block* GameScene::holdBlock = nullptr;
+Block* GameScene::tempBlock = nullptr;
 bool GameScene::holdSwitchAvailable = true;
 bool GameScene::gameTickReached = false;
 bool GameScene::blockIsMoving = true;
 bool GameScene::gameOver = false;
-int GameScene::gameCounter = 0;
 bool GameScene::moveTickReached = false;
-int GameScene::tickValue = 68;
-int GameScene::moveTickCounter = 0;
-Block* GameScene::nextBlock = nullptr;
-Block* GameScene::tempBlock = nullptr;
 
 ISR(TIMER2_COMPA_vect) {
     if (GameScene::gameCounter >= GameScene::tickValue) {
         GameScene::gameTickReached = true;
         GameScene::gameCounter = 0;
     }
-    if (GameScene::moveTickCounter == 4) {
+    if (GameScene::moveTickCounter == 5) {
         GameScene::moveTickReached = true;
         GameScene::moveTickCounter = 0;
     }
@@ -39,7 +40,7 @@ ISR(TIMER2_COMPA_vect) {
 /**
  * Init game scene, draw all game borders and elements
  */
-void GameScene::init() {
+GameScene::GameScene() {
     if (gameSeed == 0) {
         setRandomSeed();
         startGame();
@@ -159,59 +160,60 @@ void GameScene::initTimer() {
  */
 void GameScene::drawScene() {
     if (GameScene::gameOver) {
-        Scene::setScene(Scene::LOSE_SCENE);
+        endGame(true);
         return;
     }
 
-    if (checkForReceivedRows()) return;
-
-    if (!moveTickReached) {
-        return;
-    }
-
-    bool* actions = Controller::getActions();
-    bool* array2 = Controller::getNonContinuingTriggerActions();
+    if (checkForReceivedFrames()) return;
 
     if (GameScene::blockIsMoving) {
-        if (actions[Controller::DOWN]) {
-            GameScene::tickValue = 2;
-        } else {
-            GameScene::tickValue = 68;
-        }
+        if (moveTickReached) {
+            bool* actions = Controller::getActions();
+            bool* nonContinuingActions = Controller::getNonContinuingTriggerActions();
 
-        if (array2[Controller::C_BUTTON]) {
-            if (holdSwitchAvailable) {
-                if (holdBlock == nullptr) {
-                    holdBlock = currentBlock;
-                    currentBlock->setValue(0);
-                    currentBlock = nextBlock;
-                    nextBlock = BlockFactory::createBlock(rand() % 7);
-                    currentBlock->resetBlock();
-                    GameScene::currentBlock->initBlock();
-                    drawSections();
-                } else {
-                    tempBlock = holdBlock;
-                    holdBlock = currentBlock;
-                    currentBlock->setValue(0);
-                    currentBlock = tempBlock;
-                    currentBlock->resetBlock();
-                    currentBlock->initBlock();
-                    drawSections();
-                }
-                holdSwitchAvailable = false;
+            if (actions[Controller::DOWN]) {
+                GameScene::tickValue = 4;
+            } else {
+                GameScene::tickValue = 60;
             }
-        }
 
-        if (array2[Controller::Z_BUTTON]) {
-            GameScene::currentBlock->rotate();
-        }
+            if (nonContinuingActions[Controller::Z_BUTTON]) {
+                GameScene::currentBlock->rotate();
+            }
 
-        if (actions[Controller::RIGHT]) {
-            GameScene::currentBlock->moveSideways(1);
-        } else if (actions[Controller::LEFT]) {
-            GameScene::currentBlock->moveSideways(-1);
-        }
+            if (nonContinuingActions[Controller::C_BUTTON]) {
+                if (holdSwitchAvailable) {
+                    if (holdBlock == nullptr) {
+                        holdBlock = currentBlock;
+                        currentBlock->setValue(0);
+                        currentBlock = nextBlock;
+                        nextBlock = BlockFactory::createBlock(rand() % 7);
+                        currentBlock->resetBlock();
+                        GameScene::currentBlock->initBlock();
+                        drawSections();
+                    } else {
+                        tempBlock = holdBlock;
+                        holdBlock = currentBlock;
+                        currentBlock->setValue(0);
+                        currentBlock = tempBlock;
+                        currentBlock->resetBlock();
+                        currentBlock->initBlock();
+                        drawSections();
+                    }
+                    holdSwitchAvailable = false;
+                }
+            }
 
+            if (actions[Controller::RIGHT]) {
+                GameScene::currentBlock->moveSideways(1);
+            } else if (actions[Controller::LEFT]) {
+                GameScene::currentBlock->moveSideways(-1);
+            }
+
+            moveTickReached = false;
+            delete[] actions;
+            delete[] nonContinuingActions;
+        }
         if (GameScene::gameTickReached) {
             GameScene::currentBlock->moveDown();
             GameScene::gameTickReached = false;
@@ -222,10 +224,8 @@ void GameScene::drawScene() {
         GameScene::gameTickReached = false;
         holdSwitchAvailable = true;
     }
-    moveTickReached = false;
+
     GameScene::drawBoard();
-    delete[] actions;
-    delete[] array2;
 }
 
 /**
@@ -293,11 +293,11 @@ void GameScene::addOpponentReceivedRow(uint8_t data) {
 }
 
 /**
- * Check if there are any new rows that have been received
+ * Check if there are any new frames that have been received
  *
  * @return bool if received new row
  */
-bool GameScene::checkForReceivedRows() {
+bool GameScene::checkForReceivedFrames() {
     if (!ReceivedData::newResultsAvailable()) return false;
 
     bool returnVal = false;
@@ -306,9 +306,13 @@ bool GameScene::checkForReceivedRows() {
     for (int i = 0; i < 20; ++i) {
         if (frames[i] == 0) continue;
         Frame a = Frame(frames[i]);
-        if (a.getType() == Frame::ROW_TYPE) {
+        uint8_t type = a.getType();
+        if (type == Frame::ROW_TYPE) {
             addOpponentReceivedRow(a.getData());
             returnVal = true;
+        } else if (type == Frame::LOST_TYPE) {
+            returnVal = true;
+            endGame(false);
         }
     }
 
@@ -332,13 +336,38 @@ int GameScene::generateRandomSeed() {
 }
 
 /**
- * Ends the game and resets the random seed
+ * Ends the game and resets all variables + random seed
  */
-void GameScene::endGame() {
+void GameScene::endGame(bool lostGame) {
+    HighScore::newScore((uint16_t) Score::getCurrentScore());
+
     delete currentBlock;
     delete nextBlock;
     delete holdBlock;
+    delete tempBlock;
+
     setRandomSeed();
+    Score::clearScore();
+
+    gameSeed = 0;
+    for (int i = 0; i < 11; ++i) {
+        for (int j = 0; j < 10; ++j) {
+            tetrisBoard[i][j] = 0;
+            lastBoard[i][j] = 0;
+        }
+    }
+
+    gameTickReached = false;
+    blockIsMoving = true;
+    gameOver = false;
+    gameCounter = 0;
+    moveTickReached = false;
+    moveTickCounter = 0;
+
+    if (lostGame)
+        Scene::setScene(Scene::LOSE_SCENE);
+    else
+        Scene::setScene(Scene::WIN_SCENE);
 }
 
 /**
