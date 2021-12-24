@@ -40,13 +40,11 @@
 class NewTone {
  public:
  // Make sure timer 2 is running on 1024 pre, ovf or 255 compa!
-  static void aNewTone(uint8_t pin, uint16_t frequency, uint16_t length);
+  // static void aNewTone(uint8_t pin, uint16_t frequency, uint16_t length);
   static void a2NewTone(uint8_t pin, uint16_t frequency, uint16_t length);
   static void noNewTone(uint8_t pin);
   static void noNewTone();
   static void testFunction();
-  static void dab();
-  static uint16_t topp;
 
   static uint8_t teller;
   static int thisNote;
@@ -58,8 +56,6 @@ class NewTone {
   static int buzzer;
   static int wholenote;
   static int divider;
-  // static int noteDuration;
-  // static int noteDurationTest;
   static int notes;
   static int melody[];
   static int testmelody[];
@@ -68,9 +64,6 @@ class NewTone {
 
   static uint16_t top;
   static uint8_t prescaler;
-
-  // static void setNoteDurationTest();
-  // static uint8_t *_pinMode;
 };
 
 #endif  // SRC_SOUND_NEWTONE_H_

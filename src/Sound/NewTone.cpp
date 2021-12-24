@@ -97,25 +97,19 @@
 #define NOTE_D8  4699
 #define NOTE_DS8 4978
 #define REST 0
-#define ONESECOND 20  
-// #define ONESECOND 125  // Timer2
+#define ONESECOND 20  // Timer2
 
 bool NewTone::noNewToneCheck = true;
 
-// int NewTone::noteDurationTest = 8;
 bool NewTone::startTone = false;
 bool NewTone::toggleTone = false;
-
-void NewTone::dab(){
-  Serial.println(NewTone::thisNote);
-}
 
 uint8_t NewTone::teller = 0;  // Timer2
 int NewTone::thisNote = 2;
 
 int maat = 0; 
 
-void NewTone::testFunction(){
+void NewTone::testFunction() {
   // int yes = maat;
   //Serial.println(yes);  
   
@@ -153,7 +147,6 @@ void NewTone::testFunction(){
 
 ISR(TIMER1_COMPA_vect) {  // Timer interrupt vector.
   if (millis() >= NewTone::_nt_time) NewTone::noNewTone();  // Check to see if it's time for the note to end.
-  // NewTone::*_pinOutput ^= NewTone::_pinMask; // Toggle the pin state.
   *NewTone::_pinOutput ^= NewTone::_pinMask;  // Toggle the pin state.
 }
 
@@ -235,7 +228,7 @@ int NewTone::melody[] = {
   NOTE_C5, 4,   NOTE_E5, 4,  NOTE_A5, 2,
   NOTE_GS5, 2,
 };
-uint16_t NewTone::topp = 0;
+
 // sizeof gives the number of bytes, each int value is composed of two bytes (16 bits)
 // there are two values per note (pitch and duration), so for each note there are four bytes
 int NewTone::notes = sizeof(NewTone::melody) / sizeof(NewTone::melody[0])/2;
@@ -244,7 +237,6 @@ int NewTone::notes = sizeof(NewTone::melody) / sizeof(NewTone::melody[0])/2;
 int NewTone::wholenote = (60000 * 4) / NewTone::tempo;
 
 int NewTone::divider = 0;
-// int NewTone::noteDuration = 2;
 
 uint8_t NewTone::prescaler = 0;
 uint16_t NewTone::top = 0;
@@ -264,7 +256,6 @@ void NewTone::a2NewTone(uint8_t pin, uint16_t frequency, uint16_t length) {
     NewTone::_nt_time = millis() + length;
   } else {
     NewTone::_nt_time = 0xFFFF;  // Set when the note should end, or play "forever".
-    // NewTone::_nt_time = 0xFFFF;  // Set when the note should end, or play "forever".
   }
 
   if (NewTone::_pinMask == 0) {
@@ -273,8 +264,6 @@ void NewTone::a2NewTone(uint8_t pin, uint16_t frequency, uint16_t length) {
     uint8_t *_pinMode = (uint8_t *) portModeRegister(digitalPinToPort(pin));  // Get the port mode register for the pin.
     *_pinMode |= NewTone::_pinMask;  // Set the pin to OutputW mode.
   }
-
-  // topp = top;
 
   ICR1    = NewTone::top;                      // Set the top.
   if (TCNT1 > NewTone::top) {
@@ -298,7 +287,6 @@ void NewTone::noNewTone() {
   TIMSK1 &= ~_BV(OCIE1A);   // Remove the timer interrupt.
   TCCR1B  = _BV(CS11);      // Default clock prescaler of 8.
   TCCR1A  = _BV(WGM10);     // Set to defaults so PWM can work like normal (PWM, phase corrected, 8bit).
-  // NewTone::*_pinOutput &= ~NewTone::_pinMask; // Set pin to LOW.
   *NewTone::_pinOutput &= ~NewTone::_pinMask;  // Set pin to LOW.
   NewTone::_pinMask = 0;  // Flag so we know note is no longer playing.
   NewTone::noNewToneCheck = true;

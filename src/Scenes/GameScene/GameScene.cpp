@@ -185,7 +185,6 @@ void GameScene::drawScene() {
 
         if (array2[Controller::Z_BUTTON]) {
             GameScene::currentBlock->rotate();
-            Serial.println(NewTone::topp);
         }
 
         if (actions[Controller::RIGHT]) {
