@@ -6,26 +6,27 @@
 #include "../../Tetris/Block.h"
 
 class GameScene: public Scene {
- public:
+public:
+    static uint8_t tetrisBoard[11][10];
+    static uint8_t lastBoard[11][10];
+    static uint8_t moveTickCounter;
+    static uint8_t gameCounter;
+    static uint8_t tickValue;
+    static bool blockIsMoving;
+    static bool gameTickReached;
+    static bool gameOver;
+    static bool moveTickReached;
+
     GameScene();
     void drawScene();
     static void startGame();
     static void startGame(int seed);
     static void endGame(bool lostGame);
     static int boardCount();
-    static bool blockIsMoving;
-    static int tetrisBoard[11][10];
-    static int lastBoard[11][10];
-    static bool gameTickReached;
-    static bool gameOver;
-    static int gameCounter;
-    static bool moveTickReached;
-    static int tickValue;
     static void checkForFullRows();
-    static int moveTickCounter;
 
  private:
-    static int gameSeed;
+    static uint8_t gameSeed;
     static Block* currentBlock;
     static Block* nextBlock;
     static void drawBoard();

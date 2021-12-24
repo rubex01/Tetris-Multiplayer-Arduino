@@ -8,25 +8,25 @@
 #include "../../Communication/ReceivedData.h"
 #include "../../HighScore/HighScore.h"
 
-int GameScene::gameSeed = 0;
-int GameScene::tetrisBoard[11][10] = {{0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}};
-int GameScene::lastBoard[11][10] = {{0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}};
+uint8_t GameScene::gameSeed = 0;
+uint8_t GameScene::tetrisBoard[11][10] = {{0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}};
+uint8_t GameScene::lastBoard[11][10] = {{0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}};
+uint8_t  GameScene::gameCounter = 0;
+uint8_t GameScene::tickValue = 68;
+uint8_t GameScene::moveTickCounter = 0;
 Block* GameScene::currentBlock = nullptr;
+Block* GameScene::nextBlock = nullptr;
 bool GameScene::gameTickReached = false;
 bool GameScene::blockIsMoving = true;
 bool GameScene::gameOver = false;
-int GameScene::gameCounter = 0;
 bool GameScene::moveTickReached = false;
-int GameScene::tickValue = 68;
-int GameScene::moveTickCounter = 0;
-Block* GameScene::nextBlock = nullptr;
 
 ISR(TIMER2_COMPA_vect) {
     if (GameScene::gameCounter >= GameScene::tickValue) {
         GameScene::gameTickReached = true;
         GameScene::gameCounter = 0;
     }
-    if (GameScene::moveTickCounter == 4) {
+    if (GameScene::moveTickCounter == 5) {
         GameScene::moveTickReached = true;
         GameScene::moveTickCounter = 0;
     }
@@ -163,34 +163,37 @@ void GameScene::drawScene() {
 
     if (checkForReceivedFrames()) return;
 
-    if (!moveTickReached) {
-        return;
-    }
-
-    bool* actions = Controller::getActions();
-    bool* array2 = Controller::getNonContinuingTriggerActions();
-
     if (GameScene::blockIsMoving) {
-        if (actions[Controller::DOWN]) {
-            GameScene::tickValue = 2;
-        } else {
-            GameScene::tickValue = 68;
-        }
 
-        if (array2[Controller::Z_BUTTON]) {
-            GameScene::currentBlock->rotate();
-        }
+        if (moveTickReached) {
+            bool* actions = Controller::getActions();
+            bool* nonContinuingActions = Controller::getNonContinuingTriggerActions();
 
-        if (actions[Controller::RIGHT]) {
-            GameScene::currentBlock->moveSideways(1);
-        } else if (actions[Controller::LEFT]) {
-            GameScene::currentBlock->moveSideways(-1);
-        }
+            if (actions[Controller::DOWN]) {
+                GameScene::tickValue = 4;
+            } else {
+                GameScene::tickValue = 68;
+            }
 
+            if (nonContinuingActions[Controller::Z_BUTTON]) {
+                GameScene::currentBlock->rotate();
+            }
+
+            if (actions[Controller::RIGHT]) {
+                GameScene::currentBlock->moveSideways(1);
+            } else if (actions[Controller::LEFT]) {
+                GameScene::currentBlock->moveSideways(-1);
+            }
+
+            moveTickReached = false;
+            delete[] actions;
+            delete[] nonContinuingActions;
+        }
         if (GameScene::gameTickReached) {
             GameScene::currentBlock->moveDown();
             GameScene::gameTickReached = false;
         }
+
     } else {
         delete GameScene::currentBlock;
         GameScene::currentBlock = GameScene::nextBlock;
@@ -201,10 +204,8 @@ void GameScene::drawScene() {
         blockIsMoving = true;
         GameScene::gameTickReached = false;
     }
-    moveTickReached = false;
+
     GameScene::drawBoard();
-    delete[] actions;
-    delete[] array2;
 }
 
 /**

@@ -49,9 +49,6 @@ void StartScene::drawScene() {
         if (actionArray[Controller::Z_BUTTON]) {
             runSelectedAction();
         }
-        if (actionArray[Controller::C_BUTTON]) {
-            HighScore::resetHighScores();
-        }
         if (actionArray[Controller::UP] || actionArray[Controller::DOWN]) {
             drawSelected(actionArray[Controller::UP]);
         }

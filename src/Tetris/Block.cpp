@@ -1,14 +1,13 @@
 #include "../Scenes/GameScene/GameScene.h"
 #include "Block.h"
-#include "../Display/Display.h"
 
 Block::Block(int xPos, int yPos) {
     this->xPos = xPos;
     this->yPos = yPos;
     this->rotationLevel = 0;
-    this->blockArray = new int*[4];
+    this->blockArray = new uint8_t*[4];
     for (int i = 0; i < 4; i++) {
-        blockArray[i] = new int[2];
+        blockArray[i] = new uint8_t[2];
         blockArray[i][0] = 0;
         blockArray[i][1] = 0;
     }
@@ -63,8 +62,6 @@ void Block::rotate() {
     else
         rotationLevel++;
 
-    int tempArray[11][10] = {{0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}};
-
     for (int i = 0; i < 11; i++) {
         for (int j = 0; j < 10; j++) {
             tempArray[i][j] = GameScene::tetrisBoard[i][j];
@@ -75,10 +72,8 @@ void Block::rotate() {
 
     setValue(0);
 
-    int** backup;
-    backup = new int* [4];
+    int backup[4][2];
     for (int i = 0; i < 4; ++i) {
-        backup[i] = new int[2];
         backup[i][0] = blockArray[i][0];
         backup[i][1] = blockArray[i][1];
     }
@@ -93,9 +88,7 @@ void Block::rotate() {
             for (int j = 0; j < 4; ++j) {
                 blockArray[j][0] = backup[j][0];
                 blockArray[j][1] = backup[j][1];
-                delete[] backup[j];
             }
-            delete[] backup;
             return;
         }
     }
@@ -107,16 +100,9 @@ void Block::rotate() {
         for (int j = 0; j < 4; ++j) {
             blockArray[j][0] = backup[j][0];
             blockArray[j][1] = backup[j][1];
-            delete[] backup[j];
         }
-        delete[] backup;
         return;
     }
-
-    for (int j = 0; j < 4; ++j) {
-        delete[] backup[j];
-    }
-    delete[] backup;
 }
 
 /**
@@ -125,8 +111,6 @@ void Block::rotate() {
  * @param direction
  */
 void Block::moveSideways(int direction) {
-    int tempArray[11][10] = {{0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}};
-
     for (int i = 0; i < 11; i++) {
         for (int j = 0; j < 10; j++) {
             tempArray[i][j] = GameScene::tetrisBoard[i][j];
@@ -166,7 +150,7 @@ void Block::moveSideways(int direction) {
  *
  * @param array
  */
-void Block::copyArray(int array[11][10]) {
+void Block::copyArray(uint8_t array[11][10]) {
     for (int i = 0; i < 11; i++) {
         for (int j = 0; j < 10; j++) {
             GameScene::tetrisBoard[i][j] = array[i][j];
@@ -182,21 +166,9 @@ Block::~Block() {
 }
 
 /**
- * Rotates specific Tetromino block 1 time
- */
-void Block::rotateBlock() {}
-
-/**
- * Draws tetris block in the section block
- */
-void Block::drawSectionBlock() {}
-
-/**
  * Moves the tetromino block one unit down
  */
 void Block::moveDown() {
-    int tempArray[11][10] = {{0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}};
-
     for (int i = 0; i < 11; i++) {
         for (int j = 0; j < 10; j++) {
             tempArray[i][j] = GameScene::tetrisBoard[i][j];
@@ -234,3 +206,4 @@ void Block::moveDown() {
         }
     }
 }
+

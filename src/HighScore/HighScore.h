@@ -1,6 +1,5 @@
-#ifndef KBS_HIGHSCORE_H
-#define KBS_HIGHSCORE_H
-
+#ifndef SRC_HIGHSCORE_HIGHSCORE_H_
+#define SRC_HIGHSCORE_HIGHSCORE_H_
 
 #include <stdint.h>
 
@@ -23,4 +22,4 @@ class HighScore {
 };
 
 
-#endif //KBS_HIGHSCORE_H
+#endif  // SRC_HIGHSCORE_HIGHSCORE_H_
