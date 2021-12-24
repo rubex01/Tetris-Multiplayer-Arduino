@@ -39,7 +39,7 @@
 
 class NewTone {
  public:
- // Make sure timer 2 is running on 1024 pre; ovf or compa on 255!
+  // Make sure timer 2 is running on 1024 pre; ovf or compa on 255!
   static void aNewTone(uint8_t pin, uint16_t frequency, uint16_t length);
   static void noNewTone(uint8_t pin);
   // static void noNewTone();

@@ -35,9 +35,8 @@ int main() {
             if (NewTone::toggleTone) {
                 NewTone::toggleTone = false;
                 NewTone::playTone();
-            }   
+            }
         }
     }
-
     return(0);
 }

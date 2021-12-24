@@ -11,7 +11,7 @@
 WinScene::WinScene() {
     NewTone::startTone = false;
     NewTone::noNewTone(NewTone::buzzer);  // Toon uit
-    
+
     titleAnimationCounter = 0;
     titleColorAnimationCounter = 0;
     continueAnimationCounter = 0;

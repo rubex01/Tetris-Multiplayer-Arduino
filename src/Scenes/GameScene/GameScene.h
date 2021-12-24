@@ -2,9 +2,9 @@
 #define SRC_SCENES_GAMESCENE_GAMESCENE_H_
 
 #include <stdint.h>
+#include <stdio.h>
 #include "../Scene.h"
 #include "../../Tetris/Block.h"
-#include <stdio.h>
 
 class GameScene: public Scene {
  public:

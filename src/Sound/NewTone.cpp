@@ -72,7 +72,7 @@ void NewTone::playTone() {
     if (NewTone::teller >= ONESECOND) {
         NewTone::teller = 0;
 
-        if(NewTone::toonHoogteIndex >= 99) {
+        if (NewTone::toonHoogteIndex >= 99) {
             NewTone::toonHoogteIndex = 0;
         }
 
@@ -129,5 +129,5 @@ void NewTone::noNewTone(uint8_t pin) {
     TCCR1A  = _BV(WGM10);     // Set to defaults so PWM can work like normal (PWM, phase corrected, 8bit).
     *NewTone::_pinOutput &= ~NewTone::_pinMask;  // Set pin to LOW.
     NewTone::_pinMask = 0;  // Flag so we know note is no longer playing.
-    NewTone::toonHoogteIndex =0;
+    NewTone::toonHoogteIndex = 0;
 }
