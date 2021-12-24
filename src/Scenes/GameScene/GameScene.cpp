@@ -37,34 +37,7 @@ ISR(TIMER2_COMPA_vect) {
     GameScene::moveTickCounter++;
     GameScene::gameCounter++;
 
-    // NewTone::testbool = true;
     NewTone::toggleTone = true;
-
-    // NewTone::testFunction();
-    // NewTone::teller++;
-    // if (!NewTone::noNewToneCheck) {
-    //     if (NewTone::teller >= ONESECOND) {
-    //         NewTone::teller = 0;
-    //         if (NewTone::thisNote >= NewTone::notes * 2)
-    //             NewTone::thisNote = 0;
-    //         // calculates the duration of each note
-    //         NewTone::divider = NewTone::melody[NewTone::thisNote + 1];
-    //         // NewTone::noteDurationTest = 2;
-    //         // NewTone::setNoteDurationTest();
-    //         if (NewTone::divider > 0) {
-    //             // regular note, just proceed
-    //             NewTone::noteDuration = (NewTone::wholenote) / NewTone::divider;
-    //         } else if (NewTone::divider < 0) {
-    //             // dotted notes are represented with negative durations!!
-    //             NewTone::noteDuration = (NewTone::wholenote) / abs(NewTone::divider);
-    //             NewTone::noteDuration *= 1.5;  // increases the duration in half for dotted notes
-    //         }
-    //         // NewTone::aNewTone(NewTone::buzzer, NewTone::melody[NewTone::thisNote], NewTone::noteDuration*0.9);  // timer1 // miss in while
-    //         // NewTone::a2NewTone(NewTone::noteDurationTest);
-
-    //         NewTone::thisNote = NewTone::thisNote + 2;
-    //     }
-    // }
 }
 
 /**

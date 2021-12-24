@@ -46,7 +46,6 @@ int main() {
         Scene::draw();
         if (NewTone::startTone) {
             if (NewTone::toggleTone) {
-                // NewTone::testbool = false;
                 NewTone::toggleTone = false;
                 NewTone::testFunction();
             }   

@@ -58,8 +58,8 @@ class NewTone {
   static int buzzer;
   static int wholenote;
   static int divider;
-  static int noteDuration;
-  static int noteDurationTest;
+  // static int noteDuration;
+  // static int noteDurationTest;
   static int notes;
   static int melody[];
   static int testmelody[];
@@ -69,7 +69,7 @@ class NewTone {
   static uint16_t top;
   static uint8_t prescaler;
 
-  static void setNoteDurationTest();
+  // static void setNoteDurationTest();
   // static uint8_t *_pinMode;
 };
 

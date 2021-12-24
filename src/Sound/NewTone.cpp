@@ -102,13 +102,9 @@
 
 bool NewTone::noNewToneCheck = true;
 
-int NewTone::noteDurationTest = 8;
+// int NewTone::noteDurationTest = 8;
 bool NewTone::startTone = false;
 bool NewTone::toggleTone = false;
-
-void NewTone::setNoteDurationTest() {
-  NewTone::noteDurationTest = 2;
-}
 
 void NewTone::dab(){
   Serial.println(NewTone::thisNote);
@@ -160,39 +156,6 @@ ISR(TIMER1_COMPA_vect) {  // Timer interrupt vector.
   // NewTone::*_pinOutput ^= NewTone::_pinMask; // Toggle the pin state.
   *NewTone::_pinOutput ^= NewTone::_pinMask;  // Toggle the pin state.
 }
-
-// ISR(TIMER2_OVF_vect) {
-//     NewTone::teller++;
-//     if (!NewTone::noNewToneCheck) {
-//         if (NewTone::teller >= ONESECOND) {
-//             NewTone::teller = 0;
-//             if (NewTone::thisNote >= NewTone::notes * 2)
-//                 NewTone::thisNote = 0;
-//             // calculates the duration of each note
-//             NewTone::divider = NewTone::melody[NewTone::thisNote + 1];
-//             if (NewTone::divider > 0) {
-//                 // regular note, just proceed
-//                 NewTone::noteDuration = (NewTone::wholenote) / NewTone::divider;
-//             } else if (NewTone::divider < 0) {
-//                 // dotted notes are represented with negative durations!!
-//                 NewTone::noteDuration = (NewTone::wholenote) / abs(NewTone::divider);
-//                 NewTone::noteDuration *= 1.5;  // increases the duration in half for dotted notes
-//             }
-//             NewTone::aNewTone(NewTone::buzzer, NewTone::melody[NewTone::thisNote], NewTone::noteDuration*0.9);  // timer1 // miss in while
-
-//             NewTone::thisNote = NewTone::thisNote + 2;
-//         }
-//     }
-// }
-
-  // Timer2
-
-// void NewTone::initTimer2() {
-//   DDRB |= (1 << DDB0);
-//   TCCR2B |= (1 << CS22)|(1 << CS20);
-//   TIMSK2 |= (1 << TOIE2);
-//   TCNT2 = 0;
-// }
 
 uint16_t NewTone::_nt_time;       // Time note should end.
 uint8_t NewTone::_pinMask = 0;         // Pin bitmask.
@@ -281,40 +244,10 @@ int NewTone::notes = sizeof(NewTone::melody) / sizeof(NewTone::melody[0])/2;
 int NewTone::wholenote = (60000 * 4) / NewTone::tempo;
 
 int NewTone::divider = 0;
-int NewTone::noteDuration = 2;
+// int NewTone::noteDuration = 2;
 
 uint8_t NewTone::prescaler = 0;
 uint16_t NewTone::top = 0;
-
-// void NewTone::aNewTone(uint8_t pin, uint16_t frequency, uint16_t length) {
-//   NewTone::noNewToneCheck = false;
-//   uint8_t prescaler = _BV(CS10);                  // Try using prescaler 1 first.
-//   uint16_t top = F_CPU / frequency / 4 - 1;  // Calculate the top.
-//   if (top > 65535) {                              // If not in the range for prescaler 1, use prescaler 256 (61 Hz and lower @ 16 MHz).
-//     prescaler = _BV(CS12);                        // Set the 256 prescaler bit.
-//     top = top / 256 - 1;                          // Calculate the top using prescaler 256.
-//   }
-
-//   if (length > 0)
-//     NewTone::_nt_time = millis() + length;
-//   else
-//     NewTone::_nt_time = 0xFFFF;  // Set when the note should end, or play "forever".
-//     // NewTone::_nt_time = 0xFFFF;  // Set when the note should end, or play "forever".
-
-//   if (NewTone::_pinMask == 0) {
-//     NewTone::_pinMask = digitalPinToBitMask(pin);                     // Get the port register bitmask for the pin.
-//     NewTone::_pinOutput = portOutputRegister(digitalPinToPort(pin));  // Get the output port register for the pin.
-//     uint8_t *_pinMode = (uint8_t *) portModeRegister(digitalPinToPort(pin));  // Get the port mode register for the pin.
-//     *_pinMode |= NewTone::_pinMask;  // Set the pin to Output mode.
-//   }
-
-//   ICR1    = top;                      // Set the top.
-//   if (TCNT1 > top)
-//     TCNT1 = top;                      // Counter over the top, put within range.
-//   TCCR1B  = _BV(WGM13)  | prescaler;  // Set PWM, phase and frequency corrected (ICR1) and prescaler.
-//   TCCR1A  = _BV(COM1B0);
-//   TIMSK1 |= _BV(OCIE1A);              // Activate the timer interrupt.
-// }
 
 void NewTone::a2NewTone(uint8_t pin, uint16_t frequency, uint16_t length) {
   NewTone::noNewToneCheck = false;
