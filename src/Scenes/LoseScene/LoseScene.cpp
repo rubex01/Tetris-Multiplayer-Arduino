@@ -6,7 +6,7 @@
 #include "../Helpers/drawHighScoreMessage.h"
 
 /**
- * Init lose scene
+ * Lose scene constructor
  */
 LoseScene::LoseScene() {
     NewTone::startTone = false;
@@ -22,7 +22,7 @@ LoseScene::LoseScene() {
 }
 
 /**
- * Draw lose scene
+ * Is called by main while loop. Draws animations and checks for input to continue to the start scene.
  */
 void LoseScene::drawScene() {
     bool* actions = Controller::getNonContinuingTriggerActions();
