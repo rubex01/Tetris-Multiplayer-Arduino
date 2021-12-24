@@ -3,20 +3,14 @@
 
 class IRCommunication {
  public:
-    static void init(int khz);
-    static void startReceiving();
-    static void sendDataBit();
-    static void resetReceive();
-    static void newDataToSend();
-
     static int leftToSend;
     static int OCRAValue;
-    static int devider;
+    static int divider;
     static bool wantToSend;
     static bool sending;
 
     static int receiveCounter;
-    static float receiveDevider;
+    static float receiveDivider;
     static int receivingBitIndex;
     static bool bitIsOne;
     static bool currentlyReceiving;
@@ -26,6 +20,12 @@ class IRCommunication {
     static int sendBitIndex;
     static uint8_t data;
     static uint8_t dataLength;
+    
+    static void init(int khz);
+    static void startReceiving();
+    static void sendDataBit();
+    static void resetReceive();
+    static void newDataToSend();
 
  private:
     static void initTimer0();

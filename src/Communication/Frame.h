@@ -15,11 +15,12 @@ class Frame {
     uint8_t getFrame();
 
  private:
-    void createFrame();
-    void decodeFrame();
     uint8_t frame;
     uint8_t data;
     uint8_t type;
+    
+    void decodeFrame();
+    void createFrame();
 };
 
 

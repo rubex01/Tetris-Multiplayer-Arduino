@@ -3,10 +3,9 @@
 
 class ReceivedData {
  public:
-    static uint8_t * getResults();
-
     static void addNewResult(uint8_t result);
     static bool newResultsAvailable();
+    static uint8_t * getResults();
 
  private:
     static uint8_t results[20];
