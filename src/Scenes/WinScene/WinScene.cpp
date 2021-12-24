@@ -1,4 +1,5 @@
 #include "WinScene.h"
+#include "../../Sound/NewTone.h"
 #include "../../Display/Display.h"
 #include "../../Controller/Controller.h"
 #include "../../HighScore/HighScore.h"
@@ -8,6 +9,9 @@
  * Init win scene
  */
 WinScene::WinScene() {
+    NewTone::startTone = false;
+    NewTone::noNewTone(NewTone::buzzer);  // Toon uit
+
     titleAnimationCounter = 0;
     titleColorAnimationCounter = 0;
     continueAnimationCounter = 0;

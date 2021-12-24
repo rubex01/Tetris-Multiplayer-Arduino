@@ -1,4 +1,5 @@
 #include "LoseScene.h"
+#include "../../Sound/NewTone.h"
 #include "../../Display/Display.h"
 #include "../../Communication/SendQueue.h"
 #include "../../Controller/Controller.h"
@@ -8,6 +9,9 @@
  * Init lose scene
  */
 LoseScene::LoseScene() {
+    NewTone::startTone = false;
+    NewTone::noNewTone(NewTone::buzzer);  // Toon uit
+
     continueAnimationCounter = 0;
     titleAnimationCounter = 0;
 
