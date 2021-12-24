@@ -9,8 +9,7 @@ void drawHighScoreMessage() {
     if (HighScore::latestScoreIsOnLeaderBoard) {
         uint8_t leaderBoardPlace = HighScore::getPlaceOnLeaderBoard();
 
-        String firstSentence = "";
-        firstSentence += "You're number ";
+        String firstSentence = "You're number ";
         firstSentence += (leaderBoardPlace+1);
 
         for (uint8_t i = 0; i < 6; ++i) {

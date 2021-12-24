@@ -32,6 +32,7 @@ class GameScene: public Scene {
     static bool holdSwitchAvailable;
     static uint8_t gameSeed;
     static Block* currentBlock;
+
     static void spawnTetrisBlock();
     static void drawSections();
     static void drawBoard();
