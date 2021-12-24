@@ -6,6 +6,9 @@
 #include "../GameScene/GameScene.h"
 #include "../../HighScore/HighScore.h"
 
+/**
+ * Start scene constructor
+ */
 StartScene::StartScene() {
     selected = 0;
     Display::drawText(60, 50, 2, "Start game", ILI9341_YELLOW);
@@ -41,7 +44,7 @@ void StartScene::runSelectedAction() {
 }
 
 /**
- * Draws scene and checks for input from nunchuk to update states
+ * Is called by main while loop. Checks for input from nunchuk to update selected states
  */
 void StartScene::drawScene() {
     if (!checkForSeedPacket()) {
