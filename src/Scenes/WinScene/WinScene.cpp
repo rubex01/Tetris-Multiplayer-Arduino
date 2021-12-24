@@ -6,7 +6,7 @@
 #include "../Helpers/drawHighScoreMessage.h"
 
 /**
- * Init win scene
+ * Win scene constructor
  */
 WinScene::WinScene() {
     NewTone::startTone = false;
@@ -20,7 +20,7 @@ WinScene::WinScene() {
 }
 
 /**
- * Draw win scene
+ * Is called by the main while loop. Draws animations and checks for input to continue to start scene.
  */
 void WinScene::drawScene() {
     bool* actions = Controller::getNonContinuingTriggerActions();

@@ -11,6 +11,8 @@ class WinScene: public Scene {
 
     WinScene();
     void drawScene();
+
+ private:
     void titleTextAnimation();
     void titleColorAnimation();
     void continueTextAnimation();
