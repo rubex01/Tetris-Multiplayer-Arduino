@@ -99,45 +99,23 @@
 #define REST 0
 #define ONESECOND 20  // Timer2
 
-bool NewTone::startTone = false;
-bool NewTone::toggleTone = false;
-uint8_t NewTone::teller = 0;
-int NewTone::toonHoogteIndex = 0;
-
 ISR(TIMER1_COMPA_vect) {  // Timer interrupt vector.
   if (millis() >= NewTone::_nt_time) NewTone::noNewTone();  // Check to see if it's time for the note to end.
   *NewTone::_pinOutput ^= NewTone::_pinMask;  // Toggle the pin state.
 }
 
-void NewTone::playTone() {
-  NewTone::teller++;
-    if (NewTone::teller >= ONESECOND) {
-        NewTone::teller = 0;
-
-        if(NewTone::toonHoogteIndex >= 99) {
-          NewTone::toonHoogteIndex = 0;
-        }
-        
-        NewTone::aNewTone(NewTone::buzzer, NewTone::melody[NewTone::toonHoogteIndex], 4);
-        NewTone::toonHoogteIndex++;
-    }
-}
-
-uint16_t NewTone::_nt_time;       // Time note should end.
-uint8_t NewTone::_pinMask = 0;         // Pin bitmask.
+bool NewTone::startTone = false;
+bool NewTone::toggleTone = false;
+uint8_t NewTone::teller = 0;
+int NewTone::toonHoogteIndex = 0;
+uint16_t NewTone::_nt_time;               // Time note should end.
+uint8_t NewTone::_pinMask = 0;            // Pin bitmask.
 volatile uint8_t *NewTone::_pinOutput = new uint8_t{0};  // Output port register
+int NewTone::buzzer = 5;                  // Change this to whichever pin you want to use
+uint8_t NewTone::prescaler = 0;
+uint16_t NewTone::top = 0;
 
-// change this to make the song slower or faster
-// int NewTone::wholenote = (60000 * 4) / tempo;
-int NewTone::tempo = 108;
-// change this to whichever pin you want to use
-int NewTone::buzzer = 5;
-
-// notes of the moledy followed by the duration.
-// a 4 means a quarter note, 8 an eighteenth , 16 sixteenth, so on
-// !!negative numbers are used to represent dotted notes,
-// so -4 means a dotted quarter note, that is, a quarter plus an eighteenth!!
-int NewTone::melody[] {
+int NewTone::melody[] {  // Notes of the moledy
   NOTE_E5, NOTE_B4,   NOTE_C5, NOTE_D5, NOTE_C5, NOTE_B4,
   NOTE_A4,  NOTE_A4,  NOTE_C5,  NOTE_E5, NOTE_D5, NOTE_C5,
   NOTE_B4,  NOTE_C5,  NOTE_D5,  NOTE_E5,
@@ -169,17 +147,19 @@ int NewTone::melody[] {
   NOTE_GS5
 };
 
-// sizeof gives the number of bytes, each int value is composed of two bytes (16 bits)
-// there are two values per note (pitch and duration), so for each note there are four bytes
-int NewTone::notes = sizeof(NewTone::melody) / sizeof(NewTone::melody[0])/2;
+void NewTone::playTone() {
+  NewTone::teller++;
+    if (NewTone::teller >= ONESECOND) {
+        NewTone::teller = 0;
 
-// this calculates the duration of a whole note in ms (60s/tempo)*4 beats
-int NewTone::wholenote = (60000 * 4) / NewTone::tempo;
-
-int NewTone::divider = 0;
-
-uint8_t NewTone::prescaler = 0;
-uint16_t NewTone::top = 0;
+        if(NewTone::toonHoogteIndex >= 99) {
+          NewTone::toonHoogteIndex = 0;
+        }
+        
+        NewTone::aNewTone(NewTone::buzzer, NewTone::melody[NewTone::toonHoogteIndex], 4);
+        NewTone::toonHoogteIndex++;
+    }
+}
 
 void NewTone::aNewTone(uint8_t pin, uint16_t frequency, uint16_t length) {
   NewTone::prescaler = _BV(CS10);
