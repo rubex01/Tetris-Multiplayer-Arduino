@@ -106,6 +106,7 @@ void Block::rotate() {
                 blockArray[j][0] = backup[j][0];
                 blockArray[j][1] = backup[j][1];
             }
+            rotationLevel--;
             return;
         }
     }
@@ -118,6 +119,7 @@ void Block::rotate() {
             blockArray[j][0] = backup[j][0];
             blockArray[j][1] = backup[j][1];
         }
+        rotationLevel--;
         return;
     }
 }
