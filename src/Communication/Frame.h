@@ -18,10 +18,9 @@ class Frame {
     uint8_t frame;
     uint8_t data;
     uint8_t type;
-    
+
     void decodeFrame();
     void createFrame();
 };
-
 
 #endif  // SRC_COMMUNICATION_FRAME_H_

@@ -20,7 +20,7 @@ class IRCommunication {
     static int sendBitIndex;
     static uint8_t data;
     static uint8_t dataLength;
-    
+
     static void init(int khz);
     static void startReceiving();
     static void sendDataBit();
