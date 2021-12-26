@@ -198,7 +198,6 @@ void Display::clearHoldSection() {
  */
 void Display::drawScore(int score) {
     Display::fillRect(95, 25, 60, 50, ILI9341_BLACK);
-    String string = String(score);
     Display::drawText(105, 25, 1, "Score:", ILI9341_WHITE);
-    Display::drawText(95, 35, 2, (string), ILI9341_WHITE);
+    Display::drawText(95, 35, 2, String(score), ILI9341_WHITE);
 }

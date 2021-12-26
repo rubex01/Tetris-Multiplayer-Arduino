@@ -92,7 +92,7 @@ void GameScene::drawBoard() {
 void GameScene::checkForFullRows() {
     int totalFullRows = 0;
     for (int i = 0; i < 11; ++i) {
-        boolean fullRow = true;
+        bool fullRow = true;
         for (int j = 0; j < 10; ++j) {
             if (GameScene::tetrisBoard[i][j] == 0) {
                 fullRow = false;
@@ -320,6 +320,7 @@ bool GameScene::checkForReceivedFrames() {
             endGame(false);
         }
     }
+    delete[] frames;
 
     return returnVal;
 }

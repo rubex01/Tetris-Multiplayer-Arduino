@@ -15,8 +15,8 @@
 #define ONESECOND 20
 
 ISR(TIMER1_COMPA_vect) {
-  if (millis() >= NewTone::_nt_time) NewTone::noNewTone(NewTone::buzzer);  // Check to see if it's time for the note to end.
-  *NewTone::_pinOutput ^= NewTone::_pinMask;  // Toggle the pin state.
+    if (millis() >= NewTone::_nt_time) NewTone::noNewTone(NewTone::buzzer);  // Check to see if it's time for the note to end.
+    *NewTone::_pinOutput ^= NewTone::_pinMask;  // Toggle the pin state.
 }
 
 bool NewTone::startTone = false;
