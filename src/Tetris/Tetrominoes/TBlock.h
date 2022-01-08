@@ -3,11 +3,9 @@
 
 #include "../Block.h"
 
-
 class TBlock : public Block {
  public:
     TBlock(int xPos, int yPos);
-    bool checkBlock();
     void rotateBlock();
     void resetBlock();
     void drawSectionBlock(int section);

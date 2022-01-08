@@ -13,7 +13,7 @@ ISR(INT0_vect) {
         return;
     }
 
-    float calc = IRCommunication::receiveCounter / IRCommunication::receiveDevider;
+    float calc = IRCommunication::receiveCounter / IRCommunication::receiveDivider;
     int count = static_cast<int>(calc + 0.5f);
 
     if (IRCommunication::receivingBitIndex == 0) {
@@ -42,7 +42,7 @@ ISR(TIMER0_COMPA_vect) {
             IRCommunication::sending = true;
             IRCommunication::data = SendQueue::getItemToSend();
         }
-        if (IRCommunication::sendCounter == IRCommunication::devider) {
+        if (IRCommunication::sendCounter == IRCommunication::divider) {
             IRCommunication::sendDataBit();
             IRCommunication::sendCounter = 0;
         }
@@ -56,13 +56,13 @@ bool IRCommunication::sending = false;
 
 int IRCommunication::receiveCounter = 0;
 int IRCommunication::receivingBitIndex = 0;
-float IRCommunication::receiveDevider = 0.0f;
+float IRCommunication::receiveDivider = 0.0f;
 uint8_t IRCommunication::result = 0;
 bool IRCommunication::bitIsOne = true;
 bool IRCommunication::currentlyReceiving = false;
 
 int IRCommunication::sendCounter = 0;
-int IRCommunication::devider = 0;
+int IRCommunication::divider = 0;
 int IRCommunication::sendBitIndex = 0;
 uint8_t IRCommunication::data = 0;
 uint8_t IRCommunication::dataLength = 8;
@@ -75,12 +75,12 @@ uint8_t IRCommunication::dataLength = 8;
 void IRCommunication::init(int khz) {
     if (khz == 56) {
         OCRAValue = 141;
-        devider = 190;
-        receiveDevider = 182.0f;
+        divider = 190;
+        receiveDivider = 182.0f;
     } else if (khz == 38) {
         OCRAValue = 206;
-        devider = 130;
-        receiveDevider = 135.0f;
+        divider = 130;
+        receiveDivider = 135.0f;
     }
 
     initPorts();

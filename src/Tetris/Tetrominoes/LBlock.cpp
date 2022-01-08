@@ -1,5 +1,4 @@
 #include "LBlock.h"
-#include "HardwareSerial.h"
 #include "../../Display/Display.h"
 
 LBlock::LBlock(int xPos, int yPos) : Block(xPos, yPos) {

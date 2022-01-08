@@ -1,6 +1,5 @@
 #include "OBlock.h"
 #include "../../Display/Display.h"
-#include "HardwareSerial.h"
 
 OBlock::OBlock(int xPos, int yPos) : Block(xPos, yPos) {
     resetBlock();

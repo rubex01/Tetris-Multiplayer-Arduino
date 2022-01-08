@@ -3,11 +3,9 @@
 
 #include "../Block.h"
 
-
 class ZBlock : public Block {
  public:
     ZBlock(int xPos, int yPos);
-    bool checkBlock();
     void rotateBlock();
     void resetBlock();
     void drawSectionBlock(int section);

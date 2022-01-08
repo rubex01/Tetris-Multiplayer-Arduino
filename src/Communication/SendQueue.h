@@ -5,9 +5,10 @@
 
 class SendQueue {
  public:
+    static uint8_t count;
+
     static void addToQueue(Frame dataToSend);
     static uint8_t getItemToSend();
-    static uint8_t count;
 
  private:
     static uint8_t itemsInQueue[20];

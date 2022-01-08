@@ -3,8 +3,6 @@
 
 #include "Block.h"
 
-
-
 class BlockFactory {
  public:
     static Block *createBlock(int choice);

@@ -2,6 +2,12 @@
 #include "Block.h"
 #include "BlockFactory.h"
 
+/**
+ * Block constructor
+ *
+ * @param xPos
+ * @param yPos
+ */
 Block::Block(int xPos, int yPos) {
     this->xPos = xPos;
     this->yPos = yPos;
@@ -12,6 +18,16 @@ Block::Block(int xPos, int yPos) {
         blockArray[i][0] = 0;
         blockArray[i][1] = 0;
     }
+}
+
+/**
+ * Block destructor
+ */
+Block::~Block() {
+    for (int i = 0; i < 4; i++) {
+        delete[] Block::blockArray[i];
+    }
+    delete[] Block::blockArray;
 }
 
 /**
@@ -90,6 +106,7 @@ void Block::rotate() {
                 blockArray[j][0] = backup[j][0];
                 blockArray[j][1] = backup[j][1];
             }
+            rotationLevel--;
             return;
         }
     }
@@ -102,6 +119,7 @@ void Block::rotate() {
             blockArray[j][0] = backup[j][0];
             blockArray[j][1] = backup[j][1];
         }
+        rotationLevel--;
         return;
     }
 }
@@ -147,7 +165,7 @@ void Block::moveSideways(int direction) {
 }
 
 /**
- * Copies the current boardArray in a temporarily one
+ * Copies board array given in parameter into the real board array
  *
  * @param array
  */
@@ -157,13 +175,6 @@ void Block::copyArray(uint8_t array[11][10]) {
             GameScene::tetrisBoard[i][j] = array[i][j];
         }
     }
-}
-
-Block::~Block() {
-    for (int i = 0; i < 4; i++) {
-        delete[] Block::blockArray[i];
-    }
-    delete[] Block::blockArray;
 }
 
 /**
@@ -208,6 +219,9 @@ void Block::moveDown() {
     }
 }
 
+/**
+ * Moves block one place up
+ */
 void Block::moveUp() {
     for (int i = 0; i < 11; i++) {
         for (int j = 0; j < 10; j++) {
@@ -232,6 +246,11 @@ void Block::moveUp() {
     }
 }
 
+/**
+ * Calls draw section on block that is currently in section provided in parameter.
+ *
+ * @param section
+ */
 void Block::triggerDrawSection(uint8_t section) {
     int blockType = 0;
     if (section == NEXTSECTION)

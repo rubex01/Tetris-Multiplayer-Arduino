@@ -11,8 +11,8 @@ class HighScore {
 
     static void init();
     static void newScore(uint16_t score);
-    static uint16_t* getLeaderBoard();
     static bool isLatestScoreOnLeaderBoard();
+    static uint16_t* getLeaderBoard();
     static uint8_t getPlaceOnLeaderBoard();
     static void resetHighScores();
 
