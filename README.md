@@ -1,6 +1,11 @@
 # KBSMC Project
 #### This repository contains a multiplayer game that communicates via infrared and uses a nunchuk as its input. 
 
+## Video demonstration
+https://github.com/rubex01/Tetris-Multiplayer-Arduino/assets/40766757/90b5b9f9-a684-4d31-8bbb-9e637b56076b
+
+
+
 ### Important
 * Please always run lint before pushing to a branch. We cant setup ci/cd jobs to check before merging automatically because school hasn't setup any runners.
 
